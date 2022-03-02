@@ -1,22 +1,24 @@
 """
 =============================================================================
-MODULE: maya_widgets_utils.py
+MODULE: utils.py
 -----------------------------------------------------------------------------
-This class is responsible for showing info to the user. This module must
-be used by the trigger module, SHOULD NOT BE USED DIRECTLY.
+This class contains a tone of helper methods to be used by other modules.
 -----------------------------------------------------------------------------
 AUTHOR:   Leandro Adeodato
-VERSION:  v1.0.0 | Maya 2018 | Python 2
+VERSION:  v1.0.0 | Maya 2020 | Python 2
 =============================================================================
 """
+import maya.cmds as cmd
 import maya.mel as mel
 import maya.OpenMayaUI as mui
 
 from shiboken2 import wrapInstance
 from PySide2 import QtWidgets as wdg
+from .._Constants import constants as cns
+reload(cns)
 
 
-class AnimUtils(object):
+class Utils(object):
 
     @staticmethod
     def get_maya_main_window():
@@ -33,8 +35,12 @@ class AnimUtils(object):
     def get_active_panel():
         panel = cmd.getPanel(withFocus=True)
 
-        if cmd.getPanel(typeOf=panel) == MODEL_PANEL:
+        if cmd.getPanel(typeOf=panel) == cns.TIME_CONTROL:
             return wrapInstance(long(mui.MQtUtil.findControl(panel)), wdg.QWidget)
         else:
             return wrapInstance(long(mui.MQtUtil.mainWindow()), wdg.QWidget)
+
+    @staticmethod
+    def supress_script_editor_info(state=True):
+        cmd.scriptEditorInfo(suppressInfo=state, suppressErros=state, suppressWarnings=state)
 

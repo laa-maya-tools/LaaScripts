@@ -11,28 +11,30 @@ VERSION:  v1.0.0 | Maya 2019 | Python 2
 """
 from PySide2 import QtWidgets as wdg
 from PySide2 import QtGui as gui
-from PySide2 import QtCore as core
-
-from shiboken2 import wrapInstance
-import maya.OpenMayaUI as mui
-import maya.cmds as cmd
+from PySide2 import QtCore as cor
 
 from .._Constants import constants as cns
+from .._Utils import utils as utl
 reload(cns)
+reload(utl)
+
+msg_ui = None
 
 
 class Info(wdg.QDialog):
 
-    def __init__(self, message, timeout, parent=get_active_panel()):
+    def __init__(self, text, warning, timeout, parent=utl.Utils().get_maya_control(cns.RANGE_SLIDER)):
         super(Info, self).__init__(parent)
 
-        x_pos = parent.x() + (parent.width() - cns.INFO_X_OFFSET)
-        y_pos = parent.y() + cns.INFO_Y_OFFSET
+        width = parent.size().width()
+        height = parent.size().height()
+        x_pos = 0
+        y_pos = 0
 
         # DIALOG PREFERENCES
-        self.setWindowFlags(core.Qt.FramelessWindowHint)
-        self.setFixedSize(cns.INFO_WIDTH, cns.INFO_HEIGHT)
-        self.setGeometry(core.QRect(x_pos, y_pos, parent.width(), parent.height()))
+        self.setWindowFlags(cor.Qt.FramelessWindowHint)
+        self.setFixedSize(width, height)
+        self.setGeometry(cor.QRect(x_pos, y_pos, width, height))
         self.setStyleSheet('background-color: #333333;')
         self.setContentsMargins(1, 1, 1, 1)
 
@@ -46,29 +48,30 @@ class Info(wdg.QDialog):
         msg_font.setPointSize(10)
         msg_font.setBold(True)
 
-        # SHOW MESSAGE
-        msg = wdg.QLabel(message)
+        # SHOW INFO
+        msg = wdg.QLabel(text)
         msg.setFont(msg_font)
-        msg.setAlignment(core.Qt.AlignCenter | core.Qt.AlignCenter)
+        msg.setAlignment(cor.Qt.AlignCenter | cor.Qt.AlignCenter)
         msg.setContentsMargins(0, 0, 0, 0)
-        msg.setStyleSheet('background-color: #424242; color: #cccccc;')
+        if warning:
+            msg.setStyleSheet('background-color: #FF7258; color: #333333;')
+        else:
+            msg.setStyleSheet('background-color: #424242; color: #cccccc;')
+
         h_layout.addWidget(msg)
 
         # SET TIMEOUT
-        timer = core.QTimer()
+        timer = cor.QTimer()
         timer.singleShot(timeout, self.close)
 
 
-def show_message(message, timeout=1000):
+def show_info(text, warning=False, timeout=1000):
+    global msg_ui
     try:
         msg_ui.setParent(None)
         msg_ui.deleteLater()
     except:
         pass
 
-    msg_ui = InfoUtils(message, timeout)
+    msg_ui = Info(text, warning, timeout)
     msg_ui.show()
-
-
-if __name__ == '__main__':
-    show_message('Mensaje')
