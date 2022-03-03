@@ -18,12 +18,16 @@ from ._Constants import constants as cns
 from ._Utils import utils as utl
 
 from .Core import playback as pbk
+from .Core import frame_marker as fmk
 
 reload(utl)
 reload(info)
 reload(usd)
 reload(cns)
 reload(pbk)
+reload(fmk)
+
+global AK_FRAME_MARKER
 
 
 class Trigger(cor.QObject):
@@ -36,11 +40,27 @@ class Trigger(cor.QObject):
         self._playback = pbk.Playback()
         self._utils.supress_script_editor_info(True)
 
+        self._frame_marker = fmk.FrameMarker()
+
+        frame_markers = None
+
     # =========================================================================
-    # GO TO THE NEXT FRAME
+    # PLAYBACK
     # =========================================================================
     def go_to_the_next_frame(self):
         self._playback.go_to_the_next_frame()
+
+    def go_to_the_prev_frame(self):
+        self._playback.go_to_the_prev_frame()
+
+    def go_to_the_next_key(self):
+        self._playback.go_to_the_next_key()
+
+    def go_to_the_prev_key(self):
+        self._playback.go_to_the_prev_key()
+
+    def add_frame_markers(self, type):
+        AK_FRAME_MARKER.add_frame_markers(type)
 
 
 
