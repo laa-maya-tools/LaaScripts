@@ -16,14 +16,21 @@ class UserData(cor.QObject):
 
     @staticmethod
     def read_user_data():
-        with open("C:\Users\leandro_laa\Documents\maya\scripts\LaaScripts_Data\user_data.json", 'r') as f:
-            data = json.load(f)
-        return data
+        try:
+            with open("C:\Users\leandro_laa\Documents\maya\scripts\LaaScripts_Data\user_data.json", 'r') as f:
+                data = json.load(f)
+            return data
+        except IOError as error:
+            print(error)
 
     @staticmethod
     def store_user_data(data):
-        with open("C:\Users\leandro_laa\Documents\maya\scripts\LaaScripts_Data\user_data.json", 'w') as json_file:
-            json.dump(data, json_file)
+        try:
+            with open("C:\Users\leandro_laa\Documents\maya\scripts\LaaScripts_Data\user_data.json", 'w') as json_file:
+                json.dump(data, json_file)
+        except IOError as error:
+            print(error)
+
 
 
 
