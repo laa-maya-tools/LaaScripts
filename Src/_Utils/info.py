@@ -66,6 +66,8 @@ class Info(wdg.QDialog):
 
 
 def show_info(text, warning=False, timeout=1000):
+    if not cns.INFO_ENABLED:
+        return
     global msg_ui
     try:
         msg_ui.setParent(None)
