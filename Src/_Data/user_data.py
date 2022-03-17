@@ -10,14 +10,18 @@ VERSION:  v1.0.0 | Maya 2019 | Python 2
 =============================================================================
 """
 import json
+import os
+
+USER_PATH = os.path.expanduser("~")
+FILE_PATH = USER_PATH + '/maya/scripts/LaaScripts_Data/user_data.json'
 
 
-class UserData(cor.QObject):
+class UserData(object):
 
     @staticmethod
     def read_user_data():
         try:
-            with open("C:\Users\leandro_laa\Documents\maya\scripts\LaaScripts_Data\user_data.json", 'r') as f:
+            with open(FILE_PATH, 'r') as f:
                 data = json.load(f)
             return data
         except IOError as error:
@@ -26,7 +30,7 @@ class UserData(cor.QObject):
     @staticmethod
     def store_user_data(data):
         try:
-            with open("C:\Users\leandro_laa\Documents\maya\scripts\LaaScripts_Data\user_data.json", 'w') as json_file:
+            with open(FILE_PATH, 'w') as json_file:
                 json.dump(data, json_file)
         except IOError as error:
             print(error)
