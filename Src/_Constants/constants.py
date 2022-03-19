@@ -23,6 +23,14 @@ MODEL_PANEL, GRAPH_EDITOR, SCRIPT_EDITOR = 'modelPanel', 'graphEditor', 'scriptE
 INFO_ENABLED = 'info_enabled'
 WARNINGS_ENABLED = 'warnings_enabled'
 PLAYBACK_MODE = 'playback_mode'
-LOOP, STOP, MOVE, EXPAND = 'loop', 'stop', 'move', 'expand'
+LOOP, STOP, PASS, EXPAND = 'loop', 'stop', 'pass', 'expand'
 TIME_INCREMENT = 'time_increment'
+
+# =============================================================================
+# NAVIGATION
+# =============================================================================
+MOVE, ROTATE, SCALE = 'Move', 'Rotate', 'Scale'
+LOCAL, WORLD, NORMAL, GIMBAL, PARENT, COMPONENT = 'Local', 'World', 'Normal', 'Gimbal', 'Parent', 'Component'
+TX, TY, TZ, RX, RY, RZ, SX, SY, SZ = 'tx', 'ty', 'tz', 'rx', 'ry', 'rz', 'sx', 'sy', 'sz'
+NAME, INDEX = 0, 1
 

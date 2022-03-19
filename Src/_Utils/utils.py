@@ -14,8 +14,8 @@ import maya.OpenMayaUI as mui
 
 from shiboken2 import wrapInstance
 from PySide2 import QtWidgets as wdg
-from .._Constants import constants as cns
-reload(cns)
+from .._Constants import constants as c
+reload(c)
 
 
 class Utils(object):
@@ -32,10 +32,15 @@ class Utils(object):
         return wrapInstance(long(control_ptr), wdg.QWidget)
 
     @staticmethod
+    def get_panel_under_cursor():
+        panel = cmd.getPanel(underPointer=True)
+        return panel
+
+    @staticmethod
     def get_active_panel():
         panel = cmd.getPanel(withFocus=True)
 
-        if cmd.getPanel(typeOf=panel) == cns.TIME_CONTROL:
+        if cmd.getPanel(typeOf=panel) == c.TIME_CONTROL:
             return wrapInstance(long(mui.MQtUtil.findControl(panel)), wdg.QWidget)
         else:
             return wrapInstance(long(mui.MQtUtil.mainWindow()), wdg.QWidget)
@@ -80,3 +85,56 @@ class Utils(object):
         cmd.playbackOptions(animationStartTime=start)
         cmd.playbackOptions(animationEndTime=end)
 
+    # ============================================================================= #
+    # NAVIGATION                                                                    #
+    # ============================================================================= #
+    @staticmethod
+    def get_current_move_mode():
+        return cmd.manipMoveContext(c.MOVE, q=True, mode=True)
+
+    @staticmethod
+    def set_current_move_mode(mode):
+        cmd.manipMoveContext(c.MOVE, e=True, mode=mode)
+
+    @staticmethod
+    def get_current_rotate_mode():
+        return cmd.manipRotateContext(c.ROTATE, q=True, mode=True)
+
+    @staticmethod
+    def set_current_rotate_mode(mode):
+        cmd.manipRotateContext(c.ROTATE, e=True, mode=mode)
+
+    @staticmethod
+    def get_current_scale_mode():
+        return cmd.manipScaleContext(c.SCALE, q=True, mode=True)
+
+    @staticmethod
+    def set_current_scale_mode(mode):
+        cmd.manipScaleContext(c.SCALE, e=True, mode=mode)
+
+    @staticmethod
+    def reset_move_mode(mode):
+        cmd.manipMoveContext(c.MOVE, e=True, mode=mode)
+
+    @staticmethod
+    def reset_rotate_mode(mode):
+        cmd.manipRotateContext(c.ROTATE, e=True, mode=mode)
+
+    @staticmethod
+    def reset_scale_mode(mode):
+        cmd.manipScaleContext(c.SCALE, e=True, mode=mode)
+
+    @staticmethod
+    def fix_translate_marking_menu():
+        mel.eval('buildTranslateMM;')
+        mel.eval('TranslateToolWithSnapMarkingMenuPopDown;')
+
+    @staticmethod
+    def fix_rotate_marking_menu():
+        mel.eval('buildRotateMM;')
+        mel.eval('RotateToolWithSnapMarkingMenuPopDown;')
+
+    @staticmethod
+    def fix_scale_marking_menu():
+        mel.eval('buildScaleMM;')
+        mel.eval('ScaleToolWithSnapMarkingMenuPopDown;')
