@@ -42,3 +42,23 @@ ALL_RANGE, BEFORE_CURRENT_TIME, AFTER_CURRENT_TIME = 0, 1, 2
 START_TIME, END_TIME = 0, 1
 NEXT, PREVIOUS, FIRST, LAST = 'next', 'previous', 'first', 'last'
 
+# =============================================================================
+# CONTAINERS
+# =============================================================================
+LAA_SCRIPTS_CONTAINER = 'LaaScripts'
+
+NAVIGATION_CONTAINER = 'LaaScripts|Navigation'
+KEYFRAMING_CONTAINER = 'LaaScripts|Keyframing'
+TRANSFORM_CONTAINER = 'LaaScripts|Transform'
+SELECTION_CONTAINER = 'LaaScripts|Selection'
+CONTROLS_SELECTOR_CONTAINER = 'LaaScripts|Selection|ControlsSelector'
+VIEWPORT_NODE = 'LaaScripts|Viewport'
+PLAYBACK_NODE = 'LaaScripts|Playback'
+
+VERSION_ATTR = 'version'
+ICON_ATTR = 'icon'
+PARENT_ATTR = 'parent'
+
+KEY_MARKERS_ATTR = 'key_markers'
+FRAME_MARKERS_ATTR = 'frame_markers'
+
