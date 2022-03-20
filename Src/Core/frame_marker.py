@@ -11,9 +11,9 @@ from PySide2 import QtWidgets as wdg
 from PySide2 import QtGui as gui
 from PySide2 import QtCore as cor
 
-from .._Utils import utils as utl
-from .._Data import scene_data as scd
-from .._Constants import constants as cns
+from ..Utils import utils as utl
+from ..Data import scene_data as scd
+from ..Constants import constants as cns
 
 
 reload(utl)

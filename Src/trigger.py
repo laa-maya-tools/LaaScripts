@@ -12,17 +12,13 @@ VERSION:  v1.0.0 | Maya 2022 | Python 3
 =============================================================================
 """
 from PySide2 import QtCore as cor
-from .Core import Navigation
-from .Core import Playback
-reload(Navigation)
-reload(Playback)
 
-from ._Utils import widget_utils as wu
-reload(wu)
+from LaaScripts.Src.Core import Navigation
+from LaaScripts.Src.Core import Playback
+from LaaScripts.Src.Utils.widget_utils import WidgetUtils
+from LaaScripts.Src.Constants import constants as c
 
-
-global AK_FRAME_MARKER
-TIME_CONTROL_OBJ = "$gPlayBackSlider"
+global LAA_FRAME_MARKER
 
 
 class Trigger(object):
@@ -48,24 +44,36 @@ class Trigger(object):
     # =========================================================================
     # PLAYBACK
     # =========================================================================
-    # @staticmethod
-    # def load_frame_markers():
-    #     Playback.FrameMarker()
-
     @staticmethod
     def load_frame_markers():
-        global AK_FRAME_MARKER
+        global LAA_FRAME_MARKER
 
         try:
-            AK_FRAME_MARKER.setParent(None)
-            AK_FRAME_MARKER.deleteLater()
-            AK_FRAME_MARKER = None
+            LAA_FRAME_MARKER.setParent(None)
+            LAA_FRAME_MARKER.deleteLater()
+            LAA_FRAME_MARKER = None
         except:
             pass
 
-        parent = wu.WidgetUtils.get_maya_control(TIME_CONTROL_OBJ)
-        AK_FRAME_MARKER = Playback.FrameMarker()
-        AK_FRAME_MARKER.setVisible(True)
+        parent = WidgetUtils.get_maya_control(c.TIME_CONTROL)
+        LAA_FRAME_MARKER = Playback.FrameMarker()
+        LAA_FRAME_MARKER.setVisible(True)
+
+    @staticmethod
+    def add_key_markers():
+        LAA_FRAME_MARKER.add_frame_markers(c.KEY)
+
+    @staticmethod
+    def add_breakdown_markers():
+        LAA_FRAME_MARKER.add_frame_markers(c.BREAKDOWN)
+
+    @staticmethod
+    def add_inbetween_markers():
+        LAA_FRAME_MARKER.add_frame_markers(c.INBETWEEN)
+
+    @staticmethod
+    def remove_frame_markers():
+        LAA_FRAME_MARKER.remove_frame_markers()
 
 
 

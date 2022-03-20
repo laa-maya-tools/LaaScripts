@@ -1,30 +1,28 @@
 """
 =============================================================================
-MODULE: info.py
+MODULE: info_utils.py
 -----------------------------------------------------------------------------
-This class is responsible for showing info to the user. This module must
-be used by the trigger module, SHOULD NOT BE USED DIRECTLY.
+This class is responsible for showing info and warnings to the user.
 -----------------------------------------------------------------------------
 AUTHOR:   Leandro Adeodato
-VERSION:  v1.0.0 | Maya 2019 | Python 2
+VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 =============================================================================
 """
 from PySide2 import QtWidgets as wdg
 from PySide2 import QtGui as gui
 from PySide2 import QtCore as cor
 
-from .._Constants import constants as cns
-from .._Utils import utils as utl
-reload(cns)
-reload(utl)
+from LaaScripts.Src.Constants import constants as c
+from LaaScripts.Src.Utils.widget_utils import WidgetUtils
+
 
 msg_ui = None
 
 
-class Info(wdg.QDialog):
+class InfoUtils(wdg.QDialog):
 
-    def __init__(self, text, warning, timeout, parent=utl.Utils().get_maya_control(cns.RANGE_SLIDER)):
-        super(Info, self).__init__(parent)
+    def __init__(self, text, warning, timeout, parent=WidgetUtils.get_maya_control(c.RANGE_SLIDER)):
+        super(InfoUtils, self).__init__(parent)
 
         width = parent.size().width()
         height = parent.size().height()
@@ -66,7 +64,7 @@ class Info(wdg.QDialog):
 
 
 def show_info(text, warning=False, timeout=1000):
-    if not cns.INFO_ENABLED:
+    if not c.INFO_ENABLED:
         return
     global msg_ui
     try:
@@ -75,5 +73,5 @@ def show_info(text, warning=False, timeout=1000):
     except:
         pass
 
-    msg_ui = Info(text, warning, timeout)
+    msg_ui = InfoUtils(text, warning, timeout)
     msg_ui.show()

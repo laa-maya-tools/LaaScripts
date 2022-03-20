@@ -1,29 +1,30 @@
 """
 =============================================================================
-MODULE: info_utils.py
+MODULE: info.py
 -----------------------------------------------------------------------------
-This class is responsible for showing info and warnings to the user.
+This class is responsible for showing info to the user. This module must
+be used by the trigger module, SHOULD NOT BE USED DIRECTLY.
 -----------------------------------------------------------------------------
 AUTHOR:   Leandro Adeodato
-VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
+VERSION:  v1.0.0 | Maya 2019 | Python 2
 =============================================================================
 """
 from PySide2 import QtWidgets as wdg
 from PySide2 import QtGui as gui
 from PySide2 import QtCore as cor
 
-from .._Constants import constants as cns
-from .._Utils import utils as utl
+from ..Constants import constants as cns
+from ..Utils import utils as utl
 reload(cns)
 reload(utl)
 
 msg_ui = None
 
 
-class InfoUtils(wdg.QDialog):
+class Info(wdg.QDialog):
 
     def __init__(self, text, warning, timeout, parent=utl.Utils().get_maya_control(cns.RANGE_SLIDER)):
-        super(InfoUtils, self).__init__(parent)
+        super(Info, self).__init__(parent)
 
         width = parent.size().width()
         height = parent.size().height()
@@ -74,5 +75,5 @@ def show_info(text, warning=False, timeout=1000):
     except:
         pass
 
-    msg_ui = InfoUtils(text, warning, timeout)
+    msg_ui = Info(text, warning, timeout)
     msg_ui.show()

@@ -75,7 +75,7 @@ class SceneData(object):
         SceneData.unlock_node_attr(node_name, attr_name)
         attr_value = cmd.getAttr(full_attr_name)
         SceneData.lock_node_attr(node_name, attr_name)
-        return attr_value
+        return str(attr_value or '')
 
     @staticmethod
     def set_node_attr_value(node_name, attr_name, attr_value, attr_type='string'):

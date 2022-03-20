@@ -11,10 +11,10 @@ VERSION:  v1.0.0 | Maya 2018 | Python 2
 """
 import maya.cmds as cmd
 
-from .._Utils import info
-from .._Utils import utils as utl
-from .._Data import user_data as usd
-from .._Constants import constants as cns
+from ..Utils import info
+from ..Utils import utils as utl
+from ..Data import user_data as usd
+from ..Constants import constants as cns
 
 reload(info)
 reload(utl)

@@ -13,7 +13,7 @@ import maya.cmds as cmd
 import maya.mel as mel
 
 from .widget_utils import WidgetUtils
-from .._Constants import constants as c
+from ..Constants import constants as c
 reload(c)
 
 
@@ -77,7 +77,7 @@ class TimelineUtils(object):
             return [int(animation_start_time), int(animation_end_time)]
 
     @staticmethod
-    def get_selection_range():
+    def get_selected_range():
         """
         Gets the selected timeline range.
         :return: [Selection start time, Selection end time].
@@ -86,6 +86,16 @@ class TimelineUtils(object):
         time_control = mel.eval("$tempVar={0}".format(c.TIME_CONTROL))
         timeline_range = cmd.timeControl(time_control, q=True, rangeArray=True)
         return [int(timeline_range[0]), int(timeline_range[1])]
+
+    @staticmethod
+    def get_selected_frame_times():
+        """
+        Gets the frame times on a selected range.
+        :return: List of frame times.
+        :rtype: list of float
+        """
+        timeline_range = TimelineUtils.get_selected_range()
+        return range(int(timeline_range[0]), int(timeline_range[1]))
 
 
 

@@ -13,7 +13,7 @@ import maya.cmds as cmd
 import maya.mel as mel
 
 from .widget_utils import WidgetUtils
-from .._Constants import constants as c
+from ..Constants import constants as c
 reload(c)
 
 

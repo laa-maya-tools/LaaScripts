@@ -14,8 +14,8 @@ import maya.OpenMayaUI as mui
 
 from shiboken2 import wrapInstance
 from PySide2 import QtWidgets as wdg
-from .._Constants import constants as c
-reload(c)
+
+from LaaScripts.Src.Constants import constants as c
 
 
 class Utils(object):

@@ -1,11 +1,4 @@
-from . import channel_filter
-from . import smart_manipulator
-from . import ui_manager
-reload(channel_filter)
-reload(smart_manipulator)
-reload(ui_manager)
-
-from .channel_filter import ChannelFilter
-from .smart_manipulator import SmartManipulator
-from .ui_manager import UiManager
+from LaaScripts.Src.Core.Navigation.channel_filter import ChannelFilter
+from LaaScripts.Src.Core.Navigation.smart_manipulator import SmartManipulator
+from LaaScripts.Src.Core.Navigation.ui_manager import UiManager
 

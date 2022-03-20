@@ -12,6 +12,13 @@ RANGE_SLIDER = "$gTimeRangeSlider"
 HELP_LINE = "$gHelpLineForm"
 
 # =============================================================================
+# PLAYBACK
+# =============================================================================
+FRAMES, TYPES = 'frames', 'types'
+KEY, BREAKDOWN, INBETWEEN, ALL = 0, 1, 2, 3
+INDEX, FRAME, TYPE = 0, 1, 2
+
+# =============================================================================
 # INFO UTILS CONSTANTS
 # =============================================================================
 INFO_HEIGHT, INFO_WIDTH, INFO_X_OFFSET, INFO_Y_OFFSET = 38, 360, 90, 378

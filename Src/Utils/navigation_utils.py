@@ -11,8 +11,7 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 """
 import maya.cmds as cmd
 
-from .._Constants import constants as c
-reload(c)
+from LaaScripts.Src.Constants import constants as c
 
 
 class NavigationUtils(object):
