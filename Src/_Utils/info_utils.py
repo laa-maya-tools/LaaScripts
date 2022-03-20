@@ -1,12 +1,11 @@
 """
 =============================================================================
-MODULE: info.py
+MODULE: info_utils.py
 -----------------------------------------------------------------------------
-This class is responsible for showing info to the user. This module must
-be used by the trigger module, SHOULD NOT BE USED DIRECTLY.
+This class is responsible for showing info and warnings to the user.
 -----------------------------------------------------------------------------
 AUTHOR:   Leandro Adeodato
-VERSION:  v1.0.0 | Maya 2019 | Python 2
+VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 =============================================================================
 """
 from PySide2 import QtWidgets as wdg

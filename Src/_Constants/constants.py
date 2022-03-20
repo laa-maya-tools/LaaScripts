@@ -34,3 +34,11 @@ LOCAL, WORLD, NORMAL, GIMBAL, PARENT, COMPONENT = 'Local', 'World', 'Normal', 'G
 TX, TY, TZ, RX, RY, RZ, SX, SY, SZ = 'tx', 'ty', 'tz', 'rx', 'ry', 'rz', 'sx', 'sy', 'sz'
 NAME, INDEX = 0, 1
 
+# =============================================================================
+# TIMELINE
+# =============================================================================
+ANIMATION, PLAYBACK = 0, 1
+ALL_RANGE, BEFORE_CURRENT_TIME, AFTER_CURRENT_TIME = 0, 1, 2
+START_TIME, END_TIME = 0, 1
+NEXT, PREVIOUS, FIRST, LAST = 'next', 'previous', 'first', 'last'
+
