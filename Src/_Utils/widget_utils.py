@@ -30,6 +30,11 @@ class WidgetUtils(object):
 
     @staticmethod
     def get_maya_control(control_name):
+        control = mel.eval("$tempVar = {0}".format(control_name))
+        return control
+
+    @staticmethod
+    def get_maya_control_widget(control_name):
         """
         Gets any maya ui element and converts it to a widget.
         :return: Maya's ui control.
@@ -38,3 +43,4 @@ class WidgetUtils(object):
         control = mel.eval("$tempVar={0}".format(control_name))
         control_ptr = mui.MQtUtil.findControl(control)
         return wrapInstance(long(control_ptr), wdg.QWidget)
+

@@ -43,17 +43,21 @@ START_TIME, END_TIME = 0, 1
 NEXT, PREVIOUS, FIRST, LAST = 'next', 'previous', 'first', 'last'
 
 # =============================================================================
-# CONTAINERS
+# NODES
 # =============================================================================
-LAA_SCRIPTS_CONTAINER = 'LaaScripts'
+VERSION = 'LaaScripts v1.0.0'
+ICON = 'icon'
 
-NAVIGATION_CONTAINER = 'LaaScripts|Navigation'
-KEYFRAMING_CONTAINER = 'LaaScripts|Keyframing'
-TRANSFORM_CONTAINER = 'LaaScripts|Transform'
-SELECTION_CONTAINER = 'LaaScripts|Selection'
-CONTROLS_SELECTOR_CONTAINER = 'LaaScripts|Selection|ControlsSelector'
+LAA_SCRIPTS_NODE = 'LaaScripts'
+
+NAVIGATION_NODE = 'LaaScripts|Navigation'
+KEYFRAMING_NODE = 'LaaScripts|Keyframing'
+TRANSFORM_NODE = 'LaaScripts|Transform'
+SELECTION_NODE = 'LaaScripts|Selection'
+CONTROLS_SELECTOR_NODE = 'LaaScripts|Selection|ControlsSelector'
 VIEWPORT_NODE = 'LaaScripts|Viewport'
 PLAYBACK_NODE = 'LaaScripts|Playback'
+FRAME_MARKER_NODE = 'LaaScripts|Playback|FrameMarker'
 
 VERSION_ATTR = 'version'
 ICON_ATTR = 'icon'

@@ -5,6 +5,18 @@ import maya.mel as mel
 class SceneData(object):
 
     @staticmethod
+    def load_scene_data(node_name, node_attr):
+        SceneData.create_node(node_name)
+        SceneData.add_attr(node_name, node_attr)
+        return SceneData.get_node_attr_value(node_name, node_attr)
+
+    @staticmethod
+    def save_scene_data(node_name, node_attr, attr_value):
+        SceneData.create_node(node_name)
+        SceneData.add_attr(node_name, node_attr)
+        SceneData.set_node_attr_value(node_name, node_attr, attr_value)
+
+    @staticmethod
     def create_node(node_name, node_type='dagContainer'):
         """
         Creates a new node.
@@ -61,8 +73,9 @@ class SceneData(object):
         """
         full_attr_name = '{0}.{1}'.format(node_name, attr_name)
         SceneData.unlock_node_attr(node_name, attr_name)
-        cmd.getAttr(full_attr_name)
+        attr_value = cmd.getAttr(full_attr_name)
         SceneData.lock_node_attr(node_name, attr_name)
+        return attr_value
 
     @staticmethod
     def set_node_attr_value(node_name, attr_name, attr_value, attr_type='string'):
