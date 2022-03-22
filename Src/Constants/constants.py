@@ -39,6 +39,9 @@ TIME_INCREMENT = 'time_increment'
 MOVE, ROTATE, SCALE = 'Move', 'Rotate', 'Scale'
 LOCAL, WORLD, NORMAL, GIMBAL, PARENT, COMPONENT = 'Local', 'World', 'Normal', 'Gimbal', 'Parent', 'Component'
 TX, TY, TZ, RX, RY, RZ, SX, SY, SZ = 'tx', 'ty', 'tz', 'rx', 'ry', 'rz', 'sx', 'sy', 'sz'
+TRS_XYZ = ['tx', 'ty', 'tz']
+ROT_XYZ = ['rx', 'ry', 'rz']
+SCL_XYZ = ['sx', 'sy', 'sz']
 NAME, INDEX = 0, 1
 
 # =============================================================================

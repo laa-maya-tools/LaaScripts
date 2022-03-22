@@ -41,6 +41,34 @@ class Trigger(object):
     def switch_scale_manipulator():
         Navigation.SmartManipulator().switch_scale_manipulator()
 
+    @staticmethod
+    def toggle_translate_channels():
+        Navigation.ChannelsFilter.toggle_translate_channels()
+
+    @staticmethod
+    def toggle_rotate_channels():
+        Navigation.ChannelsFilter.toggle_rotate_channels()
+
+    @staticmethod
+    def toggle_scale_channels():
+        Navigation.ChannelsFilter.toggle_scale_channels()
+
+    @staticmethod
+    def toggle_all_channels():
+        Navigation.ChannelsFilter.toggle_all_channels()
+
+    @staticmethod
+    def select_all_channels():
+        Navigation.ChannelsFilter.select_all_channels()
+
+    @staticmethod
+    def clear_all_channels():
+        Navigation.ChannelsFilter.clear_all_channels()
+
+    @staticmethod
+    def activate_sync_mode():
+        Navigation.ChannelsFilter.activate_sync_mode()
+
     # =========================================================================
     # PLAYBACK
     # =========================================================================

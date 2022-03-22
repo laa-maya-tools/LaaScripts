@@ -114,3 +114,35 @@ class NavigationUtils(object):
         """
         mel.eval('buildScaleMM;')
         mel.eval('ScaleToolWithSnapMarkingMenuPopDown;')
+
+    @staticmethod
+    def get_selected_channels():
+        selected_channels = cmd.channelBox('mainChannelBox', q=True, sma=True)
+        return selected_channels or []
+
+    @staticmethod
+    def get_selected_channels_of_type(transform_type):
+        channels_list = []
+        selected_channels = NavigationUtils.get_selected_channels()
+        for channel in selected_channels:
+            if channel in transform_type:
+                channels_list.append(channel)
+        return channels_list
+
+    @staticmethod
+    def get_selected_translate_channels():
+        return NavigationUtils.get_selected_channels_of_type(c.TRS_XYZ)
+
+    @staticmethod
+    def get_selected_rotate_channels():
+        return NavigationUtils.get_selected_channels_of_type(c.ROT_XYZ)
+
+    @staticmethod
+    def get_selected_scale_channels():
+        return NavigationUtils.get_selected_channels_of_type(c.SCL_XYZ)
+
+    @staticmethod
+    def select_channels(selected_objects, channels):
+        for obj in selected_objects:
+            formated_attrs = ['{0}.{1}'.format(obj, channel) for channel in channels]
+            cmd.channelBox('mainChannelBox', e=True, select=formated_attrs)

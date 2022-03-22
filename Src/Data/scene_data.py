@@ -6,12 +6,25 @@ class SceneData(object):
 
     @staticmethod
     def load_scene_data(node_name, node_attr):
+        """
+        Loads the data stored in the scene nodes.
+        :param str node_name: Name of the node.
+        :param str node_attr: Name of the node's attribute.
+        :return: Stored value.
+        :rtype: str
+        """
         SceneData.create_node(node_name)
         SceneData.add_attr(node_name, node_attr)
         return SceneData.get_node_attr_value(node_name, node_attr)
 
     @staticmethod
     def save_scene_data(node_name, node_attr, attr_value):
+        """
+        Saves the specified data in a scene node.
+        :param str node_name: Name of the node.
+        :param str node_attr: Name of the node's attribute.
+        :param str attr_value: Value to be stored.
+        """
         SceneData.create_node(node_name)
         SceneData.add_attr(node_name, node_attr)
         SceneData.set_node_attr_value(node_name, node_attr, attr_value)
@@ -110,12 +123,4 @@ class SceneData(object):
         """
         full_attr_name = '{0}.{1}'.format(node_name, attr_name)
         cmd.setAttr(full_attr_name, lock=False)
-
-
-if __name__ == "__main__":
-    SceneData.delete_attr('LaaScripts|Playback2', 'test2')
-    SceneData.delete_node('LaaScripts|Viewport')
-    SceneData.set_node_attr_value('LaaScripts', 'test', 'Fix2')
-
-
 
