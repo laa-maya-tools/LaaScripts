@@ -42,8 +42,16 @@ class Trigger(object):
         Navigation.SmartManipulator().switch_scale_manipulator()
 
     @staticmethod
-    def toggle_translate_channels():
-        Navigation.ChannelsFilter.toggle_translate_channels()
+    def filter_translate_channels_on_ones():
+        Navigation.ChannelsFilter().filter_translate_channels_on_ones()
+
+    @staticmethod
+    def filter_translate_channels_on_twos():
+        Navigation.ChannelsFilter().filter_translate_channels_on_twos()
+
+    @staticmethod
+    def filter_translate_channels_on_threes():
+        Navigation.ChannelsFilter().filter_translate_channels_on_threes()
 
     @staticmethod
     def toggle_rotate_channels():

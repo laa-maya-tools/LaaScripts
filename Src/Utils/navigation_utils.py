@@ -116,6 +116,11 @@ class NavigationUtils(object):
         mel.eval('ScaleToolWithSnapMarkingMenuPopDown;')
 
     @staticmethod
+    def get_selected_objects():
+        selected_objects = cmd.ls(sl=True)
+        return selected_objects or []
+
+    @staticmethod
     def get_selected_channels():
         selected_channels = cmd.channelBox('mainChannelBox', q=True, sma=True)
         return selected_channels or []

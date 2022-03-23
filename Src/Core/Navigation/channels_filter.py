@@ -23,13 +23,62 @@ class ChannelsFilter(object):
         self._selected_channels = []
 
         self._transform_attrs = {
-            MOVE: [TX, TY, TZ],
-            ROTATE: [RX, RY, RZ],
-            SCALE: [SX, SY, SZ]
+            c.MOVE: [c.TX, c.TY, c.TZ],
+            c.ROTATE: [c.RX, c.RY, c.RZ],
+            c.SCALE: [c.SX, c.SY, c.SZ]
         }
 
+    def filter_translate_channels_on_ones(self):
+        selected_objects = NavigationUtils.get_selected_objects()
+        if not selected_objects:
+            return
 
-    def toggle_all_translate_channels(self, selected_objects):
+        selected_translate_channels = NavigationUtils.get_selected_translate_channels()
+        selected_rotate_channels = NavigationUtils.get_selected_rotate_channels()
+        selected_scale_channels = NavigationUtils.get_selected_scale_channels()
+
+        if len(selected_translate_channels) == 1:
+            if selected_translate_channels[0] == self._transform_attrs[c.MOVE][0]:
+                selected_channels = [self._transform_attrs[c.MOVE][1]] + selected_rotate_channels + selected_scale_channels
+                NavigationUtils.select_channels(selected_objects, selected_channels)
+                return
+            if selected_translate_channels[0] == self._transform_attrs[c.MOVE][1]:
+                selected_channels = [self._transform_attrs[c.MOVE][2]] + selected_rotate_channels + selected_scale_channels
+                NavigationUtils.select_channels(selected_objects, selected_channels)
+                return
+
+        selected_channels = [self._transform_attrs[c.MOVE][0]] + selected_rotate_channels + selected_scale_channels
+        NavigationUtils.select_channels(selected_objects, selected_channels)
+        return
+
+    def filter_translate_channels_on_twos(self):
+        selected_objects = NavigationUtils.get_selected_objects()
+        if not selected_objects:
+            return
+
+        selected_translate_channels = NavigationUtils.get_selected_translate_channels()
+        selected_rotate_channels = NavigationUtils.get_selected_rotate_channels()
+        selected_scale_channels = NavigationUtils.get_selected_scale_channels()
+
+        if len(selected_translate_channels) == 2:
+            if selected_translate_channels[0] == c.TX and selected_translate_channels[1] == c.TY:
+                selected_channels = [c.TX, c.TZ] + selected_rotate_channels + selected_scale_channels
+                NavigationUtils.select_channels(selected_objects, selected_channels)
+                return
+            if selected_translate_channels[0] == c.TX and selected_translate_channels[1] == c.TZ:
+                selected_channels = [c.TY, c.TZ] + selected_rotate_channels + selected_scale_channels
+                NavigationUtils.select_channels(selected_objects, selected_channels)
+                return
+
+        selected_channels = [c.TX, c.TY] + selected_rotate_channels + selected_scale_channels
+        NavigationUtils.select_channels(selected_objects, selected_channels)
+        return
+
+    def filter_translate_channels_on_threes(self):
+        selected_objects = NavigationUtils.get_selected_objects()
+        if not selected_objects:
+            return
+
         selected_translate_channels = NavigationUtils.get_selected_translate_channels()
         selected_rotate_channels = NavigationUtils.get_selected_rotate_channels()
         selected_scale_channels = NavigationUtils.get_selected_scale_channels()
@@ -37,12 +86,11 @@ class ChannelsFilter(object):
         if selected_translate_channels:
             cmd.channelBox('mainChannelBox', e=True, select=False)
             selected_channels = selected_rotate_channels + selected_scale_channels
-            self.select_channels(selected_objects, self._selected_channels)
-            return self._selected_channels
+            NavigationUtils.select_channels(selected_objects, selected_channels)
+        else:
+            selected_channels = self._transform_attrs[c.MOVE] + selected_rotate_channels + selected_scale_channels
+            NavigationUtils.select_channels(selected_objects, selected_channels)
 
-        self._selected_channels = self._transform_attrs[MOVE] + selected_rotate_channels + selected_scale_channels
-        self.select_channels(selected_objects, self._selected_channels)
-        return self._selected_channels
 
     # def toggle_one_translate_channel(self, selected_objects):
     #     selected_translate_channels = self.get_selected_transform_channels(MOVE)
@@ -259,7 +307,6 @@ if __name__ == '__main__':
     print('test')
     print NavigationUtils.get_selected_channels()
     print NavigationUtils.get_selected_translate_channels()
-
 
 
 
