@@ -54,16 +54,33 @@ class Trigger(object):
         Navigation.ChannelsFilter().filter_translate_channels_on_threes()
 
     @staticmethod
-    def toggle_rotate_channels():
-        Navigation.ChannelsFilter.toggle_rotate_channels()
+    def filter_rotate_channels_on_ones():
+        Navigation.ChannelsFilter().filter_rotate_channels_on_ones()
 
     @staticmethod
-    def toggle_scale_channels():
-        Navigation.ChannelsFilter.toggle_scale_channels()
+    def filter_rotate_channels_on_twos():
+        Navigation.ChannelsFilter().filter_rotate_channels_on_twos()
 
     @staticmethod
-    def toggle_all_channels():
-        Navigation.ChannelsFilter.toggle_all_channels()
+    def filter_rotate_channels_on_threes():
+        Navigation.ChannelsFilter().filter_rotate_channels_on_threes()
+
+
+    @staticmethod
+    def filter_scale_channels_on_ones():
+        Navigation.ChannelsFilter().filter_scale_channels_on_ones()
+
+    @staticmethod
+    def filter_scale_channels_on_twos():
+        Navigation.ChannelsFilter().filter_scale_channels_on_twos()
+
+    @staticmethod
+    def filter_scale_channels_on_threes():
+        Navigation.ChannelsFilter().filter_scale_channels_on_threes()
+
+    @staticmethod
+    def filter_all_channels():
+        Navigation.ChannelsFilter.filter_all_channels()
 
     @staticmethod
     def select_all_channels():

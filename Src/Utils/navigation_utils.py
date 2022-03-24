@@ -151,3 +151,12 @@ class NavigationUtils(object):
         for obj in selected_objects:
             formated_attrs = ['{0}.{1}'.format(obj, channel) for channel in channels]
             cmd.channelBox('mainChannelBox', e=True, select=formated_attrs)
+
+    @staticmethod
+    def sync_timeline_display(state):
+        mel.eval('toggleChannelBoxTimelineSync {0};'.format(state))
+
+    @staticmethod
+    def sync_graph_editor_display(state):
+        mel.eval('toggleChannelBoxGraphEdSync {0};'.format(state))
+
