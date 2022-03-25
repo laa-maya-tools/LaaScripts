@@ -80,19 +80,19 @@ class Trigger(object):
 
     @staticmethod
     def filter_all_channels():
-        Navigation.ChannelsFilter.filter_all_channels()
+        Navigation.ChannelsFilter().filter_all_channels()
 
     @staticmethod
     def select_all_channels():
-        Navigation.ChannelsFilter.select_all_channels()
+        Navigation.ChannelsFilter().select_all_channels()
 
     @staticmethod
     def clear_all_channels():
-        Navigation.ChannelsFilter.clear_all_channels()
+        Navigation.ChannelsFilter().clear_all_channels()
 
     @staticmethod
-    def activate_sync_mode():
-        Navigation.ChannelsFilter.activate_sync_mode()
+    def toggle_sync_mode():
+        Navigation.ChannelsFilter().toggle_sync_mode()
 
     # =========================================================================
     # PLAYBACK

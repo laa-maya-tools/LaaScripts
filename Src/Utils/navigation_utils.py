@@ -148,9 +148,16 @@ class NavigationUtils(object):
 
     @staticmethod
     def select_channels(selected_objects, channels):
+        attributes = []
         for obj in selected_objects:
-            formated_attrs = ['{0}.{1}'.format(obj, channel) for channel in channels]
-            cmd.channelBox('mainChannelBox', e=True, select=formated_attrs)
+            for channel in channels:
+                full_attr = '{0}.{1}'.format(obj, channel)
+                if cmd.objExists(full_attr):
+                    attributes.append(full_attr)
+
+
+        print attributes
+        cmd.channelBox('mainChannelBox', e=True, select=attributes)
 
     @staticmethod
     def sync_timeline_display(state):
@@ -159,4 +166,33 @@ class NavigationUtils(object):
     @staticmethod
     def sync_graph_editor_display(state):
         mel.eval('toggleChannelBoxGraphEdSync {0};'.format(state))
+
+    @staticmethod
+    def list_all_channels(selected_objects):
+        all_channels = cmd.listAttr(selected_objects)
+        cb_channels = cmd.listAnimatable(selected_objects)
+
+        if all_channels and cb_channels:
+            channels = [attr for attr in all_channels for cb in cb_channels if cb.endswith(attr)]
+            return channels
+
+    @staticmethod
+    def list_common_channels(selected_objects):
+        if len(selected_objects) == 1:
+            anim_attrs = cmd.listAnimatable(selected_objects[0])
+            return [attr.split('.')[-1] for attr in anim_attrs]
+
+        anim_attrs = cmd.listAnimatable(selected_objects)
+        anim_channels = list(set([attr.split('.')[-1] for attr in anim_attrs]))
+        for object in selected_objects:
+            for channel in anim_channels:
+                full_attr = '{0}.{1}'.format(object, channel)
+                if not cmd.objExists(full_attr):
+                    anim_channels.remove(channel)
+        return anim_channels
+
+    @staticmethod
+    def clear_all_channels():
+        cmd.channelBox('mainChannelBox', e=True, select=False)
+
 

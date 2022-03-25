@@ -246,18 +246,21 @@ class ChannelsFilter(object):
 
     def filter_all_channels(self):
         """
-        Selects/deselects all channels on the channelbox.
+        Toggles between all channels, all transform channels or none.
         """
         selected_objects = NavigationUtils.get_selected_objects()
         if not selected_objects:
             return
 
-        if len(selected_channels) == 0:
+        selected_channels = NavigationUtils.get_selected_channels()
+        common_channels = NavigationUtils.list_common_channels(selected_objects)
+
+        if len(selected_channels) == len(common_channels):
+            NavigationUtils.clear_all_channels()
+        elif len(selected_channels) == 0:
             NavigationUtils.select_channels(selected_objects, self._transform_attrs[c.ALL])
-            return
-
-        cmd.channelBox('mainChannelBox', e=True, select=False)
-
+        else:
+            NavigationUtils.select_channels(selected_objects, common_channels)
 
     def select_all_channels(self):
         """
