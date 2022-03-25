@@ -292,10 +292,21 @@ class ChannelsFilter(object):
         """
         Toggles timeline/graph editor display on the channelbox.
         """
-        state = cmd.menuItem('cbTimelineSyncMenu', checkBox=True, query=True)
-        mel.eval('toggleChannelBoxTimelineSync {0};'.format(not state))
-        mel.eval('toggleChannelBoxGraphEdSync {0};'.format(not state))
-        info.show_info('SYNC: {0}'.format(not state))
+        state = 'true'
+        try:
+            state = (str(not cmd.menuItem('cbTimelineSyncMenu', checkBox=True, query=True))).lower()
+        except:
+            # Initializes the channelbox sync
+            mel.eval('toggleChannelBoxTimelineSync {0};'.format(state))
+            mel.eval('toggleChannelBoxGraphEdSync {0};'.format(state))
+
+        mel.eval('toggleChannelBoxTimelineSync {0};'.format(state))
+        mel.eval('toggleChannelBoxGraphEdSync {0};'.format(state))
+
+        print state
+        info.show_info('CHANNELBOX SYNC')
+
+
 
 
 
