@@ -21,7 +21,7 @@ msg_ui = None
 
 class InfoUtils(wdg.QDialog):
 
-    def __init__(self, text, warning, timeout, parent=WidgetUtils.get_maya_control(c.RANGE_SLIDER)):
+    def __init__(self, text, warning, timeout, parent=WidgetUtils().get_maya_control_widget(c.RANGE_SLIDER)):
         super(InfoUtils, self).__init__(parent)
 
         width = parent.size().width()
