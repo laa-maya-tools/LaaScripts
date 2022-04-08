@@ -98,6 +98,14 @@ class Trigger(object):
     # PLAYBACK
     # =========================================================================
     @staticmethod
+    def go_to_the_next_frame():
+        Playback.PlaybackManager().go_to_the_next_frame()
+
+    @staticmethod
+    def go_to_the_prev_frame():
+        Playback.PlaybackManager().go_to_the_prev_frame()
+
+    @staticmethod
     def load_frame_markers():
         global LAA_FRAME_MARKER
 

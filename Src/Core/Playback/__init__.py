@@ -1,5 +1,4 @@
-from . import frame_marker
-reload(frame_marker)
+from LaaScripts.Src.Core.Playback.playback_manager import PlaybackManager
+from LaaScripts.Src.Core.Playback.frame_marker import FrameMarker
 
-from .frame_marker import FrameMarker
 

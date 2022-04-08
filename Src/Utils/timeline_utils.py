@@ -158,3 +158,4 @@ class TimelineUtils(object):
         Gets the last keyframe time.
         """
         return TimelineUtils.find_keyframe(c.LAST)
+
