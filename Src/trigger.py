@@ -114,19 +114,35 @@ class Trigger(object):
 
     @staticmethod
     def add_key_markers():
-        LAA_FRAME_MARKER.add_frame_markers(c.KEY)
+        try:
+            LAA_FRAME_MARKER.add_frame_markers(c.KEY)
+        except NameError:
+            Trigger.load_frame_markers()
+            LAA_FRAME_MARKER.add_frame_markers(c.KEY)
 
     @staticmethod
     def add_breakdown_markers():
-        LAA_FRAME_MARKER.add_frame_markers(c.BREAKDOWN)
+        try:
+            LAA_FRAME_MARKER.add_frame_markers(c.BREAKDOWN)
+        except NameError:
+            Trigger.load_frame_markers()
+            LAA_FRAME_MARKER.add_frame_markers(c.BREAKDOWN)
 
     @staticmethod
     def add_inbetween_markers():
-        LAA_FRAME_MARKER.add_frame_markers(c.INBETWEEN)
+        try:
+            LAA_FRAME_MARKER.add_frame_markers(c.INBETWEEN)
+        except NameError:
+            Trigger.load_frame_markers()
+            LAA_FRAME_MARKER.add_frame_markers(c.INBETWEEN)
 
     @staticmethod
     def remove_frame_markers():
-        LAA_FRAME_MARKER.remove_frame_markers()
+        try:
+            LAA_FRAME_MARKER.remove_frame_markers()
+        except NameError:
+            Trigger.load_frame_markers()
+            LAA_FRAME_MARKER.remove_frame_markers()
 
 
 
