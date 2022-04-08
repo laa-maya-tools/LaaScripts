@@ -18,7 +18,9 @@ from PySide2 import QtCore as cor
 from LaaScripts.Src.Constants import constants as c
 from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
 from LaaScripts.Src.Utils.widget_utils import WidgetUtils
+from LaaScripts.Src.Utils import info_utils as info
 from LaaScripts.Src.Data.scene_data import SceneData
+
 
 global LAA_FRAME_MARKER
 
@@ -66,11 +68,7 @@ class FrameMarker(wdg.QWidget):
         """
         markers = ''
 
-        for frame in self.markers[c.FRAMES]:
-            print frame
-
         for f, t in itertools.izip(self.markers[c.FRAMES], self.markers[c.TYPES]):
-            print f, t
             markers = markers + str(int(f)) + ',' + str(t) + '#'
 
         SceneData.save_scene_data(c.FRAME_MARKER_NODE, c.FRAME_MARKERS_ATTR, markers[:-1])
@@ -84,6 +82,7 @@ class FrameMarker(wdg.QWidget):
         frames = TimelineUtils.get_selected_frame_times()
         for frame in frames:
             self.add_frame_marker(frame, type)
+        info.show_info('+ {0} Marker'.format(c.MARKER_TYPE_NAMES[type]))
 
     def add_frame_marker(self, frame, type):
         """
@@ -110,6 +109,7 @@ class FrameMarker(wdg.QWidget):
         frames = TimelineUtils.get_selected_frame_times()
         for frame in frames:
             self.remove_frame_marker(frame)
+        info.show_info('- Frame Marker')
 
     def remove_frame_marker(self, frame):
         frames = self.markers[c.FRAMES]

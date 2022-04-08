@@ -105,10 +105,9 @@ class Trigger(object):
             LAA_FRAME_MARKER.setParent(None)
             LAA_FRAME_MARKER.deleteLater()
             LAA_FRAME_MARKER = None
-        except:
+        except NameError:
             pass
 
-        parent = WidgetUtils.get_maya_control(c.TIME_CONTROL)
         LAA_FRAME_MARKER = Playback.FrameMarker()
         LAA_FRAME_MARKER.setVisible(True)
 
