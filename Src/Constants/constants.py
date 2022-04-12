@@ -18,6 +18,7 @@ FRAMES, TYPES = 'frames', 'types'
 KEY, BREAKDOWN, INBETWEEN, ALL = 0, 1, 2, 3
 MARKER_TYPE_NAMES = {KEY: 'Key', BREAKDOWN: 'Breakdown', INBETWEEN: 'Inbetween'}
 INDEX, FRAME, TYPE = 0, 1, 2
+TIMEOUT = 150
 
 # =============================================================================
 # INFO UTILS CONSTANTS

@@ -99,11 +99,27 @@ class Trigger(object):
     # =========================================================================
     @staticmethod
     def go_to_the_next_frame():
-        Playback.PlaybackManager().go_to_the_next_frame()
+        Playback.playback_manager.go_to_the_next_frame()
 
     @staticmethod
     def go_to_the_prev_frame():
-        Playback.PlaybackManager().go_to_the_prev_frame()
+        Playback.playback_manager.go_to_the_prev_frame()
+
+    @staticmethod
+    def next_frame_playback_press():
+        Playback.playback_manager.next_frame_playback_press()
+
+    @staticmethod
+    def prev_frame_playback_press():
+        Playback.playback_manager.prev_frame_playback_press()
+
+    @staticmethod
+    def next_frame_playback_release():
+        Playback.playback_manager.next_frame_playback_release()
+
+    @staticmethod
+    def prev_frame_playback_release():
+        Playback.playback_manager.prev_frame_playback_release()
 
     @staticmethod
     def load_frame_markers():

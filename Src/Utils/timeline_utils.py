@@ -12,9 +12,8 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 import maya.cmds as cmd
 import maya.mel as mel
 
-from .widget_utils import WidgetUtils
-from ..Constants import constants as c
-reload(c)
+from LaaScripts.Src.Utils.widget_utils import WidgetUtils
+from LaaScripts.Src.Constants import constants as c
 
 
 class TimelineUtils(object):
@@ -158,4 +157,20 @@ class TimelineUtils(object):
         Gets the last keyframe time.
         """
         return TimelineUtils.find_keyframe(c.LAST)
+
+    @staticmethod
+    def is_playing():
+        return cmd.play(q=True, state=True)
+
+    @staticmethod
+    def play_timeline_forward():
+        cmd.play(forward=True)
+
+    @staticmethod
+    def play_timeline_back():
+        cmd.play(forward=False)
+
+    @staticmethod
+    def stop_timeline():
+        cmd.play(state=False)
 

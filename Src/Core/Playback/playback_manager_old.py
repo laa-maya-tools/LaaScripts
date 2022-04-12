@@ -23,11 +23,10 @@ from LaaScripts.Src.Data.user_data import UserData
 class PlaybackManager(object):
 
     def __init__(self):
+        """
+        Initializes all the instance variables.
+        """
         self._user_data = UserData.read_user_data()
-        self._next_frame_timer = cor.QTimer()
-        self._prev_frame_timer = cor.QTimer()
-        self._next_frame_timer.timeout.connect(self.on_next_frame_timeout)
-        self._prev_frame_timer.timeout.connect(self.on_prev_frame_timeout)
 
     def go_to_the_next_frame(self):
         """
@@ -83,28 +82,48 @@ class PlaybackManager(object):
         info.show_info('{0} << Frame'.format(int(prev_time)))
 
     def next_frame_playback_press(self):
-        self.go_to_the_next_frame()
-        self._next_frame_timer.start(c.TIMEOUT)
+        # if TimelineUtils.is_playing():
+        #     return
+
+        # self.go_to_the_next_frame()
+        print 'time'
+        timer = cor.QTimer()
+        timer.start(500)
+        timer.timeout.connect(self.on_timeout_finished)
 
     def prev_frame_playback_press(self):
+        if TimelineUtils.get_pressed_state():
+            return
+        TimelineUtils.set_pressed_state(True)
         self.go_to_the_prev_frame()
-        self._prev_frame_timer.start(c.TIMEOUT)
+        # timer = cor.QTimer()
+        # timer.singleShot(c.TIMEOUT, self.play_timeline_back)
 
-    def next_frame_playback_release(self):
-        TimelineUtils.stop_timeline()
-        self._next_frame_timer.stop()
+    def on_timeout_finished(self):
+        print 'timeout finished'
+        # self.play_timeline_forward()
 
-    def prev_frame_playback_release(self):
-        TimelineUtils.stop_timeline()
-        self._prev_frame_timer.stop()
+    def playback_release(self):
+        print 'release'
+        # self.stop_timeline()
+        # self._timer.stop()
 
-    def on_next_frame_timeout(self):
-        TimelineUtils.play_timeline_forward()
-        self._next_frame_timer.stop()
+    def play_timeline_forward(self):
+        cmd.play(forward=True)
+        return
 
-    def on_prev_frame_timeout(self):
-        TimelineUtils.play_timeline_back()
-        self._prev_frame_timer.stop()
+
+    def stop_timeline(self):
+        cmd.play(state=False)
+        # TimelineUtils.set_pressed_state(False)
+
+
+
+
+if __name__ == '__main__':
+    PlaybackManager().next_frame_playback_press()
+
+
 
 
 
