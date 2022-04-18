@@ -18,6 +18,7 @@ from LaaScripts.Src.Constants import constants as c
 from LaaScripts.Src.Utils import info_utils as info
 from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
 from LaaScripts.Src.Data.user_data import UserData
+from LaaScripts.Src.Data.scene_data import SceneData
 
 
 class PlaybackManager(object):
@@ -54,7 +55,8 @@ class PlaybackManager(object):
                 TimelineUtils.set_playback_range(playback_start_time, playback_end_time + time_increment)
 
         TimelineUtils.set_current_time(next_time)
-        info.show_info('Frame >> {0}'.format(int(next_time)))
+        if self._user_data[c.INFO_ENABLED]:
+            info.show_info('Next Frame >> {0}'.format(int(next_time)))
 
     def go_to_the_prev_frame(self):
         """
@@ -80,7 +82,8 @@ class PlaybackManager(object):
                 TimelineUtils.set_playback_range(playback_start_time - i, playback_end_time)
 
         TimelineUtils.set_current_time(prev_time)
-        info.show_info('{0} << Frame'.format(int(prev_time)))
+        if self._user_data[c.INFO_ENABLED]:
+            info.show_info('{0} << Prev Frame'.format(int(prev_time)))
 
     def next_frame_playback_press(self):
         self.go_to_the_next_frame()
@@ -105,6 +108,86 @@ class PlaybackManager(object):
     def on_prev_frame_timeout(self):
         TimelineUtils.play_timeline_back()
         self._prev_frame_timer.stop()
+
+    def go_to_the_next_key(self):
+        next_key = cmd.findKeyframe(timeSlider=True, which="next")
+        TimelineUtils.set_current_time(next_key)
+        if self._user_data[c.INFO_ENABLED]:
+            info.show_info('{0} << Prev Key'.format(int(next_key)))
+
+    def go_to_the_prev_key(self):
+        prev_key = cmd.findKeyframe(timeSlider=True, which="previous")
+        TimelineUtils.set_current_time(prev_key)
+        if self._user_data[c.INFO_ENABLED]:
+            info.show_info('{0} << Prev Key'.format(int(prev_key)))
+
+    def get_frame_markers(self):
+        """
+        Initiates the the frame markers stored in the scene.
+        """
+        markers = SceneData.load_scene_data(c.FRAME_MARKER_NODE, c.FRAME_MARKERS_ATTR).split('#')
+        frames = []
+
+        if not markers[0] == '':
+            for marker in markers:
+                frames.append(float(marker.split(',')[0]))
+
+        return sorted(frames)
+
+    def get_key_markers(self):
+        """
+        Initiates the the frame markers stored in the scene.
+        """
+        markers = SceneData.load_scene_data(c.FRAME_MARKER_NODE, c.FRAME_MARKERS_ATTR).split('#')
+        frames = []
+
+        if not markers[0] == '':
+            for marker in markers:
+                f = float(marker.split(',')[0])
+                t = int(marker.split(',')[1])
+                if t == c.KEY:
+                    frames.append(f)
+
+        return sorted(frames)
+
+    def go_to_the_next_marker(self):
+        frame_markers = self.get_frame_markers()
+        current_time = TimelineUtils.get_current_time()
+
+        if not frame_markers:
+            return
+
+        for i, _ in enumerate(frame_markers):
+            if current_time >= frame_markers[-1] or current_time < frame_markers[0]:
+                TimelineUtils.set_current_time(frame_markers[0])
+                if self._user_data[c.INFO_ENABLED]:
+                    info.show_info('Next Marker >> {0}'.format(int(frame_markers[0])))
+                return
+            if frame_markers[i] <= current_time < frame_markers[i+1]:
+                TimelineUtils.set_current_time(frame_markers[i+1])
+                if self._user_data[c.INFO_ENABLED]:
+                    info.show_info('Next Marker >> {0}'.format(int(frame_markers[i+1])))
+                return
+
+    def go_to_the_prev_marker(self):
+        frame_markers = self.get_frame_markers()
+        current_time = TimelineUtils.get_current_time()
+
+        if not frame_markers:
+            return
+
+        for i, _ in enumerate(frame_markers):
+            if current_time <= frame_markers[0] or current_time > frame_markers[-1]:
+                TimelineUtils.set_current_time(frame_markers[-1])
+                if self._user_data[c.INFO_ENABLED]:
+                    info.show_info('{0} << Prev Marker'.format(int(frame_markers[-1])))
+                return
+            if frame_markers[i] < current_time <= frame_markers[i+1]:
+                TimelineUtils.set_current_time(frame_markers[i])
+                if self._user_data[c.INFO_ENABLED]:
+                    info.show_info('{0} << Prev Marker'.format(int(frame_markers[i])))
+                return
+
 
 
 
