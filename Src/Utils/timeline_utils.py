@@ -96,8 +96,6 @@ class TimelineUtils(object):
         timeline_range = TimelineUtils.get_selected_range()
         return range(int(timeline_range[0]), int(timeline_range[1]))
 
-
-
     @staticmethod
     def set_playback_range(start, end):
         """

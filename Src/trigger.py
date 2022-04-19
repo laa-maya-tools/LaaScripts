@@ -14,6 +14,7 @@ VERSION:  v1.0.0 | Maya 2022 | Python 3
 from PySide2 import QtCore as cor
 
 from LaaScripts.Src.Core import Navigation
+from LaaScripts.Src.Core import Keyframing
 from LaaScripts.Src.Core import Playback
 from LaaScripts.Src.Utils.widget_utils import WidgetUtils
 from LaaScripts.Src.Constants import constants as c
@@ -92,6 +93,17 @@ class Trigger(object):
     @staticmethod
     def toggle_sync_mode():
         Navigation.ChannelsFilter().toggle_sync_mode()
+
+    # =========================================================================
+    # KEYFRAMING
+    # =========================================================================
+    @staticmethod
+    def add_inbetween(time_increment=1):
+        Keyframing.retiming_tools.retime_keys(time_increment, True, False)
+
+    @staticmethod
+    def remove_inbetween(time_increment=-1):
+        Keyframing.retiming_tools.retime_keys(time_increment, True, False)
 
     # =========================================================================
     # PLAYBACK
