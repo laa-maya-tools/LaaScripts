@@ -150,42 +150,42 @@ class PlaybackManager(object):
 
         return sorted(frames)
 
-    def go_to_the_next_marker(self):
-        frame_markers = self.get_frame_markers()
+    def go_to_the_next_marker(self, marker_type):
+        markers = self.get_key_markers() if marker_type == c.KEY else self.get_frame_markers()
         current_time = TimelineUtils.get_current_time()
 
-        if not frame_markers:
+        if not markers:
             return
 
-        for i, _ in enumerate(frame_markers):
-            if current_time >= frame_markers[-1] or current_time < frame_markers[0]:
-                TimelineUtils.set_current_time(frame_markers[0])
+        for i, _ in enumerate(markers):
+            if current_time >= markers[-1] or current_time < markers[0]:
+                TimelineUtils.set_current_time(markers[0])
                 if self._user_data[c.INFO_ENABLED]:
-                    info.show_info('Next Marker >> {0}'.format(int(frame_markers[0])))
+                    info.show_info('Next Marker >> {0}'.format(int(markers[0])))
                 return
-            if frame_markers[i] <= current_time < frame_markers[i+1]:
-                TimelineUtils.set_current_time(frame_markers[i+1])
+            if markers[i] <= current_time < markers[i+1]:
+                TimelineUtils.set_current_time(markers[i+1])
                 if self._user_data[c.INFO_ENABLED]:
-                    info.show_info('Next Marker >> {0}'.format(int(frame_markers[i+1])))
+                    info.show_info('Next Marker >> {0}'.format(int(markers[i+1])))
                 return
 
-    def go_to_the_prev_marker(self):
-        frame_markers = self.get_frame_markers()
+    def go_to_the_prev_marker(self, marker_type):
+        markers = self.get_key_markers() if marker_type == c.KEY else self.get_frame_markers()
         current_time = TimelineUtils.get_current_time()
 
-        if not frame_markers:
+        if not markers:
             return
 
-        for i, _ in enumerate(frame_markers):
-            if current_time <= frame_markers[0] or current_time > frame_markers[-1]:
-                TimelineUtils.set_current_time(frame_markers[-1])
+        for i, _ in enumerate(markers):
+            if current_time <= markers[0] or current_time > markers[-1]:
+                TimelineUtils.set_current_time(markers[-1])
                 if self._user_data[c.INFO_ENABLED]:
-                    info.show_info('{0} << Prev Marker'.format(int(frame_markers[-1])))
+                    info.show_info('{0} << Prev Marker'.format(int(markers[-1])))
                 return
-            if frame_markers[i] < current_time <= frame_markers[i+1]:
-                TimelineUtils.set_current_time(frame_markers[i])
+            if markers[i] < current_time <= markers[i+1]:
+                TimelineUtils.set_current_time(markers[i])
                 if self._user_data[c.INFO_ENABLED]:
-                    info.show_info('{0} << Prev Marker'.format(int(frame_markers[i])))
+                    info.show_info('{0} << Prev Marker'.format(int(markers[i])))
                 return
 
 

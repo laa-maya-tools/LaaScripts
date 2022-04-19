@@ -130,11 +130,19 @@ class Trigger(object):
 
     @staticmethod
     def go_to_the_next_marker():
-        Playback.playback_manager.go_to_the_next_marker()
+        Playback.playback_manager.go_to_the_next_marker(c.ALL)
 
     @staticmethod
     def go_to_the_prev_marker():
-        Playback.playback_manager.go_to_the_prev_marker()
+        Playback.playback_manager.go_to_the_prev_marker(c.ALL)
+
+    @staticmethod
+    def go_to_the_next_key_marker():
+        Playback.playback_manager.go_to_the_next_marker(c.KEY)
+
+    @staticmethod
+    def go_to_the_prev_key_marker():
+        Playback.playback_manager.go_to_the_prev_marker(c.KEY)
 
     @staticmethod
     def load_frame_markers():
