@@ -65,8 +65,33 @@ class RetimingTools(object):
             self.retime_keys_recursive(next_keyframe_time, index + 1, new_keyframe_times)
             TimelineUtils.change_keyframe_time(current_time, updated_keyframe_time)
 
+    def nudge_key_right(self, time_increment):
+        print('nudge_key_right')
+
+    def nudge_key_left(self, time_increment):
+        pass
+
+    def add_inbetween(self, time_increment=1):
+        i = 1
+        while i <= time_increment:
+            TimelineUtils.add_inbetween()
+            i += 1
+
+    def remove_inbetween(self, time_increment=1):
+        i = 1
+        current_time = TimelineUtils.get_current_time()
+        next_key = TimelineUtils.find_keyframe(c.NEXT, current_time)
+
+        if current_time < next_key - time_increment:
+            while i <= time_increment:
+                TimelineUtils.remove_inbetween()
+                i += 1
+        else:
+            TimelineUtils.remove_inbetween()
+
 
 if __name__ == "__main__":
     rt = RetimingTools()
-    rt.retime_keys(1, True, False)
+    # rt.remove_inbetween(3)
+    rt.add_inbetween(1)
 

@@ -97,6 +97,13 @@ class TimelineUtils(object):
         return range(int(timeline_range[0]), int(timeline_range[1]))
 
     @staticmethod
+    def get_all_key_times():
+        key_times = cmd.keyframe(query=True, timeChange=True)
+        if not key_times:
+            return c.EMPTY_LIST
+        return sorted(list(set(key_times)))
+
+    @staticmethod
     def set_playback_range(start, end):
         """
         Sets the playback range.
@@ -155,6 +162,53 @@ class TimelineUtils(object):
         Gets the last keyframe time.
         """
         return TimelineUtils.find_keyframe(c.LAST)
+
+    @staticmethod
+    def add_inbetween():
+        current_time = TimelineUtils.get_current_time()
+        key_times = TimelineUtils.get_all_key_times()
+
+        if not key_times:
+            return
+
+        if current_time in key_times:
+            TimelineUtils.set_current_time(current_time + 1)
+            mel.eval('timeSliderEditKeys addInbetween;')
+            TimelineUtils.set_current_time(current_time)
+            return
+
+        mel.eval('timeSliderEditKeys addInbetween;')
+
+    @staticmethod
+    def remove_inbetween():
+        current_time = TimelineUtils.get_current_time()
+        key_times = TimelineUtils.get_all_key_times()
+        next_key = TimelineUtils.find_keyframe(c.NEXT, current_time)
+
+        if not key_times:
+            return
+
+        if current_time in key_times:
+            if current_time == next_key - 1:
+                return
+            TimelineUtils.set_current_time(current_time+1)
+            mel.eval('timeSliderEditKeys removeInbetween;')
+            TimelineUtils.set_current_time(current_time)
+            return
+
+        mel.eval('timeSliderEditKeys removeInbetween;')
+
+    @staticmethod
+    def copy_keys():
+        mel.eval('timeSliderCopyKey;')
+
+    @staticmethod
+    def paste_keys():
+        mel.eval('performPasteKeyArgList 1 {"0", "animationList", "0"}')
+
+    @staticmethod
+    def cut_keys():
+        mel.eval('timeSliderCutKey;')
 
     @staticmethod
     def is_playing():
