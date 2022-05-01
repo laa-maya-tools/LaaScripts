@@ -1,3 +1,7 @@
+from PySide2 import QtWidgets as wdg
+from PySide2 import QtGui as gui
+from PySide2 import QtCore as cor
+
 # =============================================================================
 # MAYA CONTROLS CONSTANTS
 # =============================================================================
@@ -24,6 +28,60 @@ KEY, BREAKDOWN, INBETWEEN, ALL = 0, 1, 2, 3
 MARKER_TYPE_NAMES = {KEY: 'Key', BREAKDOWN: 'Breakdown', INBETWEEN: 'Inbetween'}
 INDEX, FRAME, TYPE = 0, 1, 2
 TIMEOUT = 150
+SECTION_RANGES, SECTION_COLORS = 'ranges', 'colors'
+
+# =============================================================================
+# COLORS
+# =============================================================================
+DARK, NORMAL, LIGHT = 0, 1, 2
+RED, ORANGE, YELLOW, GREEN, CYAN, BLUE, PURPLE, DARK_GREY, LIGHT_GREY = 0, 1, 2, 3, 4, 5, 6, 7, 8
+COLORS = {
+    RED: {
+        DARK: gui.QColor('#FF3B3B'),
+        NORMAL: gui.QColor('#FF5C5C'),
+        LIGHT: gui.QColor('#FF8080')
+    },
+    ORANGE: {
+        DARK: gui.QColor('#FE8801'),
+        NORMAL: gui.QColor('#FDAC41'),
+        LIGHT: gui.QColor('#FCCC76')
+    },
+    YELLOW: {
+        DARK: gui.QColor('#FFCB00'),
+        NORMAL: gui.QColor('#FEDD4B'),
+        LIGHT: gui.QColor('#FEED73')
+    },
+    GREEN: {
+        DARK: gui.QColor('#05C270'),
+        NORMAL: gui.QColor('#39DA8A'),
+        LIGHT: gui.QColor('#57EBA3')
+    },
+    CYAN: {
+        DARK: gui.QColor('#00CFDD'),
+        NORMAL: gui.QColor('#74E0E6'),
+        LIGHT: gui.QColor('#A9EFF3')
+    },
+    BLUE: {
+        DARK: gui.QColor('#0063F8'),
+        NORMAL: gui.QColor('#5B8DEE'),
+        LIGHT: gui.QColor('#9DBFF8')
+    },
+    PURPLE: {
+        DARK: gui.QColor('#6500CD'),
+        NORMAL: gui.QColor('#AC5CD9'),
+        LIGHT: gui.QColor('#DEA5E8')
+    },
+    DARK_GREY: {
+        DARK: gui.QColor('#28293D'),
+        NORMAL: gui.QColor('#555870'),
+        LIGHT: gui.QColor('#9090A7')
+    },
+    LIGHT_GREY: {
+        DARK: gui.QColor('#EBEAEF'),
+        NORMAL: gui.QColor('#F2F2F4'),
+        LIGHT: gui.QColor('#FAFAFC')
+    }
+}
 
 # =============================================================================
 # KEYFRAMES
@@ -80,6 +138,7 @@ CONTROLS_SELECTOR_NODE = 'LaaScripts|Selection|ControlsSelector'
 VIEWPORT_NODE = 'LaaScripts|Viewport'
 PLAYBACK_NODE = 'LaaScripts|Playback'
 FRAME_MARKER_NODE = 'LaaScripts|Playback|FrameMarker'
+TIMELINE_SECTION_NODE = 'LaaScripts|Playback|TimelineSection'
 
 VERSION_ATTR = 'version'
 ICON_ATTR = 'icon'
@@ -87,4 +146,5 @@ PARENT_ATTR = 'parent'
 
 KEY_MARKERS_ATTR = 'key_markers'
 FRAME_MARKERS_ATTR = 'frame_markers'
+TIMELINE_SECTION_ATTR = 'timeline_section'
 
