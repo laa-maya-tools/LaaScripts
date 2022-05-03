@@ -34,8 +34,8 @@ class TimelineSection(wdg.QWidget):
         super(TimelineSection, self).__init__(self.time_control_widget)
 
         self.sections = {
-            c.RANGES: [],
-            c.COLORS: []
+            c.SECTION_RANGES: [],
+            c.SECTION_COLORS: [],
         }
 
         self.initiate_sections()
@@ -63,41 +63,26 @@ class TimelineSection(wdg.QWidget):
         """
         sections = ''
 
-        for f, t in itertools.izip(self.sections[c.FRAMES], self.sections[c.TYPES]):
-            sections = sections + str(int(f)) + ',' + str(t) + '#'
+        for range, color in itertools.izip(self.sections[c.SECTION_RANGES], self.sections[c.SECTION_COLORS]):
+            sections = '{0}{1},{2},{3},{4}#'.format(sections, str(int(range[0])), str(int(range[1])), str(color[0]), str(color[1]))
 
-        SceneData.save_scene_data(c.FRAME_MARKER_NODE, c.FRAME_sections_ATTR, sections[:-1])
+        SceneData.save_scene_data(c.TIMELINE_SECTION_NODE, c.TIMELINE_SECTION_ATTR, sections[:-1])
         self.update()
 
-    def add_frame_sections(self, type):
-        """
-        Adds frame sections.
-        :param int type: Frame marker type (key, breakdown or inbetween).
-        """
-        frames = TimelineUtils.get_selected_frame_times()
-        for frame in frames:
-            self.add_frame_marker(frame, type)
-        info.show_info('+ {0} Marker'.format(c.MARKER_TYPE_NAMES[type]))
+    def add_timeline_section(self, section_range, section_color):
+        section_ranges = self.sections[c.SECTION_RANGES]
+        section_colors = self.sections[c.SECTION_COLORS]
 
-    def add_frame_marker(self, frame, type):
-        """
+        section_index, _, _, = self.get_data_from_section(section_range)
 
-        :param frame:
-        :param type:
-        :return:
-        """
-        frames = self.sections[c.FRAMES]
-        types = self.sections[c.TYPES]
-        index, _, _, = self.get_data_from_frame(frame)
-
-        if index == -1:
-            frames.append(frame)
-            types.append(type)
+        if section_index == -1:
+            section_ranges.append(section_range)
+            section_colors.append(section_color)
         else:
-            types[index] = type
+            section_colors[section_index] = section_color
 
-        self.sections[c.FRAMES] = frames
-        self.sections[c.TYPES] = types
+        self.sections[c.SECTION_RANGES] = section_ranges
+        self.sections[c.SECTION_COLORS] = section_colors
         self.refresh_sections()
 
     def remove_frame_sections(self):
@@ -107,28 +92,28 @@ class TimelineSection(wdg.QWidget):
         info.show_info('- Frame Marker')
 
     def remove_frame_marker(self, frame):
-        frames = self.sections[c.FRAMES]
-        types = self.sections[c.TYPES]
+        ranges = self.sections[c.SECTION_RANGES]
+        colors = self.sections[c.SECTION_COLORS]
         index, _, _, = self.get_data_from_frame(frame)
 
         if index == -1:
             return
 
-        frames.pop(index)
-        types.pop(index)
+        ranges.pop(index)
+        colors.pop(index)
 
-        self.sections[c.FRAMES] = frames
-        self.sections[c.TYPES] = types
+        self.sections[c.SECTION_RANGES] = ranges
+        self.sections[c.SECTION_COLORS] = colors
         self.refresh_sections()
 
     def clear(self):
-        self.sections[c.FRAMES] = []
-        self.sections[c.TYPES] = []
+        self.sections[c.SECTION_RANGES] = []
+        self.sections[c.SECTION_COLORS] = []
         self.refresh_sections()
 
     def clear_all_frame_sections(self):
-        self.sections[c.FRAMES] = []
-        self.sections[c.TYPES] = []
+        self.sections[c.SECTION_RANGES] = []
+        self.sections[c.SECTION_COLORS] = []
         self.refresh_sections()
 
     def get_data_from_frame(self, frame):
@@ -138,40 +123,72 @@ class TimelineSection(wdg.QWidget):
             return index, frame, type
         return -1, frame, None
 
+    def get_data_from_section(self, section_range):
+        if section_range in self.sections[c.SECTION_RANGES]:
+            section_index = self.sections[c.SECTION_RANGES].index(section_range)
+            section_color = self.sections[c.SECTION_COLORS][section_index]
+            return section_index, section_range, section_color
+        return -1, section_range, None
+
     def paintEvent(self, event):
-        if not self.sections[c.FRAMES] or not self.sections[c.TYPES]:
+        if not self.sections[c.SECTION_RANGES] or not self.sections[c.SECTION_COLORS]:
             return
 
-        self.draw_frame_sections(c.KEY)
-        self.draw_frame_sections(c.BREAKDOWN)
-        self.draw_frame_sections(c.INBETWEEN)
-
-    def draw_frame_sections(self, marker_type):
         parent = self.parentWidget()
         if parent:
             self.setGeometry(parent.geometry())
 
-            range_start = cmd.playbackOptions(q=True, minTime=True)
-            range_end = cmd.playbackOptions(q=True, maxTime=True)
-            displayed_frame_count = range_end - range_start + 1
+        range_start = cmd.playbackOptions(q=True, minTime=True)
+        range_end = cmd.playbackOptions(q=True, maxTime=True)
+        displayed_section_count = range_end - range_start + 1
 
-            padding = self.width() * 0.005
-            frame_width = (self.width() * 0.99) / displayed_frame_count
-            frame_height = 0.25 * self.height()
-            frame_y = self.height() - frame_height
+        padding = self.width() * 0.005
+        frame_width = (self.width() * 0.99) / displayed_section_count
+        section_height = 0.04 * self.height()
+        section_y = self.height() - section_height
+
+        for index, range in enumerate(self.sections[c.SECTION_RANGES]):
+            color = int(self.sections[c.SECTION_COLORS][index][0])
+            brightness = int(self.sections[c.SECTION_COLORS][index][1])
 
             painter = gui.QPainter(self)
             pen = painter.pen()
             pen.setWidth(1)
-            pen.setColor(self.sections_colors[marker_type])
+            # pen.setColor(gui.QColor(cor.Qt.green))
+            pen.setColor(c.COLORS[color][brightness])
             painter.setPen(pen)
 
-            fill_color = self.sections_colors[marker_type]
-            fill_color.setAlpha(75)
+            # fill_color = gui.QColor(cor.Qt.green)
+            fill_color = c.COLORS[color][brightness]
 
-            for frame_time in self.sections[c.FRAMES]:
-                data = self.get_data_from_frame(frame_time)
-                if data[c.TYPE] == marker_type:
-                    frame_x = padding + ((frame_time - range_start) * frame_width) + 0.5
-                    painter.fillRect(frame_x, frame_y, frame_width, frame_height, fill_color)
-                    painter.drawRect(frame_x, frame_y, frame_width, frame_height)
+            section_width = (range[1] - range[0] + 1) * frame_width
+            section_x = padding + ((range[0] - range_start) * section_width) + 0.5
+            painter.fillRect(section_x, section_y, section_width, section_height, fill_color)
+            painter.drawRect(section_x, section_y, section_width, section_height)
+
+
+# def load_timeline_sections():
+#     global LAA_TIMELINE_SECTION
+#
+#     try:
+#         # LAA_TIMELINE_SECTION.setParent(None)
+#         LAA_TIMELINE_SECTION.deleteLater()
+#         LAA_TIMELINE_SECTION = None
+#     except NameError:
+#         pass
+#
+#     LAA_TIMELINE_SECTION = TimelineSection()
+#     LAA_TIMELINE_SECTION.setVisible(True)
+#
+#
+# def add_timeline_sections():
+#     try:
+#         LAA_TIMELINE_SECTION.add_timeline_section([1, 10], [c.RED, c.NORMAL])
+#     except NameError:
+#         load_timeline_sections()
+#         LAA_TIMELINE_SECTION.add_timeline_section([1, 10], [c.RED, c.NORMAL])
+#
+#
+# if __name__ == '__main__':
+#     load_timeline_sections()
+#     add_timeline_sections()

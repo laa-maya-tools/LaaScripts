@@ -20,6 +20,7 @@ from LaaScripts.Src.Utils.widget_utils import WidgetUtils
 from LaaScripts.Src.Constants import constants as c
 
 global LAA_FRAME_MARKER
+global LAA_TIMELINE_SECTION
 
 
 class Trigger(object):
@@ -201,6 +202,41 @@ class Trigger(object):
         except NameError:
             Trigger.load_frame_markers()
             LAA_FRAME_MARKER.remove_frame_markers()
+
+    @staticmethod
+    def load_timeline_sections():
+        global LAA_TIMELINE_SECTION
+
+        try:
+            LAA_TIMELINE_SECTION.setParent(None)
+            LAA_TIMELINE_SECTION.deleteLater()
+            LAA_TIMELINE_SECTION = None
+        except NameError:
+            pass
+
+        LAA_TIMELINE_SECTION = Playback.TimelineSection()
+        LAA_TIMELINE_SECTION.setVisible(True)
+
+    @staticmethod
+    def add_timeline_section():
+        try:
+            LAA_TIMELINE_SECTION.add_timeline_section([1, 10], [c.RED, c.MEDIUM])
+        except NameError:
+            Trigger.load_timeline_sections()
+            LAA_TIMELINE_SECTION.add_timeline_section([1, 10], [c.RED, c.MEDIUM])
+
+    # @staticmethod
+    # def remove_timeline_section():
+    #     try:
+    #         LAA_TIMELINE_SECTION.remove_frame_markers()
+    #     except NameError:
+    #         Trigger.load_timeline_sections()
+    #         LAA_TIMELINE_SECTION.remove_frame_markers()
+
+
+if __name__ == '__main__':
+    Trigger.load_timeline_sections()
+    Trigger.add_timeline_section()
 
 
 
