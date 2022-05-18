@@ -16,6 +16,7 @@ from PySide2 import QtCore as cor
 from LaaScripts.Src.Core import Navigation
 from LaaScripts.Src.Core import Keyframing
 from LaaScripts.Src.Core import Playback
+from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
 from LaaScripts.Src.Utils.widget_utils import WidgetUtils
 from LaaScripts.Src.Constants import constants as c
 
@@ -218,12 +219,12 @@ class Trigger(object):
         LAA_TIMELINE_SECTION.setVisible(True)
 
     @staticmethod
-    def add_timeline_section():
+    def add_timeline_section(random_color=False):
         try:
-            LAA_TIMELINE_SECTION.add_timeline_section([1, 10], [c.RED, c.MEDIUM])
+            LAA_TIMELINE_SECTION.add_timeline_section(random_color)
         except NameError:
             Trigger.load_timeline_sections()
-            LAA_TIMELINE_SECTION.add_timeline_section([1, 10], [c.RED, c.MEDIUM])
+            LAA_TIMELINE_SECTION.add_timeline_section(random_color)
 
     # @staticmethod
     # def remove_timeline_section():
@@ -236,8 +237,10 @@ class Trigger(object):
 
 if __name__ == '__main__':
     Trigger.load_timeline_sections()
-    Trigger.add_timeline_section()
-
+    Trigger.add_timeline_section(True)
+    # # print LAA_TIMELINE_SECTION.get_unused_colors()
+    # print LAA_TIMELINE_SECTION.get_random_color()
+    #
 
 
 

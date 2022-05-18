@@ -34,6 +34,8 @@ SECTION_RANGES, SECTION_COLORS = 'ranges', 'colors'
 # =============================================================================
 # COLORS
 # =============================================================================
+COLOR_VARIATIONS = 9
+BRIGHTNESS_VARIATIONS = 3
 DARK, MEDIUM, LIGHT = 0, 1, 2
 RED, ORANGE, YELLOW, GREEN, CYAN, BLUE, PURPLE, DARK_GREY, LIGHT_GREY = 0, 1, 2, 3, 4, 5, 6, 7, 8
 COLORS = {

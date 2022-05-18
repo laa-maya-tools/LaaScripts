@@ -10,6 +10,7 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 """
 import maya.cmds as cmd
 import itertools
+import random
 
 from PySide2 import QtWidgets as wdg
 from PySide2 import QtGui as gui
@@ -69,10 +70,41 @@ class TimelineSection(wdg.QWidget):
         SceneData.save_scene_data(c.TIMELINE_SECTION_NODE, c.TIMELINE_SECTION_ATTR, sections[:-1])
         self.update()
 
-    def add_timeline_section(self, section_range, section_color):
+    def get_all_colors(self):
+        all_colors = []
+        for color in range(0, c.COLOR_VARIATIONS):
+            for brightness in range(0, c.BRIGHTNESS_VARIATIONS):
+                all_colors.append([color, brightness])
+        return all_colors
+
+    def get_used_colors(self):
+        used_colors = list(set(self.sections[c.SECTION_COLORS]))
+        return used_colors
+
+    def get_unused_colors(self):
+        all_colors = self.get_all_colors()
+        used_colors = self.get_used_colors()
+        return [color for color in all_colors if color not in used_colors]
+
+    def get_random_color(self):
+        unused_colors = self.get_unused_colors()
+        index = random.randint(0, len(unused_colors))
+
+        return unused_colors[index]
+
+    def get_default_color(self):
+        return [c.DARK_GREY, c.MEDIUM]
+
+    def add_timeline_section(self, random_color):
+        if random_color:
+            section_color = self.get_random_color()
+        else:
+            section_color = self.get_default_color()
+
+        section_range = TimelineUtils.get_selected_range()
+
         section_ranges = self.sections[c.SECTION_RANGES]
         section_colors = self.sections[c.SECTION_COLORS]
-
         section_index, _, _, = self.get_data_from_section(section_range)
 
         if section_index == -1:
@@ -134,61 +166,41 @@ class TimelineSection(wdg.QWidget):
         if not self.sections[c.SECTION_RANGES] or not self.sections[c.SECTION_COLORS]:
             return
 
-        parent = self.parentWidget()
-        if parent:
-            self.setGeometry(parent.geometry())
+        for index, range in enumerate(self.sections[c.SECTION_RANGES]):
+            self.draw_timeline_section(
+                range[0],
+                range[1],
+                self.sections[c.SECTION_COLORS][index][0],
+                self.sections[c.SECTION_COLORS][index][1])
 
-        range_start = cmd.playbackOptions(q=True, minTime=True)
-        range_end = cmd.playbackOptions(q=True, maxTime=True)
-        displayed_section_count = range_end - range_start + 1
+    def draw_timeline_section(self, start_time, end_time, color, brightness):
+        parent = self.parentWidget()
+        if not parent:
+            return
+
+        self.setGeometry(parent.geometry())
+
+        playback_range = TimelineUtils.get_playback_range()
+        playback_start = playback_range[0]
+        playback_end = playback_range[1]
+        section_length = playback_end - playback_start + 1
 
         padding = self.width() * 0.005
-        frame_width = (self.width() * 0.99) / displayed_section_count
+        frame_width = (self.width() * 0.99) / section_length
         section_height = 0.04 * self.height()
         section_y = self.height() - section_height
 
-        for index, range in enumerate(self.sections[c.SECTION_RANGES]):
-            color = int(self.sections[c.SECTION_COLORS][index][0])
-            brightness = int(self.sections[c.SECTION_COLORS][index][1])
+        painter = gui.QPainter(self)
+        pen = painter.pen()
+        pen.setWidth(1)
+        pen.setColor(c.COLORS[color][brightness])
+        painter.setPen(pen)
 
-            painter = gui.QPainter(self)
-            pen = painter.pen()
-            pen.setWidth(1)
-            # pen.setColor(gui.QColor(cor.Qt.green))
-            pen.setColor(c.COLORS[color][brightness])
-            painter.setPen(pen)
-
-            # fill_color = gui.QColor(cor.Qt.green)
-            fill_color = c.COLORS[color][brightness]
-
-            section_width = (range[1] - range[0] + 1) * frame_width
-            section_x = padding + ((range[0] - range_start) * section_width) + 0.5
-            painter.fillRect(section_x, section_y, section_width, section_height, fill_color)
-            painter.drawRect(section_x, section_y, section_width, section_height)
+        fill_color = c.COLORS[color][brightness]
+        section_width = (end_time - start_time + 1) * frame_width
+        section_x = padding + ((start_time - playback_start) * frame_width) + 0.5
+        painter.fillRect(section_x, section_y, section_width, section_height, fill_color)
+        painter.drawRect(section_x, section_y, section_width, section_height)
 
 
-# def load_timeline_sections():
-#     global LAA_TIMELINE_SECTION
-#
-#     try:
-#         # LAA_TIMELINE_SECTION.setParent(None)
-#         LAA_TIMELINE_SECTION.deleteLater()
-#         LAA_TIMELINE_SECTION = None
-#     except NameError:
-#         pass
-#
-#     LAA_TIMELINE_SECTION = TimelineSection()
-#     LAA_TIMELINE_SECTION.setVisible(True)
-#
-#
-# def add_timeline_sections():
-#     try:
-#         LAA_TIMELINE_SECTION.add_timeline_section([1, 10], [c.RED, c.NORMAL])
-#     except NameError:
-#         load_timeline_sections()
-#         LAA_TIMELINE_SECTION.add_timeline_section([1, 10], [c.RED, c.NORMAL])
-#
-#
-# if __name__ == '__main__':
-#     load_timeline_sections()
-#     add_timeline_sections()
+
