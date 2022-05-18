@@ -84,7 +84,7 @@ class TimelineUtils(object):
         """
         time_control = mel.eval("$tempVar={0}".format(c.TIME_CONTROL))
         timeline_range = cmd.timeControl(time_control, q=True, rangeArray=True)
-        return [int(timeline_range[0]), int(timeline_range[1])]
+        return [int(timeline_range[0]), int(timeline_range[1])-1]
 
     @staticmethod
     def get_selected_frame_times():
@@ -94,7 +94,7 @@ class TimelineUtils(object):
         :rtype: list of float
         """
         timeline_range = TimelineUtils.get_selected_range()
-        return range(int(timeline_range[0]), int(timeline_range[1]))
+        return range(int(timeline_range[0]), int(timeline_range[1])+1)
 
     @staticmethod
     def get_all_key_times():

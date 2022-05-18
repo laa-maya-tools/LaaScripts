@@ -52,8 +52,8 @@ class TimelineSection(wdg.QWidget):
         if not sections[0] == '':
             for section in sections:
                 splitted_attr = section.split(',')
-                ranges.append([float(splitted_attr[0]), float(splitted_attr[1])])
-                colors.append([int(splitted_attr[2]), int(splitted_attr[3])])
+                ranges.append((float(splitted_attr[0]), float(splitted_attr[1])))
+                colors.append((int(splitted_attr[2]), int(splitted_attr[3])))
 
         self.sections[c.SECTION_RANGES] = ranges
         self.sections[c.SECTION_COLORS] = colors
@@ -88,7 +88,7 @@ class TimelineSection(wdg.QWidget):
 
     def get_random_color(self):
         unused_colors = self.get_unused_colors()
-        index = random.randint(0, len(unused_colors))
+        index = random.randint(0, len(unused_colors)-1)
 
         return unused_colors[index]
 
