@@ -14,7 +14,8 @@ import maya.mel as mel
 
 from .widget_utils import WidgetUtils
 from ..Constants import constants as c
-reload(c)
+import imp
+imp.reload(c)
 
 
 class PanelUtils(object):
@@ -78,16 +79,15 @@ class PanelUtils(object):
             return
 
         # Toogle Silhouette Mode
-        if (mode == 'all'):
-
-            if (cmds.modelEditor(panel, q=True, dl=True) == 'all'):
+        if mode == 'all':
+            if cmds.modelEditor(panel, q=True, dl=True) == 'all':
                 cmds.modelEditor(panel, e=True, dl='default')
             else:
                 cmds.modelEditor(panel, e=True, dl='all')
             return
 
         # Toogle Flat Lighting Mode
-        if (mode == 'flat'):
+        if mode == 'flat':
 
             if (cmds.modelEditor(panel, q=True, dl=True) == 'flat'):
                 cmds.modelEditor(panel, e=True, dl='default')
@@ -95,9 +95,6 @@ class PanelUtils(object):
                 cmds.modelEditor(panel, e=True, dl='flat')
             return
 
-    # -----------------------------------------------------------------------------
-    # Toggle Viewport Renderer
-    # -----------------------------------------------------------------------------
     def toggle_viewport_renderer(self, panel=cmds.getPanel(wf=True)):
 
         if not (cmds.getPanel(to=panel) == 'modelPanel'):
@@ -113,9 +110,6 @@ class PanelUtils(object):
             cmds.setAttr('hardwareRenderingGlobals.multiSampleEnable', True)
             cmds.setAttr('hardwareRenderingGlobals.ssaoEnable', True)
 
-    # -----------------------------------------------------------------------------
-    # Toggle Resolution Gate
-    # -----------------------------------------------------------------------------
     def toggle_resolution_gate(self, panel=cmds.getPanel(wf=True)):
 
         if not (cmds.getPanel(to=panel) == 'modelPanel'):
@@ -133,9 +127,6 @@ class PanelUtils(object):
             cmds.setAttr(cam_name + 'Shape.displayGateMaskOpacity', 1)
             cmds.setAttr(cam_name + 'Shape.displayGateMaskColor', 0.03, 0.03, 0.03, type="double3")
 
-    # -----------------------------------------------------------------------------
-    # Set Default Viewport
-    # -----------------------------------------------------------------------------
     def set_default_viewport(self, panel=cmds.getPanel(wf=True)):
 
         if not (cmds.getPanel(to=panel) == 'modelPanel'):
@@ -156,9 +147,6 @@ class PanelUtils(object):
         cmds.camera(cam_name, e=True, dfg=False, dr=False, ovr=1.0)
         cmds.modelEditor(panel, e=True, gr=True)
 
-    # -----------------------------------------------------------------------------
-    # Set Tweo Side Lighting
-    # -----------------------------------------------------------------------------
     def set_two_side_lighting (self, panels = cmds.getPanel(type='modelPanel')):
 
         for panel in panels:

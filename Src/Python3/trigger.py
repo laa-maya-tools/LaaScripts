@@ -92,10 +92,10 @@ class Trigger(object):
     # KEYFRAMING
     # =========================================================================
     def add_inbetween(self, time_increment=1):
-        self._retiming_tools.retime_keys(time_increment, True, False)
+        self._retiming_tools.add_inbetween(time_increment)
 
-    def remove_inbetween(self, time_increment=-1):
-        self._retiming_tools.retime_keys(time_increment, True, False)
+    def remove_inbetween(self, time_increment=1):
+        self._retiming_tools.remove_inbetween(time_increment)
 
     # =========================================================================
     # PLAYBACK
