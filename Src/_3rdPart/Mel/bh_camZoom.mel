@@ -1,0 +1,126 @@
+//bh_camZoom - V1.3 101012  - fixed hard coding so that script is more robust - thanks to Geoff Kirk-Smith
+// click on a window to make the desired camera active, then run the script to bring up the gui
+
+
+global proc bh_camZoom()
+{
+
+string $panel = `getPanel -wf`;
+string $zoomCamera = `modelPanel -q -camera $panel`;
+
+
+if (`window -exists zoomUI`)
+    deleteUI zoomUI;
+
+     string $window = `window -tlb 1 -title "bh_camZoom" zoomUI`;
+  
+     columnLayout -adj 1  mainCol;
+  
+   
+    	textFieldGrp 
+    	-w 1
+    	-cal 1 "left"
+    	 -cat 2 "left" 1
+        //-width 250
+    	-ed false -tx $zoomCamera   cameraField;
+    
+   
+    //rowColumnLayout  -numberOfColumns 2; 
+    	
+  
+   //  setParent mainCol;
+     floatSliderGrp -label "Zoom  " -field 0
+    // -cal 1 "left"
+      -minValue 0.01 -maxValue 1.0
+    	-fieldMinValue 0.001 -fieldMaxValue 1.0
+    	-value 1
+		-step 0.001
+		 -cat 2 "left" 0
+       
+		
+    	-dc "bh_zoom"
+    	-cc "bh_zoom"
+    	"Zoom"
+    	;
+    
+    floatSliderGrp -label "Pan L-R" -field 0
+    //-cal 1 "left"
+    	-minValue -1.0 -maxValue 1.0
+    	-fieldMinValue-1.0 -fieldMaxValue 1.0
+    	-value 0
+		-step 0.001
+		 -cat 2 "left" 1
+    	-dc "bh_pan"
+    	-cc "bh_pan"
+    	"PanLR";
+    	
+    	 floatSliderGrp -label "Pan U-D" -field 0
+    	 //-cal 1 "left"
+    	-minValue -1.0 -maxValue 1.0
+    	-fieldMinValue-1.0 -fieldMaxValue 1.0
+    	-value 0
+		-step 0.001
+		 -cat 2 "left" 0
+    	-dc "bh_pan"
+    	-cc "bh_pan"
+    	"PanUD";
+		rowColumnLayout  -numberOfColumns 2; 
+		 checkBox -label "Toggle" -onc bh_toggleZoomOn -ofc bh_toggleZoomOff -value 1 togSwitch;
+		
+     button -label "Reset" -w 60 -command bh_resetCam resetCamButton; 	
+    showWindow $window;
+  }  
+    
+    global proc bh_zoom()
+    {
+     string $camName =`textFieldGrp - query -text cameraField`;
+	 string $camShapeName[] = `listRelatives -s $camName`;
+    float $zoomVal = `floatSliderGrp -query -value "Zoom"`;
+    setAttr ($camShapeName[0]+".panZoomEnabled") 1;
+     setAttr ($camShapeName[0]+".zoom") $zoomVal;
+    
+
+    
+    }
+    
+      global proc bh_pan()
+    {
+    float $panLRVal = `floatSliderGrp -query -value "PanLR"`;
+    float $panUDVal = `floatSliderGrp -query -value "PanUD"`;
+    string $camName =`textFieldGrp - query -text cameraField`;
+	string $camShapeName[] = `listRelatives -s $camName`;
+    setAttr ($camShapeName[0] +".panZoomEnabled") 1;
+    setAttr ($camShapeName[0] +".horizontalPan") $panLRVal;
+    setAttr ($camShapeName[0] +".verticalPan") $panUDVal;
+  
+	}
+    
+    
+      global proc bh_resetCam()
+    {
+    floatSliderGrp -edit -value 1 "Zoom";
+    floatSliderGrp -edit -value 0 "PanLR";
+    floatSliderGrp -edit -value 0 "PanUD";
+    bh_zoom();
+    bh_pan();
+     string $camName =`textFieldGrp - query -text cameraField`;
+    string $camShapeName[] = `listRelatives -s $camName`;
+    setAttr ($camShapeName[0] +".panZoomEnabled") 0;
+    print"reset!";
+    }
+    
+    global proc bh_toggleZoomOn()
+    {
+       string $camName =`textFieldGrp - query -text cameraField`;
+    string $camShapeName[] = `listRelatives -s $camName`;
+    setAttr ($camShapeName[0] +".panZoomEnabled") 1;  
+    }
+    
+    global proc bh_toggleZoomOff()
+    {
+       string $camName =`textFieldGrp - query -text cameraField`;
+    string $camShapeName[] = `listRelatives -s $camName`;
+    setAttr ($camShapeName[0]+".panZoomEnabled") 0;  
+    }
+	
+	bh_camZoom;
