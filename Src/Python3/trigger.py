@@ -11,6 +11,7 @@ AUTHOR:   Leandro Adeodato
 VERSION:  v1.0.0 | Maya 2022 | Python 3
 =============================================================================
 """
+import maya.cmds as cmd
 from PySide2 import QtCore as cor
 
 from LaaScripts.Src.Python3.Core import Navigation
@@ -29,137 +30,113 @@ class Trigger(object):
     def __init__(self):
         super(Trigger, self).__init__()
 
+        self._smart_manipulator = Navigation.smart_manipulator.SmartManipulator()
+        self._channels_filter = Navigation.channels_filter.ChannelsFilter()
+        self._retiming_tools = Keyframing.retiming_tools.RetimingTools()
+        self._playback_manager = Playback.playback_manager.PlaybackManager()
+        self._frame_marker = Playback.frame_marker.FrameMarker()
+        self._timeline_section = Playback.timeline_section.TimelineSection()
+
     # =========================================================================
     # NAVIGATION
     # =========================================================================
-    @staticmethod
-    def switch_translate_manipulator():
-        Navigation.smart_manipulator.SmartManipulator().switch_translate_manipulator()
+    def switch_translate_manipulator(self):
+        self._smart_manipulator.switch_translate_manipulator()
 
-    @staticmethod
-    def switch_rotate_manipulator():
-        Navigation.SmartManipulator().switch_rotate_manipulator()
+    def switch_rotate_manipulator(self):
+        self._smart_manipulator.switch_rotate_manipulator()
 
-    @staticmethod
-    def switch_scale_manipulator():
-        Navigation.SmartManipulator().switch_scale_manipulator()
+    def switch_scale_manipulator(self):
+        self._smart_manipulator.switch_scale_manipulator()
 
-    @staticmethod
-    def filter_translate_channels_on_ones():
-        Navigation.ChannelsFilter().filter_translate_channels_on_ones()
+    def filter_translate_channels_on_ones(self):
+        self._channels_filter.filter_translate_channels_on_ones()
 
-    @staticmethod
-    def filter_translate_channels_on_twos():
-        Navigation.ChannelsFilter().filter_translate_channels_on_twos()
+    def filter_translate_channels_on_twos(self):
+        self._channels_filter.filter_translate_channels_on_twos()
 
-    @staticmethod
-    def filter_translate_channels_on_threes():
-        Navigation.ChannelsFilter().filter_translate_channels_on_threes()
+    def filter_translate_channels_on_threes(self):
+        self._channels_filter.filter_translate_channels_on_threes()
 
-    @staticmethod
-    def filter_rotate_channels_on_ones():
-        Navigation.ChannelsFilter().filter_rotate_channels_on_ones()
+    def filter_rotate_channels_on_ones(self):
+        self._channels_filter.filter_rotate_channels_on_ones()
 
-    @staticmethod
-    def filter_rotate_channels_on_twos():
-        Navigation.ChannelsFilter().filter_rotate_channels_on_twos()
+    def filter_rotate_channels_on_twos(self):
+        self._channels_filter.filter_rotate_channels_on_twos()
 
-    @staticmethod
-    def filter_rotate_channels_on_threes():
-        Navigation.ChannelsFilter().filter_rotate_channels_on_threes()
+    def filter_rotate_channels_on_threes(self):
+        self._channels_filter.filter_rotate_channels_on_threes()
 
-    @staticmethod
-    def filter_scale_channels_on_ones():
-        Navigation.ChannelsFilter().filter_scale_channels_on_ones()
+    def filter_scale_channels_on_ones(self):
+        self._channels_filter.filter_scale_channels_on_ones()
 
-    @staticmethod
-    def filter_scale_channels_on_twos():
-        Navigation.ChannelsFilter().filter_scale_channels_on_twos()
+    def filter_scale_channels_on_twos(self):
+        self._channels_filter.filter_scale_channels_on_twos()
 
-    @staticmethod
-    def filter_scale_channels_on_threes():
-        Navigation.ChannelsFilter().filter_scale_channels_on_threes()
+    def filter_scale_channels_on_threes(self):
+        self._channels_filter.filter_scale_channels_on_threes()
 
-    @staticmethod
-    def filter_all_channels():
-        Navigation.ChannelsFilter().filter_all_channels()
+    def filter_all_channels(self):
+        self._channels_filter.filter_all_channels()
 
-    @staticmethod
-    def select_all_channels():
-        Navigation.ChannelsFilter().select_all_channels()
+    def select_all_channels(self):
+        self._channels_filter.select_all_channels()
 
-    @staticmethod
-    def clear_all_channels():
-        Navigation.ChannelsFilter().clear_all_channels()
+    def clear_all_channels(self):
+        self._channels_filter.clear_all_channels()
 
-    @staticmethod
-    def toggle_sync_mode():
-        Navigation.ChannelsFilter().toggle_sync_mode()
+    def toggle_sync_mode(self):
+        self._channels_filter.toggle_sync_mode()
 
     # =========================================================================
     # KEYFRAMING
     # =========================================================================
-    @staticmethod
-    def add_inbetween(time_increment=1):
-        Keyframing.retiming_tools.retime_keys(time_increment, True, False)
+    def add_inbetween(self, time_increment=1):
+        self._retiming_tools.retime_keys(time_increment, True, False)
 
-    @staticmethod
-    def remove_inbetween(time_increment=-1):
-        Keyframing.retiming_tools.retime_keys(time_increment, True, False)
+    def remove_inbetween(self, time_increment=-1):
+        self._retiming_tools.retime_keys(time_increment, True, False)
 
     # =========================================================================
     # PLAYBACK
     # =========================================================================
-    @staticmethod
-    def go_to_the_next_frame():
-        Playback.playback_manager.go_to_the_next_frame()
+    def go_to_the_next_frame(self):
+        self._playback_manager.go_to_the_next_frame()
 
-    @staticmethod
-    def go_to_the_prev_frame():
-        Playback.playback_manager.go_to_the_prev_frame()
+    def go_to_the_prev_frame(self):
+        self._playback_manager.go_to_the_prev_frame()
 
-    @staticmethod
-    def next_frame_playback_press():
-        Playback.playback_manager.next_frame_playback_press()
+    def next_frame_playback_press(self):
+        self._playback_manager.next_frame_playback_press()
 
-    @staticmethod
-    def prev_frame_playback_press():
-        Playback.playback_manager.prev_frame_playback_press()
+    def prev_frame_playback_press(self):
+        self._playback_manager.prev_frame_playback_press()
 
-    @staticmethod
-    def next_frame_playback_release():
-        Playback.playback_manager.next_frame_playback_release()
+    def next_frame_playback_release(self):
+        self._playback_manager.next_frame_playback_release()
 
-    @staticmethod
-    def prev_frame_playback_release():
-        Playback.playback_manager.prev_frame_playback_release()
+    def prev_frame_playback_release(self):
+        self._playback_manager.prev_frame_playback_release()
 
-    @staticmethod
-    def go_to_the_next_key():
-        Playback.playback_manager.go_to_the_next_key()
+    def go_to_the_next_key(self):
+        self._playback_manager.go_to_the_next_key()
 
-    @staticmethod
-    def go_to_the_prev_key():
-        Playback.playback_manager.go_to_the_prev_key()
+    def go_to_the_prev_key(self):
+        self._playback_manager.go_to_the_prev_key()
 
-    @staticmethod
-    def go_to_the_next_marker():
-        Playback.playback_manager.go_to_the_next_marker(c.ALL)
+    def go_to_the_next_marker(self):
+        self._playback_manager.go_to_the_next_marker(c.ALL)
 
-    @staticmethod
-    def go_to_the_prev_marker():
-        Playback.playback_manager.go_to_the_prev_marker(c.ALL)
+    def go_to_the_prev_marker(self):
+        self._playback_manager.go_to_the_prev_marker(c.ALL)
 
-    @staticmethod
-    def go_to_the_next_key_marker():
-        Playback.playback_manager.go_to_the_next_marker(c.KEY)
+    def go_to_the_next_key_marker(self):
+        self._playback_manager.go_to_the_next_marker(c.KEY)
 
-    @staticmethod
-    def go_to_the_prev_key_marker():
-        Playback.playback_manager.go_to_the_prev_marker(c.KEY)
+    def go_to_the_prev_key_marker(self):
+        self._playback_manager.go_to_the_prev_marker(c.KEY)
 
-    @staticmethod
-    def load_frame_markers():
+    def load_frame_markers(self):
         global LAA_FRAME_MARKER
 
         try:
@@ -169,43 +146,38 @@ class Trigger(object):
         except NameError:
             pass
 
-        LAA_FRAME_MARKER = Playback.FrameMarker()
+        LAA_FRAME_MARKER = self._frame_marker
         LAA_FRAME_MARKER.setVisible(True)
 
-    @staticmethod
-    def add_key_markers():
+    def add_key_markers(self):
         try:
             LAA_FRAME_MARKER.add_frame_markers(c.KEY)
         except NameError:
-            Trigger.load_frame_markers()
+            Trigger.load_frame_markers(self)
             LAA_FRAME_MARKER.add_frame_markers(c.KEY)
 
-    @staticmethod
-    def add_breakdown_markers():
+    def add_breakdown_markers(self):
         try:
             LAA_FRAME_MARKER.add_frame_markers(c.BREAKDOWN)
         except NameError:
-            Trigger.load_frame_markers()
+            Trigger.load_frame_markers(self)
             LAA_FRAME_MARKER.add_frame_markers(c.BREAKDOWN)
 
-    @staticmethod
-    def add_inbetween_markers():
+    def add_inbetween_markers(self):
         try:
             LAA_FRAME_MARKER.add_frame_markers(c.INBETWEEN)
         except NameError:
-            Trigger.load_frame_markers()
+            Trigger.load_frame_markers(self)
             LAA_FRAME_MARKER.add_frame_markers(c.INBETWEEN)
 
-    @staticmethod
-    def remove_frame_markers():
+    def remove_frame_markers(self):
         try:
             LAA_FRAME_MARKER.remove_frame_markers()
         except NameError:
-            Trigger.load_frame_markers()
+            Trigger.load_frame_markers(self)
             LAA_FRAME_MARKER.remove_frame_markers()
 
-    @staticmethod
-    def load_timeline_sections():
+    def load_timeline_sections(self):
         global LAA_TIMELINE_SECTION
 
         try:
@@ -215,15 +187,14 @@ class Trigger(object):
         except NameError:
             pass
 
-        LAA_TIMELINE_SECTION = Playback.TimelineSection()
+        LAA_TIMELINE_SECTION = self._timeline_section
         LAA_TIMELINE_SECTION.setVisible(True)
 
-    @staticmethod
-    def add_timeline_section(random_color=False):
+    def add_timeline_section(self, random_color=False):
         try:
             LAA_TIMELINE_SECTION.add_timeline_section(random_color)
         except NameError:
-            Trigger.load_timeline_sections()
+            Trigger.load_timeline_sections(self)
             LAA_TIMELINE_SECTION.add_timeline_section(random_color)
 
     # @staticmethod

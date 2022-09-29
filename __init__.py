@@ -1,12 +1,14 @@
-# # Fixes an error with the channelbox
-# from Src.Python
-# import maya.cmds as cmd
-#
-# cmd.optionVar(intValue=('containerSelRootsInOutliner', True))
-# cmd.optionVar(intValue=('containerChanBoxMaxWithTemplate', 10))
-# cmd.optionVar(intValue=('containerChanBoxMaxNoTemplate', 10))
-# cmd.optionVar(intValue=('containerFlatViewCap', 10))
-
+# -*- coding: utf-8 -*-
+"""
+=============================================================================
+MODULE: __init__.py
+-----------------------------------------------------------------------------
+Loads the trigger module depending on the python version.
+-----------------------------------------------------------------------------
+AUTHOR:   Leandro Adeodato
+VERSION:  v1.0.0 | Maya 2017+ | Python 2+
+=============================================================================
+"""
 import maya.cmds as cmd
 import sys
 
@@ -16,15 +18,18 @@ PYTHON2, PYTHON3 = 2, 3
 
 
 def get_python_version():
+    """
+    Gets the python version.
+    :return: Python version.
+    :rtype: Str
+    """
     python_version = int("%s%s" % (sys.version_info[0], sys.version_info[1]))
     return python_version
 
 
-def run():
-    if get_python_version() == PYTHON2:
-        from LaaScripts.Src.Python2 import trigger
-        reload(trigger)
-    elif get_python_version() == PYTHON3:
-        from LaaScripts.Src.Python3 import trigger
-        import importlib
-        importlib.reload(trigger)
+if get_python_version() == PYTHON2:
+    from LaaScripts.Src.Python2 import trigger
+elif get_python_version() == PYTHON3:
+    from LaaScripts.Src.Python3 import trigger
+
+
