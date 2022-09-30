@@ -16,20 +16,22 @@ from LaaScripts.Src.Python3 import trigger
 
 PYTHON2, PYTHON3 = 2, 3
 
-
-def get_python_version():
-    """
-    Gets the python version.
-    :return: Python version.
-    :rtype: Str
-    """
-    python_version = int("%s%s" % (sys.version_info[0], sys.version_info[1]))
-    return python_version
+print('init')
 
 
-if get_python_version() == PYTHON2:
-    from LaaScripts.Src.Python2 import trigger
-elif get_python_version() == PYTHON3:
-    from LaaScripts.Src.Python3 import trigger
-
-
+# def get_python_version():
+#     """
+#     Gets the python version.
+#     :return: Python version.
+#     :rtype: Str
+#     """
+#     python_version = int("%s%s" % (sys.version_info[0], sys.version_info[1]))
+#     return python_version
+#
+#
+# if get_python_version() == PYTHON2:
+#     from LaaScripts.Src.Python2 import trigger
+# elif get_python_version() == PYTHON3:
+#     from LaaScripts.Src.Python3 import trigger
+#
+#
