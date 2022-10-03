@@ -17,6 +17,7 @@ from PySide2 import QtCore as cor
 from LaaScripts.Src.Python3.Core import Navigation
 from LaaScripts.Src.Python3.Core import Keyframing
 from LaaScripts.Src.Python3.Core import Playback
+from LaaScripts.Src.Python3.Core import Prefs
 from LaaScripts.Src.Python3.Utils.timeline_utils import TimelineUtils
 from LaaScripts.Src.Python3.Utils.widget_utils import WidgetUtils
 from LaaScripts.Src.Python3.Constants import constants as c
@@ -36,6 +37,7 @@ class Trigger(object):
         self._playback_manager = Playback.playback_manager.PlaybackManager()
         self._frame_marker = Playback.frame_marker.FrameMarker()
         self._timeline_section = Playback.timeline_section.TimelineSection()
+        self._hotkey_manager = Prefs.hotkey_manager.HotkeyManager()
 
     # =========================================================================
     # NAVIGATION
@@ -96,6 +98,18 @@ class Trigger(object):
 
     def remove_inbetween(self, time_increment=1):
         self._retiming_tools.remove_inbetween(time_increment)
+
+    # =========================================================================
+    # PREFS
+    # =========================================================================
+    def toggle_hotkey_sets(self):
+        self._hotkey_manager.toggle_hotkey_sets()
+
+    # =========================================================================
+    # VIEWPORT
+    # =========================================================================
+    def toggle_xray(self):
+        self._hotkey_manager.toggle_hotkey_sets()
 
     # =========================================================================
     # PLAYBACK
