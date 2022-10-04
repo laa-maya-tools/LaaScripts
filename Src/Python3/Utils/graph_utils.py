@@ -9,7 +9,7 @@ AUTHOR:   Leandro Adeodato
 VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 =============================================================================
 """
-import maya.cmd as cmd
+import maya.cmds as cmd
 import maya.mel as mel
 
 
