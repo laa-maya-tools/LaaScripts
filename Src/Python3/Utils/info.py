@@ -13,17 +13,15 @@ from PySide2 import QtWidgets as wdg
 from PySide2 import QtGui as gui
 from PySide2 import QtCore as cor
 
-from ..Constants import constants as cns
-from ..Utils import utils as utl
-reload(cns)
-reload(utl)
+from LaaScripts.Src.Python3.Constants import constants as c
+from LaaScripts.Src.Python3.Utils import utils
 
 msg_ui = None
 
 
 class Info(wdg.QDialog):
 
-    def __init__(self, text, warning, timeout, parent=utl.Utils().get_maya_control(cns.RANGE_SLIDER)):
+    def __init__(self, text, warning, timeout, parent=utils.Utils().get_maya_control(c.RANGE_SLIDER)):
         super(Info, self).__init__(parent)
 
         width = parent.size().width()

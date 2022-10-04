@@ -1,0 +1,19 @@
+{
+    "hotkeys": {
+        "set_tangent_to_stepped": "alt_1",
+        "set_tangent_to_linear": "alt_2",
+        "set_tangent_to_auto": "alt_3",
+        "set_tangent_to_spline": "alt_4",
+        "set_tangent_to_flat": "alt_5",
+
+        "toggle_lock_unlock_channel": "ctrl_alt_shift_l",
+        "toggle_mute_unmute_channel": "ctrl_alt_shift_m",
+        "toggle_pre_infinite_type": "ctrl_alt_shift_m",
+        "toggle_post_infinite_type": "ctrl_alt_shift_m",
+        "delete_redundant": "ctrl_alt_shift_r",
+        "zero_out_keys": "ctrl_alt_shift_z",
+
+        "add_inbetween": "ctrl_shift_d",
+        "remove_inbetween": "ctrl_shift_a"
+    }
+}

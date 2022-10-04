@@ -12,9 +12,8 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 import maya.cmds as cmd
 import maya.mel as mel
 
-from .widget_utils import WidgetUtils
-from ..Constants import constants as c
-reload(c)
+from LaaScripts.Src.Python3.Constants import constants as c
+from LaaScripts.Src.Python3.Utils.widget_utils import WidgetUtils
 
 
 class LayersUtils(object):

@@ -119,8 +119,32 @@ class Trigger(object):
     def toggle_default_material(self):
         self._viewport_manager.toggle_default_material()
 
-    def toggle_all_objects(self):
-        self._viewport_manager.toggle_all_objects()
+    def toggle_cameras(self):
+        self._viewport_manager.toggle_cameras()
+
+    def toggle_grid(self):
+        self._viewport_manager.toggle_grid()
+
+    def toggle_plane(self):
+        self._viewport_manager.toggle_plane()
+
+    def toggle_joints(self):
+        self._viewport_manager.toggle_joints()
+
+    def toggle_lights(self):
+        self._viewport_manager.toggle_lights()
+
+    def toggle_locators(self):
+        self._viewport_manager.toggle_locators()
+
+    def toggle_handles(self):
+        self._viewport_manager.toggle_handles()
+
+    def toggle_curves(self):
+        self._viewport_manager.toggle_curves()
+
+    def toggle_polygons(self):
+        self._viewport_manager.toggle_polygons()
 
     # =========================================================================
     # PLAYBACK

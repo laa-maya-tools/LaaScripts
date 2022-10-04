@@ -23,41 +23,52 @@ class ViewportManager(object):
         pass
 
     def toggle_xray(self):
-        ret = panel_utils.PanelUtils.toggle_viewport_elements(c.XRAY)
-        info.show_info(ret)
+        msg = panel_utils.PanelUtils.toggle_viewport_elements(c.XRAY)
+        info.show_info(msg)
 
     def toggle_wireframe(self):
-        panel_utils.PanelUtils.toggle_viewport_elements(c.WIREFRAME)
+        msg = panel_utils.PanelUtils.toggle_viewport_elements(c.WIREFRAME)
+        info.show_info(msg)
 
     def toggle_default_material(self):
-        panel_utils.PanelUtils.toggle_viewport_elements(c.DEF_MATERIAL)
+        msg = panel_utils.PanelUtils.toggle_viewport_elements(c.DEF_MATERIAL)
+        info.show_info(msg)
 
     def toggle_cameras(self):
-        panel_utils.PanelUtils.toggle_viewport_elements(c.CAMERAS)
+        msg = panel_utils.PanelUtils.toggle_viewport_elements(c.CAMERAS)
+        info.show_info(msg)
 
     def toggle_grid(self):
-        panel_utils.PanelUtils.toggle_viewport_elements(c.GRID)
+        msg = panel_utils.PanelUtils.toggle_viewport_elements(c.GRID)
+        info.show_info(msg)
 
     def toggle_image_plane(self):
-        panel_utils.PanelUtils.toggle_viewport_elements(c.IMG_PLANE)
+        msg = panel_utils.PanelUtils.toggle_viewport_elements(c.IMG_PLANE)
+        info.show_info(msg)
 
     def toggle_joints(self):
-        panel_utils.PanelUtils.toggle_viewport_elements(c.JOINTS)
+        msg = panel_utils.PanelUtils.toggle_viewport_elements(c.JOINTS)
+        info.show_info(msg)
 
     def toggle_lights(self):
-        panel_utils.PanelUtils.toggle_viewport_elements(c.LIGHTS)
+        msg = panel_utils.PanelUtils.toggle_viewport_elements(c.LIGHTS)
+        info.show_info(msg)
 
     def toggle_locators(self):
-        panel_utils.PanelUtils.toggle_viewport_elements(c.LOCATORS)
+        msg = panel_utils.PanelUtils.toggle_viewport_elements(c.LOCATORS)
+        info.show_info(msg)
 
     def toggle_handles(self):
-        panel_utils.PanelUtils.toggle_viewport_elements(c.HANDLES)
+        msg = panel_utils.PanelUtils.toggle_viewport_elements(c.HANDLES)
+        info.show_info(msg)
 
     def toggle_curves(self):
-        panel_utils.PanelUtils.toggle_viewport_elements(c.CURVES)
+        msg = panel_utils.PanelUtils.toggle_viewport_elements(c.CURVES)
+        info.show_info(msg)
 
     def toggle_polygons(self):
-        panel_utils.PanelUtils.toggle_viewport_elements(c.POLYGONS)
+        msg = panel_utils.PanelUtils.toggle_viewport_elements(c.POLYGONS)
+        info.show_info(msg)
 
 
 

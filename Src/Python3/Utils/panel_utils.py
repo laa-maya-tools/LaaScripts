@@ -12,10 +12,8 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 import maya.cmds as cmd
 import maya.mel as mel
 
-from .widget_utils import WidgetUtils
-from ..Constants import constants as c
-import imp
-imp.reload(c)
+from LaaScripts.Src.Python3.Utils.widget_utils import WidgetUtils
+from LaaScripts.Src.Python3.Constants import constants as c
 
 
 class PanelUtils(object):
@@ -49,13 +47,13 @@ class PanelUtils(object):
             for p in all_panels:
                 set_command = 'cmd.modelEditor(p, edit=True, {0}=not current_state)'.format(elements_type)
                 exec(set_command)
-            return 'XRAY: All | {0}'.format(current_state)
+            return '{0}: All | {1}'.format(elements_type.upper(), current_state)
 
         get_command = 'cmd.modelEditor(panel, q=True, {0}=True)'.format(elements_type)
         current_state = eval(get_command)
         set_command = 'cmd.modelEditor(panel, edit=True, {0}=not current_state)'.format(elements_type)
         exec(set_command)
-        return 'XRAY: Active | {0}'.format(current_state)
+        return '{0}: Active | {1}'.format(elements_type.upper(), current_state)
 
     @staticmethod
     def get_user_cameras():
