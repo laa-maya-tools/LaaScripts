@@ -151,3 +151,10 @@ KEY_MARKERS_ATTR = 'key_markers'
 FRAME_MARKERS_ATTR = 'frame_markers'
 TIMELINE_SECTION_ATTR = 'timeline_section'
 
+# =============================================================================
+# VIEWPORT
+# =============================================================================
+XRAY, DEF_MATERIAL, WIREFRAME, CAMERAS, GRID, IMG_PLANE = 'xr', 'udm', 'wos', 'ca', 'gr', 'ip'
+JOINTS, LIGHTS, LOCATORS, HANDLES, CURVES, POLYGONS = 'j', 'lt', 'lc', 'm', 'nc', 'pm'
+MODEL_PANEL = 'modelPanel'
+

@@ -18,6 +18,7 @@ from LaaScripts.Src.Python3.Core import Navigation
 from LaaScripts.Src.Python3.Core import Keyframing
 from LaaScripts.Src.Python3.Core import Playback
 from LaaScripts.Src.Python3.Core import Prefs
+from LaaScripts.Src.Python3.Core import Viewport
 from LaaScripts.Src.Python3.Utils.timeline_utils import TimelineUtils
 from LaaScripts.Src.Python3.Utils.widget_utils import WidgetUtils
 from LaaScripts.Src.Python3.Constants import constants as c
@@ -38,6 +39,7 @@ class Trigger(object):
         self._frame_marker = Playback.frame_marker.FrameMarker()
         self._timeline_section = Playback.timeline_section.TimelineSection()
         self._hotkey_manager = Prefs.hotkey_manager.HotkeyManager()
+        self._viewport_manager = Viewport.viewport_manager.ViewportManager()
 
     # =========================================================================
     # NAVIGATION
@@ -109,7 +111,16 @@ class Trigger(object):
     # VIEWPORT
     # =========================================================================
     def toggle_xray(self):
-        self._hotkey_manager.toggle_hotkey_sets()
+        self._viewport_manager.toggle_xray()
+
+    def toggle_wireframe(self):
+        self._viewport_manager.toggle_wireframe()
+
+    def toggle_default_material(self):
+        self._viewport_manager.toggle_default_material()
+
+    def toggle_all_objects(self):
+        self._viewport_manager.toggle_all_objects()
 
     # =========================================================================
     # PLAYBACK
