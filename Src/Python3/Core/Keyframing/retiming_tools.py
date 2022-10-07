@@ -7,7 +7,16 @@ from LaaScripts.Src.Python3.Utils.timeline_utils import TimelineUtils
 class RetimingTools(object):
 
     def __init__(self):
-        print('retiming')
+        pass
+
+    def copy_keys(self):
+        pass
+    
+    def paste_keys(self):
+        pass
+
+    def cut_keys(self):
+        pass
 
     def retime_keys(self, retime_value, incremental, move_to_next):
         range_start_time, range_end_time = TimelineUtils.get_selected_range()

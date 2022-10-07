@@ -11,7 +11,7 @@ from LaaScripts.Src.Python3.Utils import info_utils as info
 class BlendingTools(object):
 
     def __init__(self):
-        print('blending')
+        pass
 
     def tween(self, percentage, obj=None, attrs=None, selection=True):
 
@@ -75,4 +75,4 @@ class BlendingTools(object):
 
 if __name__ == '__main__':
     bt = BlendingTools()
-    bt.tween(20.0)
+    bt.tween(25.0)

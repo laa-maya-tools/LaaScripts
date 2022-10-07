@@ -16,8 +16,6 @@ from LaaScripts.Src.Python3 import trigger
 
 PYTHON2, PYTHON3 = 2, 3
 
-print('init')
-
 
 # def get_python_version():
 #     """

@@ -158,3 +158,9 @@ XRAY, DEF_MATERIAL, WIREFRAME, CAMERAS, GRID, IMG_PLANE = 'xr', 'udm', 'wos', 'c
 JOINTS, LIGHTS, LOCATORS, HANDLES, CURVES, POLYGONS = 'j', 'lt', 'lc', 'm', 'nc', 'pm'
 MODEL_PANEL = 'modelPanel'
 
+# =============================================================================
+# FIREBASE | REALTIME DATABASE
+# =============================================================================
+FB_CONN = 'https://laascripts-default-rtdb.europe-west1.firebasedatabase.app/'
+FB_FOLDER = '/users'
+
