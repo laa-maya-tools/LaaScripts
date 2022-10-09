@@ -145,3 +145,6 @@ cython_debug/
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/vcs.xml
 /Scenes/
+/libs/
+/Src/_Credentials/
+/Src/_SitePackages/
