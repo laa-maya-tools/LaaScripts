@@ -148,3 +148,4 @@ cython_debug/
 /libs/
 /Src/_Credentials/
 /Src/_SitePackages/
+/Src/_FirebaseKeys/
