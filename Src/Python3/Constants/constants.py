@@ -1,6 +1,7 @@
-from PySide2 import QtWidgets as wdg
+import os
+
 from PySide2 import QtGui as gui
-from PySide2 import QtCore as cor
+
 
 # =============================================================================
 # MAYA CONTROLS CONSTANTS
@@ -156,11 +157,47 @@ TIMELINE_SECTION_ATTR = 'timeline_section'
 # =============================================================================
 XRAY, DEF_MATERIAL, WIREFRAME, CAMERAS, GRID, IMG_PLANE = 'xr', 'udm', 'wos', 'ca', 'gr', 'ip'
 JOINTS, LIGHTS, LOCATORS, HANDLES, CURVES, POLYGONS = 'j', 'lt', 'lc', 'm', 'nc', 'pm'
-MODEL_PANEL = 'modelPanel'
 
 # =============================================================================
-# FIREBASE | REALTIME DATABASE
+# MAYA FILES/FOLDERS PATHS
 # =============================================================================
-FB_CONN = 'https://laascripts-default-rtdb.europe-west1.firebasedatabase.app/'
-FB_FOLDER = '/users'
+LAASCRIPTS_FOLDER = 'LaaScripts'
+LAASCRIPTS_DATA_FOLDER = 'LaaScripts_Data'
+
+ROOT_FOLDER = ''
+SCRIPTS_FOLDER = 'scripts'
+MODULES_FOLDER = 'modules'
+PREFS_FOLDER = 'prefs'
+ICONS_FOLDER = 'icons'
+SHELVES_FOLDER = 'shelves'
+HOTKEYS_FOLDER = 'hotkeys'
+MAYA_ENV_FILE_NAME = 'Maya.env'
+USER_DATA_FILE_NAME = 'user_data.json'
+
+
+USER_DIR = r"{0}".format(os.path.expanduser("~"))
+MAYA_DIR = r'{0}\maya'.format(USER_DIR)
+ALL_MAYA_VERSIONS = ['2017', '2018', '2019', '2020', '2021', '2022', '2023']
+SCRIPTS_DIR = r'{0}\{1}'.format(MAYA_DIR, SCRIPTS_FOLDER)
+MODULES_DIR = r'{0}\{1}'.format(MAYA_DIR, MODULES_FOLDER)
+LAASCRIPTS_DIR = r'{0}\{1}'.format(SCRIPTS_DIR, LAASCRIPTS_FOLDER)
+LAASCRIPTS_DATA_DIR = r'{0}\{1}'.format(SCRIPTS_DIR, LAASCRIPTS_DATA_FOLDER)
+CURRENT_DIR = r'{0}'.format(os.path.abspath(os.getcwd()))
+
+
+# ===== MAYA LOCAL PATHS =====
+def list_folders_from_version(folder=ROOT_FOLDER):
+    folders_from_version = []
+    for version in ALL_MAYA_VERSIONS:
+        folder_path = r'{0}\{1}\{2}'.format(MAYA_DIR, version, folder)
+        if os.path.exists(folder_path):
+            folders_from_version.append(folder_path)
+
+    return folders_from_version
+
+
+PREFS_DIRS = list_folders_from_version(PREFS_FOLDER)
+ICONS_DIRS = list_folders_from_version(ICONS_FOLDER)
+SHELVES_DIRS = list_folders_from_version(SHELVES_FOLDER)
+USER_DATA_FILE = r'{0}\{1}'.format(LAASCRIPTS_DATA_DIR, USER_DATA_FILE_NAME)
 

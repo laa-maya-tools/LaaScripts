@@ -24,7 +24,7 @@ from LaaScripts.Src.Python3.Data.scene_data import SceneData
 class PlaybackManager(object):
 
     def __init__(self):
-        self._user_data = UserData.read_user_data()
+        self._user_data = UserData.read_user_data(c.USER_DATA_FILE)
         self._next_frame_timer = cor.QTimer()
         self._prev_frame_timer = cor.QTimer()
         self._next_frame_timer.timeout.connect(self.on_next_frame_timeout)
