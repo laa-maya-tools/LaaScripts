@@ -95,6 +95,18 @@ class Trigger(object):
     # =========================================================================
     # KEYFRAMING
     # =========================================================================
+    def copy_keys(self):
+        self._retiming_tools.copy_keys()
+
+    def paste_keys(self):
+        self._retiming_tools.paste_keys()
+
+    def cut_keys(self):
+        self._retiming_tools.cut_keys()
+
+    def retime_keys(self):
+        self._retiming_tools.retime_keys(-2)
+
     def add_inbetween(self, time_increment=1):
         self._retiming_tools.add_inbetween(time_increment)
 

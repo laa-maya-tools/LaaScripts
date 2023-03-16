@@ -23,7 +23,7 @@ class RetimingTools(object):
         mel.eval('timeSliderCutKey;')
         info.show_info('Keys Pasted')
 
-    def retime_keys(self, retime_value, incremental, move_to_next):
+    def retime_keys(self, retime_value, incremental=True, move_to_next=True):
         range_start_time, range_end_time = TimelineUtils.get_selected_range()
         start_keyframe_time = TimelineUtils.get_start_keyframe_time(range_start_time)
         last_keyframe_time = TimelineUtils.get_last_keyframe_time()
