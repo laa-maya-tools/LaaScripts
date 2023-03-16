@@ -255,16 +255,5 @@ class Trigger(object):
     #         LAA_TIMELINE_SECTION.remove_frame_markers()
 
 
-if __name__ == '__main__':
-    Trigger.load_timeline_sections()
-    Trigger.add_timeline_section(True)
-    # # print LAA_TIMELINE_SECTION.get_unused_colors()
-    # print LAA_TIMELINE_SECTION.get_random_color()
-    #
-
-
-
-
-
 
 

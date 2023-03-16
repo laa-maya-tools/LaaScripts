@@ -1,7 +1,9 @@
 import maya.cmds as cmd
+import maya.mel as mel
 
 from LaaScripts.Src.Python3.Constants import constants as c
 from LaaScripts.Src.Python3.Utils.timeline_utils import TimelineUtils
+from LaaScripts.Src.Python3.Utils import info_utils as info
 
 
 class RetimingTools(object):
@@ -10,13 +12,16 @@ class RetimingTools(object):
         pass
 
     def copy_keys(self):
-        pass
+        mel.eval('timeSliderCopyKey;')
+        info.show_info('Keys Copied')
     
     def paste_keys(self):
-        pass
+        mel.eval('performPasteKeyArgList 1 {"0", "animationList", "0"}')
+        info.show_info('Keys Pasted')
 
     def cut_keys(self):
-        pass
+        mel.eval('timeSliderCutKey;')
+        info.show_info('Keys Pasted')
 
     def retime_keys(self, retime_value, incremental, move_to_next):
         range_start_time, range_end_time = TimelineUtils.get_selected_range()
@@ -75,7 +80,7 @@ class RetimingTools(object):
             TimelineUtils.change_keyframe_time(current_time, updated_keyframe_time)
 
     def nudge_key_right(self, time_increment):
-        print('nudge_key_right')
+        pass
 
     def nudge_key_left(self, time_increment):
         pass
@@ -97,9 +102,3 @@ class RetimingTools(object):
                 i += 1
         else:
             TimelineUtils.remove_inbetween()
-
-
-if __name__ == "__main__":
-    rt = RetimingTools()
-    # rt.remove_inbetween(3)
-    rt.add_inbetween(1)

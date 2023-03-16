@@ -70,6 +70,12 @@ class ViewportManager(object):
         msg = panel_utils.PanelUtils.toggle_viewport_elements(c.POLYGONS)
         info.show_info(msg)
 
+    def toggle_viewport_modes(self):
+        pass
+
+    def toggle_all_viewport_elements(self):
+        pass
+
 
 
 
