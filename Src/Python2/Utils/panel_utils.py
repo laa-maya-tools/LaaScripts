@@ -37,17 +37,23 @@ class PanelUtils(object):
         return cmd.getPanel(underPointer=True)
 
     @staticmethod
-    def toggle_viewport_elements(elements_type, panel=cmd.getPanel(wf=True)):
+    def toggle_viewport_elements(elements_type):
 
-        if not (cmd.getPanel(to=panel) == 'modelPanel'):
-            cmd.warning('No Panel on Focus.')
-            return
+        panel = PanelUtils.get_hovered_panel()
+        if not cmd.getPanel(to=panel) == c.MODEL_PANEL:
+            all_panels = cmd.getPanel(type=c.MODEL_PANEL)
+            get_command = 'cmd.modelEditor(all_panels[0], q=True, {0}=True)'.format(elements_type)
+            current_state = eval(get_command)
+            for p in all_panels:
+                set_command = 'cmd.modelEditor(p, edit=True, {0}=not current_state)'.format(elements_type)
+                exec(set_command)
+            return '{0}: All | {1}'.format(elements_type.upper(), current_state)
 
         get_command = 'cmd.modelEditor(panel, q=True, {0}=True)'.format(elements_type)
-        set_command = 'cmd.modelEditor(panel, edit=True, {0}=not current_state)'.format(elements_type)
-
         current_state = eval(get_command)
+        set_command = 'cmd.modelEditor(panel, edit=True, {0}=not current_state)'.format(elements_type)
         exec(set_command)
+        return '{0}: Active | {1}'.format(elements_type.upper(), current_state)
 
     @staticmethod
     def get_user_cameras():
@@ -55,7 +61,8 @@ class PanelUtils(object):
         user_cameras = [cam for cam in cmd.listRelatives(cmd.ls(cameras=1), parent=1) if cam not in default_cameras]
         return user_cameras
 
-    def show_all(self, show=True, panel=cmd.getPanel(wf=True)):
+
+    def show_all (self, show=True, panel = cmd.getPanel(wf=True)):
 
         if not (cmd.getPanel(to=panel) == 'modelPanel'):
             cmd.warning('No Panel on Focus.')
@@ -69,23 +76,22 @@ class PanelUtils(object):
         cmd.modelEditor(panel, e=True, gr=show)
         cmd.modelEditor(panel, e=True, m=show)
 
-    def toggle_displayed_lights(self, mode, panel=cmd.getPanel(wf=True)):
+    def toggle_displayed_lights (self, mode, panel = cmd.getPanel(wf=True)):
 
         if not (cmd.getPanel(to=panel) == 'modelPanel'):
             cmd.warning('No Panel on Focus.')
             return
 
         # Toogle Silhouette Mode
-        if (mode == 'all'):
-
-            if (cmd.modelEditor(panel, q=True, dl=True) == 'all'):
+        if mode == 'all':
+            if cmd.modelEditor(panel, q=True, dl=True) == 'all':
                 cmd.modelEditor(panel, e=True, dl='default')
             else:
                 cmd.modelEditor(panel, e=True, dl='all')
             return
 
         # Toogle Flat Lighting Mode
-        if (mode == 'flat'):
+        if mode == 'flat':
 
             if (cmd.modelEditor(panel, q=True, dl=True) == 'flat'):
                 cmd.modelEditor(panel, e=True, dl='default')
@@ -93,9 +99,6 @@ class PanelUtils(object):
                 cmd.modelEditor(panel, e=True, dl='flat')
             return
 
-    # -----------------------------------------------------------------------------
-    # Toggle Viewport Renderer
-    # -----------------------------------------------------------------------------
     def toggle_viewport_renderer(self, panel=cmd.getPanel(wf=True)):
 
         if not (cmd.getPanel(to=panel) == 'modelPanel'):
@@ -111,9 +114,6 @@ class PanelUtils(object):
             cmd.setAttr('hardwareRenderingGlobals.multiSampleEnable', True)
             cmd.setAttr('hardwareRenderingGlobals.ssaoEnable', True)
 
-    # -----------------------------------------------------------------------------
-    # Toggle Resolution Gate
-    # -----------------------------------------------------------------------------
     def toggle_resolution_gate(self, panel=cmd.getPanel(wf=True)):
 
         if not (cmd.getPanel(to=panel) == 'modelPanel'):
@@ -131,9 +131,6 @@ class PanelUtils(object):
             cmd.setAttr(cam_name + 'Shape.displayGateMaskOpacity', 1)
             cmd.setAttr(cam_name + 'Shape.displayGateMaskColor', 0.03, 0.03, 0.03, type="double3")
 
-    # -----------------------------------------------------------------------------
-    # Set Default Viewport
-    # -----------------------------------------------------------------------------
     def set_default_viewport(self, panel=cmd.getPanel(wf=True)):
 
         if not (cmd.getPanel(to=panel) == 'modelPanel'):
@@ -154,10 +151,7 @@ class PanelUtils(object):
         cmd.camera(cam_name, e=True, dfg=False, dr=False, ovr=1.0)
         cmd.modelEditor(panel, e=True, gr=True)
 
-    # -----------------------------------------------------------------------------
-    # Set Tweo Side Lighting
-    # -----------------------------------------------------------------------------
-    def set_two_side_lighting(self, panels=cmd.getPanel(type='modelPanel')):
+    def set_two_side_lighting (self, panels = cmd.getPanel(type='modelPanel')):
 
         for panel in panels:
             cmd.modelEditor(panel, edit=True, tsl=True)

@@ -90,6 +90,7 @@ class RetimingTools(object):
         while i <= time_increment:
             TimelineUtils.add_inbetween()
             i += 1
+        info.show_info('Inbetween Added')
 
     def remove_inbetween(self, time_increment=1):
         i = 1
@@ -102,3 +103,4 @@ class RetimingTools(object):
                 i += 1
         else:
             TimelineUtils.remove_inbetween()
+        info.show_info('Inbetween removed')

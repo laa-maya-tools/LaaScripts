@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="Fixing Python for Maya 2020">
-      <change afterPath="$PROJECT_DIR$/Src/Python2/Core/Prefs/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Src/Python2/Core/Prefs/hotkey_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Src/Python2/Core/Viewport/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Src/Python2/Core/Viewport/viewport_manager.py" afterDir="false" />
+    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="Python 2 scripts working.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Keyframing/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Keyframing/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/Constants/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Constants/constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Keyframing/retiming_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Keyframing/retiming_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Navigation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Navigation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Navigation/smart_manipulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Navigation/smart_manipulator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Playback/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Playback/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Playback/frame_marker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Playback/frame_marker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Playback/playback_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Playback/playback_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Playback/timeline_section.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Playback/timeline_section.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Utils/info_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Utils/info_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Utils/navigation_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Utils/navigation_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Utils/node_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Utils/node_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Python2/Utils/panel_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Utils/panel_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Utils/timeline_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Utils/timeline_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/trigger.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/trigger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python3/Core/Keyframing/retiming_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python3/Core/Keyframing/retiming_tools.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679392465124</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Python 2 scripts working.">
+      <created>1679405389521</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679405389521</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -133,6 +126,7 @@
     <MESSAGE value="retiming" />
     <MESSAGE value="Ready for Python 2022" />
     <MESSAGE value="Fixing Python for Maya 2020" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing Python for Maya 2020" />
+    <MESSAGE value="Python 2 scripts working." />
+    <option name="LAST_COMMIT_MESSAGE" value="Python 2 scripts working." />
   </component>
 </project>
