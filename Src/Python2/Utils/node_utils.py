@@ -1,8 +1,7 @@
 import maya.cmds as cmd
 import maya.mel as mel
 
-from LaaScripts.Src._Constants import constants as c
-reload(c)
+from LaaScripts.Src.Python2.Constants import constants as c
 
 
 class SceneData(object):

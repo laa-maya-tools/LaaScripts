@@ -12,9 +12,8 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 import maya.cmds as cmd
 import maya.mel as mel
 
-from .widget_utils import WidgetUtils
-from ..Constants import constants as c
-reload(c)
+from LaaScripts.Src.Python2.Utils.widget_utils import WidgetUtils
+from LaaScripts.Src.Python2.Constants import constants as c
 
 
 class PanelUtils(object):
@@ -56,111 +55,109 @@ class PanelUtils(object):
         user_cameras = [cam for cam in cmd.listRelatives(cmd.ls(cameras=1), parent=1) if cam not in default_cameras]
         return user_cameras
 
+    def show_all(self, show=True, panel=cmd.getPanel(wf=True)):
 
-    def show_all (self, show=True, panel = cmds.getPanel(wf=True)):
-
-        if not (cmds.getPanel(to=panel) == 'modelPanel'):
-            cmds.warning('No Panel on Focus.')
+        if not (cmd.getPanel(to=panel) == 'modelPanel'):
+            cmd.warning('No Panel on Focus.')
             return
 
-        cmds.modelEditor(panel, e=True, alo=show)
-        cmds.modelEditor(panel, e=True, nc=show)
-        cmds.modelEditor(panel, e=True, ns=show)
-        cmds.modelEditor(panel, e=True, cv=show)
-        cmds.modelEditor(panel, e=True, hu=show)
-        cmds.modelEditor(panel, e=True, gr=show)
-        cmds.modelEditor(panel, e=True, m=show)
+        cmd.modelEditor(panel, e=True, alo=show)
+        cmd.modelEditor(panel, e=True, nc=show)
+        cmd.modelEditor(panel, e=True, ns=show)
+        cmd.modelEditor(panel, e=True, cv=show)
+        cmd.modelEditor(panel, e=True, hu=show)
+        cmd.modelEditor(panel, e=True, gr=show)
+        cmd.modelEditor(panel, e=True, m=show)
 
-    def toggle_displayed_lights (self, mode, panel = cmds.getPanel(wf=True)):
+    def toggle_displayed_lights(self, mode, panel=cmd.getPanel(wf=True)):
 
-        if not (cmds.getPanel(to=panel) == 'modelPanel'):
-            cmds.warning('No Panel on Focus.')
+        if not (cmd.getPanel(to=panel) == 'modelPanel'):
+            cmd.warning('No Panel on Focus.')
             return
 
         # Toogle Silhouette Mode
         if (mode == 'all'):
 
-            if (cmds.modelEditor(panel, q=True, dl=True) == 'all'):
-                cmds.modelEditor(panel, e=True, dl='default')
+            if (cmd.modelEditor(panel, q=True, dl=True) == 'all'):
+                cmd.modelEditor(panel, e=True, dl='default')
             else:
-                cmds.modelEditor(panel, e=True, dl='all')
+                cmd.modelEditor(panel, e=True, dl='all')
             return
 
         # Toogle Flat Lighting Mode
         if (mode == 'flat'):
 
-            if (cmds.modelEditor(panel, q=True, dl=True) == 'flat'):
-                cmds.modelEditor(panel, e=True, dl='default')
+            if (cmd.modelEditor(panel, q=True, dl=True) == 'flat'):
+                cmd.modelEditor(panel, e=True, dl='default')
             else:
-                cmds.modelEditor(panel, e=True, dl='flat')
+                cmd.modelEditor(panel, e=True, dl='flat')
             return
 
     # -----------------------------------------------------------------------------
     # Toggle Viewport Renderer
     # -----------------------------------------------------------------------------
-    def toggle_viewport_renderer(self, panel=cmds.getPanel(wf=True)):
+    def toggle_viewport_renderer(self, panel=cmd.getPanel(wf=True)):
 
-        if not (cmds.getPanel(to=panel) == 'modelPanel'):
-            cmds.warning('No Panel on Focus.')
+        if not (cmd.getPanel(to=panel) == 'modelPanel'):
+            cmd.warning('No Panel on Focus.')
             return
 
-        if (cmds.modelEditor(panel, q=True, rnm=True) == 'vp2Renderer'):
-            cmds.modelEditor(panel, edit=True, rnm='base_OpenGL_Renderer')
-            cmds.setAttr('hardwareRenderingGlobals.multiSampleEnable', False)
-            cmds.setAttr('hardwareRenderingGlobals.ssaoEnable', False)
+        if (cmd.modelEditor(panel, q=True, rnm=True) == 'vp2Renderer'):
+            cmd.modelEditor(panel, edit=True, rnm='base_OpenGL_Renderer')
+            cmd.setAttr('hardwareRenderingGlobals.multiSampleEnable', False)
+            cmd.setAttr('hardwareRenderingGlobals.ssaoEnable', False)
         else:
-            cmds.modelEditor(panel, e=True, rnm='vp2Renderer')
-            cmds.setAttr('hardwareRenderingGlobals.multiSampleEnable', True)
-            cmds.setAttr('hardwareRenderingGlobals.ssaoEnable', True)
+            cmd.modelEditor(panel, e=True, rnm='vp2Renderer')
+            cmd.setAttr('hardwareRenderingGlobals.multiSampleEnable', True)
+            cmd.setAttr('hardwareRenderingGlobals.ssaoEnable', True)
 
     # -----------------------------------------------------------------------------
     # Toggle Resolution Gate
     # -----------------------------------------------------------------------------
-    def toggle_resolution_gate(self, panel=cmds.getPanel(wf=True)):
+    def toggle_resolution_gate(self, panel=cmd.getPanel(wf=True)):
 
-        if not (cmds.getPanel(to=panel) == 'modelPanel'):
-            cmds.warning('No Panel on Focus.')
+        if not (cmd.getPanel(to=panel) == 'modelPanel'):
+            cmd.warning('No Panel on Focus.')
             return
 
-        cam_name = cmds.modelEditor(panel, q=True, cam=True)
-        film_gate = cmds.camera(cam_name, q=True, dfg=True)
-        res_gate = cmds.camera(cam_name, q=True, dr=True)
+        cam_name = cmd.modelEditor(panel, q=True, cam=True)
+        film_gate = cmd.camera(cam_name, q=True, dfg=True)
+        res_gate = cmd.camera(cam_name, q=True, dr=True)
 
         if (res_gate):
-            cmds.camera(cam_name, e=True, dfg=False, dr=False, ovr=1.0)
+            cmd.camera(cam_name, e=True, dfg=False, dr=False, ovr=1.0)
         else:
-            cmds.camera(cam_name, e=True, dfg=False, dr=True, ovr=1.3)
-            cmds.setAttr(cam_name + 'Shape.displayGateMaskOpacity', 1)
-            cmds.setAttr(cam_name + 'Shape.displayGateMaskColor', 0.03, 0.03, 0.03, type="double3")
+            cmd.camera(cam_name, e=True, dfg=False, dr=True, ovr=1.3)
+            cmd.setAttr(cam_name + 'Shape.displayGateMaskOpacity', 1)
+            cmd.setAttr(cam_name + 'Shape.displayGateMaskColor', 0.03, 0.03, 0.03, type="double3")
 
     # -----------------------------------------------------------------------------
     # Set Default Viewport
     # -----------------------------------------------------------------------------
-    def set_default_viewport(self, panel=cmds.getPanel(wf=True)):
+    def set_default_viewport(self, panel=cmd.getPanel(wf=True)):
 
-        if not (cmds.getPanel(to=panel) == 'modelPanel'):
-            cmds.warning('No Panel on Focus.')
+        if not (cmd.getPanel(to=panel) == 'modelPanel'):
+            cmd.warning('No Panel on Focus.')
             return
 
-        cam_name = cmds.modelEditor(panel, q=True, cam=True)
-        film_gate = cmds.camera(cam_name, q=True, dfg=True)
-        res_gate = cmds.camera(cam_name, q=True, dr=True)
+        cam_name = cmd.modelEditor(panel, q=True, cam=True)
+        film_gate = cmd.camera(cam_name, q=True, dfg=True)
+        res_gate = cmd.camera(cam_name, q=True, dr=True)
 
-        cmds.modelEditor(panel, e=True, xr=False)
-        cmds.modelEditor(panel, e=True, wos=False)
-        cmds.modelEditor(panel, e=True, udm=False)
-        cmds.modelEditor(panel, e=True, dl='default')
-        cmds.modelEditor(panel, e=True, rnm='vp2Renderer')
-        cmds.setAttr('hardwareRenderingGlobals.multiSampleEnable', True)
-        cmds.setAttr('hardwareRenderingGlobals.ssaoEnable', True)
-        cmds.camera(cam_name, e=True, dfg=False, dr=False, ovr=1.0)
-        cmds.modelEditor(panel, e=True, gr=True)
+        cmd.modelEditor(panel, e=True, xr=False)
+        cmd.modelEditor(panel, e=True, wos=False)
+        cmd.modelEditor(panel, e=True, udm=False)
+        cmd.modelEditor(panel, e=True, dl='default')
+        cmd.modelEditor(panel, e=True, rnm='vp2Renderer')
+        cmd.setAttr('hardwareRenderingGlobals.multiSampleEnable', True)
+        cmd.setAttr('hardwareRenderingGlobals.ssaoEnable', True)
+        cmd.camera(cam_name, e=True, dfg=False, dr=False, ovr=1.0)
+        cmd.modelEditor(panel, e=True, gr=True)
 
     # -----------------------------------------------------------------------------
     # Set Tweo Side Lighting
     # -----------------------------------------------------------------------------
-    def set_two_side_lighting (self, panels = cmds.getPanel(type='modelPanel')):
+    def set_two_side_lighting(self, panels=cmd.getPanel(type='modelPanel')):
 
         for panel in panels:
-            cmds.modelEditor(panel, edit=True, tsl=True)
-
+            cmd.modelEditor(panel, edit=True, tsl=True)

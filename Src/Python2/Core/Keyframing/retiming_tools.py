@@ -1,7 +1,7 @@
 import maya.cmds as cmd
 
-from LaaScripts.Src.Constants import constants as c
-from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
+from LaaScripts.Src.Python2.Constants import constants as c
+from LaaScripts.Src.Python2.Utils.timeline_utils import TimelineUtils
 
 
 class RetimingTools(object):

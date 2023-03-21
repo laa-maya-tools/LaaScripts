@@ -12,8 +12,8 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 import maya.cmds as cmd
 import maya.mel as mel
 
-from LaaScripts.Src.Utils.widget_utils import WidgetUtils
-from LaaScripts.Src.Constants import constants as c
+from LaaScripts.Src.Python2.Utils.widget_utils import WidgetUtils
+from LaaScripts.Src.Python2.Constants import constants as c
 
 
 class TimelineUtils(object):
