@@ -303,5 +303,4 @@ class ChannelsFilter(object):
         mel.eval('toggleChannelBoxTimelineSync {0};'.format(state))
         mel.eval('toggleChannelBoxGraphEdSync {0};'.format(state))
 
-        print(state)
         info.show_info('CHANNELBOX SYNC')
