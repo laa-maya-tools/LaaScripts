@@ -12,9 +12,9 @@ VERSION:  v1.0.0 | Maya 2020 | Python 2
 import maya.cmds as cmd
 import maya.mel as mel
 
-from LaaScripts.Src.Constants import constants as c
-from LaaScripts.Src.Utils import info_utils as info
-from LaaScripts.Src.Utils.navigation_utils import NavigationUtils
+from LaaScripts.Src.Python2.Constants import constants as c
+from LaaScripts.Src.Python2.Utils import info_utils as info
+from LaaScripts.Src.Python2.Utils.navigation_utils import NavigationUtils
 
 
 class ChannelsFilter(object):

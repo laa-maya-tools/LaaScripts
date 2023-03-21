@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="retiming">
+    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="Ready for Python 2022">
+      <change afterPath="$PROJECT_DIR$/Src/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python3/Core/Navigation/channels_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python3/Core/Navigation/channels_filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotkeys/LaaScripts.mhk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Keyframing/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Keyframing/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Navigation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Navigation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Navigation/channels_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Navigation/channels_filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Playback/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Playback/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/trigger.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/trigger.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678983026188</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Ready for Python 2022">
+      <created>1679387250349</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679387250349</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -100,6 +113,7 @@
     <MESSAGE value="Project updated. Working in Anima." />
     <MESSAGE value="Adding new functionality" />
     <MESSAGE value="retiming" />
-    <option name="LAST_COMMIT_MESSAGE" value="retiming" />
+    <MESSAGE value="Ready for Python 2022" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ready for Python 2022" />
   </component>
 </project>

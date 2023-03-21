@@ -1,7 +1,10 @@
-from LaaScripts.Src.Core.Playback.playback_manager import PlaybackManager
-from LaaScripts.Src.Core.Playback.frame_marker import FrameMarker
-from LaaScripts.Src.Core.Playback.timeline_section import TimelineSection
+import LaaScripts.Src.Python2.Core.Playback.playback_manager
+import LaaScripts.Src.Python2.Core.Playback.frame_marker
+import LaaScripts.Src.Python2.Core.Playback.timeline_section
 
-playback_manager = PlaybackManager()
+_playback_manager = playback_manager.PlaybackManager()
+_frame_marker = frame_marker.FrameMarker()
+_timeline_section = timeline_section.TimelineSection()
+
 
 

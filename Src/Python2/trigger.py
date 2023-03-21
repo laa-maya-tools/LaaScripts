@@ -13,12 +13,14 @@ VERSION:  v1.0.0 | Maya 2022 | Python 3
 """
 from PySide2 import QtCore as cor
 
-from LaaScripts.Src.Core import Navigation
-from LaaScripts.Src.Core import Keyframing
-from LaaScripts.Src.Core import Playback
-from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
-from LaaScripts.Src.Utils.widget_utils import WidgetUtils
-from LaaScripts.Src.Constants import constants as c
+from LaaScripts.Src.Python2.Core import Navigation
+from LaaScripts.Src.Python2.Core import Keyframing
+from LaaScripts.Src.Python2.Core import Playback
+from LaaScripts.Src.Python2.Core import Prefs
+from LaaScripts.Src.Python2.Core import Viewport
+from LaaScripts.Src.Python2.Utils.timeline_utils import TimelineUtils
+from LaaScripts.Src.Python2.Utils.widget_utils import WidgetUtils
+from LaaScripts.Src.Python2.Constants import constants as c
 
 global LAA_FRAME_MARKER
 global LAA_TIMELINE_SECTION
