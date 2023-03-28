@@ -183,6 +183,15 @@ class Trigger(object):
     def toggle_polygons(self):
         self._viewport_manager.toggle_polygons()
 
+    def toggle_all_viewport_elements(self):
+        self._viewport_manager.toggle_all_viewport_elements()
+
+    def toggle_viewport_elements(self):
+        self._viewport_manager.toggle_viewport_elements()
+
+    def toggle_viewport_modes(self):
+        self._viewport_manager.toggle_viewport_modes()
+
     # =========================================================================
     # PLAYBACK
     # =========================================================================

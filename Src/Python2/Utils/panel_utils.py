@@ -19,6 +19,15 @@ from LaaScripts.Src.Python2.Constants import constants as c
 class PanelUtils(object):
 
     @staticmethod
+    def get_all_model_panels():
+        """
+        Gets the active panel.
+        :return: Panel.
+        :rtype: str
+        """
+        return cmd.getPanel(type='modelPanel') or []
+
+    @staticmethod
     def get_active_panel():
         """
         Gets the active panel.
@@ -30,11 +39,40 @@ class PanelUtils(object):
     @staticmethod
     def get_hovered_panel():
         """
-        Gets the panel under the cursor.
+        Gets the active panel.
         :return: Panel.
         :rtype: str
         """
         return cmd.getPanel(underPointer=True)
+
+    @staticmethod
+    def get_active_model_panel():
+        """
+        Gets the active panel.
+        :return: Panel.
+        :rtype: str
+        """
+        panel = cmd.getPanel(withFocus=True)
+        if not panel or 'modelPanel' not in panel:
+            return None
+        return panel
+
+    @staticmethod
+    def get_hovered_model_panel():
+        """
+        Gets the panel under the cursor.
+        :return: Panel.
+        :rtype: str
+        """
+        panel = cmd.getPanel(underPointer=True)
+        if not panel or 'modelPanel' not in panel:
+            return None
+        return panel
+
+    @staticmethod
+    def is_model_panel(panel):
+        if cmd.getPanel(typeOf=panel) == 'ModelPanel':
+            print('Model')
 
     @staticmethod
     def toggle_viewport_elements(elements_type):
@@ -61,8 +99,7 @@ class PanelUtils(object):
         user_cameras = [cam for cam in cmd.listRelatives(cmd.ls(cameras=1), parent=1) if cam not in default_cameras]
         return user_cameras
 
-
-    def show_all (self, show=True, panel = cmd.getPanel(wf=True)):
+    def show_all(self, show=True, panel=cmd.getPanel(wf=True)):
 
         if not (cmd.getPanel(to=panel) == 'modelPanel'):
             cmd.warning('No Panel on Focus.')
@@ -76,7 +113,7 @@ class PanelUtils(object):
         cmd.modelEditor(panel, e=True, gr=show)
         cmd.modelEditor(panel, e=True, m=show)
 
-    def toggle_displayed_lights (self, mode, panel = cmd.getPanel(wf=True)):
+    def toggle_displayed_lights(self, mode, panel=cmd.getPanel(wf=True)):
 
         if not (cmd.getPanel(to=panel) == 'modelPanel'):
             cmd.warning('No Panel on Focus.')
@@ -151,7 +188,18 @@ class PanelUtils(object):
         cmd.camera(cam_name, e=True, dfg=False, dr=False, ovr=1.0)
         cmd.modelEditor(panel, e=True, gr=True)
 
-    def set_two_side_lighting (self, panels = cmd.getPanel(type='modelPanel')):
+    def set_two_side_lighting(self, panels=cmd.getPanel(type='modelPanel')):
 
         for panel in panels:
             cmd.modelEditor(panel, edit=True, tsl=True)
+
+    @staticmethod
+    def set_viewport_mode(dl, xr, udm, wos, rnm, aa, ao, panel):
+        cmd.modelEditor(panel, edit=True, dl=dl)
+        cmd.modelEditor(panel, edit=True, xr=xr)
+        cmd.modelEditor(panel, edit=True, udm=udm)
+        cmd.modelEditor(panel, edit=True, wos=wos)
+        cmd.modelEditor(panel, edit=True, rnm=rnm)
+        cmd.setAttr('hardwareRenderingGlobals.multiSampleEnable', aa)
+        cmd.setAttr('hardwareRenderingGlobals.ssaoEnable', ao)
+
