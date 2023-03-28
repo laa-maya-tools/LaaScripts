@@ -68,7 +68,7 @@ class FrameMarker(wdg.QWidget):
         """
         markers = ''
 
-        for f, t in itertools.izip(self.markers[c.FRAMES], self.markers[c.TYPES]):
+        for f, t in zip(self.markers[c.FRAMES], self.markers[c.TYPES]):
             markers = markers + str(int(f)) + ',' + str(t) + '#'
 
         SceneData.save_scene_data(c.FRAME_MARKER_NODE, c.FRAME_MARKERS_ATTR, markers[:-1])

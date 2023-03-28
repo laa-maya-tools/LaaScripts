@@ -205,3 +205,4 @@ class LayerManager(object):
 if __name__ == '__main__':
     lm = LayerManager()
     lm.set_layer_color()
+

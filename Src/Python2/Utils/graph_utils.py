@@ -9,11 +9,22 @@ AUTHOR:   Leandro Adeodato
 VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 =============================================================================
 """
-import maya.cmd as cmd
-import maya.mel as mel
+import maya.cmds as cmd
 
 
-class GraphUtils (object):
+class GraphUtils(object):
+
+    @staticmethod
+    def get_graph_outliner():
+        return cmd.editor('graphEditor1GraphEd', q=True, mainListConnection=True)
+
+    @staticmethod
+    def get_selection_from_outliner():
+        return cmd.selectionConnection('graphEditor1FromOutliner', q=True, object=True)
+
+    @staticmethod
+    def get_selected_key_tangents():
+        return cmd.keyTangent(q=True, ott=True)
 
     @staticmethod
     def is_curve_selected():
@@ -79,12 +90,11 @@ class GraphUtils (object):
 
         return anim_channels
 
-
     def toggle_infinity_cycle(self, mode):
 
         anim_curves = self.list_anim_curves()
 
-        if anim_curves == None:
+        if anim_curves is None:
             return
 
         for curve in anim_curves:
@@ -101,7 +111,7 @@ class GraphUtils (object):
         """
         Applies the Euler Filter to the listed curves.
         """
-        anim_curves = self.list_anim_curves()
+        anim_curves = GraphUtils.list_anim_curves()
 
         if anim_curves is None:
             return
@@ -114,7 +124,7 @@ class GraphUtils (object):
         """
         Inserts key on selected/all animation curves.
         """
-        anim_curves = self.list_anim_curves()
+        anim_curves = GraphUtils.list_anim_curves()
         current_time = cmd.currentTime(q=True)
         cmd.setKeyframe(anim_curves, i=True, t=current_time)
 
@@ -141,22 +151,22 @@ class GraphUtils (object):
         """
         Toggles tangents between Break/Unify Modes.
         """
-        num_keys = self.count_selected_keys()
+        num_keys = GraphUtils.count_selected_keys()
         if num_keys == 0:
             return
         sel_keys = cmd.keyTangent(q=True, l=True)
-        cmd.keyTangent(l=not(sel_keys[0]))
+        cmd.keyTangent(l=not (sel_keys[0]))
 
     @staticmethod
     def toggle_tangent_weight():
         """
         Toggles tangents between Weighted/Non-Weighted tangents.
         """
-        num_keys = self.count_selected_keys()
+        num_keys = GraphUtils.count_selected_keys()
         if num_keys == 0:
             return
         sel_keys = cmd.keyTangent(q=True, wt=True)
-        cmd.keyTangent(wt=not(sel_keys[0]))
+        cmd.keyTangent(wt=not (sel_keys[0]))
 
     @staticmethod
     def toggle_view_modes():
@@ -186,7 +196,7 @@ class GraphUtils (object):
         """
         Toggles mute/unmute channel
         """
-        anim_channels = self.list_channels()
+        anim_channels = GraphUtils.list_channels()
         mute_state = cmd.mute(anim_channels[0], q=True)
 
         for channel in anim_channels:
@@ -195,15 +205,11 @@ class GraphUtils (object):
             else:
                 cmd.mute(channel)
 
-
-
     def bake_channel(self, sel_objs, sel_attrs):
         pass
 
-
     def toggle_isolate_curve(self, sel_objs, sel_attrs):
         pass
-
 
     def toggle_template_channel(self):
 
@@ -215,7 +221,7 @@ class GraphUtils (object):
 
         # Template selected/all anim curves
         for curve in anim_curves:
-            if (template_state):
+            if template_state:
                 cmd.setAttr(curve + '.ktv', l=False)
                 cmd.animCurveEditor('graphEditor1GraphEd', edit=True, dat='on')
             else:
@@ -225,7 +231,7 @@ class GraphUtils (object):
         # Lock selected/all channels
         for channel in anim_channels:
             try:
-                cmd.setAttr(channel, l=not(template_state))
+                cmd.setAttr(channel, l=not template_state)
             except:
                 cmd.warning('Referenced attributes cannot be locked/unlocked')
 

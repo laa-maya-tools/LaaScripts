@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="Python 2 scripts working.">
+    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="Added Hotkeys">
+      <change afterPath="$PROJECT_DIR$/Src/Python2/Core/Prefs/prefs_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Constants/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Constants/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Keyframing/retiming_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Keyframing/retiming_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Utils/panel_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Utils/panel_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python3/Core/Keyframing/retiming_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python3/Core/Keyframing/retiming_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Playback/frame_marker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Playback/frame_marker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Prefs/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Prefs/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/Utils/graph_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Utils/graph_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/trigger.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/trigger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python3/Core/Keyframing/layer_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python3/Core/Keyframing/layer_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python3/Utils/panel_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python3/Utils/panel_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +45,8 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Tools/LaaScripts&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.MayaSdkConfigurable&quot;
+    &quot;last_opened_file_path&quot;: &quot;F:/Tools&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
   }
 }</component>
   <component name="RunManager">
@@ -106,7 +109,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679405389521</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixed Info Module.">
+      <created>1679407597006</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1679407597006</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added Hotkeys">
+      <created>1679407634779</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1679407634779</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -127,6 +144,8 @@
     <MESSAGE value="Ready for Python 2022" />
     <MESSAGE value="Fixing Python for Maya 2020" />
     <MESSAGE value="Python 2 scripts working." />
-    <option name="LAST_COMMIT_MESSAGE" value="Python 2 scripts working." />
+    <MESSAGE value="Fixed Info Module." />
+    <MESSAGE value="Added Hotkeys" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Hotkeys" />
   </component>
 </project>

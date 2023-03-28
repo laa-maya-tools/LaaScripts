@@ -61,8 +61,7 @@ class PanelUtils(object):
         user_cameras = [cam for cam in cmd.listRelatives(cmd.ls(cameras=1), parent=1) if cam not in default_cameras]
         return user_cameras
 
-
-    def show_all (self, show=True, panel = cmd.getPanel(wf=True)):
+    def show_all(self, show=True, panel=cmd.getPanel(wf=True)):
 
         if not (cmd.getPanel(to=panel) == 'modelPanel'):
             cmd.warning('No Panel on Focus.')
@@ -76,13 +75,13 @@ class PanelUtils(object):
         cmd.modelEditor(panel, e=True, gr=show)
         cmd.modelEditor(panel, e=True, m=show)
 
-    def toggle_displayed_lights (self, mode, panel = cmd.getPanel(wf=True)):
+    def toggle_displayed_lights(self, mode, panel=cmd.getPanel(wf=True)):
 
         if not (cmd.getPanel(to=panel) == 'modelPanel'):
             cmd.warning('No Panel on Focus.')
             return
 
-        # Toogle Silhouette Mode
+        # Toggle Silhouette Mode
         if mode == 'all':
             if cmd.modelEditor(panel, q=True, dl=True) == 'all':
                 cmd.modelEditor(panel, e=True, dl='default')
@@ -90,10 +89,9 @@ class PanelUtils(object):
                 cmd.modelEditor(panel, e=True, dl='all')
             return
 
-        # Toogle Flat Lighting Mode
+        # Toggle Flat Lighting Mode
         if mode == 'flat':
-
-            if (cmd.modelEditor(panel, q=True, dl=True) == 'flat'):
+            if cmd.modelEditor(panel, q=True, dl=True) == 'flat':
                 cmd.modelEditor(panel, e=True, dl='default')
             else:
                 cmd.modelEditor(panel, e=True, dl='flat')
@@ -105,7 +103,7 @@ class PanelUtils(object):
             cmd.warning('No Panel on Focus.')
             return
 
-        if (cmd.modelEditor(panel, q=True, rnm=True) == 'vp2Renderer'):
+        if cmd.modelEditor(panel, q=True, rnm=True) == 'vp2Renderer':
             cmd.modelEditor(panel, edit=True, rnm='base_OpenGL_Renderer')
             cmd.setAttr('hardwareRenderingGlobals.multiSampleEnable', False)
             cmd.setAttr('hardwareRenderingGlobals.ssaoEnable', False)
@@ -151,8 +149,7 @@ class PanelUtils(object):
         cmd.camera(cam_name, e=True, dfg=False, dr=False, ovr=1.0)
         cmd.modelEditor(panel, e=True, gr=True)
 
-    def set_two_side_lighting (self, panels = cmd.getPanel(type='modelPanel')):
+    def set_two_side_lighting(self, panels=cmd.getPanel(type='modelPanel')):
 
         for panel in panels:
             cmd.modelEditor(panel, edit=True, tsl=True)
-

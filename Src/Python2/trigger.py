@@ -40,6 +40,7 @@ class Trigger(object):
         self._timeline_section = Playback.timeline_section.TimelineSection()
         self._hotkey_manager = Prefs.hotkey_manager.HotkeyManager()
         self._viewport_manager = Viewport.viewport_manager.ViewportManager()
+        self._prefs_manager = Prefs.prefs_manager.PrefsManager()
 
     # =========================================================================
     # NAVIGATION
@@ -118,6 +119,30 @@ class Trigger(object):
     # =========================================================================
     def toggle_hotkey_sets(self):
         self._hotkey_manager.toggle_hotkey_sets()
+
+    def set_stepped_tangents(self):
+        self._prefs_manager.set_tangents('linear', 'step')
+
+    def set_linear_tangents(self):
+        self._prefs_manager.set_tangents('linear', 'linear')
+
+    def set_auto_tangents(self):
+        self._prefs_manager.set_tangents('auto', 'auto')
+
+    def toggle_tangents(self):
+        self._prefs_manager.toggle_tangents()
+
+    def set_timeline_height_1x(self):
+        self._prefs_manager.set_timeline_height(32)
+
+    def set_timeline_height_2x(self):
+        self._prefs_manager.set_timeline_height(64)
+
+    def set_timeline_height_4x(self):
+        self._prefs_manager.set_timeline_height(128)
+
+    def toggle_timeline_height(self):
+        self._prefs_manager.toggle_timeline_height()
 
     # =========================================================================
     # VIEWPORT
