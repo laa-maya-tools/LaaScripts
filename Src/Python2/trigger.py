@@ -139,6 +139,17 @@ class Trigger(object):
     def diverge_from_buffer(self):
         self._curve_tools.diverge_from_buffer()
 
+    def toggle_break_tangents(self):
+        self._curve_tools.toggle_break_tangents()
+
+    def reverse_keys(self):
+        self._curve_tools.reverse_keys()
+
+    def toggle_infinity_modes(self):
+        self._curve_tools.toggle_infinity_modes()
+
+
+
     # =========================================================================
     # PREFS
     # =========================================================================
@@ -208,6 +219,9 @@ class Trigger(object):
     def toggle_polygons(self):
         self._viewport_manager.toggle_polygons()
 
+    def toggle_resolution_gate(self):
+        self._viewport_manager.toggle_resolution_gate()
+
     def toggle_all_viewport_elements(self):
         self._viewport_manager.toggle_all_viewport_elements()
 
@@ -219,6 +233,12 @@ class Trigger(object):
 
     def toggle_all_viewport_elements(self):
         self._viewport_manager.toggle_all_viewport_elements()
+
+    def toggle_perspective_cameras(self):
+        self._viewport_manager.toggle_perspective_cameras()
+
+    def toggle_ortographic_cameras(self):
+        self._viewport_manager.toggle_ortographic_cameras()
 
     # =========================================================================
     # PLAYBACK

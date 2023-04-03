@@ -71,8 +71,10 @@ class PanelUtils(object):
 
     @staticmethod
     def is_model_panel(panel):
-        if cmd.getPanel(typeOf=panel) == 'ModelPanel':
-            print('Model')
+        if cmd.getPanel(typeOf=panel) == 'modelPanel':
+            return True
+        else:
+            return False
 
     @staticmethod
     def toggle_viewport_elements(elements_type):
@@ -151,7 +153,8 @@ class PanelUtils(object):
             cmd.setAttr('hardwareRenderingGlobals.multiSampleEnable', True)
             cmd.setAttr('hardwareRenderingGlobals.ssaoEnable', True)
 
-    def toggle_resolution_gate(self, panel=cmd.getPanel(wf=True)):
+    @staticmethod
+    def toggle_resolution_gate(panel=cmd.getPanel(wf=True)):
 
         if not (cmd.getPanel(to=panel) == 'modelPanel'):
             cmd.warning('No Panel on Focus.')

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="Fixing Bug when switch viewport modes.">
+    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="Curve Tools added.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/Constants/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Constants/constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Keyframing/curve_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Keyframing/curve_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Playback/playback_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Playback/playback_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Viewport/viewport_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Viewport/viewport_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/Utils/panel_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Utils/panel_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Python2/trigger.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/trigger.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680018302624</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Curve Tools added.">
+      <created>1680519711487</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1680519711487</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,6 +167,7 @@
     <MESSAGE value="Added Hotkeys" />
     <MESSAGE value="toggle_timeline_height and toggle_tangents added." />
     <MESSAGE value="Fixing Bug when switch viewport modes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing Bug when switch viewport modes." />
+    <MESSAGE value="Curve Tools added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Curve Tools added." />
   </component>
 </project>

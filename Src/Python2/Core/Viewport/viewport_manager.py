@@ -70,6 +70,10 @@ class ViewportManager(object):
         msg = PanelUtils.toggle_viewport_elements(c.POLYGONS)
         info.show_info(msg)
 
+    def toggle_resolution_gate(self):
+        msg = PanelUtils.toggle_resolution_gate()
+        info.show_info(msg)
+
     def toggle_viewport_modes(self):
         hovered_panel = PanelUtils.get_hovered_model_panel()
         active_panel = PanelUtils.get_active_model_panel()
@@ -157,8 +161,60 @@ class ViewportManager(object):
                 cmd.modelEditor(panel, edit=True, nc=True)
                 info.show_info('SHOW: All Elements')
 
+    def toggle_perspective_cameras(self):
+        current_cam = cmd.lookThru(q=True)
+        all_cams = cmd.listCameras(p=True)
+        next_cam = None
+
+        for i, cam in enumerate(all_cams):
+            if current_cam == all_cams[-1]:
+                next_cam = all_cams[0]
+            elif current_cam == all_cams[i]:
+                next_cam = all_cams[i + 1]
+
+        cmd.lookThru(next_cam)
+        info.show_info('CAM: {0}'.format(next_cam))
+
+    def toggle_ortographic_cameras(self):
+        current_panel = PanelUtils.get_hovered_panel()
+        if not current_panel:
+            current_panel = PanelUtils.get_active_panel()
+
+        if PanelUtils.is_model_panel(current_panel):
+            if cmd.modelPanel(current_panel, q=True, cam=True) == 'persp':
+                mel.eval('switchModelView side;')
+                info.show_info('CAM: Side View')
+            elif cmd.modelPanel(current_panel, q=True, cam=True) == 'side':
+                mel.eval('switchModelView front;')
+                info.show_info('CAM: Front View')
+            elif cmd.modelPanel(current_panel, q=True, cam=True) == 'front':
+                mel.eval('switchModelView top;')
+                info.show_info('CAM: Top View')
+            else:
+                mel.eval('switchModelView persp;')
+                info.show_info('CAM: Persp View')
+        else:
+            info.show_info('Panel not valid')
+
+        # if ($currentPanel == "")
+        #     $currentPanel = `getPanel - withFocus`;
+        #
+        # if (`getPanel - to $currentPanel` == "modelPanel")
+        #     {
+        #     if (`modelPanel - q - cam $currentPanel` == "persp")
+        #     switchModelView
+        #     side;
+        #     else if (`modelPanel - q - cam $currentPanel` == "side")
+        #     switchModelView front;
+        #     else if (`modelPanel -q -cam $currentPanel` == "front")
+        #     switchModelView top;
+        #     else
+        #     switchModelView persp;
+        #     }
+        # else
+        #     error("I’m sorry, but that is not a valid camera panel.")
+
 
 if __name__ == '__main__':
     vm = ViewportManager()
-    vm.toggle_all_viewport_elements()
-
+    vm.toggle_resolution_gate()
