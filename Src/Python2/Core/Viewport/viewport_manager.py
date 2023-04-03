@@ -100,7 +100,8 @@ class ViewportManager(object):
                         PanelUtils.set_viewport_mode('default', True, True, False, 'vp2Renderer', True, True, panel)
                         info.show_info('Viewport Mode: XRAY')
                     elif xray:
-                        PanelUtils.set_viewport_mode('default', False, False, False, 'base_OpenGL_Renderer', False, False, panel)
+                        PanelUtils.set_viewport_mode('default', False, False, False, 'base_OpenGL_Renderer', False,
+                                                     False, panel)
                         info.show_info('Viewport Mode: DEFAULT RENDERER')
                     else:
                         PanelUtils.set_viewport_mode('default', False, True, True, 'vp2Renderer', True, True, panel)
@@ -112,7 +113,8 @@ class ViewportManager(object):
                             PanelUtils.set_viewport_mode('flat', False, False, False, 'vp2Renderer', True, True, panel)
                             info.show_info('Viewport Mode: FLAT LIGHTING')
                         else:
-                            PanelUtils.set_viewport_mode('default', False, False, False, 'vp2Renderer', True, True, panel)
+                            PanelUtils.set_viewport_mode('default', False, False, False, 'vp2Renderer', True, True,
+                                                         panel)
                             info.show_info('Viewport Mode: VIEWPORT 2.0')
                     elif light_type == 'flat':
                         PanelUtils.set_viewport_mode('all', False, False, False, 'vp2Renderer', True, True, panel)
@@ -122,4 +124,41 @@ class ViewportManager(object):
                         info.show_info('Viewport Mode: NO TEXTURE')
 
     def toggle_all_viewport_elements(self):
-        pass
+        panel = cmd.getPanel(wf=True)
+        if not (cmd.getPanel(to=panel) == 'modelPanel'):
+            return
+        curves_vis = cmd.modelEditor(panel, q=True, nc=True)
+        locators_vis = cmd.modelEditor(panel, q=True, lc=True)
+        if locators_vis:
+            cmd.modelEditor(panel, edit=True, alo=False)
+            cmd.modelEditor(panel, edit=True, m=False)
+            cmd.modelEditor(panel, edit=True, hu=False)
+            cmd.modelEditor(panel, edit=True, gr=False)
+            cmd.modelEditor(panel, edit=True, cv=False)
+            cmd.modelEditor(panel, edit=True, nc=True)
+            cmd.modelEditor(panel, edit=True, pm=True)
+            info.show_info('SHOW: Curves and Geo')
+        else:
+            if curves_vis:
+                cmd.modelEditor(panel, edit=True, alo=False)
+                cmd.modelEditor(panel, edit=True, m=False)
+                cmd.modelEditor(panel, edit=True, hu=False)
+                cmd.modelEditor(panel, edit=True, gr=False)
+                cmd.modelEditor(panel, edit=True, cv=False)
+                cmd.modelEditor(panel, edit=True, nc=False)
+                cmd.modelEditor(panel, edit=True, pm=True)
+                info.show_info('SHOW: Only Geo')
+            else:
+                cmd.modelEditor(panel, edit=True, alo=True)
+                cmd.modelEditor(panel, edit=True, m=True)
+                cmd.modelEditor(panel, edit=True, hu=True)
+                cmd.modelEditor(panel, edit=True, gr=True)
+                cmd.modelEditor(panel, edit=True, cv=True)
+                cmd.modelEditor(panel, edit=True, nc=True)
+                info.show_info('SHOW: All Elements')
+
+
+if __name__ == '__main__':
+    vm = ViewportManager()
+    vm.toggle_all_viewport_elements()
+

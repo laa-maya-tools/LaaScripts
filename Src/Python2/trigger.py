@@ -34,6 +34,7 @@ class Trigger(object):
 
         self._smart_manipulator = Navigation.smart_manipulator.SmartManipulator()
         self._channels_filter = Navigation.channels_filter.ChannelsFilter()
+        self._curve_tools = Keyframing.curve_tools.CurveTools()
         self._retiming_tools = Keyframing.retiming_tools.RetimingTools()
         self._playback_manager = Playback.playback_manager.PlaybackManager()
         self._frame_marker = Playback.frame_marker.FrameMarker()
@@ -114,6 +115,30 @@ class Trigger(object):
     def remove_inbetween(self, time_increment=1):
         self._retiming_tools.remove_inbetween(time_increment)
 
+    def set_smart_key(self):
+        self._curve_tools.set_smart_key()
+
+    def delete_redundant(self):
+        self._curve_tools.delete_redundant()
+
+    def push_keys(self):
+        self._curve_tools.push_keys()
+
+    def pull_keys(self):
+        self._curve_tools.pull_keys()
+
+    def zero_out_keys(self):
+        self._curve_tools.zero_out_keys()
+
+    def snap_to_buffer(self):
+        self._curve_tools.snap_to_buffer()
+
+    def converge_to_buffer(self):
+        self._curve_tools.converge_to_buffer()
+
+    def diverge_from_buffer(self):
+        self._curve_tools.diverge_from_buffer()
+
     # =========================================================================
     # PREFS
     # =========================================================================
@@ -191,6 +216,9 @@ class Trigger(object):
 
     def toggle_viewport_modes(self):
         self._viewport_manager.toggle_viewport_modes()
+
+    def toggle_all_viewport_elements(self):
+        self._viewport_manager.toggle_all_viewport_elements()
 
     # =========================================================================
     # PLAYBACK
@@ -300,6 +328,5 @@ class Trigger(object):
     #         Trigger.load_timeline_sections()
     #         LAA_TIMELINE_SECTION.remove_frame_markers()
 
-
-
-
+    def playblast_shot(self):
+        self._playback_manager.playblast_shot()

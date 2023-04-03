@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="toggle_timeline_height and toggle_tangents added.">
+    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="Fixing Bug when switch viewport modes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Keyframing/curve_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Keyframing/curve_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Playback/playback_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Playback/playback_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Viewport/viewport_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Viewport/viewport_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Utils/panel_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Utils/panel_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Python2/trigger.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/trigger.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +24,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MCProjectSettings">
-    <option name="selectedSdk" value="C:\Program Files\Autodesk\Maya2022\bin\mayapy.exe" />
+    <option name="selectedSdk" value="C:\Program Files\Autodesk\Maya2020\bin\mayapy.exe" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -37,14 +38,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "F:/Tools",
-    "settings.editor.selected.configurable": "settings.MayaSdkConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/leandro.adeodato/Documents/maya/2022/scripts/LaaShelf&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.MayaSdkConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Maya2022" type="MAYACHARM_RUN_CONFIGURATION" factoryName="MAYACHARM_RUN_CONFIGURATION">
       <option name="executionType" value="CODE" />
@@ -126,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680013130578</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fixing Bug when switch viewport modes.">
+      <created>1680018302624</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680018302624</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,6 +158,7 @@
     <MESSAGE value="Fixed Info Module." />
     <MESSAGE value="Added Hotkeys" />
     <MESSAGE value="toggle_timeline_height and toggle_tangents added." />
-    <option name="LAST_COMMIT_MESSAGE" value="toggle_timeline_height and toggle_tangents added." />
+    <MESSAGE value="Fixing Bug when switch viewport modes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing Bug when switch viewport modes." />
   </component>
 </project>

@@ -163,10 +163,10 @@ class PlaybackManager(object):
                 if self._user_data[c.INFO_ENABLED]:
                     info.show_info('Next Marker >> {0}'.format(int(markers[0])))
                 return
-            if markers[i] <= current_time < markers[i+1]:
-                TimelineUtils.set_current_time(markers[i+1])
+            if markers[i] <= current_time < markers[i + 1]:
+                TimelineUtils.set_current_time(markers[i + 1])
                 if self._user_data[c.INFO_ENABLED]:
-                    info.show_info('Next Marker >> {0}'.format(int(markers[i+1])))
+                    info.show_info('Next Marker >> {0}'.format(int(markers[i + 1])))
                 return
 
     def go_to_the_prev_marker(self, marker_type):
@@ -182,19 +182,30 @@ class PlaybackManager(object):
                 if self._user_data[c.INFO_ENABLED]:
                     info.show_info('{0} << Prev Marker'.format(int(markers[-1])))
                 return
-            if markers[i] < current_time <= markers[i+1]:
+            if markers[i] < current_time <= markers[i + 1]:
                 TimelineUtils.set_current_time(markers[i])
                 if self._user_data[c.INFO_ENABLED]:
                     info.show_info('{0} << Prev Marker'.format(int(markers[i])))
                 return
 
+    def playblast_shot(self):
 
+        scene_full_name = cmd.file(query=True, sn=True)
+        scene_name_ext = scene_full_name.split('/')[-1]
+        scene_name = scene_name_ext.split('.')[0]
+        scene_path = scene_full_name.replace(scene_name_ext, '')
+        video_name = scene_path + scene_name + '.mov'
 
+        tml_limit = TimelineUtils.get_playback_range()
+        start_frame = cmd.playbackOptions(q=True, min=True)
+        end_frame = cmd.playbackOptions(q=True, max=True)
 
+        if tml_limit[0] != tml_limit[1] - 1:
+            start_frame = tml_limit[0]
+            end_frame = tml_limit[1] - 1
 
+        aPlayBackSliderPython = mel.eval('$tmpVar=$gPlayBackSlider')
+        audio_node = cmd.timeControl(aPlayBackSliderPython, q=True, s=True)
 
-
-
-
-
-
+        cmd.playblast(fmt='qt', f=video_name, s=audio_node, fo=True, sqt=False, cc=True, v=True, orn=False, fp=4,
+                       p=100, c='H.264', qlt=100, wh=[1920, 1080], st=start_frame, et=end_frame)
