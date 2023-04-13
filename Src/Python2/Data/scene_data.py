@@ -36,6 +36,7 @@ class SceneData(object):
         :param str node_name: Name of the node.
         :param str node_type: Node type.
         """
+        selection = cmd.ls(sl=True)
         nodes = node_name.split('|')
 
         for i, node in enumerate(nodes):
@@ -44,6 +45,8 @@ class SceneData(object):
                     cmd.createNode(node_type, n=node, p=None)
                 else:
                     cmd.createNode(node_type, n=node, p=nodes[i-1])
+        if selection:
+            cmd.select(selection)
 
     @staticmethod
     def delete_node(node_name):
