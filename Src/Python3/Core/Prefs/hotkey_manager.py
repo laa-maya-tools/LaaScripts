@@ -10,6 +10,10 @@ from LaaScripts.Src.Python3.Utils import info_utils as info
 
 class HotkeyManager(object):
 
+    @staticmethod
+    def update_hotkeys():
+        print('update')
+
     def get_current_hotkey_set(self):
         """
         Get the current hotkey set.
@@ -58,6 +62,5 @@ class HotkeyManager(object):
 
 
 if __name__ == '__main__':
-    hm = HotkeyManager()
-    hm.toggle_hotkey_sets()
+    HotkeyManager.update_hotkeys()
 

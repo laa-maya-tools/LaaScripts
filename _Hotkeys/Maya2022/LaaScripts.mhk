@@ -6,563 +6,494 @@
 // The runtime commands referenced by the hotkeys
 //
 runTimeCommand
-	-label ""
-	-annotation "LaaGoToTheNextKey"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Playback"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.go_to_the_next_key()\n")
-	LaaGoToTheNextKey;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaAddBreakdownMarkers"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Playback"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.add_breakdown_markers()\n")
-	LaaAddBreakdownMarkers;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaPasteKeys"
-	-longAnnotation ""
+	-annotation "LaaDeleteRedundant"
 	-category "Custom Scripts.Laa Keyframing"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.paste()")
-	LaaPasteKeys;
+	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.delete_redundant()")
+	LaaDeleteRedundant;
 
 runTimeCommand
-	-label ""
-	-annotation "LaaCutKeys"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Keyframing"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.cut_keys()")
-	LaaCutKeys;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaFilterScaleChannelsOnOnes"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Navigation"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.filter_scale_channels_on_ones()\n\n")
-	LaaFilterScaleChannelsOnOnes;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaToggleCurves"
-	-longAnnotation ""
+	-annotation "LaaToggleResolutionGate"
 	-category "Custom Scripts.Laa Viewport"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.toggle_curves();\n")
-	LaaToggleCurves;
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_resolution_gate(); cmd.undoInfo(swf=True)\n")
+	LaaToggleResolutionGate;
 
 runTimeCommand
-	-label ""
-	-annotation "LaaGoToThePrevFrame"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Playback"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.go_to_the_prev_frame()\n")
-	LaaGoToThePrevFrame;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaFilterRotateChannelsOnThrees"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Navigation"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.filter_rotate_channels_on_threes()\n\n")
-	LaaFilterRotateChannelsOnThrees;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaSwitchRotateManipulator"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Navigation"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.switch_rotate_manipulator()\n\n")
-	LaaSwitchRotateManipulator;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaToggleGrid"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Viewport"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.toggle_grid();\n")
-	LaaToggleGrid;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaAddInbetweeenMarkers"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Playback"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.add_inbetween_markers()\n")
-	LaaAddInbetweeenMarkers;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaToggleJoints"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Viewport"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.toggle_joints();\n")
-	LaaToggleJoints;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaFilterScaleChannelsOnThrees"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Navigation"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.filter_scale_channels_on_threes()\n\n")
-	LaaFilterScaleChannelsOnThrees;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaFilterAllChannels"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Navigation"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.filter_all_channels()")
-	LaaFilterAllChannels;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaToggleHotkeySets"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Prefs"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.toggle_hotkey_sets()")
-	LaaToggleHotkeySets;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaRemoveFrameMarkers"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Playback"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.remove_frame_markers()\n")
-	LaaRemoveFrameMarkers;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaToggleLocators"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Viewport"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.toggle_locators();\n")
-	LaaToggleLocators;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaGoToThePrevKeyMarker"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Playback"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.go_to_the_prev_key_marker()\n")
-	LaaGoToThePrevKeyMarker;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaSwitchScaleManipulator"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Navigation"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.switch_scale_manipulator()\n\n")
-	LaaSwitchScaleManipulator;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaToggleXray"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Viewport"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.toggle_xray();\n")
-	LaaToggleXray;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaFilterTranslateChannelsOnThrees"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Navigation"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.filter_translate_channels_on_threes()\n\n")
-	LaaFilterTranslateChannelsOnThrees;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaToggleDefaultMaterial"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Viewport"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.toggle_default_material();\n")
-	LaaToggleDefaultMaterial;
-
-runTimeCommand
-	-label ""
 	-annotation "LaaToggleHandles"
-	-longAnnotation ""
 	-category "Custom Scripts.Laa Viewport"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.toggle_handles();")
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_handles(); cmd.undoInfo(swf=True)\n")
 	LaaToggleHandles;
 
 runTimeCommand
-	-label ""
-	-annotation "LaaAddKeyMarkers"
-	-longAnnotation ""
+	-annotation "LaaGooToThePrevMarker"
 	-category "Custom Scripts.Laa Playback"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.add_key_markers()\n")
-	LaaAddKeyMarkers;
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.go_to_the_prev_marker(); cmd.undoInfo(swf=True)\n")
+	LaaGooToThePrevMarker;
 
 runTimeCommand
-	-label ""
-	-annotation "LaaFilterTranslateChannelsOnOnes"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Navigation"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
+	-annotation "LaaToggleHotkeySets"
+	-category "Custom Scripts.Laa Prefs"
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.filter_translate_channels_on_ones()\n\n")
-	LaaFilterTranslateChannelsOnOnes;
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_hotkey_sets(); cmd.undoInfo(swf=True)\n")
+	LaaToggleHotkeySets;
 
 runTimeCommand
-	-label ""
-	-annotation "LaaGoToTheNextMarker"
-	-longAnnotation ""
+	-annotation "LaaAddBreakdownMarkers"
 	-category "Custom Scripts.Laa Playback"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.go_to_the_next_marker()\n")
-	LaaGoToTheNextMarker;
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.add_breakdown_markers(); cmd.undoInfo(swf=True)\n")
+	LaaAddBreakdownMarkers;
 
 runTimeCommand
-	-label ""
-	-annotation "LaaToggleWireframe"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Viewport"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.toggle_wireframe();\n")
-	LaaToggleWireframe;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaRemoveInbetween"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Keyframing"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.remove_inbetween()\n")
-	LaaRemoveInbetween;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaTogglePolygons"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Viewport"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.toggle_polygons();")
-	LaaTogglePolygons;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaAddInbetween"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Keyframing"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.add_inbetween()\n")
-	LaaAddInbetween;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaGoToThePrevKey"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Playback"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.go_to_the_prev_key()\n")
-	LaaGoToThePrevKey;
-
-runTimeCommand
-	-label ""
-	-annotation "LaaFilterRotateChannelsOnOnes"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Navigation"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
-	-hotkeyCtx ""
-	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.filter_rotate_channels_on_ones()\n\n")
-	LaaFilterRotateChannelsOnOnes;
-
-runTimeCommand
-	-label ""
 	-annotation "LaaCopyKeys"
-	-longAnnotation ""
 	-category "Custom Scripts.Laa Keyframing"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "python"
 	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.copy_keys()")
 	LaaCopyKeys;
 
 runTimeCommand
-	-label ""
-	-annotation "LaaGoToTheNextKeyMarker"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Playback"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
+	-annotation "LaaCutKeys"
+	-category "Custom Scripts.Laa Keyframing"
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.go_to_the_next_key_marker()\n")
+	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.cut_keys()")
+	LaaCutKeys;
+
+runTimeCommand
+	-annotation "LaaSetLinearTangents"
+	-category "Custom Scripts.Laa Prefs"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.set_linear_tangents(); cmd.undoInfo(swf=True)\n")
+	LaaSetLinearTangents;
+
+runTimeCommand
+	-annotation "LaaFilterTranslateChannelsOnOnes"
+	-category "Custom Scripts.Laa Navigation"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.filter_translate_channels_on_ones(); cmd.undoInfo(swf=True)\n")
+	LaaFilterTranslateChannelsOnOnes;
+
+runTimeCommand
+	-annotation "LaaToggleTimelineHight"
+	-category "Custom Scripts.Laa Prefs"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_timeline_height(); cmd.undoInfo(swf=True)\n")
+	LaaToggleTimelineHeight;
+
+runTimeCommand
+	-annotation "LaaToggleLocators"
+	-category "Custom Scripts.Laa Viewport"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_locators(); cmd.undoInfo(swf=True)\n")
+	LaaToggleLocators;
+
+runTimeCommand
+	-annotation "LaaGoToTheNextFrame"
+	-category "Custom Scripts.Laa Playback"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.go_to_the_next_frame(); cmd.undoInfo(swf=True)\n")
+	LaaGoToTheNextFrame;
+
+runTimeCommand
+	-annotation "LaaFilterAllChannels"
+	-category "Custom Scripts.Laa Navigation"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.filter_all_channels(); cmd.undoInfo(swf=True)\n")
+	LaaFilterAllChannels;
+
+runTimeCommand
+	-annotation "LaaTogglePolygons"
+	-category "Custom Scripts.Laa Viewport"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_polygons(); cmd.undoInfo(swf=True)\n")
+	LaaTogglePolygons;
+
+runTimeCommand
+	-annotation "LaaRemoveFrameMarkers"
+	-category "Custom Scripts.Laa Playback"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.remove_frame_markers(); cmd.undoInfo(swf=True)\n")
+	LaaRemoveFrameMarkers;
+
+runTimeCommand
+	-annotation "LaaTogglePerspectiveCameras"
+	-category "Custom Scripts.Laa Viewport"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_perspective_cameras(); cmd.undoInfo(swf=True)\n\n")
+	LaaTogglePerspectiveCameras;
+
+runTimeCommand
+	-annotation "LaaLoadAnimbot"
+	-category "Custom Scripts.Laa Tools"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import Anim_MAD.Utils.info_utils as info\nimport animBot\n\nanimBot.toggle()\ninfo.show_info('AnimBot Loaded')")
+	LaaLoadAnimbot;
+
+runTimeCommand
+	-annotation "LaaToggleCurves"
+	-category "Custom Scripts.Laa Viewport"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_curves(); cmd.undoInfo(swf=True)\n")
+	LaaToggleCurves;
+
+runTimeCommand
+	-annotation "LaaSetAutoTangents"
+	-category "Custom Scripts.Laa Prefs"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.set_auto_tangents(); cmd.undoInfo(swf=True)\n")
+	LaaSetAutoTangents;
+
+runTimeCommand
+	-annotation "LaaFilterScaleChannelsOnOnes"
+	-category "Custom Scripts.Laa Navigation"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.filter_scale_channels_on_ones(); cmd.undoInfo(swf=True)\n")
+	LaaFilterScaleChannelsOnOnes;
+
+runTimeCommand
+	-annotation "LaaFilterRotateChannelsOnThrees"
+	-category "Custom Scripts.Laa Navigation"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.filter_rotate_channels_on_threes(); cmd.undoInfo(swf=True)\n")
+	LaaFilterRotateChannelsOnThrees;
+
+runTimeCommand
+	-annotation "LaaLoadSharedStudioLib"
+	-category "Custom Scripts.Laa Tools"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import os\nimport sys\nimport Anim_MAD.Utils.info_utils as info\n    \nif not os.path.exists(r'F:\\Tools\\__3rdPart\\Python\\studiolibrary\\src'):\n    raise IOError(r'The source path \"F:\\Tools\\__3rdPart\\Python\\studiolibrary-2.9.11\\src\" does not exist!')\n    \nif r'F:\\Tools\\__3rdPart\\Python\\studiolibrary\\src' not in sys.path:\n    sys.path.insert(0, r'F:\\Tools\\__3rdPart\\Python\\studiolibrary-2.9.11\\src')\n\nimport studiolibrary\nstudiolibrary.main(name=\"Shared\", path=\"F:/Assets_Mad/Library\")\n\ninfo.show_info('Studio Library - Lea [SHARED]')\n")
+	LaaLoadSharedStudioLib;
+
+runTimeCommand
+	-annotation "LaaGoToThePrevFrame"
+	-category "Custom Scripts.Laa Playback"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.go_to_the_prev_frame(); cmd.undoInfo(swf=True)\n")
+	LaaGoToThePrevFrame;
+
+runTimeCommand
+	-annotation "LaaReverseKeys"
+	-category "Custom Scripts.Laa Keyframing"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.reverse_keys()")
+	LaaReverseKeys;
+
+runTimeCommand
+	-annotation "LaaSetSmartKey"
+	-category "Custom Scripts.Laa Keyframing"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.set_smart_key()")
+	LaaSetSmartKey;
+
+runTimeCommand
+	-annotation "LaaAddKeyMarkers"
+	-category "Custom Scripts.Laa Playback"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.add_key_markers(); cmd.undoInfo(swf=True)\n")
+	LaaAddKeyMarkers;
+
+runTimeCommand
+	-annotation "LaaSwitchRotateManipulator"
+	-category "Custom Scripts.Laa Navigation"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.switch_rotate_manipulator(); cmd.undoInfo(swf=True)\n")
+	LaaSwitchRotateManipulator;
+
+runTimeCommand
+	-annotation "LaaRemoveInbetween"
+	-category "Custom Scripts.Laa Keyframing"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.remove_inbetween()\n\n")
+	LaaRemoveInbetween;
+
+runTimeCommand
+	-annotation "LaaSetSteppedTangents"
+	-category "Custom Scripts.Laa Prefs"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.set_stepped_tangents(); cmd.undoInfo(swf=True)\n\n")
+	LaaSetSteppedTangents;
+
+runTimeCommand
+	-annotation "LaaGoToThePrevKeyMarker"
+	-category "Custom Scripts.Laa Playback"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.go_to_the_prev_key_marker(); cmd.undoInfo(swf=True)\n\n")
+	LaaGoToThePrevKeyMarker;
+
+runTimeCommand
+	-annotation "LaaFilterRotateChannelsOnOnes"
+	-category "Custom Scripts.Laa Navigation"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.filter_rotate_channels_on_ones(); cmd.undoInfo(swf=True)\n")
+	LaaFilterRotateChannelsOnOnes;
+
+runTimeCommand
+	-annotation "LaaPlayblastShot"
+	-category "Custom Scripts.Laa Playback"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.playblast_shot(); cmd.undoInfo(swf=True)\n")
+	LaaPlayblastShot;
+
+runTimeCommand
+	-annotation "LaaToggleBreakTangents"
+	-category "Custom Scripts.Laa Keyframing"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.toggle_break_tangents()")
+	LaaToggleBreakTangents;
+
+runTimeCommand
+	-annotation "LaaPasteKeys"
+	-category "Custom Scripts.Laa Keyframing"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.paste_keys()")
+	LaaPasteKeys;
+
+runTimeCommand
+	-annotation "LaaZeroOutKeys"
+	-category "Custom Scripts.Laa Keyframing"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.zero_out_keys()")
+	LaaZeroOutKeys;
+
+runTimeCommand
+	-annotation "LaaToggleGrid"
+	-category "Custom Scripts.Laa Viewport"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_grid(); cmd.undoInfo(swf=True)\n")
+	LaaToggleGrid;
+
+runTimeCommand
+	-annotation "LaaToggleDefaultMaterial"
+	-category "Custom Scripts.Laa Viewport"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_default_material(); cmd.undoInfo(swf=True)\n")
+	LaaToggleDefaultMaterial;
+
+runTimeCommand
+	-annotation "LaaToggleWireframe"
+	-category "Custom Scripts.Laa Viewport"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_wireframe(); cmd.undoInfo(swf=True)\n")
+	LaaToggleWireframe;
+
+runTimeCommand
+	-annotation "LaaConvergeToBuffer"
+	-category "Custom Scripts.Laa Keyframing"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.converge_to_buffer()")
+	LaaConvergeToBuffer;
+
+runTimeCommand
+	-annotation "FilterScaleChannelsOnThrees"
+	-category "Custom Scripts.Laa Navigation"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.filter_scale_channels_on_threes(); cmd.undoInfo(swf=True)\n")
+	FilterScaleChannelsOnThrees;
+
+runTimeCommand
+	-annotation "LaaLoadCameraZoom"
+	-category "Custom Scripts.Laa Tools"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import Anim_MAD.Utils.info_utils as info\nimport maya.mel as mel\n\ntry:\n    mel.eval('source \"bh_camZoom.mel\";')\n    info.show_info('CameraZoom Loaded')\nexcept:\n    info.show_info('No Viewport Panel Selected.', True)\n")
+	LaaLoadCameraZoom;
+
+runTimeCommand
+	-annotation "LaaDivergeFromBuffer"
+	-category "Custom Scripts.Laa Keyframing"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.diverge_from_buffer()")
+	LaaDivergeFromBuffer;
+
+runTimeCommand
+	-annotation "LaaLoadDwPicker"
+	-category "Custom Scripts.Laa Tools"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import Anim_MAD.Utils.info_utils as info\nimport dwpicker\n\ndwpicker.show()\ninfo.show_info('DwPicker Loaded')\n")
+	LaaLoadDwPicker;
+
+runTimeCommand
+	-annotation "LaaFilterTranslateChannelsOnThrees"
+	-category "Custom Scripts.Laa Navigation"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.filter_translate_channels_on_threes(); cmd.undoInfo(swf=True)\n")
+	LaaFilterTranslateChannelsOnThrees;
+
+runTimeCommand
+	-annotation "LaaGoToTheNextKeyMarker"
+	-category "Custom Scripts.Laa Playback"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.go_to_the_next_key_marker(); cmd.undoInfo(swf=True)\n")
 	LaaGoToTheNextKeyMarker;
 
 runTimeCommand
-	-label ""
-	-annotation "LaaSwitchTranslateManipulator"
-	-longAnnotation ""
+	-annotation "LaaSwitchScaleManipulator"
 	-category "Custom Scripts.Laa Navigation"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.switch_translate_manipulator()\n\n")
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.switch_scale_manipulator(); cmd.undoInfo(swf=True)\n")
+	LaaSwitchScaleManipulator;
+
+runTimeCommand
+	-annotation "LaaSwitchTranslateManipulator"
+	-category "Custom Scripts.Laa Navigation"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.switch_translate_manipulator(); cmd.undoInfo(swf=True)\n")
 	LaaSwitchTranslateManipulator;
 
 runTimeCommand
-	-label ""
-	-annotation "LaaGoToThePrevMarker"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Playback"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
+	-annotation "LaaClearAllChannels"
+	-category "Custom Scripts.Laa Navigation"
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.go_to_the_prev_marker()\n")
-	LaaGoToThePrevMarker;
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.clear_all_channels(); cmd.undoInfo(swf=True)\n")
+	LaaClearAllChannels;
 
 runTimeCommand
-	-label ""
-	-annotation "LaaGoToTheNextFrame"
-	-longAnnotation ""
-	-category "Custom Scripts.Laa Playback"
-	-image ""
-	-tags ""
-	-keywords ""
-	-plugin ""
-	-helpUrl ""
+	-annotation "LaaToggleViewportModes"
+	-category "Custom Scripts.Laa Viewport"
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.go_to_the_next_frame()\n")
-	LaaGoToTheNextFrame;
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_viewport_modes(); cmd.undoInfo(swf=True)\n\n")
+	LaaToggleViewportModes;
+
+runTimeCommand
+	-annotation "LaaSnapToBuffer"
+	-category "Custom Scripts.Laa Keyframing"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.snap_to_buffer()")
+	LaaSnapToBuffer;
+
+runTimeCommand
+	-annotation "LaaGoToTheNextKey"
+	-category "Custom Scripts.Laa Playback"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.go_to_the_next_key(); cmd.undoInfo(swf=True)\n")
+	LaaGoToTheNextKey;
+
+runTimeCommand
+	-annotation "LaaToggleAllViewportElements"
+	-category "Custom Scripts.Laa Viewport"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_all_viewport_elements(); cmd.undoInfo(swf=True)\n\n")
+	LaaToggleAllViewportElements;
+
+runTimeCommand
+	-annotation "LaaRemoveInbetween"
+	-category "Custom Scripts.Laa Keyframing"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; trg = LaaScripts.trigger.Trigger(); trg.add_inbetween()\n")
+	LaaAddInbetween;
+
+runTimeCommand
+	-annotation "LaaAddInbetweenMarkers"
+	-category "Custom Scripts.Laa Playback"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.add_inbetween_markers(); cmd.undoInfo(swf=True)\n")
+	LaaAddInbetweenMarkers;
+
+runTimeCommand
+	-annotation "LaaLoadWorldBake"
+	-category "Custom Scripts.Laa Tools"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import Anim_MAD.Utils.info_utils as info\nimport ml_worldBake\n\nml_worldBake.ui()\ninfo.show_info('WorldBake Loaded')\n")
+	LaaLoadWorldBake;
+
+runTimeCommand
+	-annotation "LaaGoToThePrevKey"
+	-category "Custom Scripts.Laa Playback"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.go_to_the_prev_key(); cmd.undoInfo(swf=True)\n")
+	LaaGoToThePrevKey;
+
+runTimeCommand
+	-annotation "LaaToggleOrtographicCameras"
+	-category "Custom Scripts.Laa Viewport"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_ortographic_cameras(); cmd.undoInfo(swf=True)\n\n")
+	LaaToggleOrtographicCameras;
+
+runTimeCommand
+	-annotation "LaaToggleXray"
+	-category "Custom Scripts.Laa Viewport"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd; import LaaScripts; cmd.undoInfo(swf=False); trg = LaaScripts.trigger.Trigger(); trg.toggle_xray(); cmd.undoInfo(swf=True)\n")
+	LaaToggleXray;
+
+runTimeCommand
+	-annotation "LaaLoadTweenMachine"
+	-category "Custom Scripts.Laa Tools"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import tween_machine\ntween_machine.start()")
+	LaaLoadTweenMachine;
 
 //
 // The name commands referenced by the hotkeys
 //
+nameCommand
+	-annotation "IncrementAndSaveNameCommand"
+	-sourceType "mel"
+	-command ("IncrementAndSave")
+	IncrementAndSaveNameCommand;
+
 nameCommand
 	-annotation "laa_switchTranslateManipulatorNameCommand"
 	-sourceType "mel"
@@ -586,18 +517,6 @@ nameCommand
 	-sourceType "mel"
 	-command ("LaaAddBreakdownMarkers")
 	laa_addBreakdownMarkersNameCommand;
-
-nameCommand
-	-annotation "laa_addInbetweeenMarkersNameCommand"
-	-sourceType "mel"
-	-command ("LaaAddInbetweeenMarkers")
-	laa_addInbetweeenMarkersNameCommand;
-
-nameCommand
-	-annotation "laa_removeFrameMarkersNameCommand"
-	-sourceType "mel"
-	-command ("LaaRemoveFrameMarkers")
-	laa_removeFrameMarkersNameCommand;
 
 nameCommand
 	-annotation "laa_nextFramePlaybackPressNameCommand"
@@ -630,12 +549,6 @@ nameCommand
 	laa_goToTheNextMarkerNameCommand;
 
 nameCommand
-	-annotation "laa_goToThePrevMarkerNameCommand"
-	-sourceType "mel"
-	-command ("LaaGoToThePrevMarker")
-	laa_goToThePrevMarkerNameCommand;
-
-nameCommand
 	-annotation "laa_goToTheNextKeyMarkerNameCommand"
 	-sourceType "mel"
 	-command ("LaaGoToTheNextKeyMarker")
@@ -648,16 +561,16 @@ nameCommand
 	laa_goToThePrevKeyMarkerNameCommand;
 
 nameCommand
-	-annotation "laa_addInbetweenNameCommand"
+	-annotation "Go to Previous Time Bookmark - Navigate to the neighbor left bookmark."
 	-sourceType "mel"
-	-command ("LaaAddInbetween")
-	laa_addInbetweenNameCommand;
+	-command ("python(\"from animBot._api.core import CORE as ANIMBOT_CORE; ANIMBOT_CORE.trigger.timeBookmarks_goToPreviousTimeBookmark();\");")
+	animBot_timeBookmarks_goToPreviousTimeBookmark;
 
 nameCommand
-	-annotation "laa_removeInbetweenNameCommand"
+	-annotation "Go to Next Time Bookmark - Navigate to the neighbor right bookmark."
 	-sourceType "mel"
-	-command ("LaaRemoveInbetween")
-	laa_removeInbetweenNameCommand;
+	-command ("python(\"from animBot._api.core import CORE as ANIMBOT_CORE; ANIMBOT_CORE.trigger.timeBookmarks_goToNextTimeBookmark();\");")
+	animBot_timeBookmarks_goToNextTimeBookmark;
 
 nameCommand
 	-annotation "laa_toggleXrayNameCommand"
@@ -670,12 +583,6 @@ nameCommand
 	-sourceType "mel"
 	-command ("LaaToggleCurves")
 	laa_toggleCurvesNameCommand;
-
-nameCommand
-	-annotation "LaaToggleWireframeNameCommand"
-	-sourceType "mel"
-	-command ("LaaToggleWireframe")
-	LaaToggleWireframeNameCommand;
 
 nameCommand
 	-annotation "LaaToggleDefaultMaterialNameCommand"
@@ -694,12 +601,6 @@ nameCommand
 	-sourceType "mel"
 	-command ("LaaToggleJoints")
 	LaaToggleJointsNameCommand;
-
-nameCommand
-	-annotation "LaaToggleLocatorsNameCommand"
-	-sourceType "mel"
-	-command ("LaaToggleLocators")
-	LaaToggleLocatorsNameCommand;
 
 nameCommand
 	-annotation "LaaToggleHandlesNameCommand"
@@ -724,12 +625,6 @@ nameCommand
 	-sourceType "mel"
 	-command ("LaaFilterRotateChannelsOnThrees")
 	LaaFilterRotateChannelsOnThreesNameCommand;
-
-nameCommand
-	-annotation "LaaFilterScaleChannelsOnThreesNameCommand"
-	-sourceType "mel"
-	-command ("LaaFilterScaleChannelsOnThrees")
-	LaaFilterScaleChannelsOnThreesNameCommand;
 
 nameCommand
 	-annotation "LaaFilterRotateChannelsOnOnesNameCommand"
@@ -785,6 +680,204 @@ nameCommand
 	-command ("LaaFilterAllChannels")
 	LaaFilterAllChannelsNameCommand;
 
+nameCommand
+	-annotation "LaaAddInbetweenMarkersNameCommand"
+	-sourceType "mel"
+	-command ("LaaAddInbetweenMarkers")
+	LaaAddInbetweenMarkersNameCommand;
+
+nameCommand
+	-annotation "LaaRemoveFrameMarkersNameCommand"
+	-sourceType "mel"
+	-command ("LaaRemoveFrameMarkers")
+	LaaRemoveFrameMarkersNameCommand;
+
+nameCommand
+	-annotation "LaaGooToThePrevMarkerNameCommand"
+	-sourceType "mel"
+	-command ("LaaGooToThePrevMarker")
+	LaaGooToThePrevMarkerNameCommand;
+
+nameCommand
+	-annotation "LaaToggleWireframeNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleWireframe")
+	LaaToggleWireframeNameCommand;
+
+nameCommand
+	-annotation "FilterScaleChannelsOnThreesNameCommand"
+	-sourceType "mel"
+	-command ("FilterScaleChannelsOnThrees")
+	FilterScaleChannelsOnThreesNameCommand;
+
+nameCommand
+	-annotation "LaaToggleLocatorsNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleLocators")
+	LaaToggleLocatorsNameCommand;
+
+nameCommand
+	-annotation "LaaRemoveInbetweenNameCommand"
+	-sourceType "mel"
+	-command ("LaaRemoveInbetween")
+	LaaRemoveInbetweenNameCommand;
+
+nameCommand
+	-annotation "LaaAddInbetweenNameCommand"
+	-sourceType "mel"
+	-command ("LaaAddInbetween")
+	LaaAddInbetweenNameCommand;
+
+nameCommand
+	-annotation "LaaClearAllChannelsNameCommand"
+	-sourceType "mel"
+	-command ("LaaClearAllChannels")
+	LaaClearAllChannelsNameCommand;
+
+nameCommand
+	-annotation "LaaSetSteppedTangentsNameCommand"
+	-sourceType "mel"
+	-command ("LaaSetSteppedTangents")
+	LaaSetSteppedTangentsNameCommand;
+
+nameCommand
+	-annotation "LaaSetLinearTangentsNameCommand"
+	-sourceType "mel"
+	-command ("LaaSetLinearTangents")
+	LaaSetLinearTangentsNameCommand;
+
+nameCommand
+	-annotation "LaaSetAutoTangentsNameCommand"
+	-sourceType "mel"
+	-command ("LaaSetAutoTangents")
+	LaaSetAutoTangentsNameCommand;
+
+nameCommand
+	-annotation "LaaToggleTimelineHeightNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleTimelineHeight")
+	LaaToggleTimelineHeightNameCommand;
+
+nameCommand
+	-annotation "LaaToggleViewportModesNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleViewportModes")
+	LaaToggleViewportModesNameCommand;
+
+nameCommand
+	-annotation "LaaToggleAllViewportElementsNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleAllViewportElements")
+	LaaToggleAllViewportElementsNameCommand;
+
+nameCommand
+	-annotation "LaaPlayblastShotNameCommand"
+	-sourceType "mel"
+	-command ("LaaPlayblastShot")
+	LaaPlayblastShotNameCommand;
+
+nameCommand
+	-annotation "LaaDeleteRedundantNameCommand"
+	-sourceType "mel"
+	-command ("LaaDeleteRedundant")
+	LaaDeleteRedundantNameCommand;
+
+nameCommand
+	-annotation "LaaSetSmartKeyNameCommand"
+	-sourceType "mel"
+	-command ("LaaSetSmartKey")
+	LaaSetSmartKeyNameCommand;
+
+nameCommand
+	-annotation "LaaZeroOutKeysNameCommand"
+	-sourceType "mel"
+	-command ("LaaZeroOutKeys")
+	LaaZeroOutKeysNameCommand;
+
+nameCommand
+	-annotation "LaaSnapToBufferNameCommand"
+	-sourceType "mel"
+	-command ("LaaSnapToBuffer")
+	LaaSnapToBufferNameCommand;
+
+nameCommand
+	-annotation "LaaConvergeToBufferNameCommand"
+	-sourceType "mel"
+	-command ("LaaConvergeToBuffer")
+	LaaConvergeToBufferNameCommand;
+
+nameCommand
+	-annotation "LaaDivergeFromBufferNameCommand"
+	-sourceType "mel"
+	-command ("LaaDivergeFromBuffer")
+	LaaDivergeFromBufferNameCommand;
+
+nameCommand
+	-annotation "LaaToggleBreakTangentsNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleBreakTangents")
+	LaaToggleBreakTangentsNameCommand;
+
+nameCommand
+	-annotation "LaaReverseKeysNameCommand"
+	-sourceType "mel"
+	-command ("LaaReverseKeys")
+	LaaReverseKeysNameCommand;
+
+nameCommand
+	-annotation "LaaTogglePerspectiveCamerasNameCommand"
+	-sourceType "mel"
+	-command ("LaaTogglePerspectiveCameras")
+	LaaTogglePerspectiveCamerasNameCommand;
+
+nameCommand
+	-annotation "LaaToggleOrtographicCamerasNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleOrtographicCameras")
+	LaaToggleOrtographicCamerasNameCommand;
+
+nameCommand
+	-annotation "LaaToggleResolutionGateNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleResolutionGate")
+	LaaToggleResolutionGateNameCommand;
+
+nameCommand
+	-annotation "LaaLoadDwPickerNameCommand"
+	-sourceType "mel"
+	-command ("LaaLoadDwPicker")
+	LaaLoadDwPickerNameCommand;
+
+nameCommand
+	-annotation "LaaLoadTweenMachineNameCommand"
+	-sourceType "mel"
+	-command ("LaaLoadTweenMachine")
+	LaaLoadTweenMachineNameCommand;
+
+nameCommand
+	-annotation "LaaLoadSharedStudioLibNameCommand"
+	-sourceType "mel"
+	-command ("LaaLoadSharedStudioLib")
+	LaaLoadSharedStudioLibNameCommand;
+
+nameCommand
+	-annotation "LaaLoadCameraZoomNameCommand"
+	-sourceType "mel"
+	-command ("LaaLoadCameraZoom")
+	LaaLoadCameraZoomNameCommand;
+
+nameCommand
+	-annotation "LaaLoadWorldBakeNameCommand"
+	-sourceType "mel"
+	-command ("LaaLoadWorldBake")
+	LaaLoadWorldBakeNameCommand;
+
+nameCommand
+	-annotation "LaaLoadAnimbotNameCommand"
+	-sourceType "mel"
+	-command ("LaaLoadAnimbot")
+	LaaLoadAnimbotNameCommand;
+
 //
 // The user hotkeys
 //
@@ -795,83 +888,111 @@ hotkeySet -source "Maya_Default" -current LaaScripts;
 //
 // The hotkey contexts and hotkeys
 //
-hotkey -keyShortcut "q" -ctl -name ("");
-hotkey -keyShortcut "v" -name ("laa_goToTheNextKeyNameCommand");
-hotkey -keyShortcut "a" -ctl -sht -name ("laa_removeInbetweenNameCommand");
-hotkey -keyShortcut "v" -releaseName ("");
-hotkey -keyShortcut "e" -ctl -sht -name ("LaaFilterRotateChannelsOnThreesNameCommand");
+hotkey -keyShortcut "r" -alt -name ("LaaToggleResolutionGateNameCommand");
+hotkey -keyShortcut "v" -alt -name ("LaaToggleViewportModesNameCommand");
+hotkey -keyShortcut "k" -name ("laa_addKeyMarkersNameCommand");
+hotkey -keyShortcut "k" -releaseName ("");
+hotkey -keyShortcut "," -releaseName ("");
+hotkey -keyShortcut "p" -alt -name ("LaaTogglePolygonsNameCommand");
+hotkey -keyShortcut "," -name ("animBot_timeBookmarks_goToPreviousTimeBookmark");
 hotkey -keyShortcut "r" -ctl -name ("");
-hotkey -keyShortcut "x" -pressCommandRepeat true
-	-name ("laa_nextFramePlaybackPressNameCommand");
-hotkey -keyShortcut "x" -alt -name ("laa_toggleXrayNameCommand");
-hotkey -keyShortcut "x" -releaseName ("");
-hotkey -keyShortcut "w" -ctl -alt -sht -name ("LaaFilterTranslateChannelsOnOnesNameCommand");
-hotkey -keyShortcut "v" -ctl -sht -name ("laa_goToTheNextKeyMarkerNameCommand");
-hotkey -keyShortcut "v" -alt -name ("");
-hotkey -keyShortcut "w" -ctl -sht -name ("LaaFilterTranslateChannelsOnThreesNameCommand");
-hotkey -keyShortcut "z" -ctl -sht -name ("laa_goToThePrevMarkerNameCommand");
-hotkey -keyShortcut "q" -ctl -sht -name ("LaaFilterAllChannelsNameCommand");
+hotkey -keyShortcut "2" -alt -name ("LaaSetLinearTangentsNameCommand");
+hotkey -keyShortcut "b" -ctl -sht -name ("LaaToggleBreakTangentsNameCommand");
+hotkey -keyShortcut "v" -ctl -name ("LaaPasteKeysNameCommand");
 hotkey -keyShortcut "e" -alt -name ("");
-hotkey -keyShortcut "c" -alt -name ("laa_toggleCurvesNameCommand");
+hotkey -keyShortcut "x" -alt -name ("laa_toggleXrayNameCommand");
+hotkey -keyShortcut "." -releaseName ("");
+hotkey -keyShortcut "c" -ctl -sht -name ("laa_goToThePrevKeyMarkerNameCommand");
+hotkey -keyShortcut "." -name ("animBot_timeBookmarks_goToNextTimeBookmark");
+hotkey -keyShortcut "q" -ctl -name ("");
+hotkey -keyShortcut "e" -ctl -sht -name ("LaaFilterRotateChannelsOnThreesNameCommand");
+hotkey -keyShortcut "x" -ctl -name ("LaaCutKeysNameCommand");
+hotkey -keyShortcut "v" -ctl -sht -name ("laa_goToTheNextKeyMarkerNameCommand");
+hotkey -keyShortcut "l" -ctl -alt -sht -name ("LaaLoadSharedStudioLibNameCommand");
+hotkey -keyShortcut "b" -ctl -alt -sht -name ("LaaLoadWorldBakeNameCommand");
+hotkey -keyShortcut "d" -ctl -sht -name ("LaaAddInbetweenNameCommand");
+hotkey -keyShortcut "r" -ctl -sht -name ("FilterScaleChannelsOnThreesNameCommand");
+hotkey -keyShortcut "r" -ctl -alt -sht -name ("LaaDeleteRedundantNameCommand");
+hotkey -keyShortcut "z" -releaseName ("");
+hotkey -keyShortcut "r" -ctl -alt -name ("LaaFilterScaleChannelsOnOnesNameCommand");
 hotkey -keyShortcut "z" -pressCommandRepeat true
 	-name ("laa_prevFramePlaybackPressNameCommand");
-hotkey -keyShortcut "v" -ctl -name ("LaaPasteKeysNameCommand");
+hotkey -keyShortcut "p" -ctl -alt -name ("LaaPlayblastShotNameCommand");
+hotkey -keyShortcut "a" -ctl -alt -name ("LaaDivergeFromBufferNameCommand");
+hotkey -keyShortcut "c" -releaseName ("");
+hotkey -keyShortcut "e" -ctl -alt -sht -name ("LaaFilterRotateChannelsOnOnesNameCommand");
+hotkey -keyShortcut "c" -name ("laa_goToThePrevKeyNameCommand");
+hotkey -keyShortcut "m" -ctl -alt -sht -name ("LaaLoadTweenMachineNameCommand");
+hotkey -keyShortcut "x" -ctl -alt -sht -name ("LaaReverseKeysNameCommand");
+hotkey -keyShortcut "g" -alt -name ("LaaToggleGridNameCommand");
+hotkey -keyShortcut "x" -ctl -sht -name ("laa_goToTheNextMarkerNameCommand");
+hotkey -keyShortcut "o" -name ("");
+hotkey -keyShortcut "o" -releaseName ("");
+hotkey -keyShortcut "j" -name ("laa_addBreakdownMarkersNameCommand");
+hotkey -keyShortcut "j" -releaseName ("");
+hotkey -keyShortcut "t" -alt -name ("LaaToggleTimelineHeightNameCommand");
+hotkey -keyShortcut "h" -alt -name ("LaaToggleHandlesNameCommand");
+hotkey -keyShortcut "r" -releaseName ("");
+hotkey -keyShortcut "s" -alt -name ("LaaSetSmartKeyNameCommand");
+hotkey -keyShortcut "r" -name ("LaaSwitchScaleManipulatorNameCommand");
+hotkey -keyShortcut "v" -releaseName ("");
+hotkey -keyShortcut "v" -name ("laa_goToTheNextKeyNameCommand");
+hotkey -keyShortcut "g" -ctl -alt -name ("IncrementAndSaveNameCommand");
+hotkey -keyShortcut "l" -alt -name ("LaaToggleLocatorsNameCommand");
+hotkey -keyShortcut "w" -alt -name ("LaaToggleWireframeNameCommand");
+hotkey -keyShortcut "a" -alt -name ("LaaToggleAllViewportElementsNameCommand");
+hotkey -keyShortcut "x" -releaseName ("");
+hotkey -keyShortcut "x" -pressCommandRepeat true
+	-name ("laa_nextFramePlaybackPressNameCommand");
+hotkey -keyShortcut "z" -ctl -alt -sht -name ("LaaZeroOutKeysNameCommand");
+hotkey -keyShortcut "c" -ctl -name ("LaaCopyKeysNameCommand");
+hotkey -keyShortcut "a" -ctl -sht -name ("LaaRemoveInbetweenNameCommand");
+hotkey -keyShortcut "z" -ctl -sht -name ("LaaGooToThePrevMarkerNameCommand");
+hotkey -keyShortcut "e" -releaseName ("");
+hotkey -keyShortcut "w" -ctl -name ("");
+hotkey -keyShortcut "e" -name ("laa_switchRotateManipulatorNameCommand");
+hotkey -keyShortcut "m" -alt -name ("LaaToggleDefaultMaterialNameCommand");
+hotkey -keyShortcut "w" -ctl -alt -name ("");
+hotkey -keyShortcut "5" -alt -name ("");
+hotkey -keyShortcut "h" -ctl -alt -sht -name ("LaaToggleHotkeySetsNameCommand");
+hotkey -keyShortcut "o" -ctl -alt -sht -name ("LaaLoadCameraZoomNameCommand");
+hotkey -keyShortcut "a" -ctl -alt -sht -name ("LaaLoadAnimbotNameCommand");
+hotkey -keyShortcut "w" -ctl -alt -sht -name ("LaaFilterTranslateChannelsOnOnesNameCommand");
+hotkey -keyShortcut "s" -ctl -alt -name ("LaaSnapToBufferNameCommand");
+hotkey -keyShortcut "w" -ctl -sht -name ("LaaFilterTranslateChannelsOnThreesNameCommand");
+hotkey -keyShortcut "d" -ctl -alt -name ("LaaConvergeToBufferNameCommand");
+hotkey -keyShortcut "o" -ctl -sht -name ("LaaToggleOrtographicCamerasNameCommand");
+hotkey -keyShortcut "p" -ctl -alt -sht -name ("LaaLoadDwPickerNameCommand");
+hotkey -keyShortcut "e" -ctl -name ("");
+hotkey -keyShortcut "q" -ctl -alt -sht -name ("LaaClearAllChannelsNameCommand");
+hotkey -keyShortcut "1" -alt -name ("LaaSetSteppedTangentsNameCommand");
+hotkey -keyShortcut "c" -alt -name ("laa_toggleCurvesNameCommand");
 hotkey -keyShortcut "z" -alt -name ("");
-hotkey -keyShortcut "x" -ctl -name ("LaaCutKeysNameCommand");
-hotkey -keyShortcut "z" -releaseName ("");
+hotkey -keyShortcut "w" -releaseName ("TranslateToolWithSnapMarkingMenuPopDownNameCommand");
 hotkey -keyShortcut "w" -pressCommandRepeat true
 	-name ("laa_switchTranslateManipulatorNameCommand");
-hotkey -keyShortcut "d" -alt -name ("laa_removeFrameMarkersNameCommand");
-hotkey -keyShortcut "w" -releaseName ("TranslateToolWithSnapMarkingMenuPopDownNameCommand");
-hotkey -keyShortcut "w" -alt -name ("LaaToggleWireframeNameCommand");
-hotkey -keyShortcut "e" -ctl -alt -sht -name ("LaaFilterRotateChannelsOnOnesNameCommand");
-hotkey -keyShortcut "g" -alt -name ("LaaToggleGridNameCommand");
-hotkey -keyShortcut "." -name ("");
-hotkey -keyShortcut "h" -alt -name ("LaaToggleHandlesNameCommand");
+hotkey -keyShortcut "p" -ctl -sht -name ("LaaTogglePerspectiveCamerasNameCommand");
+hotkey -keyShortcut "d" -alt -name ("LaaRemoveFrameMarkersNameCommand");
+hotkey -keyShortcut "l" -name ("LaaAddInbetweenMarkersNameCommand");
+hotkey -keyShortcut "q" -ctl -sht -name ("LaaFilterAllChannelsNameCommand");
 hotkey -keyShortcut "l" -releaseName ("");
-hotkey -keyShortcut "w" -ctl -name ("");
-hotkey -keyShortcut "h" -ctl -alt -sht -name ("LaaToggleHotkeySetsNameCommand");
-hotkey -keyShortcut "l" -name ("laa_addInbetweeenMarkersNameCommand");
-hotkey -keyShortcut "w" -ctl -alt -name ("");
-hotkey -keyShortcut "j" -releaseName ("");
-hotkey -keyShortcut "j" -name ("laa_addBreakdownMarkersNameCommand");
-hotkey -keyShortcut "c" -ctl -sht -name ("laa_goToThePrevKeyMarkerNameCommand");
-hotkey -keyShortcut "k" -releaseName ("");
-hotkey -keyShortcut "k" -name ("laa_addKeyMarkersNameCommand");
-hotkey -keyShortcut "e" -ctl -name ("");
-hotkey -keyShortcut "d" -ctl -sht -name ("laa_addInbetweenNameCommand");
-hotkey -keyShortcut "e" -name ("laa_switchRotateManipulatorNameCommand");
-hotkey -keyShortcut "r" -ctl -alt -name ("");
-hotkey -keyShortcut "c" -name ("laa_goToThePrevKeyNameCommand");
-hotkey -keyShortcut "e" -releaseName ("");
-hotkey -keyShortcut "c" -ctl -name ("LaaCopyKeysNameCommand");
-hotkey -keyShortcut "c" -releaseName ("");
-hotkey -keyShortcut "l" -alt -name ("LaaToggleLocatorsNameCommand");
-hotkey -keyShortcut "r" -name ("LaaSwitchScaleManipulatorNameCommand");
-hotkey -keyShortcut "r" -releaseName ("");
 hotkey -keyShortcut "j" -alt -name ("LaaToggleJointsNameCommand");
-hotkey -keyShortcut "r" -ctl -sht -name ("LaaFilterScaleChannelsOnThreesNameCommand");
-hotkey -keyShortcut "q" -ctl -alt -sht -name ("");
-hotkey -keyShortcut "r" -ctl -alt -sht -name ("LaaFilterScaleChannelsOnOnesNameCommand");
-hotkey -keyShortcut "r" -alt -name ("");
-hotkey -keyShortcut "m" -alt -name ("LaaToggleDefaultMaterialNameCommand");
-hotkey -keyShortcut "x" -ctl -sht -name ("laa_goToTheNextMarkerNameCommand");
-hotkey -keyShortcut "p" -alt -name ("LaaTogglePolygonsNameCommand");
-hotkeyCtx -type "Editor" -addClient "posePanel";
-hotkeyCtx -type "Editor" -addClient "hyperShadePanel";
-hotkeyCtx -type "Editor" -addClient "graphEditor";
-hotkeyCtx -type "Editor" -addClient "polyTexturePlacementPanel";
-hotkeyCtx -type "Editor" -addClient "timeEditorPanel";
-hotkeyCtx -type "Editor" -addClient "outlinerPanel";
-hotkeyCtx -type "Editor" -addClient "profilerPanel";
+hotkey -keyShortcut "3" -alt -name ("LaaSetAutoTangentsNameCommand");
 hotkeyCtx -type "Editor" -addClient "shapePanel";
-hotkeyCtx -type "Editor" -addClient "nodeEditorPanel";
+hotkeyCtx -type "Editor" -addClient "outlinerPanel";
 hotkeyCtx -type "Editor" -addClient "hyperGraphPanel";
+hotkeyCtx -type "Editor" -addClient "nodeEditorPanel";
+hotkeyCtx -type "Editor" -addClient "graphEditor";
+hotkeyCtx -type "Editor" -addClient "timeEditorPanel";
+hotkeyCtx -type "Editor" -addClient "profilerPanel";
+hotkeyCtx -type "Editor" -addClient "hyperShadePanel";
+hotkeyCtx -type "Editor" -addClient "posePanel";
+hotkeyCtx -type "Editor" -addClient "polyTexturePlacementPanel";
+hotkeyCtx -type "Tool" -addClient "Unfold3DBrush";
+hotkeyCtx -type "Tool" -addClient "polyCutUV";
+hotkeyCtx -type "Tool" -addClient "texCutContext";
 hotkeyCtx -type "Tool" -addClient "texSculptCacheContext";
 hotkeyCtx -type "Tool" -addClient "SymmetrizeUVBrush";
-hotkeyCtx -type "Tool" -addClient "Unfold3DBrush";
-hotkeyCtx -type "Tool" -addClient "sculptMeshCache";
-hotkeyCtx -type "Tool" -addClient "polyCutUV";
 hotkeyCtx -type "Tool" -addClient "bpDraw";
 hotkeyCtx -type "Tool" -addClient "xgmIGBrush";
-hotkeyCtx -type "Tool" -addClient "texCutContext";
+hotkeyCtx -type "Tool" -addClient "sculptMeshCache";

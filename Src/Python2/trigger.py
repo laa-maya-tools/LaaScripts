@@ -148,8 +148,6 @@ class Trigger(object):
     def toggle_infinity_modes(self):
         self._curve_tools.toggle_infinity_modes()
 
-
-
     # =========================================================================
     # PREFS
     # =========================================================================

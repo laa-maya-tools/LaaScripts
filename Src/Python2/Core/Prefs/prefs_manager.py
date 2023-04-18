@@ -62,3 +62,7 @@ class PrefsManager(object):
         else:
             PrefsManager.set_timeline_height(32)
 
+
+if __name__ == "__main__":
+    PrefsManager.set_tangents('auto', 'auto')
+
