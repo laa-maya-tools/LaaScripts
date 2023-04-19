@@ -9,7 +9,7 @@ from LaaScripts.Src.Python2.Utils import info_utils as info
 class CurveTools(object):
 
     def __init__(self):
-        print('curve')
+        pass
 
     def set_smart_key(self):
         mel.eval('ackSliceCurves;')

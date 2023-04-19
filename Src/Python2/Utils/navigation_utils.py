@@ -156,8 +156,6 @@ class NavigationUtils(object):
                 if cmd.objExists(full_attr):
                     attributes.append(full_attr)
 
-
-        print attributes
         cmd.channelBox('mainChannelBox', e=True, select=attributes)
 
     @staticmethod
@@ -195,5 +193,3 @@ class NavigationUtils(object):
     @staticmethod
     def clear_all_channels():
         cmd.channelBox('mainChannelBox', e=True, select=False)
-
-

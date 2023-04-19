@@ -46,7 +46,7 @@ class SmartManipulator(object):
             if not current_mode == self._transform_modes[c.MOVE][-1][c.INDEX]:
                 if current_mode == self._transform_modes[c.MOVE][i][c.INDEX]:
                     NavigationUtils.set_current_move_mode(self._transform_modes[c.MOVE][i + 1][c.INDEX])
-                    info.show_info('W: {0}'.format(self._transform_modes[c.MOVE][i+1][c.NAME]))
+                    info.show_info('W: {0}'.format(self._transform_modes[c.MOVE][i + 1][c.NAME]))
                     NavigationUtils.fix_translate_marking_menu()
                     return
 
@@ -68,7 +68,7 @@ class SmartManipulator(object):
             if not current_mode == self._transform_modes[c.ROTATE][-1][c.INDEX]:
                 if current_mode == self._transform_modes[c.ROTATE][i][c.INDEX]:
                     NavigationUtils.set_current_rotate_mode(self._transform_modes[c.ROTATE][i + 1][c.INDEX])
-                    info.show_info('E: {0}'.format(self._transform_modes[c.ROTATE][i+1][c.NAME]))
+                    info.show_info('E: {0}'.format(self._transform_modes[c.ROTATE][i + 1][c.NAME]))
                     NavigationUtils.fix_rotate_marking_menu()
                     return
 
@@ -90,13 +90,10 @@ class SmartManipulator(object):
             if not current_mode == self._transform_modes[c.SCALE][-1][c.INDEX]:
                 if current_mode == self._transform_modes[c.SCALE][i][c.INDEX]:
                     NavigationUtils.set_current_scale_mode(self._transform_modes[c.SCALE][i + 1][c.INDEX])
-                    info.show_info('R: {0}'.format(self._transform_modes[c.SCALE][i+1][c.NAME]))
+                    info.show_info('R: {0}'.format(self._transform_modes[c.SCALE][i + 1][c.NAME]))
                     NavigationUtils.fix_scale_marking_menu()
                     return
 
         NavigationUtils.set_current_scale_mode(self._transform_modes[c.SCALE][0][c.INDEX])
         info.show_info('R: {0}'.format(self._transform_modes[c.SCALE][0][c.NAME]))
         NavigationUtils.fix_scale_marking_menu()
-
-
-

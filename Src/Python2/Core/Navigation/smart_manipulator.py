@@ -36,7 +36,6 @@ class SmartManipulator(object):
         """
         Switch the translate manipulator coordinate system between local and world.
         """
-        cmd.undoInfo(stateWithoutFlush=False)
         current_mode = NavigationUtils.get_current_move_mode()
         NavigationUtils.reset_rotate_mode(self._transform_modes[c.ROTATE][-1][c.INDEX])
         NavigationUtils.reset_scale_mode(self._transform_modes[c.SCALE][-1][c.INDEX])
@@ -47,21 +46,18 @@ class SmartManipulator(object):
             if not current_mode == self._transform_modes[c.MOVE][-1][c.INDEX]:
                 if current_mode == self._transform_modes[c.MOVE][i][c.INDEX]:
                     NavigationUtils.set_current_move_mode(self._transform_modes[c.MOVE][i + 1][c.INDEX])
-                    info.show_info('W: {0}'.format(self._transform_modes[c.MOVE][i+1][c.NAME]))
-                    cmd.undoInfo(stateWithoutFlush=True)
+                    info.show_info('W: {0}'.format(self._transform_modes[c.MOVE][i + 1][c.NAME]))
                     NavigationUtils.fix_translate_marking_menu()
                     return
 
         NavigationUtils.set_current_move_mode(self._transform_modes[c.MOVE][0][c.INDEX])
         info.show_info('W: {0}'.format(self._transform_modes[c.MOVE][0][c.NAME]))
-        cmd.undoInfo(stateWithoutFlush=True)
         NavigationUtils.fix_translate_marking_menu()
 
     def switch_rotate_manipulator(self):
         """
         Switch the rotate manipulator coordinate system between local, world and gimbal.
         """
-        cmd.undoInfo(stateWithoutFlush=False)
         current_mode = NavigationUtils.get_current_rotate_mode()
         NavigationUtils.reset_move_mode(self._transform_modes[c.MOVE][-1][c.INDEX])
         NavigationUtils.reset_scale_mode(self._transform_modes[c.SCALE][-1][c.INDEX])
@@ -72,21 +68,18 @@ class SmartManipulator(object):
             if not current_mode == self._transform_modes[c.ROTATE][-1][c.INDEX]:
                 if current_mode == self._transform_modes[c.ROTATE][i][c.INDEX]:
                     NavigationUtils.set_current_rotate_mode(self._transform_modes[c.ROTATE][i + 1][c.INDEX])
-                    info.show_info('E: {0}'.format(self._transform_modes[c.ROTATE][i+1][c.NAME]))
-                    cmd.undoInfo(stateWithoutFlush=True)
+                    info.show_info('E: {0}'.format(self._transform_modes[c.ROTATE][i + 1][c.NAME]))
                     NavigationUtils.fix_rotate_marking_menu()
                     return
 
         NavigationUtils.set_current_rotate_mode(self._transform_modes[c.ROTATE][0][c.INDEX])
         info.show_info('E: {0}'.format(self._transform_modes[c.ROTATE][0][c.NAME]))
-        cmd.undoInfo(stateWithoutFlush=True)
         NavigationUtils.fix_rotate_marking_menu()
 
     def switch_scale_manipulator(self):
         """
         Switch the scale manipulator coordinate system between local and world.
         """
-        cmd.undoInfo(stateWithoutFlush=False)
         current_mode = NavigationUtils.get_current_scale_mode()
         NavigationUtils.reset_move_mode(self._transform_modes[c.MOVE][-1][c.INDEX])
         NavigationUtils.reset_rotate_mode(self._transform_modes[c.SCALE][-1][c.INDEX])
@@ -97,15 +90,15 @@ class SmartManipulator(object):
             if not current_mode == self._transform_modes[c.SCALE][-1][c.INDEX]:
                 if current_mode == self._transform_modes[c.SCALE][i][c.INDEX]:
                     NavigationUtils.set_current_scale_mode(self._transform_modes[c.SCALE][i + 1][c.INDEX])
-                    info.show_info('R: {0}'.format(self._transform_modes[c.SCALE][i+1][c.NAME]))
-                    cmd.undoInfo(stateWithoutFlush=True)
+                    info.show_info('R: {0}'.format(self._transform_modes[c.SCALE][i + 1][c.NAME]))
                     NavigationUtils.fix_scale_marking_menu()
                     return
 
         NavigationUtils.set_current_scale_mode(self._transform_modes[c.SCALE][0][c.INDEX])
         info.show_info('R: {0}'.format(self._transform_modes[c.SCALE][0][c.NAME]))
-        cmd.undoInfo(stateWithoutFlush=True)
         NavigationUtils.fix_scale_marking_menu()
 
 
-
+if __name__ == '__main__':
+    sm = SmartManipulator()
+    sm.switch_translate_manipulator()

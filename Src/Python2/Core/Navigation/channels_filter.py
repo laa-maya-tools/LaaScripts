@@ -46,12 +46,14 @@ class ChannelsFilter(object):
 
         if len(selected_translate_channels) == 1:
             if selected_translate_channels[0] == self._transform_attrs[c.MOVE][0]:
-                selected_channels = [self._transform_attrs[c.MOVE][1]] + selected_rotate_channels + selected_scale_channels
+                selected_channels = [self._transform_attrs[c.MOVE][
+                                         1]] + selected_rotate_channels + selected_scale_channels
                 NavigationUtils.select_channels(selected_objects, selected_channels)
                 info.show_info('SELECTION: {0}'.format(selected_channels[0].upper()))
                 return
             elif selected_translate_channels[0] == self._transform_attrs[c.MOVE][1]:
-                selected_channels = [self._transform_attrs[c.MOVE][2]] + selected_rotate_channels + selected_scale_channels
+                selected_channels = [self._transform_attrs[c.MOVE][
+                                         2]] + selected_rotate_channels + selected_scale_channels
                 NavigationUtils.select_channels(selected_objects, selected_channels)
                 info.show_info('SELECTION: {0}'.format(selected_channels[0].upper()))
                 return
@@ -108,7 +110,8 @@ class ChannelsFilter(object):
         else:
             selected_channels = self._transform_attrs[c.MOVE] + selected_rotate_channels + selected_scale_channels
             NavigationUtils.select_channels(selected_objects, selected_channels)
-            info.show_info('SELECTION: {0} {1} {2}'.format(selected_channels[0].upper(), selected_channels[1].upper(), selected_channels[2].upper()))
+            info.show_info('SELECTION: {0} {1} {2}'.format(selected_channels[0].upper(), selected_channels[1].upper(),
+                                                           selected_channels[2].upper()))
 
     def filter_rotate_channels_on_ones(self):
         """
@@ -124,12 +127,14 @@ class ChannelsFilter(object):
 
         if len(selected_rotate_channels) == 1:
             if selected_rotate_channels[0] == self._transform_attrs[c.ROTATE][0]:
-                selected_channels = [self._transform_attrs[c.ROTATE][1]] + selected_translate_channels + selected_scale_channels
+                selected_channels = [self._transform_attrs[c.ROTATE][
+                                         1]] + selected_translate_channels + selected_scale_channels
                 NavigationUtils.select_channels(selected_objects, selected_channels)
                 info.show_info('SELECTION: {0}'.format(selected_channels[0].upper()))
                 return
             if selected_rotate_channels[0] == self._transform_attrs[c.ROTATE][1]:
-                selected_channels = [self._transform_attrs[c.ROTATE][2]] + selected_translate_channels + selected_scale_channels
+                selected_channels = [self._transform_attrs[c.ROTATE][
+                                         2]] + selected_translate_channels + selected_scale_channels
                 NavigationUtils.select_channels(selected_objects, selected_channels)
                 info.show_info(
                     'SELECTION: {0}'.format(selected_channels[0].upper()))
@@ -187,7 +192,8 @@ class ChannelsFilter(object):
         else:
             selected_channels = self._transform_attrs[c.ROTATE] + selected_translate_channels + selected_scale_channels
             NavigationUtils.select_channels(selected_objects, selected_channels)
-            info.show_info('SELECTION: {0} {1} {2}'.format(selected_channels[0].upper(), selected_channels[1].upper(), selected_channels[2].upper()))
+            info.show_info('SELECTION: {0} {1} {2}'.format(selected_channels[0].upper(), selected_channels[1].upper(),
+                                                           selected_channels[2].upper()))
 
     def filter_scale_channels_on_ones(self):
         """
@@ -203,12 +209,14 @@ class ChannelsFilter(object):
 
         if len(selected_scale_channels) == 1:
             if selected_scale_channels[0] == self._transform_attrs[c.SCALE][0]:
-                selected_channels = [self._transform_attrs[c.SCALE][1]] + selected_translate_channels + selected_rotate_channels
+                selected_channels = [self._transform_attrs[c.SCALE][
+                                         1]] + selected_translate_channels + selected_rotate_channels
                 NavigationUtils.select_channels(selected_objects, selected_channels)
                 info.show_info('SELECTION: {0}'.format(selected_channels[0].upper()))
                 return
             if selected_scale_channels[0] == self._transform_attrs[c.SCALE][1]:
-                selected_channels = [self._transform_attrs[c.SCALE][2]] + selected_translate_channels + selected_rotate_channels
+                selected_channels = [self._transform_attrs[c.SCALE][
+                                         2]] + selected_translate_channels + selected_rotate_channels
                 NavigationUtils.select_channels(selected_objects, selected_channels)
                 info.show_info('SELECTION: {0}'.format(selected_channels[0].upper()))
                 return
@@ -265,7 +273,8 @@ class ChannelsFilter(object):
         else:
             selected_channels = self._transform_attrs[c.SCALE] + selected_translate_channels + selected_rotate_channels
             NavigationUtils.select_channels(selected_objects, selected_channels)
-            info.show_info('SELECTION: {0} {1} {2}'.format(selected_channels[0].upper(), selected_channels[1].upper(), selected_channels[2].upper()))
+            info.show_info('SELECTION: {0} {1} {2}'.format(selected_channels[0].upper(), selected_channels[1].upper(),
+                                                           selected_channels[2].upper()))
 
     def filter_all_channels(self):
         """
@@ -303,10 +312,4 @@ class ChannelsFilter(object):
         mel.eval('toggleChannelBoxTimelineSync {0};'.format(state))
         mel.eval('toggleChannelBoxGraphEdSync {0};'.format(state))
 
-        print state
         info.show_info('CHANNELBOX SYNC')
-
-
-
-
-
