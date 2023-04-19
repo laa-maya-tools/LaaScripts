@@ -31,7 +31,9 @@ class PrefsManager(object):
             info.show_info('Tangents Prefs: {0}'.format(out_tangent.upper()))
         else:
             for curve in curves_selected:
-                cmd.keyTangent(curve, itt=in_tangent, ott=out_tangent)
+                times = cmd.keyframe(curve, q=True, sl=True)
+                for time in times:
+                    cmd.keyTangent(curve, time=(time,), e=True, itt=in_tangent, ott=out_tangent)
             info.show_info('Key Tangents: {0}'.format(out_tangent.upper()))
 
     @staticmethod
@@ -65,4 +67,3 @@ class PrefsManager(object):
 
 if __name__ == "__main__":
     PrefsManager.set_tangents('auto', 'auto')
-

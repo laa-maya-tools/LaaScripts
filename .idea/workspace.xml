@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="[FIX] Remembering Selection when creating a new node.">
+    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="Fixed selection problem when creating a node.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Prefs/prefs_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Prefs/prefs_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/trigger.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/trigger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python3/Core/Navigation/smart_manipulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python3/Core/Navigation/smart_manipulator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python3/Core/Prefs/hotkey_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python3/Core/Prefs/hotkey_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Hotkeys/Maya2022/LaaScripts.mhk" beforeDir="false" afterPath="$PROJECT_DIR$/_Hotkeys/Maya2022/LaaScripts.mhk" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +152,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681388330359</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="[FIX] Remembering Selection when creating a new node.">
+      <created>1681832515434</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1681832515434</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Fixed selection problem when creating a node.">
+      <created>1681895994304</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1681895994304</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -184,7 +194,8 @@
     <MESSAGE value="Curve Tools added." />
     <MESSAGE value="All Hotkeys added." />
     <MESSAGE value="[FIX] Remembering Selection when creating a new node." />
-    <option name="LAST_COMMIT_MESSAGE" value="[FIX] Remembering Selection when creating a new node." />
+    <MESSAGE value="Fixed selection problem when creating a node." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed selection problem when creating a node." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
