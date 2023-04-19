@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="Fixed selection problem when creating a node.">
+    <list default="true" id="bcdf4171-a0ce-441c-ac31-ff8c49e7cc2e" name="Changes" comment="Fixed Toggle Tangent Types.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Prefs/prefs_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Prefs/prefs_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Python2/Core/Navigation/smart_manipulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Python2/Core/Navigation/smart_manipulator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681895994304</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Fixed Toggle Tangent Types.">
+      <created>1681896942145</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1681896942145</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -195,7 +202,8 @@
     <MESSAGE value="All Hotkeys added." />
     <MESSAGE value="[FIX] Remembering Selection when creating a new node." />
     <MESSAGE value="Fixed selection problem when creating a node." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed selection problem when creating a node." />
+    <MESSAGE value="Fixed Toggle Tangent Types." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Toggle Tangent Types." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

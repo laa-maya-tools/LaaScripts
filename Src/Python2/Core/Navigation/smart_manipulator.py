@@ -21,7 +21,7 @@ class SmartManipulator(object):
 
     def __init__(self):
         self._transform_modes = {
-            c.MOVE: [[c.LOCAL, 0], [c.WORLD, 1]],
+            c.MOVE: [[c.LOCAL, 0], [c.WORLD, 2]],
             c.ROTATE: [[c.LOCAL, 0], [c.WORLD, 1], [c.GIMBAL, 2]],
             c.SCALE: [[c.LOCAL, 0], [c.WORLD, 2]]
         }
