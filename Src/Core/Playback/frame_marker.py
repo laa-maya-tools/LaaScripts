@@ -15,11 +15,11 @@ from PySide2 import QtWidgets as wdg
 from PySide2 import QtGui as gui
 from PySide2 import QtCore as cor
 
-from LaaScripts.Src.Python3.Constants import constants as c
-from LaaScripts.Src.Python3.Utils.timeline_utils import TimelineUtils
-from LaaScripts.Src.Python3.Utils.widget_utils import WidgetUtils
-from LaaScripts.Src.Python3.Utils import info_utils as info
-from LaaScripts.Src.Python3.Data.scene_data import SceneData
+from LaaScripts.Src.Constants import constants as c
+from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
+from LaaScripts.Src.Utils.widget_utils import WidgetUtils
+from LaaScripts.Src.Utils import info_utils as info
+from LaaScripts.Src.Data.scene_data import SceneData
 
 
 global LAA_FRAME_MARKER

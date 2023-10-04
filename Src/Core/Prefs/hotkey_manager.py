@@ -5,7 +5,7 @@
 # Loops through all hotkey sets.
 # =============================================================================
 import maya.cmds as cmd
-from LaaScripts.Src.Python3.Utils import info_utils as info
+from LaaScripts.Src.Utils import info_utils as info
 
 
 class HotkeyManager(object):

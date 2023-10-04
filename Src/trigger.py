@@ -14,14 +14,16 @@ VERSION:  v1.0.0 | Maya 2022 | Python 3
 import maya.cmds as cmd
 from PySide2 import QtCore as cor
 
-from LaaScripts.Src.Python3.Core import Navigation
-from LaaScripts.Src.Python3.Core import Keyframing
-from LaaScripts.Src.Python3.Core import Playback
-from LaaScripts.Src.Python3.Core import Prefs
-from LaaScripts.Src.Python3.Core import Viewport
-from LaaScripts.Src.Python3.Utils.timeline_utils import TimelineUtils
-from LaaScripts.Src.Python3.Utils.widget_utils import WidgetUtils
-from LaaScripts.Src.Python3.Constants import constants as c
+from LaaScripts.Src.Core import Navigation
+from LaaScripts.Src.Core import Keyframing
+from LaaScripts.Src.Core import Playback
+from LaaScripts.Src.Core import Prefs
+from LaaScripts.Src.Core import Viewport
+from LaaScripts.Src.Data.user_data import UserData
+from LaaScripts.Src.Data.scene_data import SceneData
+from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
+from LaaScripts.Src.Utils.widget_utils import WidgetUtils
+from LaaScripts.Src.Constants import constants as c
 
 global LAA_FRAME_MARKER
 global LAA_TIMELINE_SECTION
@@ -40,6 +42,8 @@ class Trigger(object):
         self._timeline_section = Playback.timeline_section.TimelineSection()
         self._hotkey_manager = Prefs.hotkey_manager.HotkeyManager()
         self._viewport_manager = Viewport.viewport_manager.ViewportManager()
+
+        self._user_data = UserData()
 
     # =========================================================================
     # NAVIGATION
@@ -265,7 +269,3 @@ class Trigger(object):
     #     except NameError:
     #         Trigger.load_timeline_sections()
     #         LAA_TIMELINE_SECTION.remove_frame_markers()
-
-
-
-

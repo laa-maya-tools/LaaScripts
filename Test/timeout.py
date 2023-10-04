@@ -37,25 +37,11 @@ class TimeoutTest(object):
         self.timer.timeout.connect(self.on_timeout_finished)
         self.timer.start(500)
 
-
     def on_timeout_finished(self):
-        print 'timeout finished'
+        print('timeout finished')
         self.timer.stop()
 
 
 if __name__ == '__main__':
     timeout = TimeoutTest()
     timeout.test_timeout()
-
-
-
-
-
-
-
-
-
-
-
-
-

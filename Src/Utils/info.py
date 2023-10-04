@@ -13,8 +13,8 @@ from PySide2 import QtWidgets as wdg
 from PySide2 import QtGui as gui
 from PySide2 import QtCore as cor
 
-from LaaScripts.Src.Python3.Constants import constants as c
-from LaaScripts.Src.Python3.Utils import utils
+from LaaScripts.Src.Constants import constants as c
+from LaaScripts.Src.Utils import utils
 
 msg_ui = None
 

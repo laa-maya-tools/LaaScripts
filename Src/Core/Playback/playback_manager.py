@@ -14,11 +14,11 @@ import maya.mel as mel
 
 import PySide2.QtCore as cor
 
-from LaaScripts.Src.Python3.Constants import constants as c
-from LaaScripts.Src.Python3.Utils import info_utils as info
-from LaaScripts.Src.Python3.Utils.timeline_utils import TimelineUtils
-from LaaScripts.Src.Python3.Data.user_data import UserData
-from LaaScripts.Src.Python3.Data.scene_data import SceneData
+from LaaScripts.Src.Constants import constants as c
+from LaaScripts.Src.Utils import info_utils as info
+from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
+from LaaScripts.Src.Data.user_data import UserData
+from LaaScripts.Src.Data.scene_data import SceneData
 
 
 class PlaybackManager(object):

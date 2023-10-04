@@ -1,7 +1,7 @@
 import maya.cmds as cmd
 import maya.mel as mel
 
-from LaaScripts.Src.Python3.Constants import constants as c
+from LaaScripts.Src.Constants import constants as c
 reload(c)
 
 

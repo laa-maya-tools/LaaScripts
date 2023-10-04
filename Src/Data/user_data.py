@@ -12,7 +12,7 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2/3
 import json
 import os
 
-from LaaScripts.Src.Python3.Constants import constants as c
+from LaaScripts.Src.Constants import constants as c
 
 
 class UserData(object):
@@ -50,16 +50,6 @@ class UserData(object):
             c.TIME_INCREMENT: 1
         }
         return user_data
-
-    @staticmethod
-    def create_user_data_file(file):
-        if os.path.exists(target_folder):
-            try:
-                with open(file, 'r') as f:
-                    user_data = json.load(f)
-                return user_data
-            except IOError as error:
-                print('READING: {0}'.format(error))
 
     @staticmethod
     def read_user_data(file):

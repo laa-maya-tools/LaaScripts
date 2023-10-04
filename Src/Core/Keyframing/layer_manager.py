@@ -5,7 +5,7 @@
 # Manages all the animation layers functionality.
 # =============================================================================
 import maya.cmds as cmd
-from LaaScripts.Src.Python3.Utils import info_utils as info
+from LaaScripts.Src.Utils import info_utils as info
 
 RED, GREEN, BLUE, YELLOW, PINK, ORANGE = 12, 18, 17, 21, 19, 20
 
