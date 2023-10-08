@@ -1,29 +1,24 @@
 # -*- coding: utf-8 -*-
 """
 =============================================================================
-MODULE: trigger_bck.py
+MODULE: trigger.py
 -----------------------------------------------------------------------------
 This is an intermidiate module that triggers all the user actions.
 That´s the module that need to be imported when the user defines
 a hotkey.
 -----------------------------------------------------------------------------
 AUTHOR:   Leandro Adeodato
-VERSION:  v1.0.0 | Maya 2022 | Python 3
+VERSION:  v1.0.0 | Maya 2022+ | Python 3
 =============================================================================
 """
-import maya.cmds as cmd
-from PySide2 import QtCore as cor
-
-from LaaScripts.Src.Core import Navigation
+from LaaScripts.Src.Constants import constants as c
 from LaaScripts.Src.Core import Keyframing
+from LaaScripts.Src.Core import Navigation
 from LaaScripts.Src.Core import Playback
 from LaaScripts.Src.Core import Prefs
 from LaaScripts.Src.Core import Viewport
+from LaaScripts.Src.Utils.panel_utils import PanelUtils
 from LaaScripts.Src.Data.user_data import UserData
-from LaaScripts.Src.Data.scene_data import SceneData
-from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
-from LaaScripts.Src.Utils.widget_utils import WidgetUtils
-from LaaScripts.Src.Constants import constants as c
 
 global LAA_FRAME_MARKER
 global LAA_TIMELINE_SECTION
@@ -34,28 +29,70 @@ class Trigger(object):
     def __init__(self):
         super(Trigger, self).__init__()
 
-        self._smart_manipulator = Navigation.smart_manipulator.SmartManipulator()
+        self._prefs_manager = Prefs.prefs_manager.PrefsManager()
+        self._hotkey_manager = Prefs.hotkey_manager.HotkeyManager()
         self._channels_filter = Navigation.channels_filter.ChannelsFilter()
+        self._smart_manipulator = Navigation.smart_manipulator.SmartManipulator()
+
+        # ----- RETIMING ---
         self._retiming_tools = Keyframing.retiming_tools.RetimingTools()
+        self._blending_tools = Keyframing.blending_tools.BlendingTools()
+        self._baking_tools = Keyframing.baking_tools.BakingTools()
+        # ----- PLAYBACK ---
         self._playback_manager = Playback.playback_manager.PlaybackManager()
         self._frame_marker = Playback.frame_marker.FrameMarker()
         self._timeline_section = Playback.timeline_section.TimelineSection()
-        self._hotkey_manager = Prefs.hotkey_manager.HotkeyManager()
         self._viewport_manager = Viewport.viewport_manager.ViewportManager()
 
         self._user_data = UserData()
 
     # =========================================================================
+    # PREFS
+    # =========================================================================
+    def set_stepped_tangents(self):
+        self._prefs_manager.set_tangents('linear', 'step')
+
+    def set_linear_tangents(self):
+        self._prefs_manager.set_tangents('linear', 'linear')
+
+    def set_auto_tangents(self):
+        self._prefs_manager.set_tangents('auto', 'auto')
+
+    def set_timeline_height_1x(self):
+        self._prefs_manager.set_timeline_height(32)
+
+    def set_timeline_height_2x(self):
+        self._prefs_manager.set_timeline_height(64)
+
+    def set_timeline_height_4x(self):
+        self._prefs_manager.set_timeline_height(128)
+
+    def toggle_hotkey_sets(self):
+        self._hotkey_manager.toggle_hotkey_sets()
+
+    def clear_hotkey(self, hotkey):
+        self._hotkey_manager.clear_hotkey(hotkey)
+
+    def is_hotkey_assigned(self, hotkey):
+        return self._hotkey_manager.is_hotkey_assigned(hotkey)
+
+    def get_command_from_hotkey(self, hotkey):
+        self._hotkey_manager.get_command_from_hotkey(hotkey)
+
+    def create_hotkey(self, name, command, annotation, hotkey):
+        self._hotkey_manager.create_hotkey(name, command, annotation, hotkey)
+
+    # =========================================================================
     # NAVIGATION
     # =========================================================================
-    def switch_translate_manipulator(self):
-        self._smart_manipulator.switch_translate_manipulator()
+    def smart_translate_manipulator(self):
+        self._smart_manipulator.smart_translate_manipulator()
 
-    def switch_rotate_manipulator(self):
-        self._smart_manipulator.switch_rotate_manipulator()
+    def smart_rotate_manipulator(self):
+        self._smart_manipulator.smart_rotate_manipulator()
 
-    def switch_scale_manipulator(self):
-        self._smart_manipulator.switch_scale_manipulator()
+    def smart_scale_manipulator(self):
+        self._smart_manipulator.smart_scale_manipulator()
 
     def filter_translate_channels_on_ones(self):
         self._channels_filter.filter_translate_channels_on_ones()
@@ -63,8 +100,8 @@ class Trigger(object):
     def filter_translate_channels_on_twos(self):
         self._channels_filter.filter_translate_channels_on_twos()
 
-    def filter_translate_channels_on_threes(self):
-        self._channels_filter.filter_translate_channels_on_threes()
+    def filter_translate_channels(self):
+        self._channels_filter.filter_translate_channels()
 
     def filter_rotate_channels_on_ones(self):
         self._channels_filter.filter_rotate_channels_on_ones()
@@ -72,8 +109,8 @@ class Trigger(object):
     def filter_rotate_channels_on_twos(self):
         self._channels_filter.filter_rotate_channels_on_twos()
 
-    def filter_rotate_channels_on_threes(self):
-        self._channels_filter.filter_rotate_channels_on_threes()
+    def filter_rotate_channels(self):
+        self._channels_filter.filter_rotate_channels()
 
     def filter_scale_channels_on_ones(self):
         self._channels_filter.filter_scale_channels_on_ones()
@@ -81,8 +118,8 @@ class Trigger(object):
     def filter_scale_channels_on_twos(self):
         self._channels_filter.filter_scale_channels_on_twos()
 
-    def filter_scale_channels_on_threes(self):
-        self._channels_filter.filter_scale_channels_on_threes()
+    def filter_scale_channels(self):
+        self._channels_filter.filter_scale_channels()
 
     def filter_all_channels(self):
         self._channels_filter.filter_all_channels()
@@ -99,17 +136,32 @@ class Trigger(object):
     # =========================================================================
     # KEYFRAMING
     # =========================================================================
-    def copy_keys(self):
-        self._retiming_tools.copy_keys()
+    def tween(self, value, mode):
+        self._blending_tools.tween(value, mode)
 
-    def paste_keys(self):
-        self._retiming_tools.paste_keys()
+    def push_prev_key(self):
+        self._retiming_tools.push_prev_key()
 
-    def cut_keys(self):
-        self._retiming_tools.cut_keys()
+    def push_next_key(self):
+        self._retiming_tools.push_next_key()
 
-    def retime_keys(self):
-        self._retiming_tools.retime_keys(-2)
+    def push_prev_keys(self):
+        self._retiming_tools.push_prev_keys()
+
+    def push_next_keys(self):
+        self._retiming_tools.push_next_keys()
+
+    def pull_prev_key(self):
+        self._retiming_tools.pull_prev_key()
+
+    def pull_next_key(self):
+        self._retiming_tools.pull_next_key()
+
+    def pull_prev_keys(self):
+        self._retiming_tools.pull_prev_keys()
+
+    def pull_next_keys(self):
+        self._retiming_tools.pull_next_keys()
 
     def add_inbetween(self, time_increment=1):
         self._retiming_tools.add_inbetween(time_increment)
@@ -117,11 +169,35 @@ class Trigger(object):
     def remove_inbetween(self, time_increment=1):
         self._retiming_tools.remove_inbetween(time_increment)
 
-    # =========================================================================
-    # PREFS
-    # =========================================================================
-    def toggle_hotkey_sets(self):
-        self._hotkey_manager.toggle_hotkey_sets()
+    def copy_keys(self):
+        self._retiming_tools.copy_keys()
+
+    def cut_keys(self):
+        self._retiming_tools.cut_keys()
+
+    def paste_keys(self):
+        self._retiming_tools.paste_keys()
+
+    def bake_on_ones(self):
+        self._baking_tools.bake_on_ones()
+
+    def key_on_markers(self):
+        self._baking_tools.key_on_markers()
+
+    def bake_on_markers(self):
+        self._baking_tools.bake_on_markers()
+
+    def key_on_key_markers(self):
+        self._baking_tools.key_on_key_markers(True)
+
+    def bake_on_key_markers(self):
+        self._baking_tools.bake_on_key_markers(True)
+
+    def rebuild_on_twos(self):
+        self._baking_tools.rebuild(2)
+
+    def rebuild_on_fours(self):
+        self._baking_tools.rebuild(4)
 
     # =========================================================================
     # VIEWPORT
@@ -190,16 +266,16 @@ class Trigger(object):
         self._playback_manager.go_to_the_prev_key()
 
     def go_to_the_next_marker(self):
-        self._playback_manager.go_to_the_next_marker(c.ALL)
+        self._playback_manager.go_to_the_next_marker(c.PLAYBACK.ALL)
 
     def go_to_the_prev_marker(self):
-        self._playback_manager.go_to_the_prev_marker(c.ALL)
+        self._playback_manager.go_to_the_prev_marker(c.PLAYBACK.ALL)
 
     def go_to_the_next_key_marker(self):
-        self._playback_manager.go_to_the_next_marker(c.KEY)
+        self._playback_manager.go_to_the_next_marker(c.PLAYBACK.KEY)
 
     def go_to_the_prev_key_marker(self):
-        self._playback_manager.go_to_the_prev_marker(c.KEY)
+        self._playback_manager.go_to_the_prev_marker(c.PLAYBACK.KEY)
 
     def load_frame_markers(self):
         global LAA_FRAME_MARKER
@@ -216,24 +292,24 @@ class Trigger(object):
 
     def add_key_markers(self):
         try:
-            LAA_FRAME_MARKER.add_frame_markers(c.KEY)
+            LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.KEY)
         except NameError:
             Trigger.load_frame_markers(self)
-            LAA_FRAME_MARKER.add_frame_markers(c.KEY)
+            LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.KEY)
 
     def add_breakdown_markers(self):
         try:
-            LAA_FRAME_MARKER.add_frame_markers(c.BREAKDOWN)
+            LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.BREAKDOWN)
         except NameError:
             Trigger.load_frame_markers(self)
-            LAA_FRAME_MARKER.add_frame_markers(c.BREAKDOWN)
+            LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.BREAKDOWN)
 
     def add_inbetween_markers(self):
         try:
-            LAA_FRAME_MARKER.add_frame_markers(c.INBETWEEN)
+            LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.INBETWEEN)
         except NameError:
             Trigger.load_frame_markers(self)
-            LAA_FRAME_MARKER.add_frame_markers(c.INBETWEEN)
+            LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.INBETWEEN)
 
     def remove_frame_markers(self):
         try:
@@ -262,10 +338,9 @@ class Trigger(object):
             Trigger.load_timeline_sections(self)
             LAA_TIMELINE_SECTION.add_timeline_section(random_color)
 
-    # @staticmethod
-    # def remove_timeline_section():
-    #     try:
-    #         LAA_TIMELINE_SECTION.remove_frame_markers()
-    #     except NameError:
-    #         Trigger.load_timeline_sections()
-    #         LAA_TIMELINE_SECTION.remove_frame_markers()
+    def remove_timeline_section(self):
+        try:
+            LAA_TIMELINE_SECTION.remove_timeline_section()
+        except NameError:
+            Trigger.load_timeline_sections(self)
+            LAA_TIMELINE_SECTION.remove_timeline_section()

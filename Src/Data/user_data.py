@@ -20,14 +20,14 @@ class UserData(object):
     def __init__(self):
         self.user_data = {}
 
-        if not UserData.dir_exists(c.LAASCRIPTS_DATA_DIR):
-            UserData.create_dir(c.LAASCRIPTS_DATA_DIR)
+        if not UserData.dir_exists(c.PATH.LAASCRIPTS_DATA_DIR):
+            UserData.create_dir(c.PATH.LAASCRIPTS_DATA_DIR)
 
-        if UserData.file_exists(c.USER_DATA_FILE):
-            self.user_data = UserData.read_user_data(c.USER_DATA_FILE)
+        if UserData.file_exists(c.PATH.USER_DATA_FILE):
+            self.user_data = UserData.read_user_data(c.PATH.USER_DATA_FILE)
         else:
             self.user_data = UserData.get_default_user_data()
-            UserData.store_user_data(self.user_data, c.USER_DATA_FILE)
+            UserData.store_user_data(self.user_data, c.PATH.USER_DATA_FILE)
 
     @staticmethod
     def file_exists(file):
@@ -44,10 +44,10 @@ class UserData(object):
     @staticmethod
     def get_default_user_data():
         user_data = {
-            c.INFO_ENABLED: True,
-            c.WARNINGS_ENABLED: True,
-            c.PLAYBACK_MODE: "loop",
-            c.TIME_INCREMENT: 1
+            c.USER_DATA.INFO_ENABLED: True,
+            c.USER_DATA.WARNINGS_ENABLED: True,
+            c.USER_DATA.PLAYBACK_MODE: "loop",
+            c.USER_DATA.TIME_INCREMENT: 1
         }
         return user_data
 

@@ -1,4 +1,6 @@
-import LaaScripts.Src.Core.Prefs.hotkey_manager
+from LaaScripts.Src.Core.Prefs import hotkey_manager
+from LaaScripts.Src.Core.Prefs import prefs_manager
 
-_hotkey_manager = hotkey_manager.HotkeyManager()
+
+
 

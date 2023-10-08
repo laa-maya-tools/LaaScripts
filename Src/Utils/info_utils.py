@@ -15,13 +15,13 @@ from PySide2 import QtCore as cor
 from LaaScripts.Src.Constants import constants as c
 from LaaScripts.Src.Utils.widget_utils import WidgetUtils
 
-
 msg_ui = None
 
 
 class InfoUtils(wdg.QDialog):
 
-    def __init__(self, text, warning, timeout, parent=WidgetUtils().get_maya_control_widget(c.RANGE_SLIDER)):
+    def __init__(self, text, warning, timeout,
+                 parent=WidgetUtils().get_maya_control_widget(c.MAYA_CONTROLS.RANGE_SLIDER)):
         super(InfoUtils, self).__init__(parent)
 
         width = parent.size().width()
@@ -64,7 +64,7 @@ class InfoUtils(wdg.QDialog):
 
 
 def show_info(text, warning=False, timeout=1000):
-    if not c.INFO_ENABLED:
+    if not c.USER_DATA.INFO_ENABLED:
         return
     global msg_ui
     try:
@@ -75,4 +75,3 @@ def show_info(text, warning=False, timeout=1000):
 
     msg_ui = InfoUtils(text, warning, timeout)
     msg_ui.show()
-

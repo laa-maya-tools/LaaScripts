@@ -29,14 +29,14 @@ global LAA_TIMELINE_SECTION
 class TimelineSection(wdg.QWidget):
 
     def __init__(self):
-        self.time_control = WidgetUtils.get_maya_control(c.TIME_CONTROL)
-        self.time_control_widget = WidgetUtils.get_maya_control_widget(c.TIME_CONTROL)
+        self.time_control = WidgetUtils.get_maya_control(c.MAYA_CONTROLS.TIME_CONTROL)
+        self.time_control_widget = WidgetUtils.get_maya_control_widget(c.MAYA_CONTROLS.TIME_CONTROL)
 
         super(TimelineSection, self).__init__(self.time_control_widget)
 
         self.sections = {
-            c.SECTION_RANGES: [],
-            c.SECTION_COLORS: [],
+            c.PLAYBACK.SECTION_RANGES: [],
+            c.PLAYBACK.SECTION_COLORS: [],
         }
 
         self.initiate_sections()
@@ -46,7 +46,7 @@ class TimelineSection(wdg.QWidget):
         """
         Initiates the the frame sections stored in the scene.
         """
-        sections = SceneData.load_scene_data(c.TIMELINE_SECTION_NODE, c.TIMELINE_SECTION_ATTR).split('#')
+        sections = SceneData.load_scene_data(c.NODES.TIMELINE_SECTION_NODE, c.NODES.TIMELINE_SECTION_ATTR).split('#')
         ranges, colors = [], []
 
         if not sections[0] == '':
@@ -55,8 +55,8 @@ class TimelineSection(wdg.QWidget):
                 ranges.append((float(splitted_attr[0]), float(splitted_attr[1])))
                 colors.append((int(splitted_attr[2]), int(splitted_attr[3])))
 
-        self.sections[c.SECTION_RANGES] = ranges
-        self.sections[c.SECTION_COLORS] = colors
+        self.sections[c.PLAYBACK.SECTION_RANGES] = ranges
+        self.sections[c.PLAYBACK.SECTION_COLORS] = colors
 
     def refresh_sections(self):
         """
@@ -64,10 +64,10 @@ class TimelineSection(wdg.QWidget):
         """
         sections = ''
 
-        for range, color in zip(self.sections[c.SECTION_RANGES], self.sections[c.SECTION_COLORS]):
+        for range, color in zip(self.sections[c.PLAYBACK.SECTION_RANGES], self.sections[c.PLAYBACK.SECTION_COLORS]):
             sections = '{0}{1},{2},{3},{4}#'.format(sections, str(int(range[0])), str(int(range[1])), str(color[0]), str(color[1]))
 
-        SceneData.save_scene_data(c.TIMELINE_SECTION_NODE, c.TIMELINE_SECTION_ATTR, sections[:-1])
+        SceneData.save_scene_data(c.NODES.TIMELINE_SECTION_NODE, c.NODES.TIMELINE_SECTION_ATTR, sections[:-1])
         self.update()
 
     def get_all_colors(self):
@@ -78,7 +78,7 @@ class TimelineSection(wdg.QWidget):
         return all_colors
 
     def get_used_colors(self):
-        used_colors = list(set(self.sections[c.SECTION_COLORS]))
+        used_colors = list(set(self.sections[c.PLAYBACK.SECTION_COLORS]))
         return used_colors
 
     def get_unused_colors(self):
@@ -103,8 +103,8 @@ class TimelineSection(wdg.QWidget):
 
         section_range = TimelineUtils.get_selected_range()
 
-        section_ranges = self.sections[c.SECTION_RANGES]
-        section_colors = self.sections[c.SECTION_COLORS]
+        section_ranges = self.sections[c.PLAYBACK.SECTION_RANGES]
+        section_colors = self.sections[c.PLAYBACK.SECTION_COLORS]
         section_index, _, _, = self.get_data_from_section(section_range)
 
         if section_index == -1:
@@ -113,8 +113,8 @@ class TimelineSection(wdg.QWidget):
         else:
             section_colors[section_index] = section_color
 
-        self.sections[c.SECTION_RANGES] = section_ranges
-        self.sections[c.SECTION_COLORS] = section_colors
+        self.sections[c.PLAYBACK.SECTION_RANGES] = section_ranges
+        self.sections[c.PLAYBACK.SECTION_COLORS] = section_colors
         self.refresh_sections()
 
     def remove_frame_sections(self):
@@ -124,8 +124,8 @@ class TimelineSection(wdg.QWidget):
         info.show_info('- Frame Marker')
 
     def remove_frame_marker(self, frame):
-        ranges = self.sections[c.SECTION_RANGES]
-        colors = self.sections[c.SECTION_COLORS]
+        ranges = self.sections[c.PLAYBACK.SECTION_RANGES]
+        colors = self.sections[c.PLAYBACK.SECTION_COLORS]
         index, _, _, = self.get_data_from_frame(frame)
 
         if index == -1:
@@ -134,18 +134,18 @@ class TimelineSection(wdg.QWidget):
         ranges.pop(index)
         colors.pop(index)
 
-        self.sections[c.SECTION_RANGES] = ranges
-        self.sections[c.SECTION_COLORS] = colors
+        self.sections[c.PLAYBACK.SECTION_RANGES] = ranges
+        self.sections[c.PLAYBACK.SECTION_COLORS] = colors
         self.refresh_sections()
 
     def clear(self):
-        self.sections[c.SECTION_RANGES] = []
-        self.sections[c.SECTION_COLORS] = []
+        self.sections[c.PLAYBACK.SECTION_RANGES] = []
+        self.sections[c.PLAYBACK.SECTION_COLORS] = []
         self.refresh_sections()
 
     def clear_all_frame_sections(self):
-        self.sections[c.SECTION_RANGES] = []
-        self.sections[c.SECTION_COLORS] = []
+        self.sections[c.PLAYBACK.SECTION_RANGES] = []
+        self.sections[c.PLAYBACK.SECTION_COLORS] = []
         self.refresh_sections()
 
     def get_data_from_frame(self, frame):
@@ -156,22 +156,22 @@ class TimelineSection(wdg.QWidget):
         return -1, frame, None
 
     def get_data_from_section(self, section_range):
-        if section_range in self.sections[c.SECTION_RANGES]:
-            section_index = self.sections[c.SECTION_RANGES].index(section_range)
-            section_color = self.sections[c.SECTION_COLORS][section_index]
+        if section_range in self.sections[c.PLAYBACK.SECTION_RANGES]:
+            section_index = self.sections[c.PLAYBACK.SECTION_RANGES].index(section_range)
+            section_color = self.sections[c.PLAYBACK.SECTION_COLORS][section_index]
             return section_index, section_range, section_color
         return -1, section_range, None
 
     def paintEvent(self, event):
-        if not self.sections[c.SECTION_RANGES] or not self.sections[c.SECTION_COLORS]:
+        if not self.sections[c.PLAYBACK.SECTION_RANGES] or not self.sections[c.PLAYBACK.SECTION_COLORS]:
             return
 
-        for index, range in enumerate(self.sections[c.SECTION_RANGES]):
+        for index, range in enumerate(self.sections[c.PLAYBACK.SECTION_RANGES]):
             self.draw_timeline_section(
                 range[0],
                 range[1],
-                self.sections[c.SECTION_COLORS][index][0],
-                self.sections[c.SECTION_COLORS][index][1])
+                self.sections[c.PLAYBACK.SECTION_COLORS][index][0],
+                self.sections[c.PLAYBACK.SECTION_COLORS][index][1])
 
     def draw_timeline_section(self, start_time, end_time, color, brightness):
         parent = self.parentWidget()

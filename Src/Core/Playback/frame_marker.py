@@ -9,18 +9,14 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 =============================================================================
 """
 import maya.cmds as cmd
-import itertools
-
-from PySide2 import QtWidgets as wdg
-from PySide2 import QtGui as gui
-from PySide2 import QtCore as cor
-
 from LaaScripts.Src.Constants import constants as c
+from LaaScripts.Src.Data.scene_data import SceneData
+from LaaScripts.Src.Utils import info_utils as info
 from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
 from LaaScripts.Src.Utils.widget_utils import WidgetUtils
-from LaaScripts.Src.Utils import info_utils as info
-from LaaScripts.Src.Data.scene_data import SceneData
-
+from PySide2 import QtCore as cor
+from PySide2 import QtGui as gui
+from PySide2 import QtWidgets as wdg
 
 global LAA_FRAME_MARKER
 
@@ -28,20 +24,20 @@ global LAA_FRAME_MARKER
 class FrameMarker(wdg.QWidget):
 
     def __init__(self):
-        self.time_control = WidgetUtils.get_maya_control(c.TIME_CONTROL)
-        self.time_control_widget = WidgetUtils.get_maya_control_widget(c.TIME_CONTROL)
+        self.time_control = WidgetUtils.get_maya_control(c.MAYA_CONTROLS.TIME_CONTROL)
+        self.time_control_widget = WidgetUtils.get_maya_control_widget(c.MAYA_CONTROLS.TIME_CONTROL)
 
         super(FrameMarker, self).__init__(self.time_control_widget)
 
         self.markers_colors = {
-            c.KEY: gui.QColor(cor.Qt.red),
-            c.BREAKDOWN: gui.QColor(cor.Qt.green),
-            c.INBETWEEN: gui.QColor(cor.Qt.yellow)
+            c.PLAYBACK.KEY: gui.QColor(cor.Qt.red),
+            c.PLAYBACK.BREAKDOWN: gui.QColor(cor.Qt.green),
+            c.PLAYBACK.INBETWEEN: gui.QColor(cor.Qt.yellow)
         }
 
         self.markers = {
-            c.FRAMES: [],
-            c.TYPES: []
+            c.PLAYBACK.FRAMES: [],
+            c.PLAYBACK.TYPES: []
         }
 
         self.initiate_markers()
@@ -51,7 +47,7 @@ class FrameMarker(wdg.QWidget):
         """
         Initiates the the frame markers stored in the scene.
         """
-        markers = SceneData.load_scene_data(c.FRAME_MARKER_NODE, c.FRAME_MARKERS_ATTR).split('#')
+        markers = SceneData.load_scene_data(c.NODES.FRAME_MARKER_NODE, c.NODES.FRAME_MARKERS_ATTR).split('#')
         frames, types = [], []
 
         if not markers[0] == '':
@@ -59,8 +55,8 @@ class FrameMarker(wdg.QWidget):
                 frames.append(float(marker.split(',')[0]))
                 types.append(int(marker.split(',')[1]))
 
-        self.markers[c.FRAMES] = frames
-        self.markers[c.TYPES] = types
+        self.markers[c.PLAYBACK.FRAMES] = frames
+        self.markers[c.PLAYBACK.TYPES] = types
 
     def refresh_markers(self):
         """
@@ -68,10 +64,10 @@ class FrameMarker(wdg.QWidget):
         """
         markers = ''
 
-        for f, t in zip(self.markers[c.FRAMES], self.markers[c.TYPES]):
+        for f, t in zip(self.markers[c.PLAYBACK.FRAMES], self.markers[c.PLAYBACK.TYPES]):
             markers = markers + str(int(f)) + ',' + str(t) + '#'
 
-        SceneData.save_scene_data(c.FRAME_MARKER_NODE, c.FRAME_MARKERS_ATTR, markers[:-1])
+        SceneData.save_scene_data(c.NODES.FRAME_MARKER_NODE, c.NODES.FRAME_MARKERS_ATTR, markers[:-1])
         self.update()
 
     def add_frame_markers(self, type):
@@ -82,7 +78,7 @@ class FrameMarker(wdg.QWidget):
         frames = TimelineUtils.get_selected_frame_times()
         for frame in frames:
             self.add_frame_marker(frame, type)
-        info.show_info('+ {0} Marker'.format(c.MARKER_TYPE_NAMES[type]))
+        info.show_info('+ {0} Marker'.format(c.PLAYBACK.MARKER_TYPE_NAMES[type]))
 
     def add_frame_marker(self, frame, type):
         """
@@ -91,8 +87,8 @@ class FrameMarker(wdg.QWidget):
         :param type:
         :return:
         """
-        frames = self.markers[c.FRAMES]
-        types = self.markers[c.TYPES]
+        frames = self.markers[c.PLAYBACK.FRAMES]
+        types = self.markers[c.PLAYBACK.TYPES]
         index, _, _, = self.get_data_from_frame(frame)
 
         if index == -1:
@@ -101,19 +97,19 @@ class FrameMarker(wdg.QWidget):
         else:
             types[index] = type
 
-        self.markers[c.FRAMES] = frames
-        self.markers[c.TYPES] = types
+        self.markers[c.PLAYBACK.FRAMES] = frames
+        self.markers[c.PLAYBACK.TYPES] = types
         self.refresh_markers()
 
     def remove_frame_markers(self):
         frames = TimelineUtils.get_selected_frame_times()
         for frame in frames:
             self.remove_frame_marker(frame)
-        info.show_info('- Frame Marker')
+        info.show_info('- FRAME Marker')
 
     def remove_frame_marker(self, frame):
-        frames = self.markers[c.FRAMES]
-        types = self.markers[c.TYPES]
+        frames = self.markers[c.PLAYBACK.FRAMES]
+        types = self.markers[c.PLAYBACK.TYPES]
         index, _, _, = self.get_data_from_frame(frame)
 
         if index == -1:
@@ -122,34 +118,34 @@ class FrameMarker(wdg.QWidget):
         frames.pop(index)
         types.pop(index)
 
-        self.markers[c.FRAMES] = frames
-        self.markers[c.TYPES] = types
+        self.markers[c.PLAYBACK.FRAMES] = frames
+        self.markers[c.PLAYBACK.TYPES] = types
         self.refresh_markers()
 
     def clear(self):
-        self.markers[c.FRAMES] = []
-        self.markers[c.TYPES] = []
+        self.markers[c.PLAYBACK.FRAMES] = []
+        self.markers[c.PLAYBACK.TYPES] = []
         self.refresh_markers()
 
     def clear_all_frame_markers(self):
-        self.markers[c.FRAMES] = []
-        self.markers[c.TYPES] = []
+        self.markers[c.PLAYBACK.FRAMES] = []
+        self.markers[c.PLAYBACK.TYPES] = []
         self.refresh_markers()
 
     def get_data_from_frame(self, frame):
-        if frame in self.markers[c.FRAMES]:
-            index = self.markers[c.FRAMES].index(frame)
-            type = self.markers[c.TYPES][index]
+        if frame in self.markers[c.PLAYBACK.FRAMES]:
+            index = self.markers[c.PLAYBACK.FRAMES].index(frame)
+            type = self.markers[c.PLAYBACK.TYPES][index]
             return index, frame, type
         return -1, frame, None
 
     def paintEvent(self, event):
-        if not self.markers[c.FRAMES] or not self.markers[c.TYPES]:
+        if not self.markers[c.PLAYBACK.FRAMES] or not self.markers[c.PLAYBACK.TYPES]:
             return
 
-        self.draw_frame_markers(c.KEY)
-        self.draw_frame_markers(c.BREAKDOWN)
-        self.draw_frame_markers(c.INBETWEEN)
+        self.draw_frame_markers(c.PLAYBACK.KEY)
+        self.draw_frame_markers(c.PLAYBACK.BREAKDOWN)
+        self.draw_frame_markers(c.PLAYBACK.INBETWEEN)
 
     def draw_frame_markers(self, marker_type):
         parent = self.parentWidget()
@@ -174,9 +170,9 @@ class FrameMarker(wdg.QWidget):
             fill_color = self.markers_colors[marker_type]
             fill_color.setAlpha(75)
 
-            for frame_time in self.markers[c.FRAMES]:
+            for frame_time in self.markers[c.PLAYBACK.FRAMES]:
                 data = self.get_data_from_frame(frame_time)
-                if data[c.TYPE] == marker_type:
+                if data[c.PLAYBACK.TYPE] == marker_type:
                     frame_x = padding + ((frame_time - range_start) * frame_width) + 0.5
                     painter.fillRect(frame_x, frame_y, frame_width, frame_height, fill_color)
                     painter.drawRect(frame_x, frame_y, frame_width, frame_height)

@@ -24,7 +24,7 @@ from LaaScripts.Src.Data.scene_data import SceneData
 class PlaybackManager(object):
 
     def __init__(self):
-        self._user_data = UserData.read_user_data(c.USER_DATA_FILE)
+        self._user_data = UserData.read_user_data(c.PATH.USER_DATA_FILE)
         self._next_frame_timer = cor.QTimer()
         self._prev_frame_timer = cor.QTimer()
         self._next_frame_timer.timeout.connect(self.on_next_frame_timeout)
@@ -34,7 +34,7 @@ class PlaybackManager(object):
         """
         Goes to the next frame time depending on the playback_mode behaviour.
         """
-        i = self._user_data[c.TIME_INCREMENT]
+        i = self._user_data[c.USER_DATA.TIME_INCREMENT]
         playback_start_time = TimelineUtils.get_playback_range()[0]
         playback_end_time = TimelineUtils.get_playback_range()[1]
         animation_end_time = TimelineUtils.get_animation_range()[1]
@@ -62,7 +62,7 @@ class PlaybackManager(object):
         """
         Goes to the previous frame time depending on the playback_mode behaviour.
         """
-        i = self._user_data[c.TIME_INCREMENT]
+        i = self._user_data[c.USER_DATA.TIME_INCREMENT]
         playback_start_time = TimelineUtils.get_playback_range()[0]
         playback_end_time = TimelineUtils.get_playback_range()[1]
         animation_start_time = TimelineUtils.get_animation_range()[0]

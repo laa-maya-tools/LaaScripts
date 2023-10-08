@@ -14,7 +14,7 @@ import maya.cmds as cmd
 from ..Utils import info
 from ..Utils import utils as utl
 from ..Data import user_data as usd
-from ..Constants import constants as cns
+from ..Constants import constants_bck as cns
 
 reload(info)
 reload(utl)

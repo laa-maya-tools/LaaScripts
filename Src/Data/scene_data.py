@@ -1,5 +1,4 @@
 import maya.cmds as cmd
-import maya.mel as mel
 
 
 class SceneData(object):
@@ -123,4 +122,3 @@ class SceneData(object):
         """
         full_attr_name = '{0}.{1}'.format(node_name, attr_name)
         cmd.setAttr(full_attr_name, lock=False)
-

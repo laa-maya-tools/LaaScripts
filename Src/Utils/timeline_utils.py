@@ -11,9 +11,8 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 """
 import maya.cmds as cmd
 import maya.mel as mel
-
-from LaaScripts.Src.Utils.widget_utils import WidgetUtils
 from LaaScripts.Src.Constants import constants as c
+from LaaScripts.Src.Data.scene_data import SceneData
 
 
 class TimelineUtils(object):
@@ -36,7 +35,7 @@ class TimelineUtils(object):
         cmd.currentTime(current_time, edit=True)
 
     @staticmethod
-    def get_playback_range(option=c.ALL_RANGE):
+    def get_playback_range(option=c.TIMELINE.ALL_RANGE):
         """
         Get the entire playback range, the playback range from start to the current frame or the playback
         range from current frame to the end.
@@ -48,15 +47,15 @@ class TimelineUtils(object):
         playback_start_time = cmd.playbackOptions(minTime=True, query=True)
         playback_end_time = cmd.playbackOptions(maxTime=True, query=True)
 
-        if option == c.BEFORE_CURRENT_TIME:
+        if option == c.TIMELINE.BEFORE_CURRENT_TIME:
             return [int(playback_start_time), int(current_time)]
-        elif option == c.AFTER_CURRENT_TIME:
+        elif option == c.TIMELINE.AFTER_CURRENT_TIME:
             return [int(current_time), int(playback_end_time)]
         else:
             return [int(playback_start_time), int(playback_end_time)]
 
     @staticmethod
-    def get_animation_range(option=c.ALL_RANGE):
+    def get_animation_range(option=c.TIMELINE.ALL_RANGE):
         """
         Get the entire animation range, the playback range from start to the current frame or the
         animation range from current frame to the end.
@@ -68,9 +67,9 @@ class TimelineUtils(object):
         animation_start_time = cmd.playbackOptions(animationStartTime=True, query=True)
         animation_end_time = cmd.playbackOptions(animationEndTime=True, query=True)
 
-        if option == c.BEFORE_CURRENT_TIME:
+        if option == c.TIMELINE.BEFORE_CURRENT_TIME:
             return [int(animation_start_time), int(current_time)]
-        elif option == c.AFTER_CURRENT_TIME:
+        elif option == c.TIMELINE.AFTER_CURRENT_TIME:
             return [int(current_time), int(animation_end_time)]
         else:
             return [int(animation_start_time), int(animation_end_time)]
@@ -82,7 +81,7 @@ class TimelineUtils(object):
         :return: [Selection start time, Selection end time].
         :rtype: list of float
         """
-        time_control = mel.eval("$tempVar={0}".format(c.TIME_CONTROL))
+        time_control = mel.eval("$tempVar={0}".format(c.MAYA_CONTROLS.TIME_CONTROL))
         timeline_range = cmd.timeControl(time_control, q=True, rangeArray=True)
         return [int(timeline_range[0]), int(timeline_range[1])-1]
 
@@ -137,6 +136,24 @@ class TimelineUtils(object):
         return cmd.findKeyframe(**kwargs)
 
     @staticmethod
+    def get_first_key():
+        """
+        Finds the neighbor keyframe of a specified time.
+        :param str which: Previous, Next, First or Last.
+        :param float time: Keytime.
+        """
+        return cmd.findKeyframe(which='first')
+
+    @staticmethod
+    def get_last_key():
+        """
+        Finds the neighbor keyframe of a specified time.
+        :param str which: Previous, Next, First or Last.
+        :param float time: Keytime.
+        """
+        return cmd.findKeyframe(which='last')
+
+    @staticmethod
     def change_keyframe_time(current_time, new_time):
         """
         Changes keyframe time.
@@ -144,6 +161,18 @@ class TimelineUtils(object):
         :param float new_time: New time.
         """
         cmd.keyframe(e=True, time=(current_time, current_time), timeChange=new_time)
+
+    @staticmethod
+    def change_object_keyframe_time(obj, current_time, new_time):
+        """
+        Changes keyframe time.
+        :param float obj: Selected object.
+        :param float current_time: Current time.
+        :param float new_time: New time.
+        """
+        value = cmd.keyframe(obj, query=True, time=(current_time, current_time), valueChange=True)[0]
+        cmd.cutKey(obj, time=(current_time, current_time))
+        cmd.setKeyframe(obj, time=new_time, value=value)
 
     @staticmethod
     def get_start_keyframe_time(range_start_time):
@@ -225,3 +254,38 @@ class TimelineUtils(object):
     @staticmethod
     def stop_timeline():
         cmd.play(state=False)
+
+    @staticmethod
+    def get_frame_markers():
+        """
+        Initiates the the frame markers stored in the scene.
+        """
+        markers = SceneData.load_scene_data(c.FRAME_MARKER_NODE, c.FRAME_MARKERS_ATTR).split('#')
+        frames = []
+
+        if not markers[0] == '':
+            for marker in markers:
+                frames.append(float(marker.split(',')[0]))
+
+        return sorted(frames)
+
+    @staticmethod
+    def get_key_markers():
+        """
+        Initiates the the frame markers stored in the scene.
+        """
+        markers = SceneData.load_scene_data(c.FRAME_MARKER_NODE, c.FRAME_MARKERS_ATTR).split('#')
+        frames = []
+
+        if not markers[0] == '':
+            for marker in markers:
+                f = float(marker.split(',')[0])
+                t = int(marker.split(',')[1])
+                if t == c.KEY:
+                    frames.append(f)
+
+        return sorted(frames)
+
+
+if __name__ == '__main__':
+    print(TimelineUtils.get_key_markers())
