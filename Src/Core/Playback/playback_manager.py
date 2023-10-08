@@ -55,7 +55,7 @@ class PlaybackManager(object):
                 TimelineUtils.set_playback_range(playback_start_time, playback_end_time + time_increment)
 
         TimelineUtils.set_current_time(next_time)
-        if self._user_data[c.INFO_ENABLED]:
+        if self._user_data[c.USER_DATA.INFO_ENABLED]:
             info.show_info('Next Frame >> {0}'.format(int(next_time)))
 
     def go_to_the_prev_frame(self):
@@ -82,7 +82,7 @@ class PlaybackManager(object):
                 TimelineUtils.set_playback_range(playback_start_time - i, playback_end_time)
 
         TimelineUtils.set_current_time(prev_time)
-        if self._user_data[c.INFO_ENABLED]:
+        if self._user_data[c.USER_DATA.INFO_ENABLED]:
             info.show_info('{0} << Prev Frame'.format(int(prev_time)))
 
     def next_frame_playback_press(self):
@@ -112,20 +112,20 @@ class PlaybackManager(object):
     def go_to_the_next_key(self):
         next_key = cmd.findKeyframe(timeSlider=True, which="next")
         TimelineUtils.set_current_time(next_key)
-        if self._user_data[c.INFO_ENABLED]:
+        if self._user_data[c.USER_DATA.INFO_ENABLED]:
             info.show_info('{0} << Prev Key'.format(int(next_key)))
 
     def go_to_the_prev_key(self):
         prev_key = cmd.findKeyframe(timeSlider=True, which="previous")
         TimelineUtils.set_current_time(prev_key)
-        if self._user_data[c.INFO_ENABLED]:
+        if self._user_data[c.USER_DATA.INFO_ENABLED]:
             info.show_info('{0} << Prev Key'.format(int(prev_key)))
 
     def get_frame_markers(self):
         """
         Initiates the the frame markers stored in the scene.
         """
-        markers = SceneData.load_scene_data(c.FRAME_MARKER_NODE, c.FRAME_MARKERS_ATTR).split('#')
+        markers = SceneData.load_scene_data(c.NODES.FRAME_MARKER_NODE, c.NODES.FRAME_MARKERS_ATTR).split('#')
         frames = []
 
         if not markers[0] == '':
@@ -138,7 +138,7 @@ class PlaybackManager(object):
         """
         Initiates the the frame markers stored in the scene.
         """
-        markers = SceneData.load_scene_data(c.FRAME_MARKER_NODE, c.FRAME_MARKERS_ATTR).split('#')
+        markers = SceneData.load_scene_data(c.NODES.FRAME_MARKER_NODE, c.NODES.FRAME_MARKERS_ATTR).split('#')
         frames = []
 
         if not markers[0] == '':
@@ -160,12 +160,12 @@ class PlaybackManager(object):
         for i, _ in enumerate(markers):
             if current_time >= markers[-1] or current_time < markers[0]:
                 TimelineUtils.set_current_time(markers[0])
-                if self._user_data[c.INFO_ENABLED]:
+                if self._user_data[c.USER_DATA.INFO_ENABLED]:
                     info.show_info('Next Marker >> {0}'.format(int(markers[0])))
                 return
             if markers[i] <= current_time < markers[i+1]:
                 TimelineUtils.set_current_time(markers[i+1])
-                if self._user_data[c.INFO_ENABLED]:
+                if self._user_data[c.USER_DATA.INFO_ENABLED]:
                     info.show_info('Next Marker >> {0}'.format(int(markers[i+1])))
                 return
 
@@ -179,12 +179,12 @@ class PlaybackManager(object):
         for i, _ in enumerate(markers):
             if current_time <= markers[0] or current_time > markers[-1]:
                 TimelineUtils.set_current_time(markers[-1])
-                if self._user_data[c.INFO_ENABLED]:
+                if self._user_data[c.USER_DATA.INFO_ENABLED]:
                     info.show_info('{0} << Prev Marker'.format(int(markers[-1])))
                 return
             if markers[i] < current_time <= markers[i+1]:
                 TimelineUtils.set_current_time(markers[i])
-                if self._user_data[c.INFO_ENABLED]:
+                if self._user_data[c.USER_DATA.INFO_ENABLED]:
                     info.show_info('{0} << Prev Marker'.format(int(markers[i])))
                 return
 

@@ -24,7 +24,7 @@ class NavigationUtils(object):
         :return: Current move mode.
         :rtype: str
         """
-        return cmd.manipMoveContext(c.MOVE, q=True, mode=True)
+        return cmd.manipMoveContext(c.NAVIGATION.MOVE, q=True, mode=True)
 
     @staticmethod
     def set_current_move_mode(mode):
@@ -32,7 +32,7 @@ class NavigationUtils(object):
         Sets the current move manipulator mode.
         :param str mode: Move mode (local or world).
         """
-        cmd.manipMoveContext(c.MOVE, e=True, mode=mode)
+        cmd.manipMoveContext(c.NAVIGATION.MOVE, e=True, mode=mode)
 
     @staticmethod
     def get_current_rotate_mode():
@@ -41,7 +41,7 @@ class NavigationUtils(object):
         :return: Current rotate mode.
         :rtype: str
         """
-        return cmd.manipRotateContext(c.ROTATE, q=True, mode=True)
+        return cmd.manipRotateContext(c.NAVIGATION.ROTATE, q=True, mode=True)
 
     @staticmethod
     def set_current_rotate_mode(mode):
@@ -49,7 +49,7 @@ class NavigationUtils(object):
         Sets the current rotate manipulator mode.
         :param str mode: Rotate mode (local, world or gimbal).
         """
-        cmd.manipRotateContext(c.ROTATE, e=True, mode=mode)
+        cmd.manipRotateContext(c.NAVIGATION.ROTATE, e=True, mode=mode)
 
     @staticmethod
     def get_current_scale_mode():
@@ -58,7 +58,7 @@ class NavigationUtils(object):
         :return: Current scale mode.
         :rtype: str
         """
-        return cmd.manipScaleContext(c.SCALE, q=True, mode=True)
+        return cmd.manipScaleContext(c.NAVIGATION.SCALE, q=True, mode=True)
 
     @staticmethod
     def set_current_scale_mode(mode):
@@ -66,7 +66,7 @@ class NavigationUtils(object):
         Sets the current scale manipulator mode.
         :param str mode: Scale mode (local or world).
         """
-        cmd.manipScaleContext(c.SCALE, e=True, mode=mode)
+        cmd.manipScaleContext(c.NAVIGATION.SCALE, e=True, mode=mode)
 
     @staticmethod
     def reset_move_mode(mode):
@@ -74,7 +74,7 @@ class NavigationUtils(object):
         Resets move manipulator to its default state.
         :param str mode: Default move mode.
         """
-        cmd.manipMoveContext(c.MOVE, e=True, mode=mode)
+        cmd.manipMoveContext(c.NAVIGATION.MOVE, e=True, mode=mode)
 
     @staticmethod
     def reset_rotate_mode(mode):
@@ -82,7 +82,7 @@ class NavigationUtils(object):
         Resets rotate manipulator to its default state.
         :param str mode: Default rotate mode.
         """
-        cmd.manipRotateContext(c.ROTATE, e=True, mode=mode)
+        cmd.manipRotateContext(c.NAVIGATION.ROTATE, e=True, mode=mode)
 
     @staticmethod
     def reset_scale_mode(mode):
@@ -90,7 +90,7 @@ class NavigationUtils(object):
         Resets scale manipulator to its default state.
         :param str mode: Default scale mode.
         """
-        cmd.manipScaleContext(c.SCALE, e=True, mode=mode)
+        cmd.manipScaleContext(c.NAVIGATION.SCALE, e=True, mode=mode)
 
     @staticmethod
     def fix_translate_marking_menu():
@@ -137,15 +137,15 @@ class NavigationUtils(object):
 
     @staticmethod
     def get_selected_translate_channels():
-        return NavigationUtils.get_selected_channels_of_type(c.TRS_XYZ)
+        return NavigationUtils.get_selected_channels_of_type(c.NAVIGATION.TRS_XYZ)
 
     @staticmethod
     def get_selected_rotate_channels():
-        return NavigationUtils.get_selected_channels_of_type(c.ROT_XYZ)
+        return NavigationUtils.get_selected_channels_of_type(c.NAVIGATION.ROT_XYZ)
 
     @staticmethod
     def get_selected_scale_channels():
-        return NavigationUtils.get_selected_channels_of_type(c.SCL_XYZ)
+        return NavigationUtils.get_selected_channels_of_type(c.NAVIGATION.SCL_XYZ)
 
     @staticmethod
     def select_channels(selected_objects, channels):

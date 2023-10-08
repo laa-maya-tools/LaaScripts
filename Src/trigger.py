@@ -33,12 +33,9 @@ class Trigger(object):
         self._hotkey_manager = Prefs.hotkey_manager.HotkeyManager()
         self._channels_filter = Navigation.channels_filter.ChannelsFilter()
         self._smart_manipulator = Navigation.smart_manipulator.SmartManipulator()
-
-        # ----- RETIMING ---
         self._retiming_tools = Keyframing.retiming_tools.RetimingTools()
         self._blending_tools = Keyframing.blending_tools.BlendingTools()
         self._baking_tools = Keyframing.baking_tools.BakingTools()
-        # ----- PLAYBACK ---
         self._playback_manager = Playback.playback_manager.PlaybackManager()
         self._frame_marker = Playback.frame_marker.FrameMarker()
         self._timeline_section = Playback.timeline_section.TimelineSection()
@@ -57,6 +54,9 @@ class Trigger(object):
 
     def set_auto_tangents(self):
         self._prefs_manager.set_tangents('auto', 'auto')
+
+    def toggle_timeline_height(self):
+        self._prefs_manager.toggle_timeline_height()
 
     def set_timeline_height_1x(self):
         self._prefs_manager.set_timeline_height(32)
@@ -199,6 +199,10 @@ class Trigger(object):
     def rebuild_on_fours(self):
         self._baking_tools.rebuild(4)
 
+    def set_smart_key(self):
+        self._retiming_tools.set_smart_key()
+
+
     # =========================================================================
     # VIEWPORT
     # =========================================================================
@@ -237,6 +241,9 @@ class Trigger(object):
 
     def toggle_polygons(self):
         self._viewport_manager.toggle_polygons()
+
+    def toggle_all_viewport_elements(self):
+        self._viewport_manager.toggle_all_viewport_elements()
 
     # =========================================================================
     # PLAYBACK

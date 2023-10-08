@@ -130,7 +130,7 @@ class TimelineUtils(object):
         :param float time: Keytime.
         """
         kwargs = {'which': which}
-        if which in [c.NEXT, c.PREVIOUS]:
+        if which in [c.TIMELINE.NEXT, c.TIMELINE.PREVIOUS]:
             kwargs['time'] = (time, time)
 
         return cmd.findKeyframe(**kwargs)
@@ -182,7 +182,7 @@ class TimelineUtils(object):
         start_times = cmd.keyframe(q=True, time=(range_start_time, range_start_time))
         if start_times:
             return start_times[0]
-        start_time = TimelineUtils.find_keyframe(c.PREVIOUS, range_start_time)
+        start_time = TimelineUtils.find_keyframe(c.TIMELINE.PREVIOUS, range_start_time)
         return start_time
 
     @staticmethod
@@ -190,7 +190,7 @@ class TimelineUtils(object):
         """
         Gets the last keyframe time.
         """
-        return TimelineUtils.find_keyframe(c.LAST)
+        return TimelineUtils.find_keyframe(c.TIMELINE.LAST)
 
     @staticmethod
     def add_inbetween():
@@ -212,7 +212,7 @@ class TimelineUtils(object):
     def remove_inbetween():
         current_time = TimelineUtils.get_current_time()
         key_times = TimelineUtils.get_all_key_times()
-        next_key = TimelineUtils.find_keyframe(c.NEXT, current_time)
+        next_key = TimelineUtils.find_keyframe(c.TIMELINE.NEXT, current_time)
 
         if not key_times:
             return

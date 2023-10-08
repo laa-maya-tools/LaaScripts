@@ -94,7 +94,7 @@ class ChannelsFilter(object):
         NavigationUtils.select_channels(selected_objects, selected_channels)
         info.show_info('SELECTION: {0} {1}'.format(selected_channels[0].upper(), selected_channels[1].upper()))
 
-    def filter_translate_channels_on_threes(self):
+    def filter_translate_channels(self):
         """
         Selects/deselects all translate channels on the channelbox.
         """
@@ -180,7 +180,7 @@ class ChannelsFilter(object):
         NavigationUtils.select_channels(selected_objects, selected_channels)
         info.show_info('SELECTION: {0} {1}'.format(selected_channels[0].upper(), selected_channels[1].upper()))
 
-    def filter_rotate_channels_on_threes(self):
+    def filter_rotate_channels(self):
         """
         Selects/deselects all rotate channels on the channelbox.
         """
@@ -265,7 +265,7 @@ class ChannelsFilter(object):
         NavigationUtils.select_channels(selected_objects, selected_channels)
         info.show_info('SELECTION: {0} {1}'.format(selected_channels[0].upper(), selected_channels[1].upper()))
 
-    def filter_scale_channels_on_threes(self):
+    def filter_scale_channels(self):
         """
         Selects/deselects all scale channels on the channelbox.
         """

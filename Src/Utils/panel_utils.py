@@ -40,8 +40,8 @@ class PanelUtils(object):
     def toggle_viewport_elements(elements_type):
 
         panel = PanelUtils.get_hovered_panel()
-        if not cmd.getPanel(to=panel) == c.MODEL_PANEL:
-            all_panels = cmd.getPanel(type=c.MODEL_PANEL)
+        if not cmd.getPanel(to=panel) == c.VIEWPORT.MODEL_PANEL:
+            all_panels = cmd.getPanel(type=c.VIEWPORT.MODEL_PANEL)
             get_command = 'cmd.modelEditor(all_panels[0], q=True, {0}=True)'.format(elements_type)
             current_state = eval(get_command)
             for p in all_panels:

@@ -11,6 +11,13 @@ class RetimingTools(object):
     def __init__(self):
         pass
 
+    def set_smart_key(self):
+        try:
+            mel.eval('ackSliceCurves;')
+            info.show_info('Keys Copied')
+        except:
+            info.show_info('No object is selected.')
+
     def copy_keys(self):
         selection = SelectionUtils.list_selected_objects()
         if selection == c.STRING.EMPTY:

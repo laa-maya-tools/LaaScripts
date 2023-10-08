@@ -76,9 +76,9 @@ class _Navigation:
     SY: str = 'sy'
     SZ: str = 'sz'
     # ----- COORD SYSTEMS -----
-    TRS_XYZ: tuple = (TX, TY, TZ)
-    ROT_XYZ: tuple = (RX, RY, RZ)
-    SCL_XYZ: tuple = (SX, SY, SZ)
+    TRS_XYZ: tuple = ('tx', 'ty', 'tz')
+    ROT_XYZ: tuple = ('rx', 'ry', 'rz')
+    SCL_XYZ: tuple = ('sx', 'sy', 'sz')
 
 
 NAVIGATION = _Navigation()

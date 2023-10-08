@@ -10,10 +10,251 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 =============================================================================
 """
 import maya.cmds as cmd
-import maya.mel as mel
+from collections import namedtuple
+
+Key = namedtuple('Key', 'current_key prev_key next_key anim_curve')
 
 
-class GraphUtils (object):
+class GraphUtils(object):
+
+    @staticmethod
+    def get_all_selected_curves():
+        """
+        Get all the selected animation curves from the graph editor.
+        :return: A list of animation curves
+        :rtype: list[str]
+        """
+        return cmd.keyframe(query=True, name=True, selected=True) or []
+
+    @staticmethod
+    def count_all_selected_keys():
+        """
+        Count all the selected keys from the graph editor.
+        :return: Number of selected keys
+        :rtype: int
+        """
+        return cmd.keyframe(query=True, keyframeCount=True, selected=True)
+
+    @staticmethod
+    def count_selected_keys_in_curve(anim_curve):
+        """
+        Count all the selected keys in a specific animation curve.
+        :return: Number of selected keys in a curve
+        :rtype: int
+        """
+        return cmd.keyframe(anim_curve, query=True, keyframeCount=True, selected=True)
+
+    @staticmethod
+    def get_all_keys_from_curve(anim_curve):
+        """
+        Get all keys from a specific animation curve.
+        :param anim_curve: Animation curve
+        :return: List of key indexes
+        :rtype: list[int]
+        """
+        return cmd.keyframe(anim_curve, query=True, indexValue=True)
+
+    @staticmethod
+    def get_selected_keys_from_curve(anim_curve):
+        """
+        Get selected keys from a specific animation curve.
+        :param anim_curve: Animation curve
+        :return: List of key indexes
+        :rtype: list[int]
+        """
+        return cmd.keyframe(anim_curve, query=True, indexValue=True, selected=True)
+
+    @staticmethod
+    def get_all_keys_times_from_curve(anim_curve):
+        """
+        Get all key times from a specific animation curve.
+        :param anim_curve: Animation curve
+        :return: List of key times
+        :rtype: list[float]
+        """
+        return cmd.keyframe(anim_curve, query=True, timeChange=True)
+
+    @staticmethod
+    def get_selected_keys_times_from_curve(anim_curve):
+        """
+        Get selected key times from a specific animation curve.
+        :param anim_curve: Animation curve
+        :return: List of key times
+        :rtype: list[float]
+        """
+        return cmd.keyframe(anim_curve, query=True, timeChange=True, selected=True)
+
+    @staticmethod
+    def get_all_key_values_from_curve(anim_curve):
+        """
+        Get all key values from a specific animation curve.
+        :param anim_curve: Animation curve
+        :return: List of key values
+        :rtype: list[float]
+        """
+        return cmd.keyframe(anim_curve, query=True, valueChange=True)
+
+    @staticmethod
+    def get_selected_key_values_from_curve(anim_curve):
+        """
+        Get selected key values from a specific animation curve.
+        :param anim_curve: Animation curve
+        :return: List of key values
+        :rtype: list[float]
+        """
+        return cmd.keyframe(anim_curve, query=True, valueChange=True, selected=True)
+
+    @staticmethod
+    def get_time_from_key(anim_curve, key_index):
+        """
+        Get the key time from a specified key index.
+        :param str anim_curve: Animation curve
+        :param int key_index: Key index in a curve
+        :return: List of key times
+        :rtype: list[float]
+        """
+        return cmd.keyframe(anim_curve, query=True, index=(key_index, key_index), timeChange=True)[0]
+
+    @staticmethod
+    def get_value_from_key(anim_curve, key_index):
+        """
+        Get the key value from a specified key index.
+        :param str anim_curve: Animation curve
+        :param int key_index: Key index in a curve
+        :return: List of key values
+        :rtype: list[float]
+        """
+        return cmd.keyframe(anim_curve, query=True, index=(key_index, key_index), valueChange=True)[0]
+
+    @staticmethod
+    def get_index_from_time(anim_curve, key_time):
+        """
+        Get the key index from a specified key time.
+        :param str anim_curve: Animation curve
+        :param int key_time: Key time in a curve
+        :return: List of key indexes
+        :rtype: list[int]
+        """
+        return cmd.keyframe(anim_curve, query=True, time=(key_time, key_time), indexValue=True)[0]
+
+    @staticmethod
+    def get_default_value_from_curve(curve):
+        obj = curve.split('_')[0]
+        attr = curve.split('_')[1]
+        return cmd.attributeQuery(attr, node=obj, listDefault=True)[0] or 0.0
+
+    @staticmethod
+    def get_keys_after_current_index(anim_curve, key_index):
+        """
+        Get all deselected keys after the specified key index.
+        :param str anim_curve: Animation curve
+        :param int key_index: Key index
+        :return: List of deselected key indexes
+        :rtype: list[int]
+        """
+        all_keys = GraphUtils.get_all_keys_from_curve(anim_curve)
+
+        return [key for key in all_keys if key > key_index and not GraphUtils.is_key_selected(anim_curve, key)]
+
+    @staticmethod
+    def get_keys_before_current_index(anim_curve, key_index):
+        """
+        Get all deselected keys before the specified key index.
+        :param str anim_curve: Animation curve
+        :param int key_index: Key index
+        :return: List of deselected key indexes
+        :rtype: list[int]
+        """
+        all_keys = GraphUtils.get_all_keys_from_curve(anim_curve)
+
+        return [key for key in all_keys if key < key_index and not GraphUtils.is_key_selected(anim_curve, key)]
+
+    @staticmethod
+    def get_prev_key_on_curve(anim_curve, key_index):
+        key_time = GraphUtils.get_time_from_key_index(anim_curve, key_index)
+        prev_key_time = cmd.findKeyframe(anim_curve, time=(key_time, key_time), which="previous")
+        if prev_key_time == key_time:
+            return None
+        return GraphUtils.get_index_from_key_time(anim_curve, prev_key_time)
+
+    @staticmethod
+    def get_next_key_time_on_curve(anim_curve, key_time):
+        next_key_time = cmd.findKeyframe(anim_curve, time=(key_time, key_time), which="next")
+        if next_key_time == key_time:
+            return None
+        return next_key_time
+
+    @staticmethod
+    def get_prev_key_time_on_curve(anim_curve, key_time):
+        prev_key_time = cmd.findKeyframe(anim_curve, time=(key_time, key_time), which="previous")
+        if prev_key_time == key_time:
+            return None
+        return prev_key_time
+
+    @staticmethod
+    def is_key_selected(anim_curve, key_index):
+        """
+        Check if a specified key_index is selected.
+        :param str anim_curve: Animation curve
+        :param int key_index: Key index
+        :return: True if key is selected, False if not
+        :rtype: bool
+        """
+        selected_keys = GraphUtils.get_selected_keys_from_curve(anim_curve)
+        return True if key_index in selected_keys else False
+
+    @staticmethod
+    def get_key_data_from_curve(anim_curve, key_index):
+        selected = GraphUtils.is_key_selected(anim_curve, key_index)
+        if not selected:
+            return None
+        all_keys = GraphUtils.get_all_keys_from_curve(anim_curve)
+        time = GraphUtils.get_time_from_key(anim_curve, key_index)
+        value = GraphUtils.get_value_from_key(anim_curve, key_index)
+        keys_after = GraphUtils.get_keys_after_current_index(anim_curve, key_index)
+        keys_before = GraphUtils.get_keys_before_current_index(anim_curve, key_index)
+
+        next_key = min(keys_after) if keys_after else None
+        prev_key = max(keys_before) if keys_before else None
+
+        if next_key:
+            next_key = next_key
+            next_time = GraphUtils.get_time_from_key(anim_curve, next_key)
+            next_value = GraphUtils.get_value_from_key(anim_curve, next_key)
+        else:
+            next_key = all_keys[-1]
+            next_time = GraphUtils.get_time_from_key(anim_curve, all_keys[-1])
+            next_value = GraphUtils.get_value_from_key(anim_curve, all_keys[-1])
+
+        if prev_key:
+            prev_key = prev_key
+            prev_time = GraphUtils.get_time_from_key(anim_curve, prev_key)
+            prev_value = GraphUtils.get_value_from_key(anim_curve, prev_key)
+        else:
+            prev_key = all_keys[0]
+            prev_time = GraphUtils.get_time_from_key(anim_curve, all_keys[0])
+            prev_value = GraphUtils.get_value_from_key(anim_curve, all_keys[0])
+
+        key = Key(
+            current_key=[key_index, time, value],
+            prev_key=[prev_key, prev_time, prev_value],
+            next_key=[next_key, next_time, next_value],
+            anim_curve=anim_curve
+        )
+
+        return key
+
+    @staticmethod
+    def get_graph_outliner():
+        return cmd.editor('graphEditor1GraphEd', q=True, mainListConnection=True)
+
+    @staticmethod
+    def get_selection_from_outliner():
+        return cmd.selectionConnection('graphEditor1FromOutliner', q=True, object=True)
+
+    @staticmethod
+    def get_selected_key_tangents():
+        return cmd.keyTangent(q=True, ott=True)
 
     @staticmethod
     def is_curve_selected():
@@ -38,14 +279,65 @@ class GraphUtils (object):
         return num_keys
 
     @staticmethod
+    def list_selected_keys():
+        """
+        Counts all the selected keys
+        :return: num_keys
+        :rtype: int
+        """
+        selected_keys = []
+        selected_curves = GraphUtils.list_selected_anim_curves()
+        for curve in selected_curves:
+            selected_keys.append(cmd.keyframe(curve, q=True, iv=True, sl=True))
+        return selected_keys
+
+    @staticmethod
+    def list_selected_keys_from_curve():
+        pass
+
+    # key_indexes = cmd.keyframe(curve, q=True, iv=True, sl=True)
+    # key_times = cmd.keyframe(curve, q=True, tc=True, sl=True)
+    # key_values = cmd.keyframe(curve, q=True, vc=True, sl=True)
+    # times = GraphUtils.list_selected_key_values()
+    # # print('{0}: {1}'.format(curve, key_indexes))
+    # # print('{0}: {1}'.format(curve, key_times))
+    # # print('{0}: {1}'.format(curve, key_values))
+    # for index in key_indexes:
+    #     cur_key = cmd.keyframe(curve, query=True, index=(index, index), timeChange=True)[0]
+    #     next_key = cmd.findKeyframe(curve, time=(cur_key, cur_key), which="next")
+    #     print('{0}: {1}'.format(cur_key, next_key))
+
+    @staticmethod
+    def list_selected_key_values():
+        """
+        Counts all the selected keys
+        :return: num_keys
+        :rtype: int
+        """
+        key_times = cmd.keyframe(query=True, timeChange=True)
+        key_times = []
+        selected_curves = GraphUtils.list_selected_anim_curves()
+        for curve in selected_curves:
+            times.append(cmd.keyframe(curve, q=True, tc=True))
+            print(cmd.keyframe(curve, q=True, index=(i, i)[0]))
+        return key - times
+
+    @staticmethod
+    def list_selected_anim_curves():
+        return cmd.keyframe(query=True, name=True, selected=True) or []
+
+    @staticmethod
+    def list_selected_anim_channels():
+        return GraphUtils.get_selection_from_outliner() or []
+
+    @staticmethod
     def list_anim_curves():
         """
         List the animation curves.
         :return: Animation Curves
         :rtype: list of str
         """
-        num_keys = self.count_selected_keys()
-        anim_curves = []
+        num_keys = GraphUtils.count_selected_keys()
 
         if num_keys == 0:
             connections = cmd.listConnections(t='animCurve')
@@ -79,12 +371,11 @@ class GraphUtils (object):
 
         return anim_channels
 
-
     def toggle_infinity_cycle(self, mode):
 
         anim_curves = self.list_anim_curves()
 
-        if anim_curves == None:
+        if anim_curves is None:
             return
 
         for curve in anim_curves:
@@ -145,7 +436,7 @@ class GraphUtils (object):
         if num_keys == 0:
             return
         sel_keys = cmd.keyTangent(q=True, l=True)
-        cmd.keyTangent(l=not(sel_keys[0]))
+        cmd.keyTangent(l=not (sel_keys[0]))
 
     @staticmethod
     def toggle_tangent_weight():
@@ -156,7 +447,7 @@ class GraphUtils (object):
         if num_keys == 0:
             return
         sel_keys = cmd.keyTangent(q=True, wt=True)
-        cmd.keyTangent(wt=not(sel_keys[0]))
+        cmd.keyTangent(wt=not (sel_keys[0]))
 
     @staticmethod
     def toggle_view_modes():
@@ -195,15 +486,11 @@ class GraphUtils (object):
             else:
                 cmd.mute(channel)
 
-
-
     def bake_channel(self, sel_objs, sel_attrs):
         pass
 
-
     def toggle_isolate_curve(self, sel_objs, sel_attrs):
         pass
-
 
     def toggle_template_channel(self):
 
@@ -225,7 +512,7 @@ class GraphUtils (object):
         # Lock selected/all channels
         for channel in anim_channels:
             try:
-                cmd.setAttr(channel, l=not(template_state))
+                cmd.setAttr(channel, l=not (template_state))
             except:
                 cmd.warning('Referenced attributes cannot be locked/unlocked')
 
@@ -280,3 +567,12 @@ class GraphUtils (object):
     @staticmethod
     def paste_curve(self, sel_objs, sel_attrs):
         pass
+
+
+if __name__ == '__main__':
+    anim_curves = GraphUtils.list_selected_anim_channels()
+    print(anim_curves)
+    # for curve in anim_curves:
+    #     selected_keys = GraphUtils.list_selected_keys()
+    #     print(selected_keys)
+    # print(GraphUtils.list_selected_keys())
