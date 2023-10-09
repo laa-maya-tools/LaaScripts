@@ -21,13 +21,17 @@ msg_ui = None
 class InfoUtils(wdg.QDialog):
 
     def __init__(self, text, warning, timeout,
-                 parent=WidgetUtils().get_maya_control_widget(c.MAYA_CONTROLS.RANGE_SLIDER)):
+                 parent=WidgetUtils().get_maya_control_widget(c.MAYA_CONTROLS.SHELF)):
         super(InfoUtils, self).__init__(parent)
 
-        width = parent.size().width()
-        height = parent.size().height()
-        x_pos = 0
-        y_pos = 0
+        # width = parent.size().width()
+        # height = parent.size().height()
+        # x_pos = 0
+        # y_pos = 0
+        width = 400
+        height = 32
+        x_pos = parent.size().width() - width - 6
+        y_pos = 26
 
         # DIALOG PREFERENCES
         self.setWindowFlags(cor.Qt.FramelessWindowHint)
