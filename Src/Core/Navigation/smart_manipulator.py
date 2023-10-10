@@ -11,9 +11,9 @@ VERSION:  v1.0.0 | Maya 2020 | Python 2
 """
 import maya.cmds as cmd
 
-from LaaShelf.Src.Constants import constants as c
-from LaaShelf.Src.Utils import info_utils as info
-from LaaShelf.Src.Utils.navigation_utils import NavigationUtils
+from LaaScripts.Src.Constants import constants as c
+from LaaScripts.Src.Utils import info_utils as info
+from LaaScripts.Src.Utils.navigation_utils import NavigationUtils
 
 
 class SmartManipulator(object):
