@@ -1,0 +1,4 @@
+import LaaScripts; 
+trg = LaaScripts.trigger.Trigger(); 
+
+trg.switch_translate_manipulator()

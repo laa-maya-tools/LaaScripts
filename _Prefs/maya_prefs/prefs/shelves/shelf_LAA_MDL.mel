@@ -1,0 +1,2321 @@
+global proc shelf_LAA_MDL () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "nada" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "nada" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_setPrefs.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_setPrefs.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "nada" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Center Pivot" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Center Pivot" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_centerPivot.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_centerPivot.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "CenterPivot" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Freeze Transformations" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Freeze Transformations" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_freezeTransform.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_freezeTransform.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "FreezeTransformations" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Delete History" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "History" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_deleteHistory.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_deleteHistory.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "DeleteHistory" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Optimize Scene Size" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Optimize Scene Size" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_optimizeScene.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_optimizeScene.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "OptimizeScene" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Duplicate the selected object(s) with extra options" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Duplicate Special" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_duplicateSpecial.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_duplicateSpecial.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "duplicatePreset(1,0,1,0,0,0,0,0,0,0,0,0,0,0,-1,1,1)" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "manipMoveContext -e -mode 0 Move;" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "manipMoveContext -e -mode 0 Move;" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_moveLocal.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_moveLocal.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "manipMoveContext -e -mode 0 Move;" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "manipMoveContext -e -mode 0 Move;\nmanipMoveValues Move;\ntoolPropertyShow;" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "manipMoveContext -e -mode 0 Move;\nmanipMoveValues Move;\ntoolProp..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_moveWorld.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_moveWorld.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "manipMoveContext -e -mode 0 Move;\n" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "manipMoveContext -e -mode 3 Move;\nmanipMoveValues Move;\ntoolPropertyShow;" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "manipMoveContext -e -mode 3 Move;\nmanipMoveValues Move;\ntoolProp..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_moveNormal.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_moveNormal.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "manipMoveContext -e -mode 3 Move;" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Center Vertex in the X Axis" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "move -a -x" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_cvInX.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_cvInX.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "move -a -x" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "move -a -y" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "move -a -y" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_cvInY.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_cvInY.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "move -a -y" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "move -z 0" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "CVinZ" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_cvInZ.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_cvInZ.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "move -z 0" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Create a polygonal cube on the grid" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Cube" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_createCube.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_createCube.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "setToolTo CreatePolyCubeCtx" 
+        -sourceType "mel" 
+        -doubleClickCommand "CreatePolygonCubeOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Create a polygonal sphere on the grid" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Sphere" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_createSphere.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_createSphere.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "setToolTo CreatePolySphereCtx" 
+        -sourceType "mel" 
+        -doubleClickCommand "CreatePolygonSphereOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Create a polygonal cylinder on the grid" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Cylinder" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_createCilinder.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_createCilinder.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "setToolTo CreatePolyCylinderCtx" 
+        -sourceType "mel" 
+        -doubleClickCommand "CreatePolygonCylinderOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "if (`window -exists TreadMakerWin`) {\n      deleteUI TreadMakerWin;\n      }\nwindow -w 380 -h 150 -title \"Parameter Window\" TreadMakerWin;            \ncolumnLayout;\n    frameLayout -w 380 -label \"Creation\";\n        rowColumnLayout -nc 2;\n        text -l \"Select curve, then link. Only press if \";\n        text -l \"curve and link have already been set up.\";\n        text -l \"\";\n        text -l \"\";\n        button -w 175 -l \"Make Tread\" -c \"TreadMaker()\";\n        button -w 175 -l \"Setup\" -c \"TreadMakerSetup()\";\n        button -w 175 -l \"Delete Tread\" -c \"DeleteTread()\";\n        button -w 175 -l \"Cancel\" -c \"deleteUI TreadMakerWin\";\n        setParent ..;\n    setParent ..;\n    frameLayout -w 380 -cll 1 -cl 1 -label \"Setup/Deletion Instructions\";\n        columnLayout;\n        text -al \"left\" -l \"Select Curve, then link.  After Pressing Setup, tread can be made.\";\n        text -al \"left\" -l \"This setup creates the necessary attributes, and the controls that \\nallow the setting of the length of the link.\";\n        text -al \"left\" -l \"The two locators should be positioned along the 'forward' axis of \\nthe link, and dragged along that axis to be the appropriate length \\nof the link, this is important to properly spacing the links' geometry\";\n        text -al \"left\" -l \"In this (early) release, only the z axis will work, so make sure \\nthat the link is oriented with the 'z' axis as the forward axis. \\nThe same applies for the curve for now\";\n        setParent ..;\n    setParent ..;\n    frameLayout -w 380 -cll 1 -cl 1 -label \"Deletion Instructions\";\n        columnLayout;\n        text -al \"left\" -l \"Select any link on the curve, or the curve.\";\n        text -al \"left\" -l \"This This deletes the links from the curve, but leaves the curve\";\n        text -al \"left\" -l \"and the setup assets, so setup doesn't need to be used again.\";\n        setParent ..;\n    setParent ..;\nshowWindow TreadMakerWin;\n" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "if (`window -exists TreadMakerWin`) {\n      deleteUI TreadMakerW..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_createTread.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_mdl/laa_icon_createTread.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "if (`window -exists TreadMakerWin`) {\n      deleteUI TreadMakerWin;\n      }\nwindow -w 380 -h 150 -title \"Parameter Window\" TreadMakerWin;            \ncolumnLayout;\n    frameLayout -w 380 -label \"Creation\";\n        rowColumnLayout -nc 2;\n        text -l \"Select curve, then link. Only press if \";\n        text -l \"curve and link have already been set up.\";\n        text -l \"\";\n        text -l \"\";\n        button -w 175 -l \"Make Tread\" -c \"TreadMaker()\";\n        button -w 175 -l \"Setup\" -c \"TreadMakerSetup()\";\n        button -w 175 -l \"Delete Tread\" -c \"DeleteTread()\";\n        button -w 175 -l \"Cancel\" -c \"deleteUI TreadMakerWin\";\n        setParent ..;\n    setParent ..;\n    frameLayout -w 380 -cll 1 -cl 1 -label \"Setup/Deletion Instructions\";\n        columnLayout;\n        text -al \"left\" -l \"Select Curve, then link.  After Pressing Setup, tread can be made.\";\n        text -al \"left\" -l \"This setup creates the necessary attributes, and the controls that \\nallow the setting of the length of the link.\";\n        text -al \"left\" -l \"The two locators should be positioned along the 'forward' axis of \\nthe link, and dragged along that axis to be the appropriate length \\nof the link, this is important to properly spacing the links' geometry\";\n        text -al \"left\" -l \"In this (early) release, only the z axis will work, so make sure \\nthat the link is oriented with the 'z' axis as the forward axis. \\nThe same applies for the curve for now\";\n        setParent ..;\n    setParent ..;\n    frameLayout -w 380 -cll 1 -cl 1 -label \"Deletion Instructions\";\n        columnLayout;\n        text -al \"left\" -l \"Select any link on the curve, or the curve.\";\n        text -al \"left\" -l \"This This deletes the links from the curve, but leaves the curve\";\n        text -al \"left\" -l \"and the setup assets, so setup doesn't need to be used again.\";\n        setParent ..;\n    setParent ..;\nshowWindow TreadMakerWin;\n" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Messure Tools" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "/*  Measure Tools - v2.01 **************************************..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "MSR" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "commandButton.png" 
+        -image1 "commandButton.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "/*  Measure Tools - v2.01 ***********************************************************************************************************************************************\n     ________________________________________\n    |                                        |\n    |  Script done by: Klaudio Ladavac       |\n    |  Contact email : klaudio2u@gmail.com   |\n    |________________________________________|\n\n    \nLATEST RELESE/UPDATE: November 02, 2018.\n\nRELEASE NOTES: Available with the download. \n\nIMPORTANT NOTE : Please don't distribute, copy or resale the part of the code or script file(s). The only way to get the original and up to date version is \n                 only via on following link > GUMROAD > https:/gumroad.com/klaudio2u\n\n\n- DISCLAIMER -\nTHE SCRIPT IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND. KLADUIO LADAVAC DOES NOT MAKE AND HEREBY DISCLAIMS ANY EXPRESS OR IMPLIED WARRANTIES INCLUDING, \nBUT NOT LIMITED TO, THE WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE, OR ARISING FROM A COURSE OF DEALING, USAGE, OR TRADE \nPRACTICE. IN NO EVENT WILL KLAUDIO LADAVAC BE LIABLE FOR ANY LOST REVENUES, DATA, OR PROFITS, OR SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES, EVEN IF \nKLAUDIO LADAVAC HAS BEEN ADVISED OF THE POSSIBILITY OR PROBABILITY OF SUCH DAMAGES.   \n****************************************************************************************************************************************************************/\n\n\n// SAVED SETTINGS  ------------------------------------------------------------------------------------------------------------------------------------------------------\nif (!`optionVar -ex \"MTconvertUnitsToggle\"`){ optionVar -iv \"MTconvertUnitsToggle\" 0; }        // If nothing is set - deafult - closed unit covert tab\n\n// X distance and locator - (default RED)\nif (!`optionVar -ex \"distColor_xSet\"`) { optionVar -fv \"distColor_xSet\" 1; optionVar -fva \"distColor_xSet\" 0.176; optionVar -fva \"distColor_xSet\" 0.180; }\nif (!`optionVar -ex \"locColor_xSet\"`) { optionVar -fv \"locColor_xSet\" 1; optionVar -fva \"locColor_xSet\" 0.176; optionVar -fva \"locColor_xSet\" 0.180; }\n// Y distance and locator - (default GREEN)\nif (!`optionVar -ex \"distColor_ySet\"`) { optionVar -fv \"distColor_ySet\" 0.005; optionVar -fva \"distColor_ySet\" 0.599; optionVar -fva \"distColor_ySet\" 0.139; }\nif (!`optionVar -ex \"locColor_ySet\"`) { optionVar -fv \"locColor_ySet\" 0.005; optionVar -fva \"locColor_ySet\" 0.599; optionVar -fva \"locColor_ySet\" 0.139; }\n// Z distance and locator - (default BLUE)\nif (!`optionVar -ex \"distColor_zSet\"`) { optionVar -fv \"distColor_zSet\" 0.077; optionVar -fva \"distColor_zSet\" 0.359; optionVar -fva \"distColor_zSet\" 1; }\nif (!`optionVar -ex \"locColor_zSet\"`) { optionVar -fv \"locColor_zSet\" 0.077; optionVar -fva \"locColor_zSet\" 0.359; optionVar -fva \"locColor_zSet\" 1; }\n// ALL distance and locator - (default WHITE)\nif (!`optionVar -ex \"distColor_allSet\"`) { optionVar -fv \"distColor_allSet\" 0.870; optionVar -fva \"distColor_allSet\" 0.870; optionVar -fva \"distColor_allSet\" 0.870; }\nif (!`optionVar -ex \"locColor_allSet\"`) { optionVar -fv \"locColor_allSet\" 0.870; optionVar -fva \"locColor_allSet\" 0.870; optionVar -fva \"locColor_allSet\" 0.870; }\n\nif (!`optionVar -ex \"locScale_DSet\"`){ optionVar -fv \"locScale_DSet\" 0.4; }     // Loc Scale - Default                    \nif (!`optionVar -ex \"locScale_CSet\"`){ optionVar -fv \"locScale_CSet\" 0.05; }    // Loc Scale - Constrain\n\n// Turn ON \"trackSelectionOrder\" option in preferences > used for Angle calculation and distance tool positioning. It is turned OFF when you close the measure tools UI (window -closeCommand)\nselectPref -trackSelectionOrder true;\n// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n// START UI ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nif ( `window -exists UnitConvert` ) { deleteUI UnitConvert; }                                   \nwindow -tlb 1 -t \"Measure Tools\" -closeCommand \"selectPref -trackSelectionOrder false;\" UnitConvert;\ncolumnLayout -w 292 mainUILayout;\n        \n        // main menus\n        string $menuBarLayoutMt = `menuBarLayout  mainMt`;\n        menu -label \"Options\" -parent mainMt -to 1 optionsMT;\n            menuItem -divider true -dividerLabel \"Locators Selection\";\n            menuItem -label \"Selected        \" -image \"newRenderPass.png\" -c \"locFromSelected();\" selectedMt;\n            menuItem -label \"Global       \" -image \"newRenderPassSet.png\" -c \"locGlobalSelect();\" allMT;\n            menuItem -divider true;\n            menuItem -label \"Quick Auto UV\" -c \"quickAutoUVLayout();\";\n            menuItem -divider true;   \n            menuItem -label \"Preferences ...   \" -image \"hotkeySetSettings.png\" -c \"source \\\"measurePreferencesUI.mel\\\"; measurePreferencesUI();\";\n        menu -label \"Help\" -parent mainMt -to 1 helpMT;\n            menuItem -divider true -dividerLabel \"Tutorials\";\n            menuItem -label \"Measure Tools > Overview - v2.0 \" -c \"getTutsOverviewV2_0();\";     \n            menuItem -divider true -dividerLabel \"Maya Scripts\";\n            menuItem -label \"Gumroad\" -c \"scriptsGumroad();\";\n            menuItem -divider true -dividerLabel \"Contact\";  \n            menuItem -label \"Facebook\" -c \"webFacebook();\";  \n            menuItem -label \"ArtStation (portfolio)\" -c \"webArtStation();\"; \n            menuItem -divider true -dividerLabel \"E-Mail\";\n            menuItem -label \"klaudio2u@gmail.com\" -c (\"warning -n \\\" > Mouse drag to highlight and CTRL+C to copy this E-Mail to clipboard >>> klaudio2u@gmail.com\\\"\"); \n         \n        separator -height 1 -style \"none\";\n  \n        // Measure Tools\n        formLayout -h 84 -w 285 -numberOfDivisions 100 distanceCheck;  \n            text -label \"\" -al \"left\" -h 2 -w 286 -backgroundColor 0.25 0.25 0.25 bkgColorLine;  \n            text -label \"\" -al \"left\" -h 75 -w 286 -backgroundColor 0.25 0.25 0.25 bkgColorMDtools;  \n\n\n            // Quick Distance and Angle\n            string $versionChks = `about -v`;  // chech version because -hlc doesn't work in Maya 2016\n            if ($versionChks == \"2018\") {\n                textField -bgc 0.2 0.2 0.2 -hlc 0.28 0.28 0.28 -ed true -h 27 -w 83 -pht \"< Distance\" distanceFiled;\n                textField -bgc 0.2 0.2 0.2 -hlc 0.28 0.28 0.28 -ed true -h 27 -w 83 -pht \"< Angle\"  angleFiled;\n            }\n            else {\n                textField -bgc 0.2 0.2 0.2  -ed true -h 27 -w 83 -pht \"< Distance\" distanceFiled;\n                textField -bgc 0.2 0.2 0.2  -ed true -h 27 -w 83 -pht \"< Angle\"  angleFiled;                \n            }\n\n            iconTextButton -image1 \"MeasureTools_icons/K_MeasureTool.png\" -c \"distanceToolSelVert();\" -rpt 1 distanceBUtton;        \n            iconTextButton -image1 \"MeasureTools_icons/K_MeasureTool_angle.png\" -c \"selectAngleSelected();\" -rpt 1 \n                           -ann \"LMB             >> Calculate the angle between 3 selected vertices. \\nShift+LMB  >> Convert the angle already in the field as 360 degrees.\" angleBUtton;  \n            \n            // Create Distance tool buttons\n            iconTextButton -image1 \"MeasureTools_icons/K_MeasureTool2.png\" -c \"createDistanceTool();\" -rpt 1 distanceToolBUtton;\n            iconTextCheckBox -v 1 -st \"iconOnly\" -w 20 -h 26 -mw 0 -mh 0 -i1 \"MeasureTools_icons/K_MeasureTool_Const.png\" constrainOnOff; \n            // Clear buttons\n            iconTextButton -image1 \"MeasureTools_icons/K_MeasureTool_ClearAll2.png\" -c \"clearAllDistanceTools();\" -ann \"Delete All - delete all distance tools in the scene.\" clearAllBUtton;  \n            iconTextButton -image1 \"MeasureTools_icons/K_MeasureTool_ClearSelected.png\" -c \"clearSelectedDistance();\" -ann \"Delete Selected - delete only selected.\" clearSelectedBUtton;\n\n            // Axis constrain button\n            rowColumnLayout -numberOfColumns 5 radioButtonsM;\n              iconTextRadioCollection itRadCollectConstraint;    \n                iconTextRadioButton -sl -st \"iconOnly\" -w 33 -h 24 -mw 0 -mh 0 -i1 \"MeasureTools_icons/K_MeasureTool_axisAll_On.png\" -onc \"changeIconsAll();\"  axisConstAll;  \n                separator -w 6 -style \"none\" -backgroundColor 0.25 0.25 0.25;      \n                iconTextRadioButton -st \"iconOnly\" -w 23 -h 24 -mw 0 -mh 0 -i1 \"MeasureTools_icons/K_MeasureTool_axisX_Off.png\"  -onc \"changeIconsX();\" axisConstX;         \n                iconTextRadioButton -st \"iconOnly\" -w 23 -h 24 -mw 0 -mh 0 -i1 \"MeasureTools_icons/K_MeasureTool_axisY_Off.png\"  -onc \"changeIconsY();\" axisConstY; \n                iconTextRadioButton -st \"iconOnly\" -w 23 -h 24 -mw 0 -mh 0 -i1 \"MeasureTools_icons/K_MeasureTool_axisZ_Off.png\"  -onc \"changeIconsZ();\" axisConstZ;             \n            setParent ..;\n            \n         \n        formLayout -edit\n             -attachForm bkgColorLine \"top\" 0         -attachForm bkgColorLine \"left\" 1\n             -attachForm bkgColorMDtools \"top\" 4      -attachForm bkgColorMDtools \"left\" 1 \n             -attachForm distanceToolBUtton \"top\" 45   -attachForm distanceToolBUtton \"left\" 6\n             -attachForm constrainOnOff \"top\" 46      -attachForm constrainOnOff \"left\" 52                \n             -attachForm distanceFiled \"top\" 10       -attachForm distanceFiled \"left\" 53\n             -attachForm distanceBUtton \"top\" 9       -attachForm distanceBUtton \"left\" 6   \n             -attachForm angleFiled \"top\" 10       -attachForm angleFiled \"left\" 196\n             -attachForm angleBUtton \"top\" 9       -attachForm angleBUtton \"left\" 149                 \n             -attachForm radioButtonsM \"top\" 48        -attachForm radioButtonsM \"left\" 85\n             // Clear\n             -attachForm clearSelectedBUtton \"top\" 46       -attachForm clearSelectedBUtton \"left\" 224\n             -attachForm clearAllBUtton \"top\" 46            -attachForm clearAllBUtton \"left\" 251\n             distanceCheck;\n        setParent ..; \n               \n        separator -height 4 -style \"none\";\n        \n        // Unit convert - drop down toggle\n        int $MTunitToggle = `optionVar -q \"MTconvertUnitsToggle\"`;\n        formLayout -h 16 -w 285 -numberOfDivisions 100 unitConvertToggle; \n              text -label \"\" -al \"left\" -h 16 -w 284 -backgroundColor 0.25 0.25 0.25 bkgUnitToggle;\n              text -label \"Units Convert\" -al \"left\" -fn \"smallPlainLabelFont\" txtColorMDunits;\n              \n              \n              if ($MTunitToggle == 0 )\n              {\n                    iconTextButton -image1 \"MeasureTools_icons/K_MeasureTool_unitsToggle_off.png\" -c \"toggleUnitConverUI();\" toggleUnitConcButton;\n              }\n              if ($MTunitToggle == 1 )\n              {\n                    iconTextButton -image1 \"MeasureTools_icons/K_MeasureTool_unitsToggle_on.png\" -c \"toggleUnitConverUI();\" toggleUnitConcButton;\n              }     \n                   \n        formLayout -edit\n          -attachForm bkgUnitToggle \"top\" 1   -attachForm bkgUnitToggle \"left\" 2\n          -attachForm txtColorMDunits \"top\" 2   -attachForm txtColorMDunits \"left\" 25\n          -attachForm toggleUnitConcButton \"top\" 2   -attachForm toggleUnitConcButton \"left\" 0\n        unitConvertToggle; \n        setParent ..;   \n  \n             \n        // Unit convert - measures\n       columnLayout unitConvert_attach_UI;\n       if ($MTunitToggle == 1 )\n       {   \n            formLayout -h 118 -w 285 -numberOfDivisions 100 unitConvertUI; \n            text -label \"\" -al \"left\" -h 116 -w 286 -backgroundColor 0.25 0.25 0.25 bkgUnitsConvert;\n                  iconTextRadioCollection itRadCollect;    \n                    iconTextRadioButton -st \"iconOnly\" -w 46 -h 14 -mw 0 -mh 0 -i1 \"MeasureTools_icons/K_MeasureTool_mm.png\" -onc \"mmLayout();\"  orientXplus;         \n                    iconTextRadioButton -st \"iconOnly\" -w 46 -h 14 -mw 0 -mh 0 -i1 \"MeasureTools_icons/K_MeasureTool_cm.png\" -onc \"cmLayout();\" orientXplus2;         \n                    iconTextRadioButton -sl -st \"iconOnly\" -w 46 -h 14 -mw 0 -mh 0 -i1 \"MeasureTools_icons/K_MeasureTool_m.png\" -onc \"mLayout();\" orientXplus3;    \n               \n                    // inch > meter\n                        text -l \" Inches  \" labelInches;\n                        floatField -bgc 0.2 0.2 0.2 -pre 3 -w 70  -cc \"inputInchesMeter();\" inchesInput;\n                        text -l \"  =  \" labelEqual1;\n                        text -l \"Meter  \" labelMeter1;\n                        floatField -bgc 0.2 0.2 0.2 -pre 3 -w 70 -cc \"inputMeterInches();\" meter1Input;\n                    // feet > meter\n                        text -l \" Feet  \" labelFeet;\n                        floatField -bgc 0.2 0.2 0.2 -pre 3 -w 70  -cc \"inputFeetMeter();\" feetInput;\n                        text -l \"  =  \" labelEqual2;\n                        text -l \"Meter  \" labelMeter2;\n                        floatField -bgc 0.2 0.2 0.2 -pre 3 -w 70 -cc \"inputMeterFeet();\" meter2Input;  \n                    // yard > meter\n                        text -l \"Yards  \" labelYards;\n                        floatField -bgc 0.2 0.2 0.2 -pre 3 -w 70  -cc \"inputYardsMeter();\" yardsInput;\n                        text -l \"  =  \" labelEqual3;\n                        text -l \"Meter  \" labelMeter3;\n                        floatField -bgc 0.2 0.2 0.2 -pre 3 -w 70 -cc \"inputMeterYards();\" meter3Input;                  \n               \n               formLayout -edit\n                 -attachForm bkgUnitsConvert \"top\" 0   -attachForm bkgUnitsConvert \"left\" 1\n                 -attachForm orientXplus \"top\" 8   -attachForm orientXplus \"left\" 128\n                 -attachForm orientXplus2 \"top\" 8  -attachForm orientXplus2 \"left\" 178\n                 -attachForm orientXplus3 \"top\" 8  -attachForm orientXplus3 \"left\" 228\n                 // inch > meter\n                 -attachForm inchesInput \"top\" 34  -attachForm inchesInput \"left\" 50\n                 -attachForm labelInches \"top\" 37  -attachForm labelInches \"left\" 8\n                 -attachForm labelEqual1 \"top\" 37   -attachForm labelEqual1 \"left\" 125\n                 -attachForm labelMeter1 \"top\" 37   -attachForm labelMeter1 \"left\" 171\n                 -attachForm meter1Input \"top\" 34  -attachForm meter1Input \"left\" 205\n                 // feet > meter\n                 -attachForm feetInput \"top\" 59    -attachForm feetInput \"left\" 50 \n                 -attachForm labelFeet \"top\" 62    -attachForm labelFeet \"left\" 19\n                 -attachForm labelEqual2 \"top\" 62   -attachForm labelEqual2 \"left\" 125\n                 -attachForm labelMeter2 \"top\" 62   -attachForm labelMeter2 \"left\" 171\n                 -attachForm meter2Input \"top\" 59  -attachForm meter2Input \"left\" 205                     \n                 // yard > meter\n                 -attachForm yardsInput \"top\" 85   -attachForm yardsInput \"left\" 50\n                 -attachForm labelYards \"top\" 88   -attachForm labelYards \"left\" 19\n                 -attachForm labelEqual3 \"top\" 88   -attachForm labelEqual3 \"left\" 125\n                 -attachForm labelMeter3 \"top\" 88   -attachForm labelMeter3 \"left\" 171\n                 -attachForm meter3Input \"top\" 85  -attachForm meter3Input \"left\" 205           \n                 unitConvertUI; \n               setParent ..;\n       \n       }\n       setParent ..;\n\nshowWindow UnitConvert;\nsetFocus UnitConvert;\n\nif ($MTunitToggle == 0 )\n{ \n    window -e -h 137 UnitConvert;\n}\n\n// END UI --------------------------------------------------------------------------------------\n\n\n\n////////////////////////////////////////////////////\n // To Millimeters\n////////////////////////////////////////////////////\n\n// Inches > Millimeter\nproc inputInchesMilli()\n{\n    float $getInputInch3 = `floatField -query -v inchesInput`;\n    \n    float $milliI = $getInputInch3 * 25.4;\n    floatField -e -v $milliI meter1Input; \n}\n\n// Millimeter > Inches\nproc inputMilliInches()\n{\n    float $getInputMilli1 = `floatField -query -v meter1Input`;\n    \n    float $inchesM = $getInputMilli1 * 0.03937008;\n    floatField -e -v $inchesM inchesInput; \n}\n\n// Feet > Millimeter\nproc inputFeetMilli()\n{\n    float $getInputFeet3 = `floatField -query -v feetInput`;\n\n    float $milliF = $getInputFeet3 * 304.8;\n    floatField -e -v $milliF meter2Input;\n    \n}\n\n// Millimeter > Feet\nproc inputMilliFeet()\n{\n    float $getInputMilli2 = `floatField -query -v meter2Input`;\n    \n    float $feetsM = $getInputMilli2 * 0.00328084;\n    floatField -e -v $feetsM feetInput;\n    \n}\n\n// Yards > Millimeter\nproc inputYardsMilli()\n{\n    float $getInputYards3 = `floatField -query -v yardsInput`;\n\n    float $milliY = $getInputYards3 * 914.4;\n    floatField -e -v $milliY meter3Input;\n    \n}\n\n// Millimeter > Yards\nproc inputMilliYards()\n{\n    float $getInputMilli3 = `floatField -query -v meter3Input`;\n    \n    float $yardsM = $getInputMilli3 * 0.00109361;\n    floatField -e -v $yardsM yardsInput;\n    \n}\n\n////////////////////////////////////////////////////\n // To Centimeters\n////////////////////////////////////////////////////\n\n// Inches > Centimeter\nproc inputInchesCenti()\n{\n    float $getInputInch2 = `floatField -query -v inchesInput`;\n    \n    float $centiI = $getInputInch2 * 2.54;\n    floatField -e -v $centiI meter1Input; \n}\n\n// Centimeter > Inches\nproc inputCentiInches()\n{\n    float $getInputCenti1 = `floatField -query -v meter1Input`;\n    \n    float $inchesC = $getInputCenti1 * 0.39370079;\n    floatField -e -v $inchesC inchesInput; \n}\n\n// Feet > Centimeter\nproc inputFeetCenti()\n{\n    float $getInputFeet2 = `floatField -query -v feetInput`;\n\n    float $centiF = $getInputFeet2 * 30.48;\n    floatField -e -v $centiF meter2Input;\n    \n}\n\n// Centimeter > Feet\nproc inputCentiFeet()\n{\n    float $getInputCenti2 = `floatField -query -v meter2Input`;\n    \n    float $feetsC = $getInputCenti2 * 0.0328084;\n    floatField -e -v $feetsC feetInput;\n    \n}\n\n// Yards > Centimeter\nproc inputYardsCenti()\n{\n    float $getInputYards2 = `floatField -query -v yardsInput`;\n\n    float $centiY = $getInputYards2 * 91.44;\n    floatField -e -v $centiY meter3Input;\n    \n}\n\n// Centimeter > Yards\nproc inputCentiYards()\n{\n    float $getInputCenti3 = `floatField -query -v meter3Input`;\n    \n    float $yardsC = $getInputCenti3 * 0.01093613;\n    floatField -e -v $yardsC yardsInput;\n    \n}\n\n////////////////////////////////////////////////////\n // To Meters\n////////////////////////////////////////////////////\n\n// Inches > Meter\nproc inputInchesMeter()\n{\n    float $getInputInch = `floatField -query -v inchesInput`;\n    \n    float $meterI = $getInputInch * 0.0254;\n    floatField -e -v $meterI meter1Input; \n}\n\n// Meter > Inches\nproc inputMeterInches()\n{\n    float $getInputMeter1 = `floatField -query -v meter1Input`;\n    \n    float $inchesM = $getInputMeter1 * 39.37007874;\n    floatField -e -v $inchesM inchesInput; \n}\n\n// Feet > Meter\nproc inputFeetMeter()\n{\n    float $getInputFeet = `floatField -query -v feetInput`;\n\n    float $metersF = $getInputFeet * 0.3048;\n    floatField -e -v $metersF meter2Input;\n    \n}\n\n// Meter > Feet\nproc inputMeterFeet()\n{\n    float $getInputMeter2 = `floatField -query -v meter2Input`;\n    \n    float $feetsM = $getInputMeter2 * 3.2808399;\n    floatField -e -v $feetsM feetInput;\n    \n}\n\n// Yards > Meter\nproc inputYardsMeter()\n{\n    float $getInputYards = `floatField -query -v yardsInput`;\n\n    float $metersY = $getInputYards * 0.9144;\n    floatField -e -v $metersY meter3Input;\n    \n}\n\n// Meter > Yards\nproc inputMeterYards()\n{\n    float $getInputMeter3 = `floatField -query -v meter3Input`;\n    \n    float $yardsM = $getInputMeter3 * 1.0936133;\n    floatField -e -v $yardsM yardsInput;\n    \n}\n\n\n// Select Locator - from selected only\nproc locFromSelected()\n{\n    string $saveArray_DT;    \n    string $locSel[];\n\n    // get selected distance tools\n    string $distToolSel[] = `ls -sl -tr`;\n        \n                // check if anything is selected\n                if (size($distToolSel) == 0)\n                {\n                     warning -n  \" -- INFO -- Nothing is selected! Select one or more DISTANCE TOOLS!\"; \n                     return;\n                }\n                // check if correct objects are selected\n                for ($h=0; $h < size($distToolSel); $h++ ) \n                { \n                    if ( gmatch($distToolSel[$h], \"*_distanceMeasure*\") != 1) \n                    {\n                        warning -n  \" -- INFO -- Select first one or more DISTANCE TOOLS!\"; \n                        return;\n                    }\n                }  \n        \n        \n        \n    // get all and select the locators     \n    for ($eachDT in $distToolSel)\n    {\n        string $sel2[] = `listRelatives -s $eachDT`;\n        string $fSelection[] = `listConnections -d 1 $sel2[0]`;\n        \n        $saveArray_DT += (\" \" + $fSelection[0] + \" \" + $fSelection[1]);\n    }\n    \n    $locSel = stringToStringArray($saveArray_DT, \" \"); \n    $saveArray_DT = \"\";  \n     \n    select -r $locSel;\n    ScaleTool;\n}\n\n\n// Select locators - Global - all in the scene\nproc locGlobalSelect()\n{\n    string $getAllDistanceNodesSel[] = `ls -type distanceDimShape`;\n\n    string $getAllLocators[] = `listConnections -d 1 $getAllDistanceNodesSel`;\n    select -r $getAllLocators; \n    ScaleTool;\n}\n\n// Quick Auto UV - menu option used to quick layout UVs after modifing the object or/and if they intersect (becaue of Point on Poly constraint).\nproc quickAutoUVLayout()\n{\n    string $getObjectPreUV[] = `ls -sl -tr`;\n    for ($eachUV in $getObjectPreUV)\n    {\n        select $eachUV;\n        polyAutoProjection -lm 0 -pb 0 -ibd 1 -cm 0 -l 2 -sc 1 -o 1 -p 6 -ps 0.2 -ws 0 -ch 0;\n    }\n    \n    select -r $getObjectPreUV;\n    print  \" -- INFO -- Automatic UV -- DONE! \";\n    \n} \n\n// Clear / Delete All Distance Tools\nproc clearAllDistanceTools()\n{\n       string $getAllDistanceNodes[] = `ls -type distanceDimShape`;\n        \n           if (size ($getAllDistanceNodes) == 0 ) \n           {    \n                  warning -n  \" -- INFO -- All ´Distance Tools` deleted! \"; \n                  return;\n           }\n           \n           else \n           {\n                  string $listAll[] = `listHistory $getAllDistanceNodes`; \n                  string $listAllTransforms[] = `listRelatives -p $listAll`; \n                  delete $listAllTransforms;   \n           }  \n}\n\n\n// Clear / Delete SELECTED Distance Tools\nproc clearSelectedDistance()\n{\n        // check is selected - it has to be only Distance Tools - else stop the command\n        string $checkIfSelected[] = `ls -sl -fl`; \n           \n            // check if anything is selected\n            if (size($checkIfSelected) == 0)\n            {\n                 warning -n  \" -- INFO -- Nothing is selected! Select one or more DISTANCE TOOLS to delete!\"; \n                 return;\n            }\n            \n            // check if correct objects are selected\n            for ($i=0; $i < size($checkIfSelected); $i++ ) \n            { \n                if ( gmatch($checkIfSelected[$i], \"*distanceMeasure*\") != 1) \n                {\n                    warning -n  \" -- INFO -- Select only one or more DISTANCE TOOLS to delete!\"; \n                    return;\n                }\n            } \n        \n        \n        \n        // get all and delete\n        string $distToolsSel[] = `ls -sl -tr`;\n        for ($eachD in $distToolsSel)\n        {\n            string $sel1[] = `listRelatives -s $eachD`;\n            string $fSelection[] = `listConnections -d 1 $sel1[0]`;\n            \n            delete $eachD $fSelection;\n        }\n\n}\n \n \n// Distance Measure\nproc distanceToolSelVert()\n{\n    if (size(`filterExpand -sm 31`) == 2)\n    {\n        \n            string $selVertices[] = `ls -sl -fl`;\n\n            vector $a = `pointPosition -w $selVertices[0]`;\n            vector $b = `pointPosition -w $selVertices[1]`;\n            vector $mathVectors = $b - $a;            \n            float $lengthBetween = `mag $mathVectors`;\n            \n            // shorten to 3 decimal numbers ( 10= 1 decimal, 100= 2 decimal....etc.)\n            float $lengthBetween_short = `trunc($lengthBetween * 1000)` / 1000;\n                             \n            textField -e -tx $lengthBetween_short distanceFiled;  // Print distance between in field                      \n\n            print \"Measure - Done!\";            \n    \n    } \n    else \n    {\n           warning -n  \" -- INFO -- Select 2 vertices to be able to quick measure the distance! \"; \n           return;  \n    }\n    \n    setFocus UnitConvert; \n}\n\n// Distance Tool\nproc createDistanceTool()\n{\n    int $getOnX = `iconTextRadioButton -q -sl axisConstX`;\n    int $getOnY = `iconTextRadioButton -q -sl axisConstY`;\n    int $getOnZ = `iconTextRadioButton -q -sl axisConstZ`;\n    int $getOnAll = `iconTextRadioButton -q -sl axisConstAll`;            \n\n    // Check if two vertices are selected\n    if (size(`filterExpand -sm 31`) == 2)\n    {          \n\n                    \n                string $selObject1[] = `ls -hilite`; \n                string $selLockVertices2[] = `ls -os -fl`;   // order selection on it wil return correct selections order for placing the distance tool\n                 \n                // get position of selected vertices \n                float $firstSelVerice1[] = `xform -q -t -ws $selLockVertices2[0]`;\n                float $secondSelVerice1[] = `xform -q -t -ws $selLockVertices2[1]`;\n                 \n                // create Distance Tool as fixed position (this is to avoid distance tool to use same locator if created at selected vertices immediatelly) \n                distanceDimension -sp 0 0 0  -ep 0 0 1;\n                   \n                // get requred nodes   \n                string $getObjects1[] = `ls -sl`;\n                select -r -ne $getObjects1[1];\n                $selectedDs1 = `ls -sl -dag -leaf`; \n                string $list1[] = `listHistory $selectedDs1`; \n                string $listTransforms1[] = `listRelatives -p $list1`; \n                \n                if ($getOnX == 1)  // move locator along X \n                {\n                    xform -t $firstSelVerice1[0] $firstSelVerice1[1] $firstSelVerice1[2] -ws $listTransforms1[1];\n                    xform -t $secondSelVerice1[0] $firstSelVerice1[1] $firstSelVerice1[2] -ws $listTransforms1[2]; \n                }\n                if ($getOnY == 1)  // move locator along Y \n                {\n                    xform -t $firstSelVerice1[0] $firstSelVerice1[1] $firstSelVerice1[2] -ws $listTransforms1[1];\n                    xform -t $firstSelVerice1[0] $secondSelVerice1[1] $firstSelVerice1[2] -ws $listTransforms1[2]; \n                }\n                if ($getOnZ == 1)  // move locator along Z\n                {\n                    xform -t $firstSelVerice1[0] $firstSelVerice1[1] $firstSelVerice1[2] -ws $listTransforms1[1];\n                    xform -t $firstSelVerice1[0] $firstSelVerice1[1] $secondSelVerice1[2] -ws $listTransforms1[2]; \n                }\n                if ($getOnAll == 1)  // move locator along ALL - XYZ\n                {\n                    xform -t $firstSelVerice1[0] $firstSelVerice1[1] $firstSelVerice1[2] -ws $listTransforms1[1];\n                    xform -t $secondSelVerice1[0] $secondSelVerice1[1] $secondSelVerice1[2] -ws $listTransforms1[2];\n                }\n     \n             // Use PointOnPoly constrain if chececk   \n             int $getValueConst = `iconTextCheckBox -q -v constrainOnOff`;    \n             if ( $getValueConst == 1)\n             {\n                if ($getOnX == 1)  // constrain X\n                {   \n                    select -r $selLockVertices2[0]; \n                    select -add $listTransforms1[1];\n                    doCreatePointOnPolyConstraintArgList 2 { \"0\" ,\"1\" ,\"1\" ,\"1\" ,\"\" ,\"1\" ,\"0\" ,\"0\" ,\"0\" ,\"0\" }; \n                   \n                    select -r $selLockVertices2[1]; \n                    select -add $listTransforms1[2]; \n                    doCreatePointOnPolyConstraintArgList 2 { \"0\" ,\"1\" ,\"1\" ,\"1\" ,\"\" ,\"1\" ,\"0\" ,\"0\" ,\"0\" ,\"0\" }; \n                } \n                if ($getOnY == 1)  // constrain Y\n                {   \n                    select -r $selLockVertices2[0]; \n                    select -add $listTransforms1[1];\n                    doCreatePointOnPolyConstraintArgList 2 {   \"1\" ,\"0\" ,\"1\" ,\"1\" ,\"\" ,\"1\" ,\"0\" ,\"0\" ,\"0\" ,\"0\" };\n                   \n                    select -r $selLockVertices2[1]; \n                    select -add $listTransforms1[2]; \n                    doCreatePointOnPolyConstraintArgList 2 {   \"1\" ,\"0\" ,\"1\" ,\"1\" ,\"\" ,\"1\" ,\"0\" ,\"0\" ,\"0\" ,\"0\" }; \n                } \n                if ($getOnZ == 1)  // constrain Z\n                {   \n                    select -r $selLockVertices2[0]; \n                    select -add $listTransforms1[1];\n                    doCreatePointOnPolyConstraintArgList 2 {   \"1\" ,\"1\" ,\"0\" ,\"1\" ,\"\" ,\"1\" ,\"0\" ,\"0\" ,\"0\" ,\"0\" };\n                   \n                    select -r $selLockVertices2[1]; \n                    select -add $listTransforms1[2]; \n                    doCreatePointOnPolyConstraintArgList 2 {   \"1\" ,\"1\" ,\"0\" ,\"1\" ,\"\" ,\"1\" ,\"0\" ,\"0\" ,\"0\" ,\"0\" };\n                }  \n                if ($getOnAll == 1)  // constrain ALL - XYZ\n                {   \n                    select -r $selLockVertices2[0]; \n                    select -add $listTransforms1[1]; \n                    doCreatePointOnPolyConstraintArgList 2 { \"0\" ,\"0\" ,\"0\" ,\"1\" ,\"\" ,\"1\" ,\"0\" ,\"0\" ,\"0\" ,\"0\" };  \n                   \n                    select -r $selLockVertices2[1]; \n                    select -add $listTransforms1[2]; \n                    doCreatePointOnPolyConstraintArgList 2 { \"0\" ,\"0\" ,\"0\" ,\"1\" ,\"\" ,\"1\" ,\"0\" ,\"0\" ,\"0\" ,\"0\" }; \n                }\n                \n                // Option to Hide locators when usinf constraints\n                //hide $listTransforms1[1] $listTransforms1[2];\n\n             }\n             \n             \n\n            // Distance Color - get saved values and set them\n            float $distColor_xSet_q[] = `optionVar -q \"distColor_xSet\"`; \n            float $distColor_ySet_q[] = `optionVar -q \"distColor_ySet\"`;\n            float $distColor_zSet_q[] = `optionVar -q \"distColor_zSet\"`;\n            float $distColor_allSet_q[] = `optionVar -q \"distColor_allSet\"`;\n            \n                setAttr ($listTransforms1[0] +\".overrideEnabled\") 1 ;\n                setAttr ($listTransforms1[0] + \".overrideRGBColors\") 1 ;     \n            \n            if ($getOnX == 1)  // If X - make distance tool RED \n            {\n                setAttr ($listTransforms1[0] + \".overrideColorRGB\") $distColor_xSet_q[0] $distColor_xSet_q[1] $distColor_xSet_q[2]; \n                rename $listTransforms1[0] _X_distanceMeasure;                \n            }  \n            if ($getOnY == 1)  // If Y - make distance tool GREEN \n            {\n                setAttr ($listTransforms1[0] + \".overrideColorRGB\") $distColor_ySet_q[0] $distColor_ySet_q[1] $distColor_ySet_q[2]; \n                rename $listTransforms1[0] _Y_distanceMeasure;         \n            }         \n            if ($getOnZ == 1)  // If Z - make distance tool BLUE \n            {\n                setAttr ($listTransforms1[0] + \".overrideColorRGB\") $distColor_zSet_q[0] $distColor_zSet_q[1] $distColor_zSet_q[2]; \n                rename $listTransforms1[0] _Z_distanceMeasure;\n            }  \n            if ($getOnAll == 1)  // If All - make distance tool WHITE \n            {\n                setAttr ($listTransforms1[0] + \".overrideColorRGB\") $distColor_allSet_q[0] $distColor_allSet_q[1] $distColor_allSet_q[2];\n                rename $listTransforms1[0] _ALL_distanceMeasure; \n            }          \n                \n\n\n            // Locator Scale and Color - get saved value\n            float $locScale_DSave_q = `optionVar -q \"locScale_DSet\"`;   \n            float $locScale_CSave_q = `optionVar -q \"locScale_CSet\"`;  \n            float $locColor_xSet_q[] = `optionVar -q \"locColor_xSet\"`;\n            float $locColor_ySet_q[] = `optionVar -q \"locColor_ySet\"`;\n            float $locColor_zSet_q[] = `optionVar -q \"locColor_zSet\"`;\n            float $locColor_allSet_q[] = `optionVar -q \"locColor_allSet\"`;\n             \n            select -r $listTransforms1[1] $listTransforms1[2];\n            string $selLocatorColor[] = `ls -sl -tr`;\n            for ($eachSelLoc in $selLocatorColor)\n            {\n                setAttr ($eachSelLoc +\".overrideEnabled\") 1 ;\n                setAttr ($eachSelLoc + \".overrideRGBColors\") 1 ;\n                \n                if ( $getValueConst == 1)\n                {\n                    setAttr ($eachSelLoc + \".scale\") $locScale_CSave_q $locScale_CSave_q $locScale_CSave_q; \n                } \n                if ( $getValueConst == 0)\n                {\n                    setAttr ($eachSelLoc + \".scale\") $locScale_DSave_q $locScale_DSave_q $locScale_DSave_q; \n                }         \n                \n                // Colorize Locators the same as distance colors\n                if ($getOnX == 1)  // If X - make distance tool RED (def - 1 0.176 0.180)\n                {\n                    setAttr ($eachSelLoc + \".overrideColorRGB\") $locColor_xSet_q[0] $locColor_xSet_q[1] $locColor_xSet_q[2]; \n                }  \n                if ($getOnY == 1)  // If Y - make distance tool GREEN (def - 0.005 0.599 0.139)\n                {\n                    setAttr ($eachSelLoc + \".overrideColorRGB\") $locColor_ySet_q[0] $locColor_ySet_q[1] $locColor_ySet_q[2]; \n                }         \n                if ($getOnZ == 1)  // If Z - make distance tool BLUE (def - 0.077 0.359 1)\n                {\n                    setAttr ($eachSelLoc + \".overrideColorRGB\") $locColor_zSet_q[0] $locColor_zSet_q[1] $locColor_zSet_q[2]; \n                }  \n                if ($getOnAll == 1)  // If All - make distance tool WHITE (def- 0.870 0.870 0.870)\n                {\n                    setAttr ($eachSelLoc + \".overrideColorRGB\") $locColor_allSet_q[0] $locColor_allSet_q[1] $locColor_allSet_q[2]; \n                } \n            }\n            select -cl;\n            \n            // keep selection - still in vertice component mode\n            select -r $selObject1;\n            setSelectMode components Components; selectType -smp 1 -sme 0 -smf 0 -smu 0 -pv 1 -pe 0 -pf 0 -puv 0;\n            select -cl;\n            \n            print \"Distance Tool - Created!\";\n            \n    }\n    else\n    {\n           warning -n  \" -- INFO -- Select 2 vertices to be able to create distance/measure tool! \"; \n           return;  \n    }         \n}\n\n\n// Calculate the Angle and print it into the field\nproc selectAngleSelected()\n{\n    int $chkModifierPress = `getModifiers`;\n    \n            // LMB + click on the button will calculate the angle between 3 vertices. (Ordered selection must be ON)\n            if ( $chkModifierPress == 0 ) \n            {     \n                if (size (`ls -sl -fl`) == 3 ) \n                {\n                    // get vertices and calcualte the angle\n                    string $vertsSelection[]= `ls -os -fl`;\n\n                    float $vert_org[] = `pointPosition -w $vertsSelection[0]`; \n                    vector $O = <<$vert_org[0],$vert_org[1],$vert_org[2]>>;\n\n                    float $u[] = `pointPosition -w $vertsSelection[1]`; \n                    vector $U = <<$u[0],$u[1],$u[2]>>;\n\n                    $U = $U - $O;\n\n                    float $v[] = `pointPosition -w $vertsSelection[2]`; \n                    vector $V = <<$v[0],$v[1],$v[2]>>;\n\n                    $V = $V - $O;\n\n                    float $angleSum = rad_to_deg(`angle $U $V`);    // final angle calculation\n                    \n                    \n                    // round the number\n                    // decimals taking into account to round the number. \n                    int $n = 2;\n                    float $roundAngle = pow(10, $n);\n\n                    int $calc_1 = ($angleSum * $roundAngle + 0.5);\n                    float $calc_2 = $calc_1 / $roundAngle;               \n                    \n                    \n                    // print it into the field\n                    textField  -e -tx ($calc_2 + \" °\") angleFiled;    \n                } \n                else \n                {\n                   warning -n  \" -- INFO -- Select 3 vertices to get the angle! \"; \n                   return;   \n                }  \n            }\n            \n            // If Shift+LMB on the button - convert as 360 degree angle\n            if ($chkModifierPress == 1)\n            {\n                string $angleValueGet;\n                $angleValueGet = `textField -q -tx angleFiled`;\n                \n                int $sAngle = `size $angleValueGet`;\n                if ($sAngle == 0)\n                {\n                   warning -n  \" -- INFO -- Measure the angle first (LMB+click on button) between 3 vertice then use this option to convert the value! \"; \n                   setFocus UnitConvert;\n                   return;   \n                }\n                if ($sAngle >= 2)\n                {\n                   string $filedValue[];\n                   $numTokensTempA = `tokenize $angleValueGet \" °\" $filedValue`;\n                   float $filterNumbersOnly = $filedValue[0];\n                   float $toFullAngle = 360 - $filterNumbersOnly;\n                   \n                   textField -e -tx ($toFullAngle + \" °\") angleFiled; \n                }\n            }\n \n    setFocus UnitConvert;\n}      \n    \n// Units Convert - layout switching ---------------------------------------------------------------------------------------------------------------------------\nproc mmLayout()\n{\n        // inch > milimeter\n            floatField -e -v 0 -cc \"inputInchesMilli();\" inchesInput;\n            text -e -l \"Millimeter  \" labelMeter1;\n            floatField -e -v 0 -cc \"inputMilliInches();\" meter1Input;\n        // feet > milimeter\n            floatField -e -v 0 -cc \"inputFeetMilli();\" feetInput;\n            text -e -l \"Millimeter  \" labelMeter2;\n            floatField -e -v 0 -cc \"inputMilliFeet();\" meter2Input;  \n        // yard > milimeter\n            floatField -e -v 0 -cc \"inputYardsMilli();\" yardsInput;\n            text -e -l \"Millimeter  \" labelMeter3;\n            floatField -e -v 0 -cc \"inputMilliYards();\" meter3Input;\n      \n\n        formLayout -e \n             -attachForm labelMeter1 \"top\" 37   -attachForm labelMeter1 \"left\" 150 \n             -attachForm labelMeter2 \"top\" 62   -attachForm labelMeter2 \"left\" 150\n             -attachForm labelMeter3 \"top\" 88   -attachForm labelMeter3 \"left\" 150   \n        unitConvertUI; \n     \n}\n\nproc cmLayout()\n{\n        // inch > centi\n            floatField -e -v 0 -cc \"inputInchesCenti();\" inchesInput;\n            text -e -l \"Centimeter  \" labelMeter1;\n            floatField -e -v 0 -cc \"inputCentiInches();\" meter1Input;\n        // feet > centi\n            floatField -e -v 0 -cc \"inputFeetCenti();\" feetInput;\n            text -e -l \"Centimeter  \" labelMeter2;\n            floatField -e -v 0 -cc \"inputCentiFeet();\" meter2Input;  \n        // yard > centi\n            floatField -e -v 0 -cc \"inputYardsCenti();\" yardsInput;\n            text -e -l \"Centimeter  \" labelMeter3;\n            floatField -e -v 0 -cc \"inputCentiYards();\" meter3Input;\n      \n\n        formLayout -e \n             -attachForm labelMeter1 \"top\" 37   -attachForm labelMeter1 \"left\" 145 \n             -attachForm labelMeter2 \"top\" 62   -attachForm labelMeter2 \"left\" 145\n             -attachForm labelMeter3 \"top\" 88   -attachForm labelMeter3 \"left\" 145   \n        unitConvertUI; \n \n}\n\n\nproc mLayout()\n{\n     \n        // inch > meter\n            floatField -e -v 0 -cc \"inputInchesMeter();\" inchesInput;\n            text -e -l \"Meter  \" labelMeter1;\n            floatField -e -v 0 -cc \"inputMeterInches();\" meter1Input;\n        // feet > meter\n            floatField -e -v 0 -cc \"inputFeetMeter();\" feetInput;\n            text -e -l \"Meter  \" labelMeter2;\n            floatField -e -v 0 -cc \"inputMeterFeet();\" meter2Input;  \n        // yard > meter\n            floatField -e -v 0 -cc \"inputYardsMeter();\" yardsInput;\n            text -e -l \"Meter  \" labelMeter3;\n            floatField -e -v 0 -cc \"inputMeterYards();\" meter3Input;\n      \n\n        formLayout -e \n             -attachForm labelMeter1 \"top\" 37   -attachForm labelMeter1 \"left\" 171 \n             -attachForm labelMeter2 \"top\" 62   -attachForm labelMeter2 \"left\" 171\n             -attachForm labelMeter3 \"top\" 88   -attachForm labelMeter3 \"left\" 171   \n        unitConvertUI; \n   \n}\n\n\n// Toggle Unit Conver layout\nproc toggleUnitConverUI()\n{\n    int $MTunitToggle2 = `optionVar -q \"MTconvertUnitsToggle\"`;\n    if ($MTunitToggle2 == 0 )\n    {\n        iconTextButton -e -image1 \"MeasureTools_icons/K_MeasureTool_unitsToggle_on.png\" toggleUnitConcButton;\n        optionVar -iv \"MTconvertUnitsToggle\" 1;\n        \n        // Create Unit Conver layout\n        formLayout -h 118 -w 284 -numberOfDivisions 100 -parent unitConvert_attach_UI unitConvertUI; \n        text -label \"\" -al \"left\" -h 116 -w 286 -backgroundColor 0.25 0.25 0.25 bkgUnitsConvert;\n              iconTextRadioCollection itRadCollect;    \n                iconTextRadioButton -st \"iconOnly\" -w 46 -h 14 -mw 0 -mh 0 -i1 \"MeasureTools_icons/K_MeasureTool_mm.png\" -onc \"mmLayout();\"  orientXplus;         \n                iconTextRadioButton -st \"iconOnly\" -w 46 -h 14 -mw 0 -mh 0 -i1 \"MeasureTools_icons/K_MeasureTool_cm.png\" -onc \"cmLayout();\" orientXplus2;         \n                iconTextRadioButton -sl -st \"iconOnly\" -w 46 -h 14 -mw 0 -mh 0 -i1 \"MeasureTools_icons/K_MeasureTool_m.png\" -onc \"mLayout();\" orientXplus3;    \n           \n                // inch > meter\n                    text -l \" Inches  \" labelInches;\n                    floatField -pre 3 -w 70  -cc \"inputInchesMeter();\" inchesInput;\n                    text -l \"  =  \" labelEqual1;\n                    text -l \"Meter  \" labelMeter1;\n                    floatField -pre 3 -w 70 -cc \"inputMeterInches();\" meter1Input;\n                // feet > meter\n                    text -l \" Feet  \" labelFeet;\n                    floatField -pre 3 -w 70  -cc \"inputFeetMeter();\" feetInput;\n                    text -l \"  =  \" labelEqual2;\n                    text -l \"Meter  \" labelMeter2;\n                    floatField -pre 3 -w 70 -cc \"inputMeterFeet();\" meter2Input;  \n                // yard > meter\n                    text -l \"Yards  \" labelYards;\n                    floatField -pre 3 -w 70  -cc \"inputYardsMeter();\" yardsInput;\n                    text -l \"  =  \" labelEqual3;\n                    text -l \"Meter  \" labelMeter3;\n                    floatField -pre 3 -w 70 -cc \"inputMeterYards();\" meter3Input;                  \n           \n           formLayout -edit\n             -attachForm bkgUnitsConvert \"top\" 0   -attachForm bkgUnitsConvert \"left\" 1\n             -attachForm orientXplus \"top\" 8   -attachForm orientXplus \"left\" 128\n             -attachForm orientXplus2 \"top\" 8  -attachForm orientXplus2 \"left\" 178\n             -attachForm orientXplus3 \"top\" 8  -attachForm orientXplus3 \"left\" 228\n                     // inch > meter\n                     -attachForm inchesInput \"top\" 34  -attachForm inchesInput \"left\" 50\n                     -attachForm labelInches \"top\" 37  -attachForm labelInches \"left\" 8\n                     -attachForm labelEqual1 \"top\" 37   -attachForm labelEqual1 \"left\" 125\n                     -attachForm labelMeter1 \"top\" 37   -attachForm labelMeter1 \"left\" 171\n                     -attachForm meter1Input \"top\" 34  -attachForm meter1Input \"left\" 205\n                     // feet > meter\n                     -attachForm feetInput \"top\" 59    -attachForm feetInput \"left\" 50 \n                     -attachForm labelFeet \"top\" 62    -attachForm labelFeet \"left\" 19\n                     -attachForm labelEqual2 \"top\" 62   -attachForm labelEqual2 \"left\" 125\n                     -attachForm labelMeter2 \"top\" 62   -attachForm labelMeter2 \"left\" 171\n                     -attachForm meter2Input \"top\" 59  -attachForm meter2Input \"left\" 205                     \n                     // yard > meter\n                     -attachForm yardsInput \"top\" 85   -attachForm yardsInput \"left\" 50\n                     -attachForm labelYards \"top\" 88   -attachForm labelYards \"left\" 19\n                     -attachForm labelEqual3 \"top\" 88   -attachForm labelEqual3 \"left\" 125\n                     -attachForm labelMeter3 \"top\" 88   -attachForm labelMeter3 \"left\" 171\n                     -attachForm meter3Input \"top\" 85  -attachForm meter3Input \"left\" 205   \n                    \n             unitConvertUI; \n             setParent ..;\n        \n    }\n    \n    if ($MTunitToggle2 == 1 )\n    {\n        iconTextButton -e -image1 \"MeasureTools_icons/K_MeasureTool_unitsToggle_off.png\" toggleUnitConcButton;\n        optionVar -iv \"MTconvertUnitsToggle\" 0;\n        \n        // delete unitConvertUI layout ( close tab for Unit Conversions )\n        deleteUI -layout unitConvertUI;\n        //columnLayout -e -w 292 unitConvert_attach_UI;\n        window -e -h 134 UnitConvert;\n\n    }  \n}\n\n\n// Icon switch for Constrain axis\nproc changeIconsAll()\n{\n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisAll_On.png\" axisConstAll;     \n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisX_Off.png\" axisConstX;         \n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisY_Off.png\" axisConstY; \n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisZ_Off.png\" axisConstZ;     \n}\nproc changeIconsX()\n{\n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisAll_Off.png\" axisConstAll;     \n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisX_On.png\" axisConstX;         \n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisY_Off.png\" axisConstY; \n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisZ_Off.png\" axisConstZ;     \n} \nproc changeIconsY()\n{\n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisAll_Off.png\" axisConstAll;     \n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisX_Off.png\" axisConstX;         \n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisY_On.png\" axisConstY; \n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisZ_Off.png\" axisConstZ;     \n}  \nproc changeIconsZ()\n{\n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisAll_Off.png\" axisConstAll;     \n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisX_Off.png\" axisConstX;         \n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisY_Off.png\" axisConstY; \n    iconTextRadioButton -e -i1 \"MeasureTools_icons/K_MeasureTool_axisZ_On.png\" axisConstZ;     \n}  \n\n\n\n\n// Help  ----------------------------------------------------------------------------------------------------------------------------------\nproc getTutsOverviewV2_0()\n{\n   launch -web \"https://youtu.be/R4SrHFa6Hto\";\n}\n\nproc scriptsGumroad()\n{\n   launch -web \"http://gumroad.com/klaudio2u\";\n}\n\nproc webFacebook()\n{\n   launch -web \"http://facebook.com/klaudio.ladavac\";\n}\nproc webArtStation()\n{\n   launch -web \"http://artstation.com/klaudio2u\";\n}" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "TUVs" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "/*\n    Script:     aj_UVTransfer.mel\n    Author:    \tAli Asad Ja..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "TUVs" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "commandButton.png" 
+        -image1 "commandButton.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "/*\n    Script:     aj_UVTransfer.mel\n    Author:    \tAli Asad Jafri\n    Website:   \thttp://www.cgrama.com\n    Name:       AJ - UV Transfer v1.1\n\n    Descr:     \tTransfers UV sets of multiple objects\n                Original code based on Suchan Bajracharya's SRB - UV Transfer\n                Logic changed and some features added to this script to allow a little more flexibility.\n*/\n\n/////////////////////////////////\n//\n//\taj_UVTransfer\n//\n//\tDesc:\tThis tool is used to automatically transfer UV Sets from multiple objects.\n//\t\tTo transfer UV sets load source objects and then target objects. Click apply to transfer\n/////////////////////////////////\n\n// Global Procedure\nglobal proc aj_UVTransfer() {\n\n    // User Interface  \n    if (`window -exists ajUVTransferUI`) deleteUI ajUVTransferUI;\n\n    if (`windowPref -exists ajUVTransferUI`) windowPref -r ajUVTransferUI; \n    \n    window -rtf 1\n           -title \"AJ - UV Transfer v1.1\" -width 410\n           ajUVTransferUI;\n\n    string $about = \"print \\\"AJ - UV Transfer v1.1 || Author: Syed Ali Asad Jafri || xxclusiveasad@gmail.com\\\"\";\n    // Window Menu \n    menuBarLayout;\n\t\t\t\n\tmenu -l \"Edit\";\n\t\tmenuItem -l \"Reset\" -c aj_UVTransferReset;\n\t\n\tmenu -l \"Help\";\n\t\tmenuItem -l \"Help...\" -c aj_UVTransferHelp;\n\t\tmenuItem -divider true;\n\t\tmenuItem -l \"About\" -c $about;\t\n        \n    columnLayout \n        -adjustableColumn true\n        -columnAlign \"center\";\n\n    separator -h 10;\n    text \n        -label \"Note: Polygons both source and target objects must have same topology.\";        \n    separator -h 10;     \n\n    setParent..;\n    setParent..;\n                    \n    columnLayout -adj 1; \n    \n    rowLayout \n        -numberOfColumns 2\n        -columnWidth2 200 200    \n        -columnAttach 1 \"both\" 5\n        -columnAttach 2 \"both\" 5;\n        \n    // source list\n    columnLayout \n        -adjustableColumn true\n        -columnAlign \"center\";\n        \n    text \n        -label \"Source Objects\";\n        \n    textScrollList \n        -numberOfRows 20\n        -allowMultiSelection false\n        ajUVSourceTSL;\n        \n    setParent..;\n    \n    //Target List\n    columnLayout \n        -adjustableColumn true\n        -columnAlign \"center\";\n    \n    text \n        -label \"Target Objects\";\n        \n    textScrollList \n        -numberOfRows 20\n        -allowMultiSelection false\n        ajUVTargetTSL;\n        \n    setParent..;\n    setParent..;    \n    separator -h 10; \n\n        \n    rowLayout \n        -numberOfColumns 2\n        -columnWidth2 200 200\n        -columnAttach 1 \"both\" 5\n        -columnAttach 2 \"both\" 5;\n        \n    radioCollection ajUVTransferRadioCollection; \n        radioButton -sl -label \"Transfer One --> One\" ajUVTransferOneRB;\n        radioButton -label \"Transfer One --> All\" ajUVTransferAllRB;\n      \n    setParent..;\n    separator -h 10;\n    setParent..;\n\n        \n    rowLayout \n        -numberOfColumns 2\n        -columnWidth2 200 200\n        -columnAttach 1 \"both\" 5\n        -columnAttach 2 \"both\" 5;\n        \n    radioCollection ajUVSetRadioCollection; \n        radioButton -sl -label \"Copy to Default UV Set\" ajUVSetDefault;\n        radioButton -label \"Copy to New UV Set\" ajUVSetNew;\n      \n    setParent..;\n    separator -h 10;\n    setParent..;\n    rowLayout \n        -numberOfColumns 4\n        -columnWidth4 100 100 100 100\n        -columnAttach 1 \"both\" 5\n        -columnAttach 2 \"both\" 5\n        -columnAttach 3 \"both\" 5\n        -columnAttach 4 \"both\" 5;\n        \n    button -bgc 0.8 0.8 0.8 -l \"Up\" -c \"ajSelItemUp(\\\"ajUVSourceTSL\\\")\";\n    button -bgc 0.8 0.8 0.8 -l \"Down\" -c \"ajSelItemDn(\\\"ajUVSourceTSL\\\")\";\n  \n    button -bgc 0.8 0.8 0.8 -l \"Up\" -c \"ajSelItemUp(\\\"ajUVTargetTSL\\\")\";\n    button -bgc 0.8 0.8 0.8 -l \"Down\" -c \"ajSelItemDn(\\\"ajUVTargetTSL\\\")\";\n    \n    setParent..;\n\n    rowLayout \n        -numberOfColumns 2\n        -columnWidth2 200 200\n        -columnAttach 1 \"both\" 5\n        -columnAttach 2 \"both\" 5;\n        \n    button -bgc 0.8 0.8 0.8 -l \"Add Source Objects\" -c \"ajUVAddToList(0)\";\n    button -bgc 0.8 0.8 0.8 -l \"Add Target Objects\" -c \"ajUVAddToList(1)\";\n    \n    setParent..;\n\n    rowLayout \n        -numberOfColumns 2\n        -columnWidth2 200 200\n        -columnAttach 1 \"both\" 5\n        -columnAttach 2 \"both\" 5;\n        \n    button -bgc 0.5 0.5 0.5 -l \"Remove All Source Objects\" -c (\"textScrollList -edit -removeAll ajUVSourceTSL\");\n    button -bgc 0.5 0.5 0.5 -l \"Remove All Target Objects\" -c (\"textScrollList -edit -removeAll ajUVTargetTSL\");\n    \n    //Set Parent to the Main Layout\n    setParent..; \n    button -l \"Apply\" -c \"ajUVTransferProc\";    \n\n        \n    showWindow ajUVTransferUI;\n    \n}\n\n// Add to list procedure\nglobal proc ajUVAddToList(int $choice)\n{\n    string $ajSelObjs[] = `ls -sl`;    \n    \n    if($choice == 0)\n    {\n        for ($objs in $ajSelObjs) \n        {\n            textScrollList -edit -append $objs ajUVSourceTSL;\n        }\n    }\n    else\n    {\n        for ($objs in $ajSelObjs)\n        {\n            textScrollList -edit -append $objs ajUVTargetTSL;        \n        }\n    }    \n\n}\n\n// Procedure for transfer\nglobal proc ajUVTransferProc() {\n\n// Variable Declaration\n    int $ajUVTransferOneOptionVar = `radioButton -q -sl ajUVTransferOneRB`;\n\tint $ajUVTransferAllOptionVar = `radioButton -q -sl ajUVTransferAllRB`;\n\t\n\tint $ajUVSetDefault = `radioButton -q -sl ajUVSetDefault`;\n\tint $ajUVSetNew = `radioButton -q -sl ajUVSetNew`;\n\t\n\tstring $ajSourceObjectsList[] = `textScrollList -q -ai ajUVSourceTSL`;\n\tstring $ajTargetObjectsList[] = `textScrollList -q -ai ajUVTargetTSL`;\t\n\t\n\tint $ajSizeSourceObjs = `size $ajSourceObjectsList`;\n\tint $ajSizeTargetObjs = `size $ajTargetObjectsList`;\n\t\n    // string $ajNewUVTargetSets[];\n\t\n// For One --> To All. UV Transfer.\n\n// If Transfer set to Default UV Set\n    if ($ajUVSetDefault == 1) \n    {\n        if ($ajUVTransferAllOptionVar == 1) \n        {\n            if($ajSizeSourceObjs == 1)\n            {\n                for ($objs in $ajTargetObjectsList)\n                {\n                    polyTransfer -v 0 -vc 0 -uv 1 -ao $ajSourceObjectsList[0] $objs;         \n                }      \n                print \"AJ - UV Transfer v1.1 has sucessfully transferred the UV...\\n\";  \n            }\n\t        else\n    \t    {\n        \t    warning \"AJ - UV Transfer v1.1 has encounterred a problem. Source object are great than target objects...terminating...\\n\";\n        \t}\t\n        }\n    }\n    \n// For One --> To All. UV Transfer.\n    \n// If Transfer set to New UV Set\n    if ($ajUVSetNew == 1) \n    {\n        if ($ajUVTransferAllOptionVar == 1) \n        {\n            if($ajSizeSourceObjs == 1)\n            {\n                for ($objs in $ajTargetObjectsList)\n                {\n                   // polyTransfer -v 0 -vc 0 -uv 1 -ao $ajSourceObjectsList[0] $objs;   \n                   string $ajPolyTarget = $objs;      \n                   polyUVSet -create -uvSet \"NewUVSet\" $ajPolyTarget;\n                   polyUVSet -currentLastUVSet;\n\n                   // $ajNewUVTargetSets = `polyUVSet -q -currentUVSet $ajPolyTarget`;\n\n                   transferAttributes -sampleSpace 4 -transferUVs 1 -transferColors 0 -sourceUvSet \"map1\" -targetUvSet \"NewUVSet\" $ajSourceObjectsList[0] $ajPolyTarget;\n                }      \n                print \"AJ - UV Transfer v1.1 has sucessfully transferred the UV...\\n\";  \n            }\n\t        else\n    \t    {\n        \t    warning \"AJ - UV Transfer v1.1 has encounterred a problem. Source object are great than target objects...terminating...\\n\";\n        \t}\t\n        }\n    }\n   \n    \n// For One --> to One. UV Transfer.   \n\n// If Transfer set to Default UV Set \n    if ($ajUVSetDefault == 1) \n    {\n        if ($ajUVTransferOneOptionVar == 1)\n        {\n            if ($ajSizeSourceObjs == $ajSizeTargetObjs)\n            {\n                for($i=0; $i<$ajSizeSourceObjs; $i++)\n                {\n\t    \t\t\tpolyTransfer -v 0 -vc 0 -uv 1 -ao $ajSourceObjectsList[$i] $ajTargetObjectsList[$i];\n                }\n                print \"AJ - UV Transfer v1.1 has sucessfully transferred the UV...\\n\";  \n            }\n            else \n                {\n      \t\t    warning \"AJ - UV Transfer v1.1 has encounterred a problem. Source object is not equal to target objects...terminating...\\n\";        \n                }\n         } \n     }\n    \n// For One --> To One. UV Transfer.\n    \n// If Transfer set to New UV Set\n\n    if ($ajUVSetNew == 1) \n    {\n        if ($ajUVTransferOneOptionVar == 1)\n        {\n            if ($ajSizeSourceObjs == $ajSizeTargetObjs)\n            {\n                for($i=0; $i<$ajSizeSourceObjs; $i++)\n                {\n\t    \t\t// polyTransfer -v 0 -vc 0 -uv 1 -ao $ajSourceObjectsList[$i] $ajTargetObjectsList[$i];\n                   string $ajPolyTarget = $ajTargetObjectsList[$i];;\n                   polyUVSet -create -uvSet \"NewUVSet\" $ajTargetObjectsList[$i];\n                   polyUVSet -currentLastUVSet;\n\n                   // $ajNewUVTargetSets = `polyUVSet -q -currentUVSet $ajPolyTarget`;\n\n                   transferAttributes -sampleSpace 4 -transferUVs 1 -transferColors 0 -sourceUvSet \"map1\" -targetUvSet \"NewUVSet\" $ajSourceObjectsList[$i] $ajPolyTarget;\n                }\n                print \"AJ - UV Transfer v1.1 has sucessfully transferred the UV...\\n\";  \n            }\n            else \n                {\n      \t\t    warning \"AJ - UV Transfer v1.1 has encounterred a problem. Source object is not equal to target objects...terminating...\\n\";        \n                }\n            } \n     }\n\n}\n\n// Help Window.\nglobal proc aj_UVTransferHelp()\n{\n    if (`window -exists aj_UVTransferHelpUI`) deleteUI aj_UVTransferHelpUI;\n\n    if (`windowPref -exists aj_UVTransferHelpUI`) windowPref -r aj_UVTransferHelpUI; \n\n    window -mxb 0\n\t        -wh 445 379\n\t        -title \"AJ - UV Transfer v1.1 Help\" \n        \taj_UVTransferHelpUI;\n\n    $ajWindowCollapseCmd = \"window -e -wh 445 20 aj_UVTransferHelpUI\";\n    $ajWindowExpandCmd = \"window -e -wh 445 379 aj_UVTransferHelpUI\";\n\n    frameLayout -l \"Help\"\n                -collapsable on\n                // -collapse on\n                -borderStyle \"etchedIn\"\n                -marginHeight 2\n                -marginWidth 2\n                -cc $ajWindowCollapseCmd\n                -ec $ajWindowExpandCmd\n                helpFrame;\n\n    columnLayout mainColumn;\n    string $helpContent;\n\n    $helpContent = (\"This script eases the pain of transfering UV's from a list of objects either One to All, or One to One in List.\"\n                    + \"\\n\\n\"\n                    + \"Polygon objects must have same topology for UV to transfer properly.\\n\"           \n                    + \"\\n\\n\"\n                    + \"===========================================================\"\n                    + \"\\n\"\n                    + \"Update v1.1\"\n                    + \"\\n\"\n                    + \"===========================================================\"\n                    + \"\\n\"\n                    + \"Polygon UV transfer can done on Default UV Set or allow creating a new UV Set by checking Copy to New UV Set\"\n                    + \"\\n\"                    \n                    + \"\\n\"\n                    +\"For suggestions or comments you can email at xxclusiveasad@gmail.com\");\n\n    scrollField -wordWrap true -ed off -w 435 -h 350 -text $helpContent helpScroll;\n    setParent mainColumn;\n\n\n    showWindow aj_UVTransferHelpUI;\n\n}\n\n// Reset UV Transfer utility.\nglobal proc aj_UVTransferReset() {\n    textScrollList -edit -removeAll ajUVSourceTSL;\n    textScrollList -edit -removeAll ajUVTargetTSL;\n    radioCollection -edit -select ajUVTransferOneRB ajUVTransferRadioCollection;\n    radioCollection -edit -select ajUVSetDefault ajUVSetRadioCollection;     \n}\n\n\n\nglobal proc ajSelItemUp(string $ajTSLName)\n{\n    int $ajSelItemIndex[] = `textScrollList -q -sii $ajTSLName`;\n\n    if (size($ajSelItemIndex) == 0)\n    {\n        error \"No Items Selected!\";\n    }\n\n    int $ajItemIndex = $ajSelItemIndex[0];\n\n    $ajItemIndex--;\n\n    if ($ajItemIndex > 0) {\n        string $ajSelItemIndexContent[] = `textScrollList -q -si $ajTSLName`;\n        string $ajItemContent = $ajSelItemIndexContent[0];\n        textScrollList -e -rii $ajSelItemIndex[0] $ajTSLName;\n        textScrollList -e -ap $ajItemIndex $ajItemContent $ajTSLName;\n        textScrollList -e -si $ajItemContent $ajTSLName;\n    }\n}\n\nglobal proc ajSelItemDn(string $ajTSLName)\n{\n    int $ajSelItemIndex[] = `textScrollList -q -sii $ajTSLName`;\n\n    if (size($ajSelItemIndex) == 0)\n    {\n        error \"No Items Selected!\";\n    }\n\n    int $ajItemIndex = $ajSelItemIndex[0];\n    $ajItemIndex++;\n    if ($ajItemIndex <= `textScrollList -q -ni $ajTSLName`){\n        string $ajSelItemIndexContent[] = `textScrollList -q -si $ajTSLName`;\n        string $ajItemContent = $ajSelItemIndexContent[0];\n        textScrollList -e -rii $ajSelItemIndex[0] $ajTSLName;\n        textScrollList -e -ap $ajItemIndex $ajItemContent $ajTSLName;\n        textScrollList -e -si $ajItemContent $ajTSLName;\n    }\n}\n\naj_UVTransfer();\n\n\n\n\n" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Create a bridge between two sets of edges or faces" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Bridge" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polyBridge.png" 
+        -image1 "polyBridge.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "performPolyBridgeEdge 0" 
+        -sourceType "mel" 
+        -doubleClickCommand "BridgeEdgeOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Merge vertices / border edges based on selection" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Merge Components" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "polyMerge.png" 
+        -image1 "polyMerge.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "performPolyMerge 0" 
+        -sourceType "mel" 
+        -doubleClickCommand "PolyMergeOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Tools to cut, slice and insert edges on polygons" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Multi-Cut Tool" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "multiCut_NEX32.png" 
+        -image1 "multiCut_NEX32.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "dR_multiCutTool" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Combine the selected polygon objects into one single object to allow operations such as merges or face trims" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Combine" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "polyUnite.png" 
+        -image1 "polyUnite.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "polyPerformAction polyUnite o 0" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Offset Edge Loop Tool: " 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Offset Edge Loop Tool" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "polyDuplicateEdgeLoop.png" 
+        -image1 "polyDuplicateEdgeLoop.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "performPolyDuplicateEdge 0" 
+        -sourceType "mel" 
+        -doubleClickCommand "DuplicateEdgesOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Create a bevel along the selected edges" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Bevel" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "polyBevel.png" 
+        -image1 "polyBevel.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "polyPerformAction \"polyBevel -com 0 -offset 0.5 -offsetAsFraction 1 -autoFit 1 -segments 1 -worldSpace 1 -uvAssignment 1 -smoothingAngle 30 -fillNgons 1 -mergeVertices 1 -mergeVertexTolerance 0.0001 -miteringAngle 180 -angleTolerance 180\" e 0" 
+        -sourceType "mel" 
+        -doubleClickCommand "BevelPolygonOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Create a face filling the hole around the selected border edge(s)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Fill Hole" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "polyCloseBorder.png" 
+        -image1 "polyCloseBorder.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "FillHole" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Cut the faces using a plane" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Cut Faces Tool" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "polyCut.png" 
+        -image1 "polyCut.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "CutPolygon" 
+        -sourceType "mel" 
+        -doubleClickCommand "CutPolygonOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Reverse the normals of the selected faces" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Reverse" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "polyNormal.png" 
+        -image1 "polyNormal.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "ReversePolygonNormals" 
+        -sourceType "mel" 
+        -doubleClickCommand "ReversePolygonNormalsOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Sculpt a geometry object" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Sculpt Geometry Tool" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "putty.png" 
+        -image1 "putty.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "SculptGeometryTool" 
+        -sourceType "mel" 
+        -doubleClickCommand "SculptGeometryToolOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "separatoricons/concrete.png" 
+        -image1 "separatoricons/concrete.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Interactive Split Tool" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "InteractiveSplitTool" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "sTool" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "commandButton.png" 
+        -image1 "commandButton.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "InteractiveSplitTool" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "separatoricons/concrete.png" 
+        -image1 "separatoricons/concrete.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "separatoricons/concrete.png" 
+        -image1 "separatoricons/concrete.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Create a projection planar to the selected faces" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Planar Mapping" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "polyPlanProj.png" 
+        -image1 "polyPlanProj.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "polyProjection -ch 1 -type Planar -ibd on -md x ; " 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Create a cylindrical projection on the selected faces" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Cylindrical Mapping" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "polyCylProj.png" 
+        -image1 "polyCylProj.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "polyProjection -ch 1 -type Cylindrical -ibd on -sf on ; " 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Select faces to be mapped automatically" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Automatic Mapping" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "polyAutoProj.png" 
+        -image1 "polyAutoProj.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "performPolyAutoProj 0" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Texture coordinate mapping view" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "UV Texture Editor" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "textureEditor.png" 
+        -image1 "textureEditor.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "TextureViewWindow" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "separatoricons/concrete.png" 
+        -image1 "separatoricons/concrete.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Transfer attributes from one surface to another" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Transfer Attributes" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "polyTransferAttributes.png" 
+        -image1 "polyTransferAttributes.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "performTransferAttributes 0" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/concrete.png" 
+        -image1 "separatoricons/concrete.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Combine the selected polygon objects into one single object to allow operations such as merges or face trims" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Combine" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polyUnite.png" 
+        -image1 "polyUnite.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "polyPerformAction polyUnite o 0" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separate the selected polygon object shells or the shells of any selected faces from the object into distinct objects" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Separate" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polySeparate.png" 
+        -image1 "polySeparate.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "SeparatePolygon" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Add polygons to the selected polygon objects to smooth them" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Smooth" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polySmooth.png" 
+        -image1 "polySmooth.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "polyPerformAction \"polySmooth  -mth 1 -sdt 2 -ovb 1 -ofb 3 -ofc 0 -ost 1 -ocr 0 -dv 1 -peh 0 -bnr 1 -c 1 -kb 1 -ksb 1 -khe 0 -kt 1 -kmb 1 -suv 1 -sl 1 -dpe 1 -ps 0.1 -ro 1\" f 0" 
+        -sourceType "mel" 
+        -doubleClickCommand "performPolySmooth 1" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Detach selected components" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Detach" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polySplitVertex.png" 
+        -image1 "polySplitVertex.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "DetachComponent" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Subdivide the selected edges or faces" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Add Divisions" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polySubdFacet.png" 
+        -image1 "polySubdFacet.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "performPolySubdivide \"\" 0" 
+        -sourceType "mel" 
+        -doubleClickCommand "SubdividePolygonOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Create a bevel along the selected edges or faces" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Bevel" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polyBevel.png" 
+        -image1 "polyBevel.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "polyPerformAction \"polyBevel3 -offset 0.5 -offsetAsFraction 1 -autoFit 1 -segments 1 -worldSpace 1 -smoothingAngle 30 -fillNgons 1 -mergeVertices 1 -mergeVertexTolerance 0.0001 -miteringAngle 180 -angleTolerance 180\" e 0" 
+        -sourceType "mel" 
+        -doubleClickCommand "BevelPolygonOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Extrude the selected component" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Extrude" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polyExtrudeFacet.png" 
+        -image1 "polyExtrudeFacet.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "performPolyExtrude 0" 
+        -sourceType "mel" 
+        -doubleClickCommand "PolyExtrudeOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Merge vertices / border edges based on selection" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Merge" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polyMerge.png" 
+        -image1 "polyMerge.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "performPolyMerge 0" 
+        -sourceType "mel" 
+        -doubleClickCommand "PolyMergeOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Extract the currently selected faces from their shell and shows a manipulator to adjust their offset" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Extract" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polyChipOff.png" 
+        -image1 "polyChipOff.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "performPolyChipOff 0 0" 
+        -sourceType "mel" 
+        -doubleClickCommand "ExtractFaceOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Reverse the normals of the selected faces" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Reverse" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polyNormal.png" 
+        -image1 "polyNormal.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "ReversePolygonNormals" 
+        -sourceType "mel" 
+        -doubleClickCommand "ReversePolygonNormalsOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Set the soft/hard threshold angles for edge normals" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Soften Edge" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polySoftEdge.png" 
+        -image1 "polySoftEdge.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "SoftPolyEdgeElements 1" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Set the soft/hard threshold angles for edge normals" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Harden Edge" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polyHardEdge.png" 
+        -image1 "polyHardEdge.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "SoftPolyEdgeElements 0" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Texture coordinate mapping view" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "UV Editor" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "textureEditor.png" 
+        -image1 "textureEditor.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "TextureViewWindow" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Separator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "separatorUI();" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "separatorUI();" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "commandButton.png" 
+        -image1 "commandButton.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "separatorUI();" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "AdvancedSkeleton5" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "AdvancedSkeleton5" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/DOWNLOADS/AdvancedSkeleton5/AdvancedSkeleton5Files/icons/AS5.png" 
+        -image1 "D:/DOWNLOADS/AdvancedSkeleton5/AdvancedSkeleton5Files/icons/AS5.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "source \"D:/DOWNLOADS/AdvancedSkeleton5/AdvancedSkeleton5.mel\";AdvancedSkeleton5;" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Selector:biped" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Selector:biped" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/DOWNLOADS/AdvancedSkeleton5/AdvancedSkeleton5Files/icons/asBiped.png" 
+        -image1 "D:/DOWNLOADS/AdvancedSkeleton5/AdvancedSkeleton5Files/icons/asBiped.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "source \"D:/DOWNLOADS/AdvancedSkeleton5/AdvancedSkeleton5Files/Selector/biped.mel\";" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Selector:face" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Selector:face" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/DOWNLOADS/AdvancedSkeleton5/AdvancedSkeleton5Files/icons/asFace.png" 
+        -image1 "D:/DOWNLOADS/AdvancedSkeleton5/AdvancedSkeleton5Files/icons/asFace.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "source \"D:/DOWNLOADS/AdvancedSkeleton5/AdvancedSkeleton5Files/Selector/face.mel\";" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "picker" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "picker" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/DOWNLOADS/AdvancedSkeleton5/AdvancedSkeleton5Files/picker/pickerFiles/icons/picker.png" 
+        -image1 "D:/DOWNLOADS/AdvancedSkeleton5/AdvancedSkeleton5Files/picker/pickerFiles/icons/picker.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "source \"D:/DOWNLOADS/AdvancedSkeleton5/AdvancedSkeleton5Files/picker/picker.mel\";" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Set the selected object(s) transform to the current tool's custom pivot" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Bake Pivot" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "BP" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "menuIconModify.png" 
+        -image1 "menuIconModify.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "BakeCustomPivot" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+
+} 

@@ -1,0 +1,728 @@
+global proc shelf_Boomons () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Studio Library (Shared)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "import os\nimport sys\n# import Anim_MAD.Utils.info_utils as info\n..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/set_stepped_tangents.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/set_stepped_tangents.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import os\nimport sys\n# import Anim_MAD.Utils.info_utils as info\n\nstudio_library_path = r'D:\\Production\\Coding\\Maya\\LaaScripts\\Src\\_3rdPart\\Python\\studiolibrary\\src'\nuser_library_path = r'D:\\Education\\Animation\\Trazos\\BoomonsProject\\Assets\\_library'\n    \nif not os.path.exists(studio_library_path):\n    raise IOError(r'The source path does not exist!')\n    \nif studio_library_path not in sys.path:\n    sys.path.insert(0, studio_library_path)\n\nimport studiolibrary\nstudiolibrary.main(name=\"Shared\", path=user_library_path)\n\n# info.show_info('Studio Library [SHARED]')\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "import os\nimport sys\n# import Anim_MAD.Utils.info_utils as info\n\nstudio_library_path = r'D:\\Production\\Coding\\Maya\\LaaScripts\\Src\\_3rdPart\\Python\\studiolibrary\\src'\nuser_library_path = r'D:\\Education\\Animation\\Trazos\\BoomonsProject\\Assets\\_library'\n    \nif not os.path.exists(studio_library_path):\n    raise IOError(r'The source path does not exist!')\n    \nif studio_library_path not in sys.path:\n    sys.path.insert(0, studio_library_path)\n\nimport studiolibrary\nstudiolibrary.main(name=\"Shared\", path=user_library_path)\n\n# info.show_info('Studio Library [SHARED]')\n" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "import os\nimport sys\n# import Anim_MAD.Utils.info_utils as info\n..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/set_linear_tangents.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/set_linear_tangents.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import os\nimport sys\n# import Anim_MAD.Utils.info_utils as info\n\nstudio_library_path = r'D:\\Production\\Coding\\Maya\\LaaScripts\\Src\\_3rdPart\\Python\\studiolibrary\\src'\nuser_library_path = r'D:\\Education\\Animation\\Trazos\\BoomonsProject\\Assets\\_library'\n    \nif not os.path.exists(studio_library_path):\n    raise IOError(r'The source path does not exist!')\n    \nif studio_library_path not in sys.path:\n    sys.path.insert(0, studio_library_path)\n\nimport studiolibrary\nstudiolibrary.main(name=\"Shared\", path=user_library_path)\n\n# info.show_info('Studio Library [SHARED]')\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "import os\nimport sys\n# import Anim_MAD.Utils.info_utils as info\n\nstudio_library_path = r'D:\\Production\\Coding\\Maya\\LaaScripts\\Src\\_3rdPart\\Python\\studiolibrary\\src'\nuser_library_path = r'D:\\Education\\Animation\\Trazos\\BoomonsProject\\Assets\\_library'\n    \nif not os.path.exists(studio_library_path):\n    raise IOError(r'The source path does not exist!')\n    \nif studio_library_path not in sys.path:\n    sys.path.insert(0, studio_library_path)\n\nimport studiolibrary\nstudiolibrary.main(name=\"Shared\", path=user_library_path)\n\n# info.show_info('Studio Library [SHARED]')\n" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "import os\nimport sys\n# import Anim_MAD.Utils.info_utils as info\n..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/set_auto_tangents.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/set_auto_tangents.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import os\nimport sys\n# import Anim_MAD.Utils.info_utils as info\n\nstudio_library_path = r'D:\\Production\\Coding\\Maya\\LaaScripts\\Src\\_3rdPart\\Python\\studiolibrary\\src'\nuser_library_path = r'D:\\Education\\Animation\\Trazos\\BoomonsProject\\Assets\\_library'\n    \nif not os.path.exists(studio_library_path):\n    raise IOError(r'The source path does not exist!')\n    \nif studio_library_path not in sys.path:\n    sys.path.insert(0, studio_library_path)\n\nimport studiolibrary\nstudiolibrary.main(name=\"Shared\", path=user_library_path)\n\n# info.show_info('Studio Library [SHARED]')\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 9
+        -enable 1
+        -width 12
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "# separator\npass" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "# separator\npass" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/separator.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/separator.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "# separator\npass" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Studio Library (Shared)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "studio_library_shared" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_shared_lib.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_shared_lib.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import os\nimport sys\n# import Anim_MAD.Utils.info_utils as info\n\nstudio_library_path = r'D:\\Production\\Coding\\Maya\\LaaScripts\\Src\\_3rdPart\\Python\\studiolibrary\\src'\nuser_library_path = r'D:\\Education\\Animation\\Trazos\\BoomonsProject\\Assets\\_library'\n    \nif not os.path.exists(studio_library_path):\n    raise IOError(r'The source path does not exist!')\n    \nif studio_library_path not in sys.path:\n    sys.path.insert(0, studio_library_path)\n\nimport studiolibrary\nstudiolibrary.main(name=\"Shared\", path=user_library_path)\n\n# info.show_info('Studio Library [SHARED]')\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Studio Library (Local)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "studio_library_local" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_local_lib.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_local_lib.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import os\nimport sys\n#import Anim_MAD.Utils.info_utils as info\n\nstudio_library_path = r'D:\\Production\\Coding\\Maya\\LaaScripts\\Src\\_3rdPart\\Python\\studiolibrary\\src'\nuser_library_path = r'D:\\Education\\Animation\\Trazos\\BoomonsProject\\Assets\\_library'\n    \nif not os.path.exists(studio_library_path):\n    raise IOError('The source path does not exist!')\n    \nif studio_library_path not in sys.path:\n    sys.path.insert(0, studio_library_path)\n\nimport studiolibrary\nstudiolibrary.main(name=\"Local\", path=user_library_path)\n\n# info.show_info('Studio Library [LOCAL]')\n\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 9
+        -enable 1
+        -width 12
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "pass" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-----" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/separator.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/separator.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "# separator\npass" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "from aTools import setup\nsetup.install()" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "from aTools import setup\nsetup.install()" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_atools.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_atools.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "from aTools import setup\nsetup.install()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Open Tweener" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Tweener" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_tweener.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_tweener.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import maya.cmds as cmds\nif cmds.pluginInfo('tweener.py', q=True, r=True):\n\tcmds.loadPlugin('tweener.py', quiet=True)\n\tcmds.tweener()\nelse:\n\tcmds.warning('tweener.py is not registered')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "World Bake" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "world_bake" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_world_bake.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_world_bake.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import ml_worldBake\nml_worldBake.ui()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Zoom Camera" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "zoom_camera" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_camera_zoom.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_camera_zoom.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "source \"bh_camZoom.mel\";" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Awe Control Picker" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "awe_control_picker" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_awe_control_picker.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/load_awe_control_picker.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "aweControlPicker;" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 9
+        -enable 1
+        -width 12
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "# separator\npass" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-----" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/separator.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/separator.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "# separator\npass" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Load/Add Guby Body" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "guby_body" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_airy_picker.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_airy_picker.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import dwpicker\ndwpicker.show()\n\npicker_file = r'D:/Education/Animation/Trazos/BoomonsProject/Assets/_pickers/airy.json'\n\ndwpicker._dwpicker.clear()\ndwpicker._dwpicker.add_picker_from_file(picker_file)" 
+        -sourceType "python" 
+        -doubleClickCommand "import dwpicker\ndwpicker.show()\n\npicker_file = r'D:/Education/Animation/Trazos/BoomonsProject/Assets/_pickers/airy.json'\n\ndwpicker._dwpicker.add_picker_from_file(picker_file)" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Load/Add Gody Body" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "gody_body" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_rocky_picker.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_rocky_picker.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import dwpicker\ndwpicker.show()\n\npicker_file = r'D:/Education/Animation/Trazos/BoomonsProject/Assets/_pickers/rocky.json'\n\ndwpicker._dwpicker.clear()\ndwpicker._dwpicker.add_picker_from_file(picker_file)" 
+        -sourceType "python" 
+        -doubleClickCommand "import dwpicker\ndwpicker.show()\n\npicker_file = r'D:/Education/Animation/Trazos/BoomonsProject/Assets/_pickers/rocky.json'\n\ndwpicker._dwpicker.add_picker_from_file(picker_file)" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Load/Add Kito Body" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "kito_body" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_flamy_picker.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_flamy_picker.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import dwpicker\ndwpicker.show()\n\npicker_file = r'D:/Education/Animation/Trazos/BoomonsProject/Assets/_pickers/flamy.json'\n\ndwpicker._dwpicker.clear()\ndwpicker._dwpicker.add_picker_from_file(picker_file)" 
+        -sourceType "python" 
+        -doubleClickCommand "import dwpicker\ndwpicker.show()\n\npicker_file = r'D:/Education/Animation/Trazos/BoomonsProject/Assets/_pickers/flamy.json'\n\ndwpicker._dwpicker.add_picker_from_file(picker_file)" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "import dwpicker\ndwpicker.show()\n\npicker_file = r'D:/Education/Animation/Trazos/BoomonsProject/Assets/_pickers/flamy.json'\n\ndwpicker._dwpicker.clear()\ndwpicker._dwpicker.add_picker_from_file(picker_file)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "import dwpicker\ndwpicker.show()\n\npicker_file = r'D:/Education/An..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_flowy_picker.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_flowy_picker.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import dwpicker\ndwpicker.show()\n\npicker_file = r'D:/Education/Animation/Trazos/BoomonsProject/Assets/_pickers/flowy.json'\n\ndwpicker._dwpicker.clear()\ndwpicker._dwpicker.add_picker_from_file(picker_file)" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 9
+        -enable 1
+        -width 12
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "# separator\npass" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "b_body" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/separator.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/separator.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "# separator\npass" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Load/Add Custom Picker 01" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "custom_picker_01" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_custom_01_picker.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_custom_01_picker.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import maya.cmds as cmds\nimport os\nimport dwpicker\n\n\ndef get_file_path():\n    full_path = cmds.file(q=True, sn=True)\n\n    if full_path == \"\":\n        return None\n\n    file_name = os.path.basename(full_path)\n    path = full_path.replace(file_name, \"\")\n    return path\n\n\ndef load_custom_picker(picker_num=1, add=False):\n    path = get_file_path()\n    if not path:\n        cmds.warning(\"The file must be saved first.\")\n    else:\n        if not dwpicker:\n            dwpicker.show()\n        if add:\n            dwpicker._dwpicker.clear()\n\n        picker_file = \"{0}custom_picker_0{1}.json\".format(path, picker_num)\n        try:\n            dwpicker._dwpicker.add_picker_from_file(picker_file)\n        except IOError:\n            cmds.warning(\"The picker {0} was not found.\".format(picker_file))\n\n\nload_custom_picker(1, add=False)\n" 
+        -sourceType "python" 
+        -doubleClickCommand "import maya.cmds as cmds\nimport os\nimport dwpicker\n\n\ndef get_file_path():\n    full_path = cmds.file(q=True, sn=True)\n\n    if full_path == \"\":\n        return None\n\n    file_name = os.path.basename(full_path)\n    path = full_path.replace(file_name, \"\")\n    return path\n\n\ndef load_custom_picker(picker_num=1, add=False):\n    path = get_file_path()\n    if not path:\n        cmds.warning(\"The file must be saved first.\")\n    else:\n        if not dwpicker:\n            dwpicker.show()\n        if add:\n            dwpicker._dwpicker.clear()\n\n        picker_file = \"{0}custom_picker_0{1}.json\".format(path, picker_num)\n        try:\n            dwpicker._dwpicker.add_picker_from_file(picker_file)\n        except IOError:\n            cmds.warning(\"The picker {0} was not found.\".format(picker_file))\n\n\nload_custom_picker(1, add=True)\n" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Load/Add Custom Picker 02" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "custom_picker_02" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_custom_02_picker.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_custom_02_picker.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import maya.cmds as cmds\nimport os\nimport dwpicker\n\n\ndef get_file_path():\n    full_path = cmds.file(q=True, sn=True)\n\n    if full_path == \"\":\n        return None\n\n    file_name = os.path.basename(full_path)\n    path = full_path.replace(file_name, \"\")\n    return path\n\n\ndef load_custom_picker(picker_num=1, add=False):\n    path = get_file_path()\n    if not path:\n        cmds.warning(\"The file must be saved first.\")\n    else:\n        if not dwpicker:\n            dwpicker.show()\n        if add:\n            dwpicker._dwpicker.clear()\n\n        picker_file = \"{0}custom_picker_0{1}.json\".format(path, picker_num)\n        try:\n            dwpicker._dwpicker.add_picker_from_file(picker_file)\n        except IOError:\n            cmds.warning(\"The picker {0} was not found.\".format(picker_file))\n\n\nload_custom_picker(2, add=False)\n" 
+        -sourceType "python" 
+        -doubleClickCommand "import maya.cmds as cmds\nimport os\nimport dwpicker\n\n\ndef get_file_path():\n    full_path = cmds.file(q=True, sn=True)\n\n    if full_path == \"\":\n        return None\n\n    file_name = os.path.basename(full_path)\n    path = full_path.replace(file_name, \"\")\n    return path\n\n\ndef load_custom_picker(picker_num=1, add=False):\n    path = get_file_path()\n    if not path:\n        cmds.warning(\"The file must be saved first.\")\n    else:\n        if not dwpicker:\n            dwpicker.show()\n        if add:\n            dwpicker._dwpicker.clear()\n\n        picker_file = \"{0}custom_picker_0{1}.json\".format(path, picker_num)\n        try:\n            dwpicker._dwpicker.add_picker_from_file(picker_file)\n        except IOError:\n            cmds.warning(\"The picker {0} was not found.\".format(picker_file))\n\n\nload_custom_picker(2, add=True)\n" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Load/Add Custom Picker 03" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "custom_picker_03" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_custom_03_picker.png" 
+        -image1 "D:/Education/Animation/Trazos/BoomonsProject/Assets/_Shelf/Icons/open_custom_03_picker.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import maya.cmds as cmds\nimport os\nimport dwpicker\n\n\ndef get_file_path():\n    full_path = cmds.file(q=True, sn=True)\n\n    if full_path == \"\":\n        return None\n\n    file_name = os.path.basename(full_path)\n    path = full_path.replace(file_name, \"\")\n    return path\n\n\ndef load_custom_picker(picker_num=1, add=False):\n    path = get_file_path()\n    if not path:\n        cmds.warning(\"The file must be saved first.\")\n    else:\n        if not dwpicker:\n            dwpicker.show()\n        if add:\n            dwpicker._dwpicker.clear()\n\n        picker_file = \"{0}custom_picker_0{1}.json\".format(path, picker_num)\n        try:\n            dwpicker._dwpicker.add_picker_from_file(picker_file)\n        except IOError:\n            cmds.warning(\"The picker {0} was not found.\".format(picker_file))\n\n\nload_custom_picker(3, add=False)\n" 
+        -sourceType "python" 
+        -doubleClickCommand "import maya.cmds as cmds\nimport os\nimport dwpicker\n\n\ndef get_file_path():\n    full_path = cmds.file(q=True, sn=True)\n\n    if full_path == \"\":\n        return None\n\n    file_name = os.path.basename(full_path)\n    path = full_path.replace(file_name, \"\")\n    return path\n\n\ndef load_custom_picker(picker_num=1, add=False):\n    path = get_file_path()\n    if not path:\n        cmds.warning(\"The file must be saved first.\")\n    else:\n        if not dwpicker:\n            dwpicker.show()\n        if add:\n            dwpicker._dwpicker.clear()\n\n        picker_file = \"{0}custom_picker_0{1}.json\".format(path, picker_num)\n        try:\n            dwpicker._dwpicker.add_picker_from_file(picker_file)\n        except IOError:\n            cmds.warning(\"The picker {0} was not found.\".format(picker_file))\n\n\nload_custom_picker(3, add=True)\n" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+
+} 

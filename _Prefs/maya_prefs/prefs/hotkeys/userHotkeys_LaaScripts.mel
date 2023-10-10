@@ -1,0 +1,119 @@
+//Maya Preference 2022 (Release 1)
+//
+//
+
+//
+// The hotkey set
+//
+hotkeySet -source "Maya_Default" -current LaaScripts;
+//
+// The hotkey contexts and hotkeys
+//
+hotkey -keyShortcut "p" -ctl -alt -sht -name ("LaaLoadDwPickerNameCommand");
+hotkey -keyShortcut "d" -ctl -alt -name ("LaaConvergeToBufferNameCommand");
+hotkey -keyShortcut "e" -alt -name ("");
+hotkey -keyShortcut "z" -releaseName ("");
+hotkey -keyShortcut "z" -pressCommandRepeat true
+	-name ("laa_prevFramePlaybackPressNameCommand");
+hotkey -keyShortcut "1" -alt -name ("LaaSetSteppedTangentsNameCommand");
+hotkey -keyShortcut "m" -alt -name ("LaaToggleDefaultMaterialNameCommand");
+hotkey -keyShortcut "t" -alt -name ("LaaToggleTimelineHeightNameCommand");
+hotkey -keyShortcut "2" -alt -name ("LaaSetLinearTangentsNameCommand");
+hotkey -keyShortcut "z" -alt -name ("");
+hotkey -keyShortcut "w" -ctl -name ("");
+hotkey -keyShortcut "a" -ctl -sht -name ("LaaPushPrevKeysNameCommand");
+hotkey -keyShortcut "s" -alt -name ("LaaSetSmartKeyNameCommand");
+hotkey -keyShortcut "5" -alt -name ("");
+hotkey -keyShortcut "d" -ctl -sht -name ("LaaPushNextKeysNameCommand");
+hotkey -keyShortcut "e" -releaseName ("");
+hotkey -keyShortcut "e" -name ("laa_switchRotateManipulatorNameCommand");
+hotkey -keyShortcut "e" -ctl -alt -sht -name ("LaaFilterRotateChannelsOnOnesNameCommand");
+hotkey -keyShortcut "r" -releaseName ("");
+hotkey -keyShortcut "z" -ctl -sht -name ("LaaGooToThePrevMarkerNameCommand");
+hotkey -keyShortcut "r" -name ("LaaSwitchScaleManipulatorNameCommand");
+hotkey -keyShortcut "j" -name ("laa_addBreakdownMarkersNameCommand");
+hotkey -keyShortcut "j" -releaseName ("");
+hotkey -keyShortcut "d" -alt -name ("LaaRemoveFrameMarkersNameCommand");
+hotkey -keyShortcut "g" -alt -name ("LaaToggleGridNameCommand");
+hotkey -keyShortcut "j" -alt -name ("LaaToggleJointsNameCommand");
+hotkey -keyShortcut "v" -ctl -sht -name ("laa_goToTheNextKeyMarkerNameCommand");
+hotkey -keyShortcut "x" -ctl -sht -name ("laa_goToTheNextMarkerNameCommand");
+hotkey -keyShortcut "r" -alt -name ("LaaToggleResolutionGateNameCommand");
+hotkey -keyShortcut "p" -ctl -sht -name ("LaaTogglePerspectiveCamerasNameCommand");
+hotkey -keyShortcut "p" -alt -name ("LaaTogglePolygonsNameCommand");
+hotkey -keyShortcut "w" -ctl -sht -name ("LaaFilterTranslateChannelsOnThreesNameCommand");
+hotkey -keyShortcut "b" -ctl -alt -sht -name ("LaaLoadWorldBakeNameCommand");
+hotkey -keyShortcut "r" -ctl -alt -name ("LaaFilterScaleChannelsOnOnesNameCommand");
+hotkey -keyShortcut "k" -name ("laa_addKeyMarkersNameCommand");
+hotkey -keyShortcut "h" -ctl -alt -sht -name ("LaaToggleHotkeySetsNameCommand");
+hotkey -keyShortcut "k" -releaseName ("");
+hotkey -keyShortcut "," -releaseName ("");
+hotkey -keyShortcut "," -name ("animBot_timeBookmarks_goToPreviousTimeBookmark");
+hotkey -keyShortcut "r" -ctl -alt -sht -name ("LaaDeleteRedundantNameCommand");
+hotkey -keyShortcut "v" -ctl -name ("LaaPasteKeysNameCommand");
+hotkey -keyShortcut "l" -ctl -alt -sht -name ("LaaLoadSharedStudioLibNameCommand");
+hotkey -keyShortcut "x" -ctl -name ("LaaCutKeysNameCommand");
+hotkey -keyShortcut "o" -ctl -alt -sht -name ("LaaLoadCameraZoomNameCommand");
+hotkey -keyShortcut "a" -ctl -alt -sht -name ("LaaLoadAnimbotNameCommand");
+hotkey -keyShortcut "c" -ctl -sht -name ("laa_goToThePrevKeyMarkerNameCommand");
+hotkey -keyShortcut "q" -ctl -alt -sht -name ("LaaClearAllChannelsNameCommand");
+hotkey -keyShortcut "r" -ctl -name ("");
+hotkey -keyShortcut "v" -releaseName ("");
+hotkey -keyShortcut "v" -name ("laa_goToTheNextKeyNameCommand");
+hotkey -keyShortcut "c" -alt -name ("laa_toggleCurvesNameCommand");
+hotkey -keyShortcut "." -releaseName ("");
+hotkey -keyShortcut "." -name ("animBot_timeBookmarks_goToNextTimeBookmark");
+hotkey -keyShortcut "3" -alt -name ("LaaSetAutoTangentsNameCommand");
+hotkey -keyShortcut "x" -releaseName ("");
+hotkey -keyShortcut "x" -pressCommandRepeat true
+	-name ("laa_nextFramePlaybackPressNameCommand");
+hotkey -keyShortcut "v" -alt -name ("LaaToggleViewportModesNameCommand");
+hotkey -keyShortcut "z" -ctl -alt -sht -name ("LaaZeroOutKeysNameCommand");
+hotkey -keyShortcut "x" -alt -name ("laa_toggleXrayNameCommand");
+hotkey -keyShortcut "h" -alt -name ("LaaToggleHandlesNameCommand");
+hotkey -keyShortcut "m" -ctl -alt -sht -name ("LaaLoadTweenMachineNameCommand");
+hotkey -keyShortcut "w" -releaseName ("TranslateToolWithSnapMarkingMenuPopDownNameCommand");
+hotkey -keyShortcut "q" -ctl -name ("");
+hotkey -keyShortcut "e" -ctl -sht -name ("LaaFilterRotateChannelsOnThreesNameCommand");
+hotkey -keyShortcut "c" -releaseName ("");
+hotkey -keyShortcut "w" -pressCommandRepeat true
+	-name ("laa_switchTranslateManipulatorNameCommand");
+hotkey -keyShortcut "c" -name ("laa_goToThePrevKeyNameCommand");
+hotkey -keyShortcut "l" -name ("LaaAddInbetweenMarkersNameCommand");
+hotkey -keyShortcut "s" -ctl -alt -name ("LaaSnapToBufferNameCommand");
+hotkey -keyShortcut "l" -releaseName ("");
+hotkey -keyShortcut "a" -ctl -alt -name ("LaaDivergeFromBufferNameCommand");
+hotkey -keyShortcut "w" -alt -name ("LaaToggleWireframeNameCommand");
+hotkey -keyShortcut "o" -name ("");
+hotkey -keyShortcut "o" -releaseName ("");
+hotkey -keyShortcut "x" -ctl -alt -sht -name ("LaaReverseKeysNameCommand");
+hotkey -keyShortcut "r" -ctl -sht -name ("FilterScaleChannelsOnThreesNameCommand");
+hotkey -keyShortcut "l" -alt -name ("LaaToggleLocatorsNameCommand");
+hotkey -keyShortcut "e" -ctl -name ("");
+hotkey -keyShortcut "o" -ctl -sht -name ("LaaToggleOrtographicCamerasNameCommand");
+hotkey -keyShortcut "g" -ctl -alt -name ("IncrementAndSaveNameCommand");
+hotkey -keyShortcut "w" -ctl -alt -sht -name ("LaaFilterTranslateChannelsOnOnesNameCommand");
+hotkey -keyShortcut "a" -alt -name ("LaaToggleAllViewportElementsNameCommand");
+hotkey -keyShortcut "q" -ctl -sht -name ("LaaFilterAllChannelsNameCommand");
+hotkey -keyShortcut "b" -ctl -sht -name ("LaaToggleBreakTangentsNameCommand");
+hotkey -keyShortcut "c" -ctl -name ("LaaCopyKeysNameCommand");
+hotkey -keyShortcut "w" -ctl -alt -name ("");
+hotkey -keyShortcut "p" -ctl -alt -name ("LaaPlayblastShotNameCommand");
+hotkeyCtx -type "Editor" -addClient "timeEditorPanel";
+hotkeyCtx -type "Editor" -addClient "nodeEditorPanel";
+hotkeyCtx -type "Editor" -addClient "polyTexturePlacementPanel";
+hotkeyCtx -type "Editor" -addClient "graphEditor";
+hotkeyCtx -type "Editor" -addClient "outlinerPanel";
+hotkeyCtx -type "Editor" -addClient "hyperShadePanel";
+hotkeyCtx -type "Editor" -addClient "posePanel";
+hotkeyCtx -type "Editor" -addClient "shapePanel";
+hotkeyCtx -type "Editor" -addClient "hyperGraphPanel";
+hotkeyCtx -type "Editor" -addClient "profilerPanel";
+hotkeyCtx -type "Tool" -addClient "polyCutUV";
+hotkeyCtx -type "Tool" -addClient "texCutContext";
+hotkeyCtx -type "Tool" -addClient "sculptMeshCache";
+hotkeyCtx -type "Tool" -addClient "xgmIGBrush";
+hotkeyCtx -type "Tool" -addClient "bpDraw";
+hotkeyCtx -type "Tool" -addClient "Unfold3DBrush";
+hotkeyCtx -type "Tool" -addClient "texSculptCacheContext";
+hotkeyCtx -type "Tool" -addClient "SymmetrizeUVBrush";

@@ -1,0 +1,412 @@
+//Maya Preference 2022 (Release 1)
+//
+//
+
+nameCommand
+	-annotation "laa_switchTranslateManipulatorNameCommand"
+	-sourceType "mel"
+	-command ("LaaSmartTranslateManipulator")
+	laa_switchTranslateManipulatorNameCommand;
+
+nameCommand
+	-annotation "laa_switchRotateManipulatorNameCommand"
+	-sourceType "mel"
+	-command ("LaaSmartRotateManipulator")
+	laa_switchRotateManipulatorNameCommand;
+
+nameCommand
+	-annotation "laa_addKeyMarkersNameCommand"
+	-sourceType "mel"
+	-command ("LaaAddKeyMarkers")
+	laa_addKeyMarkersNameCommand;
+
+nameCommand
+	-annotation "laa_addBreakdownMarkersNameCommand"
+	-sourceType "mel"
+	-command ("LaaAddBreakdownMarkers")
+	laa_addBreakdownMarkersNameCommand;
+
+nameCommand
+	-annotation "laa_nextFramePlaybackPressNameCommand"
+	-sourceType "mel"
+	-command ("LaaGoToTheNextFrame")
+	laa_nextFramePlaybackPressNameCommand;
+
+nameCommand
+	-annotation "laa_prevFramePlaybackPressNameCommand"
+	-sourceType "mel"
+	-command ("LaaGoToThePrevFrame")
+	laa_prevFramePlaybackPressNameCommand;
+
+nameCommand
+	-annotation "laa_goToTheNextKeyNameCommand"
+	-sourceType "mel"
+	-command ("LaaGoToTheNextKey")
+	laa_goToTheNextKeyNameCommand;
+
+nameCommand
+	-annotation "laa_goToThePrevKeyNameCommand"
+	-sourceType "mel"
+	-command ("LaaGoToThePrevKey")
+	laa_goToThePrevKeyNameCommand;
+
+nameCommand
+	-annotation "laa_goToTheNextMarkerNameCommand"
+	-sourceType "mel"
+	-command ("LaaGoToTheNextMarker")
+	laa_goToTheNextMarkerNameCommand;
+
+nameCommand
+	-annotation "laa_goToTheNextKeyMarkerNameCommand"
+	-sourceType "mel"
+	-command ("LaaGoToTheNextKeyMarker")
+	laa_goToTheNextKeyMarkerNameCommand;
+
+nameCommand
+	-annotation "laa_goToThePrevKeyMarkerNameCommand"
+	-sourceType "mel"
+	-command ("LaaGoToThePrevKeyMarker")
+	laa_goToThePrevKeyMarkerNameCommand;
+
+nameCommand
+	-annotation "laa_toggleXrayNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleXray")
+	laa_toggleXrayNameCommand;
+
+nameCommand
+	-annotation "laa_toggleCurvesNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleCurves")
+	laa_toggleCurvesNameCommand;
+
+nameCommand
+	-annotation "IncrementAndSaveNameCommand"
+	-sourceType "mel"
+	-command ("IncrementAndSave")
+	IncrementAndSaveNameCommand;
+
+nameCommand
+	-annotation "Go to Previous Time Bookmark - Navigate to the neighbor left bookmark."
+	-sourceType "mel"
+	-command ("python(\"from animBot._api.core import CORE as ANIMBOT_CORE; ANIMBOT_CORE.trigger.timeBookmarks_goToPreviousTimeBookmark();\");")
+	animBot_timeBookmarks_goToPreviousTimeBookmark;
+
+nameCommand
+	-annotation "Go to Next Time Bookmark - Navigate to the neighbor right bookmark."
+	-sourceType "mel"
+	-command ("python(\"from animBot._api.core import CORE as ANIMBOT_CORE; ANIMBOT_CORE.trigger.timeBookmarks_goToNextTimeBookmark();\");")
+	animBot_timeBookmarks_goToNextTimeBookmark;
+
+nameCommand
+	-annotation "LaaToggleDefaultMaterialNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleDefaultMaterial")
+	LaaToggleDefaultMaterialNameCommand;
+
+nameCommand
+	-annotation "LaaToggleGridNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleGrid")
+	LaaToggleGridNameCommand;
+
+nameCommand
+	-annotation "LaaToggleJointsNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleJoints")
+	LaaToggleJointsNameCommand;
+
+nameCommand
+	-annotation "LaaToggleHandlesNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleHandles")
+	LaaToggleHandlesNameCommand;
+
+nameCommand
+	-annotation "LaaTogglePolygonsNameCommand"
+	-sourceType "mel"
+	-command ("LaaTogglePolygons")
+	LaaTogglePolygonsNameCommand;
+
+nameCommand
+	-annotation "LaaFilterTranslateChannelsOnThreesNameCommand"
+	-sourceType "mel"
+	-command ("LaaFilterTranslateChannels")
+	LaaFilterTranslateChannelsOnThreesNameCommand;
+
+nameCommand
+	-annotation "LaaFilterRotateChannelsOnThreesNameCommand"
+	-sourceType "mel"
+	-command ("LaaFilterRotateChannels")
+	LaaFilterRotateChannelsOnThreesNameCommand;
+
+nameCommand
+	-annotation "LaaFilterRotateChannelsOnOnesNameCommand"
+	-sourceType "mel"
+	-command ("LaaFilterRotateChannelsOnOnes")
+	LaaFilterRotateChannelsOnOnesNameCommand;
+
+nameCommand
+	-annotation "LaaSwitchScaleManipulatorNameCommand"
+	-sourceType "mel"
+	-command ("LaaSmartScaleManipulator")
+	LaaSwitchScaleManipulatorNameCommand;
+
+nameCommand
+	-annotation "LaaCopyKeysNameCommand"
+	-sourceType "mel"
+	-command ("LaaCopyKeys")
+	LaaCopyKeysNameCommand;
+
+nameCommand
+	-annotation "LaaCutKeysNameCommand"
+	-sourceType "mel"
+	-command ("LaaCutKeys")
+	LaaCutKeysNameCommand;
+
+nameCommand
+	-annotation "LaaPasteKeysNameCommand"
+	-sourceType "mel"
+	-command ("LaaPasteKeys")
+	LaaPasteKeysNameCommand;
+
+nameCommand
+	-annotation "LaaToggleHotkeySetsNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleHotkeySets")
+	LaaToggleHotkeySetsNameCommand;
+
+nameCommand
+	-annotation "LaaFilterTranslateChannelsOnOnesNameCommand"
+	-sourceType "mel"
+	-command ("LaaFilterTranslateChannelsOnOnes")
+	LaaFilterTranslateChannelsOnOnesNameCommand;
+
+nameCommand
+	-annotation "LaaFilterScaleChannelsOnOnesNameCommand"
+	-sourceType "mel"
+	-command ("LaaFilterScaleChannelsOnOnes")
+	LaaFilterScaleChannelsOnOnesNameCommand;
+
+nameCommand
+	-annotation "LaaFilterAllChannelsNameCommand"
+	-sourceType "mel"
+	-command ("LaaFilterAllChannels")
+	LaaFilterAllChannelsNameCommand;
+
+nameCommand
+	-annotation "LaaAddInbetweenMarkersNameCommand"
+	-sourceType "mel"
+	-command ("LaaAddInbetweenMarkers")
+	LaaAddInbetweenMarkersNameCommand;
+
+nameCommand
+	-annotation "LaaRemoveFrameMarkersNameCommand"
+	-sourceType "mel"
+	-command ("LaaRemoveFrameMarkers")
+	LaaRemoveFrameMarkersNameCommand;
+
+nameCommand
+	-annotation "LaaGooToThePrevMarkerNameCommand"
+	-sourceType "mel"
+	-command ("LaaGooToThePrevMarker")
+	LaaGooToThePrevMarkerNameCommand;
+
+nameCommand
+	-annotation "LaaToggleWireframeNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleWireframe")
+	LaaToggleWireframeNameCommand;
+
+nameCommand
+	-annotation "FilterScaleChannelsOnThreesNameCommand"
+	-sourceType "mel"
+	-command ("LaaFilterScaleChannels")
+	FilterScaleChannelsOnThreesNameCommand;
+
+nameCommand
+	-annotation "LaaToggleLocatorsNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleLocators")
+	LaaToggleLocatorsNameCommand;
+
+nameCommand
+	-annotation "LaaRemoveInbetweenNameCommand"
+	-sourceType "mel"
+	-command ("LaaRemoveInbetween")
+	LaaRemoveInbetweenNameCommand;
+
+nameCommand
+	-annotation "LaaAddInbetweenNameCommand"
+	-sourceType "mel"
+	-command ("LaaAddInbetween")
+	LaaAddInbetweenNameCommand;
+
+nameCommand
+	-annotation "LaaClearAllChannelsNameCommand"
+	-sourceType "mel"
+	-command ("LaaClearAllChannels")
+	LaaClearAllChannelsNameCommand;
+
+nameCommand
+	-annotation "LaaSetSteppedTangentsNameCommand"
+	-sourceType "mel"
+	-command ("LaaSetSteppedTangents")
+	LaaSetSteppedTangentsNameCommand;
+
+nameCommand
+	-annotation "LaaSetLinearTangentsNameCommand"
+	-sourceType "mel"
+	-command ("LaaSetLinearTangents")
+	LaaSetLinearTangentsNameCommand;
+
+nameCommand
+	-annotation "LaaSetAutoTangentsNameCommand"
+	-sourceType "mel"
+	-command ("LaaSetAutoTangents")
+	LaaSetAutoTangentsNameCommand;
+
+nameCommand
+	-annotation "LaaToggleTimelineHeightNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleTimelineHeight")
+	LaaToggleTimelineHeightNameCommand;
+
+nameCommand
+	-annotation "LaaToggleViewportModesNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleViewportModes")
+	LaaToggleViewportModesNameCommand;
+
+nameCommand
+	-annotation "LaaToggleAllViewportElementsNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleAllViewportElements")
+	LaaToggleAllViewportElementsNameCommand;
+
+nameCommand
+	-annotation "LaaPlayblastShotNameCommand"
+	-sourceType "mel"
+	-command ("LaaPlayblastShot")
+	LaaPlayblastShotNameCommand;
+
+nameCommand
+	-annotation "LaaDeleteRedundantNameCommand"
+	-sourceType "mel"
+	-command ("LaaDeleteRedundant")
+	LaaDeleteRedundantNameCommand;
+
+nameCommand
+	-annotation "LaaSetSmartKeyNameCommand"
+	-sourceType "mel"
+	-command ("LaaSetSmartKey")
+	LaaSetSmartKeyNameCommand;
+
+nameCommand
+	-annotation "LaaZeroOutKeysNameCommand"
+	-sourceType "mel"
+	-command ("LaaZeroOutKeys")
+	LaaZeroOutKeysNameCommand;
+
+nameCommand
+	-annotation "LaaSnapToBufferNameCommand"
+	-sourceType "mel"
+	-command ("LaaSnapToBuffer")
+	LaaSnapToBufferNameCommand;
+
+nameCommand
+	-annotation "LaaConvergeToBufferNameCommand"
+	-sourceType "mel"
+	-command ("LaaConvergeToBuffer")
+	LaaConvergeToBufferNameCommand;
+
+nameCommand
+	-annotation "LaaDivergeFromBufferNameCommand"
+	-sourceType "mel"
+	-command ("LaaDivergeFromBuffer")
+	LaaDivergeFromBufferNameCommand;
+
+nameCommand
+	-annotation "LaaToggleBreakTangentsNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleBreakTangents")
+	LaaToggleBreakTangentsNameCommand;
+
+nameCommand
+	-annotation "LaaReverseKeysNameCommand"
+	-sourceType "mel"
+	-command ("LaaReverseKeys")
+	LaaReverseKeysNameCommand;
+
+nameCommand
+	-annotation "LaaTogglePerspectiveCamerasNameCommand"
+	-sourceType "mel"
+	-command ("LaaTogglePerspectiveCameras")
+	LaaTogglePerspectiveCamerasNameCommand;
+
+nameCommand
+	-annotation "LaaToggleOrtographicCamerasNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleOrtographicCameras")
+	LaaToggleOrtographicCamerasNameCommand;
+
+nameCommand
+	-annotation "LaaToggleResolutionGateNameCommand"
+	-sourceType "mel"
+	-command ("LaaToggleResolutionGate")
+	LaaToggleResolutionGateNameCommand;
+
+nameCommand
+	-annotation "LaaLoadDwPickerNameCommand"
+	-sourceType "mel"
+	-command ("LaaLoadDwPicker")
+	LaaLoadDwPickerNameCommand;
+
+nameCommand
+	-annotation "LaaLoadTweenMachineNameCommand"
+	-sourceType "mel"
+	-command ("LaaLoadTweenMachine")
+	LaaLoadTweenMachineNameCommand;
+
+nameCommand
+	-annotation "LaaLoadSharedStudioLibNameCommand"
+	-sourceType "mel"
+	-command ("LaaLoadSharedStudioLib")
+	LaaLoadSharedStudioLibNameCommand;
+
+nameCommand
+	-annotation "LaaLoadCameraZoomNameCommand"
+	-sourceType "mel"
+	-command ("LaaLoadCameraZoom")
+	LaaLoadCameraZoomNameCommand;
+
+nameCommand
+	-annotation "LaaLoadWorldBakeNameCommand"
+	-sourceType "mel"
+	-command ("LaaLoadWorldBake")
+	LaaLoadWorldBakeNameCommand;
+
+nameCommand
+	-annotation "LaaLoadAnimbotNameCommand"
+	-sourceType "mel"
+	-command ("LaaLoadAnimbot")
+	LaaLoadAnimbotNameCommand;
+
+nameCommand
+	-annotation "LaaPushNextKeyNameCommand"
+	-sourceType "mel"
+	-command ("LaaPushNextKey")
+	LaaPushNextKeyNameCommand;
+
+nameCommand
+	-annotation "LaaPushNextKeysNameCommand"
+	-sourceType "mel"
+	-command ("LaaPushNextKeys")
+	LaaPushNextKeysNameCommand;
+
+nameCommand
+	-annotation "LaaPushPrevKeysNameCommand"
+	-sourceType "mel"
+	-command ("LaaPushPrevKeys")
+	LaaPushPrevKeysNameCommand;
+

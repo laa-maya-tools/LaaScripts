@@ -1,0 +1,2503 @@
+global proc shelf_LAA_ANM () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Set Preferences] Set Maya Preferences for Animation" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "01_sPRF" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_01_setPrefs.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_01_setPrefs.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.maya_prefs as mp\nreload(mp)\n\nref = mp.MayaPrefs('default_prefs')" 
+        -sourceType "python" 
+        -doubleClickCommand "import laashelf.anm.maya_prefs as mp\nreload(mp)\n\nref = mp.MayaPrefs('create_ui')" 
+        -commandRepeatable 1
+        -flat 1
+        -mi "====== SET PREFERENCES ======" ( "print(\"User defined menuItem\");" )
+        -mi "For Animation" ( "print(\"User defined menuItem\");" )
+        -mi "====== EXTRA SETTINGS =======" ( "print(\"User defined menuItem\");" )
+        -mi "Cycle Off " ( "print(\"User defined menuItem\");" )
+        -mi "Reset Offscreen Windows" ( "print(\"User defined menuItem\");" )
+        -mi "Dock Floating Window" ( "print(\"User defined menuItem\");" )
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Set Blocking] Set Preferences for Blocking" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "02_sBLK" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_02_setBlocking.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_02_setBlocking.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.maya_prefs as mp\nreload(mp)\n\nref = mp.MayaPrefs('blocking')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Set Refining] Set Preferences for Refining" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "03_sREF" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_03_setRefining.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_03_setRefining.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.maya_prefs as mp\nreload(mp)\n\nref = mp.MayaPrefs('refining')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Set Namespace] Set Active Character Namespace" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "04_sNSP" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_04_setNamespace.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_04_setNamespace.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "# -----------------------------------------------------------------------------\n# SHELF BTN: sNSP\n# AUTHOR: Leandro Adeodato\n# -----------------------------------------------------------------------------     \nimport laashelf.anm.char_nsp as cn\nreload(cn)\n\nref = cn.CharNsp().show_char_hud()" 
+        -sourceType "python" 
+        -doubleClickCommand "# -----------------------------------------------------------------------------\n# SHELF BTN: sNSP\n# AUTHOR: Leandro Adeodato\n# -----------------------------------------------------------------------------     \nimport laashelf.anm.char_nsp as cn\nreload(cn)\n\nref = cn.CharacterNamespace('reload_data')" 
+        -commandRepeatable 1
+        -flat 1
+        -mi "====== CHAR DATA ======" ( "print(\"User defined menuItem\");" )
+        -mi "Refresh Character Data" ( "import laashelf.anm.char_data as cd\nreload (cd)" )
+        -mip 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Toggle Mode] Toggle Selection Between Body/Facial Mode" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "05_tMOD" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_05_toggleMode.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_05_toggleMode.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "# -----------------------------------------------------------------------------\n# SHELF BTN: sMOD\n# AUTHOR: Leandro Adeodato\n# -----------------------------------------------------------------------------     \n#import laashelf.anm.selection_mode as sm\n#reload(sm)\n\n#ref = sm.SelectionMode()\n\nimport laashelf.anm.char_nsp as cn\nreload(cn)\n\nref = cn.CharNsp().show_selection_mode_hud()" 
+        -sourceType "python" 
+        -doubleClickCommand "# -----------------------------------------------------------------------------\n# SHELF BTN: sNSP\n# AUTHOR: Leandro Adeodato\n# -----------------------------------------------------------------------------    \nimport laashelf.anm.char_nsp as cn\nreload(cn)\n\nref = cn.CharacterNamespace('reload_data')" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[sBAS] Select Next Base Control (Bot Center Face Control  in Facial Mode)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "06_sBAS" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_06_switchBase.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_06_switchBase.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_x', 'next')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+        -mi "================" ( "" )
+        -mip 0
+        -mi "Switch Base Controls (PREV)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_x', 'prev')" )
+        -mip 1
+        -mi "Switch Base Controls (NEXT)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_x', 'next')" )
+        -mip 2
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Upper Body] Select Next Upper Body Control (Top Center Face Control  in Facial Mode)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "07_uBDY" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_07_upperBody.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_07_upperBody.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_s', 'next')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+        -mi "================" ( "" )
+        -mip 0
+        -mi "Switch Upper Body Controls (PREV)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_s', 'prev')" )
+        -mip 1
+        -mi "Switch Upper Body Controls (NEXT)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_s', 'next')" )
+        -mip 2
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[sEYE] Select Next Eye Control (Same Behavior in Body/Facial Mode)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "08_sEYE" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_08_switchEye.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_08_switchEye.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_w', 'next')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+        -mi "================" ( "" )
+        -mip 0
+        -mi "Switch Eye Controls (PREV)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_w', 'prev')" )
+        -mip 1
+        -mi "Switch Eye Controls (NEXT)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_w', 'next')" )
+        -mip 2
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Right Leg] Select Next Right Leg Control (Top Right Face Control  in Facial Mode)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "09_rLEG" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_09_rightLeg.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_09_rightLeg.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_z', 'next')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+        -mi "================" ( "" )
+        -mip 0
+        -mi "Switch RT Leg Controls (PREV)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_z', 'prev')" )
+        -mip 1
+        -mi "Switch RT Leg Controls (NEXT)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_z', 'next')" )
+        -mip 2
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Left Leg] Select Next Left Leg Control (Top Left Face Control  in Facial Mode)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "10_lLEG" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_10_leftLeg.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_10_leftLeg.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_c', 'next')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+        -mi "================" ( "" )
+        -mip 0
+        -mi "Switch LF Leg Controls (PREV)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_c', 'prev')" )
+        -mip 1
+        -mi "Switch LF Leg Controls (NEXT)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_c', 'next')" )
+        -mip 2
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Right Arm] Select Next Right Arm Control (Top Right Face Control  in Facial Mode)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "11_rARM" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_11_rightArm.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_11_rightArm.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_a', 'next')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+        -mi "================" ( "" )
+        -mip 0
+        -mi "Switch RT Arm Controls (PREV)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_a', 'next')" )
+        -mip 1
+        -mi "Switch RT Arm Controls (NEXT)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_a', 'next')" )
+        -mip 2
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Left Arm] Select Next Left Arm Control (Top Left Face Control  in Facial Mode)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "12_lARM" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_12_leftArm.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_12_leftArm.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_d', 'next')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+        -mi "================" ( "" )
+        -mip 0
+        -mi "Switch LF Arm Controls (PREV)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_d', 'prev')" )
+        -mip 1
+        -mi "Switch LF Arm Controls (NEXT)" ( "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('shift_d', 'next')" )
+        -mip 2
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Prev Minor] Select Prev Minor Controls" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "13_pMNR" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_13_prevMinor.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_13_prevMinor.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('a', 'prev')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Next Minor] Select Next Minor Controls" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "14_nMNR" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_14_nextMinor.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_14_nextMinor.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.selection_switcher as ss\nreload(ss)\n\nss.SelectionSwitcher('d', 'next')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Toggle Viewport] Toggle Viewport Looking Mode" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "15_tVWP" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_15_toggleViewport.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_15_toggleViewport.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.viewport_mode as vm\nreload(vm)\n\nref = vm.ViewportMode('loop')" 
+        -sourceType "python" 
+        -doubleClickCommand "import laashelf.anm.viewport_mode as vm\nreload(vm)\n\nref = vm.ViewportMode('ui')" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Crop Timeline] Divide the Timeline Range in Small Parts" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "24_cTML" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_16_cropTimeline.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_16_cropTimeline.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "playbackOptions -min 1 -max 140 ;" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+        -mi "==========" ( "print(\"User defined menuItem\");" )
+        -mi "F001 - F040" ( "playbackOptions -min 1 -max 40 ;" )
+        -mi "F040 - F080" ( "playbackOptions -min 40 -max 80 ;" )
+        -mi "F080 - F120" ( "playbackOptions -min 80 -max 120 ;" )
+        -mi "F120 - F160" ( "playbackOptions -min 120 -max 160 ;" )
+        -mi "ALL" ( "playbackOptions -min 1 -max 140 ;" )
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "tTPA" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "nada" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_17_selectSection.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_17_selectSection.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "nada" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Reset Controls] Reset Selected/All Animation Controls to Its Default Values" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "18_rCTR" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_18_resetControl.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_18_resetControl.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.char_prefs as cp\nreload(cp)\n\nref = cp.CharPrefs('reset_ctrls', 'all')" 
+        -sourceType "python" 
+        -doubleClickCommand "import laashelf.anm.char_prefs as cp\nreload(cp)\n\nref = cp.CharPrefs('reset_ctrls', 'ui')" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Toggle Visibility] Toggle Active Character's Controls Visibility" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "16_tVIS" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_19_toggleVisibility.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_19_toggleVisibility.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.char_prefs as cp\nreload(cp)\n\ncp.CharPrefs('toggle_vis', 'active_char')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Change Resolution] Change Active Character's Geo Resolution" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "17_cRES" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_20_changeResolution.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_20_changeResolution.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.char_prefs as cp\nreload(cp)\n\ncp.CharPrefs('change_res', 'active_char')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+        -mi "====== CHANGE RESOLUTION ======" ( "print(\"User defined menuItem\");" )
+        -mi "Active Character (Default)" ( "import laashelf.anm.char_prefs as cp\nreload(cp)\n\ncp.CharPrefs('change_res', 'active_char')" )
+        -mip 1
+        -mi "All to Low" ( "import laashelf.anm.char_prefs as cp\nreload(cp)\n\ncp.CharPrefs('change_res', 'all_to_low')" )
+        -mip 2
+        -mi "All to High" ( "import laashelf.anm.char_prefs as cp\nreload(cp)\n\ncp.CharPrefs('change_res', 'all_to_high')" )
+        -mip 3
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Create Camera] Create Facial Camera for LipSync" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "19_cCAM" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_21_createCamera.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_21_createCamera.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.cam_tools as ct\nreload(ct)\n\nref = ct.CamTools('facial_cam')" 
+        -sourceType "python" 
+        -doubleClickCommand "import laashelf.anm.cam_tools as ct\nreload(ct)\n\nref = ct.CamTools('ui')" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Render GL] Take a Fast Playblast" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "23_rGL" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_22_renderGL.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_22_renderGL.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.cam_tools as ct\nreload(ct)\n\nct.CamTools('playblast_shot')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Open .Mov as an Image Plane " 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "import maya.cmds as cmds \nimport laashelf.anm.cam_tools as ct\nre..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_23_imagePlane.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_23_imagePlane.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import maya.cmds as cmds \nimport laashelf.anm.cam_tools as ct\nreload (ct)\n\nct.CamTools('img_plane') " 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "ToogleAlpha" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "nada" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_24_imageVisibility.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_24_imageVisibility.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import maya.cmds as cmds \nimport laashelf.anm.cam_tools as ct\nreload (ct)\n\nct.CamTools('img_plane_vis') " 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Copy Position] Store the Position of the Selected Object" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "25_cPST" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_25_copyPosition.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_25_copyPosition.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.align_tools as at\nreload(at)\n\nat.AlignTools('copy_pos')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Paste Position] Paste the Stored Position to the Selected Object" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "26_pPST" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_26_pastePosition.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_26_pastePosition.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.align_tools as at\nreload(at)\n\nat.AlignTools('paste_pos')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "nada" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "nada" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_27_alignLocator.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_27_alignLocator.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "nada" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Align Last] Align All Objects to the Selected Last" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "28_aLST" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_28_alignLast.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_28_alignLast.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.align_tools as at\nreload(at)\n\nat.AlignTools('align_last')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Snap Position] Move the Active Character to the Stored Position" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "27_sPST" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_29_snapPose.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_29_snapPose.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.pose_base_snap as pbs\nreload(pbs)\n\nref = pbs.PoseBaseSnap()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Rotate Pose] Rotate the Active Character without Changing the Base" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "30_rPOS" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_30_rotatePose.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_30_rotatePose.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.pose_rotation as pr\nreload(pr)\n\npr.PoseRotation()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[World Bake] Bake Animation from Local to World Space. " 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "29_wBAK" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2019/prefs/icons/laa_icons/laa_anm/laa_icon_31_worldBake.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2019/prefs/icons/laa_icons/laa_anm/laa_icon_31_worldBake.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import ml_worldBake\nml_worldBake.ui()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+        -mi "====== WORLD BAKE ========" ( "pass" )
+        -mip 0
+        -mi "Auto Mode (Default)" ( "import laashelf.anm.world_bake as wb\nreload(wb)\n\nwb.WorldBake('auto')" )
+        -mip 1
+        -mi "Active Character" ( "import laashelf.anm.world_bake as wb\nreload(wb)\n\nwb.WorldBake('active_char')" )
+        -mip 2
+        -mi "From Selection" ( "import laashelf.anm.world_bake as wb\nreload(wb)\n\nwb.WorldBake('from_selection')" )
+        -mip 3
+        -mi "Manual Mode" ( "import laashelf.anm.world_bake as wb\nreload(wb)\n\nwb.WorldBake('manual')" )
+        -mip 4
+        -mi "====== ARM/HEAD LOCK ======" ( "pass" )
+        -mip 5
+        -mi "Arm Lock to 0" ( "import laashelf.anm.world_bake as wb\nreload(wb)\n\nwb.WorldBake('arm_lock', 0)" )
+        -mip 6
+        -mi "Arm Lock to 1" ( "import laashelf.anm.world_bake as wb\nreload(wb)\n\nwb.WorldBake('arm_lock', 1)" )
+        -mip 7
+        -mi "Head Lock to 0" ( "import laashelf.anm.world_bake as wb\nreload(wb)\n\nwb.WorldBake('head_lock', 0)" )
+        -mip 8
+        -mi "Head Lock to 1" ( "import laashelf.anm.world_bake as wb\nreload(wb)\n\nwb.WorldBake('head_lock', 1)" )
+        -mip 9
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Create Constraint] Create a Flexible Constraint Between the Selected Objects" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "32_cCNS" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_32_createConstraint.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_32_createConstraint.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "nada" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Break Constraint] Remove Constraints from the Selected Object" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "33_bCNS" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_33_breakConstraint.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_33_breakConstraint.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "nada" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "[Match Contraints] Match Contraint Values when Blend Parent is 0/1" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "34_mCNS" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_34_matchConstraint.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_34_matchConstraint.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "nada" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Motion Path" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "print cmds.getPanel( withFocus=True )" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_35_motionPath.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_35_motionPath.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import laashelf.anm.constraint_tools as ct\nreload(ct)\n\nct.ConstraintTools('motion_path')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "-------------------" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "-------------------" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "separatoricons/clouds.png" 
+        -image1 "separatoricons/clouds.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "// Separator by russogiuseppe.co.uk" 
+        -sourceType "mel" 
+        -doubleClickCommand "separatorUI();" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Load Tools" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "nada" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_36_loadTools.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2016/prefs/icons/laa_icons/laa_anm/laa_icon_36_loadTools.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "nada" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "import maya.cmds as cmds\n\nif not cmds.commandPort(\":4434\", query=True):\n    cmds.commandPort(name=\":4434\")" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "import maya.cmds as cmds\n\nif not cmds.commandPort(\":4434\", query..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "PyC" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import maya.cmds as cmds\n\nif not cmds.commandPort(\":4434\", query=True):\n    cmds.commandPort(name=\":4434\")" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Create Picker" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "from aTools.animTools.animBar import animBarUI; animBarUI.show('..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "cPCK" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import anim_picker\nanim_picker.load(edit=True)" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Load Picker" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "from aTools.animTools.animBar import animBarUI; animBarUI.show('..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "lPCK" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import anim_picker\nanim_picker.load()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "import dwpicker\ndwpicker.show()" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "import dwpicker\ndwpicker.show()" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "dwPck" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import dwpicker\ndwpicker.show()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "string $selSet[] = `ls -sl`;\nstring $lattice = $selSet[0];\nstring $object = $selSet[1];\nlattice -e -g $object $lattice;" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "string $selSet[] = `ls -sl`;\nstring $lattice = $selSet[0];\nstrin..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "commandButton.png" 
+        -image1 "commandButton.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "string $selSet[] = `ls -sl`;\nstring $lattice = $selSet[0];\nstring $object = $selSet[1];\nlattice -e -g $object $lattice;" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "from AmTools import am_tools as amt\nreload(amt)\nret = amt.run()" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "from AmTools import am_tools as amt\nreload(amt)\nret = amt.run()" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "from AmTools import am_tools as amt\nreload(amt)\nret = amt.run()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Toggle - This will toggle animBot ON and OFF." 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "animBot - Toggle" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:\\Users\\leandro_laa\\Documents\\maya\\scripts\\animBot\\_resources\\img\\icons_shelf\\white\\create_toggle_button_on_shelf_shelf.png" 
+        -image1 "C:\\Users\\leandro_laa\\Documents\\maya\\scripts\\animBot\\_resources\\img\\icons_shelf\\white\\create_toggle_button_on_shelf_shelf.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "from animBot._api.core import CORE as ANIMBOT_CORE; ANIMBOT_CORE.trigger.animBotMenu_toggle();" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "aTools ON/OFF" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "$object = ls -sl;\n\nfloat $wsPivot[] = xform -q -ws -rp $object;\n..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "aTools" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "commandButton.xpm" 
+        -image1 "commandButton.xpm" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "from aTools.animTools.animBar import animBarUI; animBarUI.show('toggle')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "aTools ON/OFF" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "import animBot; animBot.welcome()" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "aTools" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "commandButton.xpm" 
+        -image1 "commandButton.xpm" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "from aTools.animTools.animBar import animBarUI; animBarUI.show('toggle')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "aTools ON/OFF" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "aTools" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "commandButton.xpm" 
+        -image1 "commandButton.xpm" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "from aTools.animTools.animBar import animBarUI; animBarUI.show('toggle')" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "zoom camera" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "setAttr \"shot_camShape.panZoomEnabled\" 0;\nsetAttr \"shot_camShape..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "zCAM" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "commandButton.png" 
+        -image1 "commandButton.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import maya.cmds as cmds\n\nif (cmds.getAttr('shot_camShape.panZoomEnabled')):\n\tcmds.setAttr ('shot_camShape.panZoomEnabled', 0)\nelse:\n\tcmds.setAttr ('shot_camShape.panZoomEnabled', 1)\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Turn Cycle Off" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "cycleCheck -e off;" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "cOFF" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "commandButton.png" 
+        -image1 "commandButton.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "cycleCheck -e off;" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "BH GHOST" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "f" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "bhG" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "commandButton.png" 
+        -image1 "commandButton.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "bhGhost;" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Flush Undo Memory" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "nada" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "fMEM" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import maya.cmds as cmds\ncmds.flushUndo()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "AdvancedSkeleton5" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "AdvancedSkeleton5" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2019/scripts/laashelf/extra_tools/mel/AdvancedSkeleton5/AdvancedSkeleton5Files/icons/AS5.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2019/scripts/laashelf/extra_tools/mel/AdvancedSkeleton5/AdvancedSkeleton5Files/icons/AS5.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "source \"C:/Users/leandro_laa/Documents/maya/2019/scripts/laashelf/extra_tools/mel/AdvancedSkeleton5/AdvancedSkeleton5.mel\";AdvancedSkeleton5;" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Selector:biped" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Selector:biped" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2019/scripts/laashelf/extra_tools/mel/AdvancedSkeleton5/AdvancedSkeleton5Files/icons/asBiped.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2019/scripts/laashelf/extra_tools/mel/AdvancedSkeleton5/AdvancedSkeleton5Files/icons/asBiped.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "source \"C:/Users/leandro_laa/Documents/maya/2019/scripts/laashelf/extra_tools/mel/AdvancedSkeleton5/AdvancedSkeleton5Files/Selector/biped.mel\";" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Selector:face" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Selector:face" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2019/scripts/laashelf/extra_tools/mel/AdvancedSkeleton5/AdvancedSkeleton5Files/icons/asFace.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2019/scripts/laashelf/extra_tools/mel/AdvancedSkeleton5/AdvancedSkeleton5Files/icons/asFace.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "source \"C:/Users/leandro_laa/Documents/maya/2019/scripts/laashelf/extra_tools/mel/AdvancedSkeleton5/AdvancedSkeleton5Files/Selector/face.mel\";" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 39
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "picker" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "picker" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/2019/scripts/laashelf/extra_tools/mel/AdvancedSkeleton5/AdvancedSkeleton5Files/picker/pickerFiles/icons/picker.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/2019/scripts/laashelf/extra_tools/mel/AdvancedSkeleton5/AdvancedSkeleton5Files/picker/pickerFiles/icons/picker.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "source \"C:/Users/leandro_laa/Documents/maya/2019/scripts/laashelf/extra_tools/mel/AdvancedSkeleton5/AdvancedSkeleton5Files/picker/picker.mel\";" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "animBot Toggle - This will toggle animBot toolbar ON and OFF." 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "animBot - animBot Toggle" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/leandro_laa/Documents/maya/scripts/animBot/_resources/img/icons_shelf/white/create_toggle_button_on_shelf_shelf.png" 
+        -image1 "C:/Users/leandro_laa/Documents/maya/scripts/animBot/_resources/img/icons_shelf/white/create_toggle_button_on_shelf_shelf.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "from animBot._api.core import CORE as ANIMBOT_CORE; ANIMBOT_CORE.trigger.animBotMenu_toggle();" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+
+} 

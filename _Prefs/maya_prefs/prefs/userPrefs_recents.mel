@@ -1,0 +1,34 @@
+//Maya Preference 2023 (Release 1)
+//
+//
+
+optionVar -version 3;
+
+// RecentFiles
+optionVar -cat "RecentFiles"
+ -sa "RecentFilesList"
+ -sva "RecentFilesList" "D:/Education/Animation/Trazos/BoomonsProject/Assets/TrazosAssets/boo/episodes/ep0011/ep0011_scn0030/boo_ep0011_scn0030_blk0001.ma"
+ -sva "RecentFilesList" "D:/Education/Animation/Trazos/BoomonsProject/Assets/TrazosAssets/Boomons/episodes/ep0007/ep0007_scn0013/scenes/boo_ep0007_scn0013_blk0001.ma"
+ -sva "RecentFilesList" "D:/Education/Animation/Trazos/BoomonsProject/Assets/TrazosAssets/Boomons/episodes/ep0002/ep0002_scn0028/scenes/boo_ep0002_scn0028_anm0001.ma"
+ -sva "RecentFilesList" "D:/Education/Animation/Trazos/BoomonsProject/Assets/TrazosAssets/Boomons/episodes/ep0011/ep0011_scn0036/scenes/boo_ep0011_scn0036_il0001.ma"
+ -sva "RecentFilesList" "D:/Education/Animation/Trazos/BoomonsProject/Anim/scene_lights.ma"
+ -sva "RecentFilesList" "D:/Education/Animation/Trazos/BoomonsProject/Assets/Characters/Vaquero/Twigs.ma"
+ -sva "RecentFilesList" "D:/Education/Animation/Trazos/BoomonsProject/Anim/take_3d_anim.ma"
+ -sva "RecentFilesList" "D:/Education/Animation/Trazos/BoomonsProject/Anim/spacing.ma"
+ -sva "RecentFilesList" "D:/Education/Animation/Trazos/BoomonsProject/Anim/twigs_picker.ma"
+ -sva "RecentFilesList" "D:/Production/Animation/AM/Leandro Adeodato/REEL/Survivor/_Prod_Assets/Rigs/Raptor/raptor_rig.ma"
+ -sa "RecentFilesTypeList"
+ -sva "RecentFilesTypeList" "mayaAscii"
+ -sva "RecentFilesTypeList" "mayaAscii"
+ -sva "RecentFilesTypeList" "mayaAscii"
+ -sva "RecentFilesTypeList" "mayaAscii"
+ -sva "RecentFilesTypeList" "mayaAscii"
+ -sva "RecentFilesTypeList" "mayaAscii"
+ -sva "RecentFilesTypeList" "mayaAscii"
+ -sva "RecentFilesTypeList" "mayaAscii"
+ -sva "RecentFilesTypeList" "mayaAscii"
+ -sva "RecentFilesTypeList" "mayaAscii"
+ -sa "RecentProjectsList"
+ -sva "RecentProjectsList" "D:/Education/Animation/Trazos"
+ ;
+
