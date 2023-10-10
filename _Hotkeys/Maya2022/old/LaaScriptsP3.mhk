@@ -1,0 +1,1114 @@
+//Maya Preference 2023 (Release 1)
+//
+//
+
+//
+// The runtime commands referenced by the hotkeys
+//
+runTimeCommand
+	-label ""
+	-annotation "CopyTimelineKey"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("timeSliderCopyKey;")
+	CopyTimelineKey;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Next Frame Playback Release"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Playback"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().next_frame_playback_release();\n\n")
+	laa_nextFramePlaybackRelease;
+
+runTimeCommand
+	-label ""
+	-annotation "SwitchToStepTangent"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("keyTangent -itt linear -ott step;")
+	SwitchToStepTangent;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Filter Translate Channels on Ones"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Navigation"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().filter_translate_channels_on_ones();\n\n\n")
+	laa_filterTranslateChannelsOnOnes;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Filter Scale Channels on Twos"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Navigation"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().filter_scale_channels_on_twos();\n\n")
+	laa_filterScaleChannelsOnTwos;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Go To The Prev Marker"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Playback"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().go_to_the_prev_marker();\n\n\n\n")
+	laa_goToThePrevMarker;
+
+runTimeCommand
+	-label ""
+	-annotation "RenderPreview"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import maya.cmds as cmd\n\ndef get_playback_range(option=0):\n    current_time = cmd.currentTime(query=True)\n    playback_start_time = cmd.playbackOptions(minTime=True, query=True)\n    playback_end_time = cmd.playbackOptions(maxTime=True, query=True)\n\n    if option == 1:\n        return [int(playback_start_time), int(current_time)]\n    elif option == 2:\n        return [int(current_time), int(playback_end_time)]\n    else:\n        return [int(playback_start_time), int(playback_end_time)]   \n    \ndef playblast_shot ():\n\n    scene_full_name = cmd.file(query=True, sn=True)\n    scene_name_ext = scene_full_name.split('/')[-1]\n    scene_name = scene_name_ext.split('.')[0]\n    scene_path = scene_full_name.replace(scene_name_ext, '')\n    video_name = scene_path + scene_name + '.mov'\n\n    tml_limit = get_playback_range()\n    start_frame = cmd.playbackOptions(q=True, min=True)\n    end_frame = cmd.playbackOptions(q=True, max=True)\n\n    # Selection on timeline\n    if (tml_limit[0] != tml_limit[1]-1):\n        start_frame = tml_limit[0]\n        end_frame = tml_limit[1]-1\n\n    aPlayBackSliderPython = mel.eval('$tmpVar=$gPlayBackSlider')\n    audio_node = cmd.timeControl (aPlayBackSliderPython, q=True, s=True)\n\n    cmd.playblast (fmt='qt', f=video_name, s=audio_node, fo=True, sqt=False, cc=True, v=True, orn=False, fp=4, p=100, c='H.264', qlt=100, wh=[1280, 720], st=start_frame, et=end_frame)\n\n\nplayblast_shot()\nprint 'test'\n")
+	RenderPreview;
+
+runTimeCommand
+	-label ""
+	-annotation "PushKeys"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("ackPushPull \"push\";")
+	PushKeys;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Filter Translate Channels on Threes"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Navigation"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().filter_translate_channels_on_threes();\n\n\n\n\n")
+	laa_filterTranslateChannelsOnThrees;
+
+runTimeCommand
+	-label ""
+	-annotation "Switch Translate Manipulator"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Navigation"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().switch_translate_manipulator();\n\n\n\n")
+	laa_switchTranslateManipulator;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Go To The Next Key"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Playback"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().go_to_the_next_key();\n\n")
+	laa_goToTheNextKey;
+
+runTimeCommand
+	-label ""
+	-annotation "PullKeys"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("ackPushPull \"pull\";")
+	PullKeys;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Filter Rotate Channels on Twos"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Navigation"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().filter_rotate_channels_on_twos();\n\n\n")
+	laa_filterRotateChannelsOnTwos;
+
+runTimeCommand
+	-label ""
+	-annotation "SwitchToAutoTangent"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("keyTangent -itt auto -ott auto;")
+	SwitchToAutoTangent;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Prev Frame Playback Release"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Playback"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().prev_frame_playback_release();")
+	laa_prevFramePlaybackRelease;
+
+runTimeCommand
+	-label ""
+	-annotation "DeleteRedundant"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("ackDeleteRedundant;")
+	DeleteRedundant;
+
+runTimeCommand
+	-label ""
+	-annotation "laa_prevFramePlaybackPress"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Playback"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().prev_frame_playback_press();\n\n")
+	laa_prevFramePlaybackPress;
+
+runTimeCommand
+	-label ""
+	-annotation "CutTimelineKey"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("timeSliderCutKey;")
+	CutTimelineKey;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Add Keys Markers"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Playback"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().add_key_markers()\n\n")
+	laa_addKeyMarkers;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Toggle Wireframe"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Viewport"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().toggle_wireframe();")
+	laa_toggleWireframe;
+
+runTimeCommand
+	-label ""
+	-annotation "PasteTimelineKey"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("performPasteKeyArgList 1 {\"0\", \"animationList\", \"0\"}")
+	PasteTimelineKey;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Filter Translate Channels on Twos"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Navigation"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().filter_translate_channels_on_twos();\n\n\n\n")
+	laa_filterTranslateChannelsOnTwos;
+
+runTimeCommand
+	-label ""
+	-annotation "Switch Scale Manipulator"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Navigation"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().switch_scale_manipulator();\n\n\n\n")
+	laa_switchScaleManipulator;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Add Breakdown Markers"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Playback"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().add_breakdown_markers();\n\n")
+	laa_addBreakdownMarkers;
+
+runTimeCommand
+	-label ""
+	-annotation "SwitchToLinearTangent"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("keyTangent -itt linear -ott linear;")
+	SwitchToLinearTangent;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Remove Inbetween"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Keyframing"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().remove_inbetween();\n")
+	laa_removeInbetween;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Remove Frame Markers"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Playback"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().remove_frame_markers();\n\n\n\n")
+	laa_removeFrameMarkers;
+
+runTimeCommand
+	-label ""
+	-annotation "SnapToBufferCurves"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("ackConvergeBuffer \"snap\";")
+	SnapToBufferCurves;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Toggle Default Material"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Viewport"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().toggle_default_material();")
+	laa_toggleDefaultMaterial;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Toggle Grid"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Viewport"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().toggle_grid();")
+	laa_toggleGrid;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Toggle Xray"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Viewport"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().toggle_xray();\n")
+	laa_toggleXray;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Toggle Cruves"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Viewport"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().toggle_curves();\n")
+	laa_toggleCurves;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Add Inbetween"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Keyframing"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().add_inbetween();\n\n")
+	laa_addInbetween;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Go To The Next Key Marker"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Playback"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().go_to_the_next_key_marker();\n")
+	laa_goToTheNextKeyMarker;
+
+runTimeCommand
+	-label ""
+	-annotation "Filter Rotate Channels on Ones"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Navigation"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().filter_rotate_channels_on_ones();\n\n\n\n\n\n\n\n")
+	laa_filterRotateChannelsOnOnes;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Add InbetweenMarkers"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Playback"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().add_inbetween_markers();\n\n\n")
+	laa_addInbetweeenMarkers;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Go To The Prev Key"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Playback"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().go_to_the_prev_key();\n\n")
+	laa_goToThePrevKey;
+
+runTimeCommand
+	-label ""
+	-annotation "Switch Rotate Manipulator"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Navigation"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().switch_rotate_manipulator();\n\n\n\n\n\n")
+	laa_switchRotateManipulator;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Toggle Handles"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Viewport"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().toggle_handles();")
+	laa_toggleHandles;
+
+runTimeCommand
+	-label ""
+	-annotation "SwitchToFlatTangent"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("keyTangent -itt flat -ott flat;")
+	SwitchToFlatTangent;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Filter Rotate Channels on Threes"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Navigation"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().filter_rotate_channels_on_threes();\n\n\n")
+	laa_filterRotateChannelsOnThrees;
+
+runTimeCommand
+	-label ""
+	-annotation "SliceCurves"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("ackSliceCurves;")
+	SliceCurves;
+
+runTimeCommand
+	-label ""
+	-annotation "ZeroOutKeys"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("ackZeroOutKeys;")
+	ZeroOutKeys;
+
+runTimeCommand
+	-label ""
+	-annotation "LoadCameraZoom"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("source \"bh_camZoom.mel\";")
+	LoadCameraZoom;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Toggle Polygons"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Viewport"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().toggle_polygons();")
+	laa_togglePolygons;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Filter Scale Channels on Ones"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Navigation"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().filter_scale_channels_on_ones();\n\n\n")
+	laa_filterScaleChannelsOnOnes;
+
+runTimeCommand
+	-label ""
+	-annotation "SwitchToSplineTangent"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("keyTangent -itt spline -ott spline;")
+	SwitchToSplineTangent;
+
+runTimeCommand
+	-label ""
+	-annotation "Laa Next Frame Playback Press"
+	-longAnnotation ""
+	-category "Custom Scripts.Laa Playback"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import LaaScripts; LaaScripts.trigger.Trigger().next_frame_playback_press();\n\n")
+	laa_nextFramePlaybackPress;
+
+//
+// The name commands referenced by the hotkeys
+//
+nameCommand
+	-annotation "laa_switchTranslateManipulatorNameCommand"
+	-sourceType "mel"
+	-command ("laa_switchTranslateManipulator")
+	laa_switchTranslateManipulatorNameCommand;
+
+nameCommand
+	-annotation "laa_switchRotateManipulatorNameCommand"
+	-sourceType "mel"
+	-command ("laa_switchRotateManipulator")
+	laa_switchRotateManipulatorNameCommand;
+
+nameCommand
+	-annotation "laa_switchScaleManipulatorNameCommand"
+	-sourceType "mel"
+	-command ("laa_switchScaleManipulator")
+	laa_switchScaleManipulatorNameCommand;
+
+nameCommand
+	-annotation "laa_filterTranslateChannelsOnOnesNameCommand"
+	-sourceType "mel"
+	-command ("laa_filterTranslateChannelsOnOnes")
+	laa_filterTranslateChannelsOnOnesNameCommand;
+
+nameCommand
+	-annotation "laa_filterRotateChannelsOnOnesNameCommand"
+	-sourceType "mel"
+	-command ("laa_filterRotateChannelsOnOnes")
+	laa_filterRotateChannelsOnOnesNameCommand;
+
+nameCommand
+	-annotation "laa_filterScaleChannelsOnOnesNameCommand"
+	-sourceType "mel"
+	-command ("laa_filterScaleChannelsOnOnes")
+	laa_filterScaleChannelsOnOnesNameCommand;
+
+nameCommand
+	-annotation "laa_filterTranslateChannelsOnTwosNameCommand"
+	-sourceType "mel"
+	-command ("laa_filterTranslateChannelsOnTwos")
+	laa_filterTranslateChannelsOnTwosNameCommand;
+
+nameCommand
+	-annotation "laa_filterScaleChannelsOnTwosNameCommand"
+	-sourceType "mel"
+	-command ("laa_filterScaleChannelsOnTwos")
+	laa_filterScaleChannelsOnTwosNameCommand;
+
+nameCommand
+	-annotation "laa_filterRotateChannelsOnTwosNameCommand"
+	-sourceType "mel"
+	-command ("laa_filterRotateChannelsOnTwos")
+	laa_filterRotateChannelsOnTwosNameCommand;
+
+nameCommand
+	-annotation "laa_filterTranslateChannelsOnThreesNameCommand"
+	-sourceType "mel"
+	-command ("laa_filterTranslateChannelsOnThrees")
+	laa_filterTranslateChannelsOnThreesNameCommand;
+
+nameCommand
+	-annotation "laa_filterRotateChannelsOnThreesNameCommand"
+	-sourceType "mel"
+	-command ("laa_filterRotateChannelsOnThrees")
+	laa_filterRotateChannelsOnThreesNameCommand;
+
+nameCommand
+	-annotation "laa_addKeyMarkersNameCommand"
+	-sourceType "mel"
+	-command ("laa_addKeyMarkers")
+	laa_addKeyMarkersNameCommand;
+
+nameCommand
+	-annotation "laa_addBreakdownMarkersNameCommand"
+	-sourceType "mel"
+	-command ("laa_addBreakdownMarkers")
+	laa_addBreakdownMarkersNameCommand;
+
+nameCommand
+	-annotation "laa_addInbetweeenMarkersNameCommand"
+	-sourceType "mel"
+	-command ("laa_addInbetweeenMarkers")
+	laa_addInbetweeenMarkersNameCommand;
+
+nameCommand
+	-annotation "laa_removeFrameMarkersNameCommand"
+	-sourceType "mel"
+	-command ("laa_removeFrameMarkers")
+	laa_removeFrameMarkersNameCommand;
+
+nameCommand
+	-annotation "laa_nextFramePlaybackPressNameCommand"
+	-sourceType "mel"
+	-command ("laa_nextFramePlaybackPress")
+	laa_nextFramePlaybackPressNameCommand;
+
+nameCommand
+	-annotation "laa_prevFramePlaybackPressNameCommand"
+	-sourceType "mel"
+	-command ("laa_prevFramePlaybackPress")
+	laa_prevFramePlaybackPressNameCommand;
+
+nameCommand
+	-annotation "laa_playbackReleaseNameCommand"
+	-sourceType "mel"
+	-command ("laa_nextFramePlaybackRelease")
+	laa_playbackReleaseNameCommand;
+
+nameCommand
+	-annotation "laa_prevFramePlaybackReleaseNameCommand"
+	-sourceType "mel"
+	-command ("laa_prevFramePlaybackRelease")
+	laa_prevFramePlaybackReleaseNameCommand;
+
+nameCommand
+	-annotation "laa_goToTheNextKeyNameCommand"
+	-sourceType "mel"
+	-command ("laa_goToTheNextKey")
+	laa_goToTheNextKeyNameCommand;
+
+nameCommand
+	-annotation "laa_goToThePrevKeyNameCommand"
+	-sourceType "mel"
+	-command ("laa_goToThePrevKey")
+	laa_goToThePrevKeyNameCommand;
+
+nameCommand
+	-annotation "laa_goToThePrevMarkerNameCommand"
+	-sourceType "mel"
+	-command ("laa_goToThePrevMarker")
+	laa_goToThePrevMarkerNameCommand;
+
+nameCommand
+	-annotation "laa_goToTheNextKeyMarkerNameCommand"
+	-sourceType "mel"
+	-command ("laa_goToTheNextKeyMarker")
+	laa_goToTheNextKeyMarkerNameCommand;
+
+nameCommand
+	-annotation "laa_addInbetweenNameCommand"
+	-sourceType "mel"
+	-command ("laa_addInbetween")
+	laa_addInbetweenNameCommand;
+
+nameCommand
+	-annotation "laa_removeInbetweenNameCommand"
+	-sourceType "mel"
+	-command ("laa_removeInbetween")
+	laa_removeInbetweenNameCommand;
+
+nameCommand
+	-annotation "LoadCameraZoomNameCommand"
+	-sourceType "mel"
+	-command ("LoadCameraZoom")
+	LoadCameraZoomNameCommand;
+
+nameCommand
+	-annotation "ZeroOutKeysNameCommand"
+	-sourceType "mel"
+	-command ("ZeroOutKeys")
+	ZeroOutKeysNameCommand;
+
+nameCommand
+	-annotation "SliceCurvesNameCommand"
+	-sourceType "mel"
+	-command ("SliceCurves")
+	SliceCurvesNameCommand;
+
+nameCommand
+	-annotation "CopyTimelineKeyNameCommand"
+	-sourceType "mel"
+	-command ("CopyTimelineKey")
+	CopyTimelineKeyNameCommand;
+
+nameCommand
+	-annotation "PasteTimelineKeyNameCommand"
+	-sourceType "mel"
+	-command ("PasteTimelineKey")
+	PasteTimelineKeyNameCommand;
+
+nameCommand
+	-annotation "CutTimelineKeyNameCommand"
+	-sourceType "mel"
+	-command ("CutTimelineKey")
+	CutTimelineKeyNameCommand;
+
+nameCommand
+	-annotation "DeleteRedundantNameCommand"
+	-sourceType "mel"
+	-command ("DeleteRedundant")
+	DeleteRedundantNameCommand;
+
+nameCommand
+	-annotation "SnapToBufferCurvesNameCommand"
+	-sourceType "mel"
+	-command ("SnapToBufferCurves")
+	SnapToBufferCurvesNameCommand;
+
+nameCommand
+	-annotation "PushKeysNameCommand"
+	-sourceType "mel"
+	-command ("PushKeys")
+	PushKeysNameCommand;
+
+nameCommand
+	-annotation "PullKeysNameCommand"
+	-sourceType "mel"
+	-command ("PullKeys")
+	PullKeysNameCommand;
+
+nameCommand
+	-annotation "SwitchToStepTangentNameCommand"
+	-sourceType "mel"
+	-command ("SwitchToStepTangent")
+	SwitchToStepTangentNameCommand;
+
+nameCommand
+	-annotation "SwitchToLinearTangentNameCommand"
+	-sourceType "mel"
+	-command ("SwitchToLinearTangent")
+	SwitchToLinearTangentNameCommand;
+
+nameCommand
+	-annotation "SwitchToAutoTangentNameCommand"
+	-sourceType "mel"
+	-command ("SwitchToAutoTangent")
+	SwitchToAutoTangentNameCommand;
+
+nameCommand
+	-annotation "SwitchToSplineTangentNameCommand"
+	-sourceType "mel"
+	-command ("SwitchToSplineTangent")
+	SwitchToSplineTangentNameCommand;
+
+nameCommand
+	-annotation "SwitchToFlatTangentNameCommand"
+	-sourceType "mel"
+	-command ("SwitchToFlatTangent")
+	SwitchToFlatTangentNameCommand;
+
+nameCommand
+	-annotation "RenderPreviewNameCommand"
+	-sourceType "mel"
+	-command ("RenderPreview")
+	RenderPreviewNameCommand;
+
+nameCommand
+	-annotation "laa_toggleXrayNameCommand"
+	-sourceType "mel"
+	-command ("laa_toggleXray")
+	laa_toggleXrayNameCommand;
+
+nameCommand
+	-annotation "laa_toggleCurvesNameCommand"
+	-sourceType "mel"
+	-command ("laa_toggleCurves")
+	laa_toggleCurvesNameCommand;
+
+nameCommand
+	-annotation "laa_toggleWireframeNameCommand"
+	-sourceType "mel"
+	-command ("laa_toggleWireframe")
+	laa_toggleWireframeNameCommand;
+
+nameCommand
+	-annotation "laa_toggleDefaultMaterialNameCommand"
+	-sourceType "mel"
+	-command ("laa_toggleDefaultMaterial")
+	laa_toggleDefaultMaterialNameCommand;
+
+nameCommand
+	-annotation "laa_toggleGridNameCommand"
+	-sourceType "mel"
+	-command ("laa_toggleGrid")
+	laa_toggleGridNameCommand;
+
+nameCommand
+	-annotation "laa_toggleHandlesNameCommand"
+	-sourceType "mel"
+	-command ("laa_toggleHandles")
+	laa_toggleHandlesNameCommand;
+
+nameCommand
+	-annotation "laa_togglePolygonsNameCommand"
+	-sourceType "mel"
+	-command ("laa_togglePolygons")
+	laa_togglePolygonsNameCommand;
+
+//
+// The user hotkeys
+//
+//
+// The hotkey set
+//
+hotkeySet -source "Maya_Default" -current LaaScriptsP3;
+//
+// The hotkey contexts and hotkeys
+//
+hotkey -keyShortcut "w" -alt -name ("laa_toggleWireframeNameCommand");
+hotkey -keyShortcut "z" -ctl -alt -sht -name ("ZeroOutKeysNameCommand");
+hotkey -keyShortcut "h" -alt -name ("laa_toggleHandlesNameCommand");
+hotkey -keyShortcut "j" -name ("laa_addBreakdownMarkersNameCommand");
+hotkey -keyShortcut "e" -alt -name ("");
+hotkey -keyShortcut "o" -ctl -alt -sht -name ("LoadCameraZoomNameCommand");
+hotkey -keyShortcut "4" -alt -name ("SwitchToSplineTangentNameCommand");
+hotkey -keyShortcut "j" -releaseName ("");
+hotkey -keyShortcut "r" -ctl -alt -sht -name ("DeleteRedundantNameCommand");
+hotkey -keyShortcut "d" -alt -name ("laa_removeFrameMarkersNameCommand");
+hotkey -keyShortcut "2" -alt -name ("SwitchToLinearTangentNameCommand");
+hotkey -keyShortcut "r" -ctl -alt -name ("");
+hotkey -keyShortcut "z" -alt -name ("laa_goToThePrevMarkerNameCommand");
+hotkey -keyShortcut "w" -ctl -name ("laa_filterTranslateChannelsOnOnesNameCommand");
+hotkey -keyShortcut "x" -alt -name ("laa_toggleXrayNameCommand");
+hotkey -keyShortcut "v" -alt -name ("laa_goToTheNextKeyMarkerNameCommand");
+hotkey -keyShortcut "1" -alt -name ("SwitchToStepTangentNameCommand");
+hotkey -keyShortcut "w" -ctl -alt -name ("");
+hotkey -keyShortcut "k" -name ("laa_addKeyMarkersNameCommand");
+hotkey -keyShortcut "k" -releaseName ("");
+hotkey -keyShortcut "v" -ctl -name ("PasteTimelineKeyNameCommand");
+hotkey -keyShortcut "g" -alt -name ("laa_toggleGridNameCommand");
+hotkey -keyShortcut "c" -alt -name ("laa_toggleCurvesNameCommand");
+hotkey -keyShortcut "g" -alt -releaseName ("");
+hotkey -keyShortcut "," -name ("PullKeysNameCommand");
+hotkey -keyShortcut "w" -releaseName ("TranslateToolWithSnapMarkingMenuPopDownNameCommand");
+hotkey -keyShortcut "s" -alt -name ("SliceCurvesNameCommand");
+hotkey -keyShortcut "l" -name ("laa_addInbetweeenMarkersNameCommand");
+hotkey -keyShortcut "v" -releaseName ("");
+hotkey -keyShortcut "w" -pressCommandRepeat true
+	-name ("laa_switchTranslateManipulatorNameCommand");
+hotkey -keyShortcut "x" -ctl -name ("CutTimelineKeyNameCommand");
+hotkey -keyShortcut "l" -releaseName ("");
+hotkey -keyShortcut "v" -name ("laa_goToTheNextKeyNameCommand");
+hotkey -keyShortcut "r" -ctl -sht -name ("laa_filterScaleChannelsOnTwosNameCommand");
+hotkey -keyShortcut "p" -ctl -alt -name ("RenderPreviewNameCommand");
+hotkey -keyShortcut "a" -ctl -sht -name ("laa_removeInbetweenNameCommand");
+hotkey -keyShortcut "g" -name ("");
+hotkey -keyShortcut "r" -alt -name ("");
+hotkey -keyShortcut "g" -releaseName ("");
+hotkey -keyShortcut "z" -releaseCommandRepeat true
+	-releaseName ("laa_prevFramePlaybackReleaseNameCommand");
+hotkey -keyShortcut "z" -pressCommandRepeat true
+	-name ("laa_prevFramePlaybackPressNameCommand");
+hotkey -keyShortcut "5" -alt -name ("SwitchToFlatTangentNameCommand");
+hotkey -keyShortcut "3" -alt -name ("SwitchToAutoTangentNameCommand");
+hotkey -keyShortcut "d" -ctl -sht -name ("laa_addInbetweenNameCommand");
+hotkey -keyShortcut "x" -releaseCommandRepeat true
+	-releaseName ("laa_playbackReleaseNameCommand");
+hotkey -keyShortcut "x" -pressCommandRepeat true
+	-name ("laa_nextFramePlaybackPressNameCommand");
+hotkey -keyShortcut "r" -ctl -name ("laa_filterScaleChannelsOnOnesNameCommand");
+hotkey -keyShortcut "r" -releaseName ("");
+hotkey -keyShortcut "." -name ("PushKeysNameCommand");
+hotkey -keyShortcut "r" -name ("laa_switchScaleManipulatorNameCommand");
+hotkey -keyShortcut "e" -releaseName ("");
+hotkey -keyShortcut "e" -name ("laa_switchRotateManipulatorNameCommand");
+hotkey -keyShortcut "e" -ctl -alt -sht -name ("laa_filterRotateChannelsOnThreesNameCommand");
+hotkey -keyShortcut "e" -ctl -name ("laa_filterRotateChannelsOnOnesNameCommand");
+hotkey -keyShortcut "p" -alt -name ("laa_togglePolygonsNameCommand");
+hotkey -keyShortcut "w" -ctl -alt -sht -name ("laa_filterTranslateChannelsOnThreesNameCommand");
+hotkey -keyShortcut "m" -alt -name ("laa_toggleDefaultMaterialNameCommand");
+hotkey -keyShortcut "c" -releaseName ("");
+hotkey -keyShortcut "e" -ctl -sht -name ("laa_filterRotateChannelsOnTwosNameCommand");
+hotkey -keyShortcut "c" -name ("laa_goToThePrevKeyNameCommand");
+hotkey -keyShortcut "w" -ctl -sht -name ("laa_filterTranslateChannelsOnTwosNameCommand");
+hotkey -keyShortcut "s" -ctl -alt -name ("SnapToBufferCurvesNameCommand");
+hotkey -keyShortcut "c" -ctl -name ("CopyTimelineKeyNameCommand");
+hotkeyCtx -type "Editor" -addClient "shapePanel";
+hotkeyCtx -type "Editor" -addClient "hyperShadePanel";
+hotkeyCtx -type "Editor" -addClient "polyTexturePlacementPanel";
+hotkeyCtx -type "Editor" -addClient "hyperGraphPanel";
+hotkeyCtx -type "Editor" -addClient "posePanel";
+hotkeyCtx -type "Editor" -addClient "profilerPanel";
+hotkeyCtx -type "Editor" -addClient "timeEditorPanel";
+hotkeyCtx -type "Editor" -addClient "outlinerPanel";
+hotkeyCtx -type "Editor" -addClient "nodeEditorPanel";
+hotkeyCtx -type "Editor" -addClient "graphEditor";
+hotkeyCtx -type "Tool" -addClient "polyCutUV";
+hotkeyCtx -type "Tool" -addClient "xgmIGBrush";
+hotkeyCtx -type "Tool" -addClient "SymmetrizeUVBrush";
+hotkeyCtx -type "Tool" -addClient "texCutContext";
+hotkeyCtx -type "Tool" -addClient "Unfold3DBrush";
+hotkeyCtx -type "Tool" -addClient "sculptMeshCache";
+hotkeyCtx -type "Tool" -addClient "texSculptCacheContext";
+hotkeyCtx -type "Tool" -addClient "bpDraw";
