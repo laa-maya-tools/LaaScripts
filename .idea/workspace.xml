@@ -4,92 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61183686-9bd7-43f2-80b0-50352cd32fd8" name="Changes" comment="before fixing scripts">
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/_scripts/change_namespace.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/_scripts/clean_reload_dwpicker.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/_scripts/convert_multiple_animschool_files.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/_scripts/create_buttons.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/_scripts/detect_current_namespace.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/_scripts/independent_picker_widget.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/align.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/appinfos.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/arrayutils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/clipboard.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/colorwheel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/compatibility.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/designer/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/designer/attributes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/designer/editarea.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/designer/editor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/designer/highlighter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/designer/menu.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/dialog.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/geometry.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/addbg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/addbutton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/addtext.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/align_bottom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/align_h_center.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/align_left.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/align_right.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/align_top.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/align_v_center.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/center.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/copy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/copy_settings.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/delete.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/edit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/frame.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/h_symmetry.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/link.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/lock-non-interactive.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/manager-delete.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/manager-edit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/manager-export.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/manager-import.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/manager-new.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/movedown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/moveup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/new.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/onbottom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/ontop.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/open.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/paste.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/paste_settings.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/picker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/play.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/redo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/reload.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/save.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/search.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/snap.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/touch.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/undo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/unlink.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/icons/v_symmetry.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/ingest/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/ingest/animschool/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/ingest/animschool/converter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/ingest/animschool/parser.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/interactive.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/languages.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/namespace.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/optionvar.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/painting.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/picker.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/preference.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/qtutils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/quick.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/references.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/scenedata.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/selection.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/templates.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/undo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/updatechecker.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/_3rdPart/Python/dwpicker/widgets.py" beforeDir="false" />
-    </list>
+    <list default="true" id="61183686-9bd7-43f2-80b0-50352cd32fd8" name="Changes" comment="quicktime added." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,22 +23,12 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
-}</component>
   <component name="ProjectId" id="2WWztClRr0B5Ok2T6DGsdwfnQL0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;
-  }
-}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -149,7 +54,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696918892845</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="quicktime added.">
+      <created>1697146478939</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1697146478939</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,10 +74,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
     <MESSAGE value="before fixing scripts" />
-    <option name="LAST_COMMIT_MESSAGE" value="before fixing scripts" />
+    <MESSAGE value="quicktime added." />
+    <option name="LAST_COMMIT_MESSAGE" value="quicktime added." />
   </component>
 </project>
