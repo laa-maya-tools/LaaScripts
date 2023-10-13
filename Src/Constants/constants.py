@@ -280,7 +280,7 @@ class _Paths:
     MAYA_ENV_FILE_NAME: str = 'Maya.env'
     USER_DATA_FILE_NAME: str = 'user_data.json'
     # ----- OTHER DIRS -----
-    MAYA_DIR: str = r'{0}\Documents\maya'.format(USER_DIR)
+    MAYA_DIR: str = r'{0}\maya'.format(USER_DIR)
 
     SCRIPTS_DIR: str = r'{0}\{1}'.format(MAYA_DIR, SCRIPTS_FOLDER)
     MODULES_DIR: str = r'{0}\{1}'.format(MAYA_DIR, MODULES_FOLDER)
