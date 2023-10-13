@@ -39,6 +39,19 @@ class _String:
 
 STRING = _String()
 
+
+# =============================================================================
+# STRINGS CONSTANTS
+# =============================================================================
+@dataclass
+class _Separator:
+    # ----- STRINGS -----
+    MAIN: str = '#'
+    SECOND: str = ';'
+
+
+SEPARATOR = _Separator()
+
 # =============================================================================
 # LISTS CONSTANTS
 # =============================================================================
@@ -199,6 +212,7 @@ class _Nodes:
     FRAME_MARKERS_ATTR: str = 'frame_markers'
     TIMELINE_SECTION_ATTR: str = 'timeline_section'
     ACTIVE_CHAR_ATTR: str = 'active_char'
+    CTRLS_LIST_ATTR: str = 'ctrls_list'
 
     # ----- NODES PATHS -----
     LAASCRIPTS_NODE: str = __APP_NAME__
@@ -206,6 +220,8 @@ class _Nodes:
     NAVIGATION_NODE: str = '{0}|{1}'.format(LAASCRIPTS_NODE, 'Navigation')
     SELECTION_NODE: str = '{0}|{1}'.format(LAASCRIPTS_NODE, 'Selection')
     CHAR_INFO_NODE: str = '{0}|{1}'.format(SELECTION_NODE, 'CharInfo')
+    CTRLS_NODE: str = '{0}|{1}'.format(SELECTION_NODE, 'Ctrls')
+    UPPERBODY_NODE: str = '{0}|{1}'.format(CTRLS_NODE, 'UpperBody')
     CONTROLS_SELECTOR_NODE: str = '{0}|{1}'.format(SELECTION_NODE, 'ControlsSelector')
     TRANSFORM_NODE: str = '{0}|{1}'.format(LAASCRIPTS_NODE, 'Transform')
     VIEWPORT_NODE: str = '{0}|{1}'.format(LAASCRIPTS_NODE, 'Viewport')

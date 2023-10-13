@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61183686-9bd7-43f2-80b0-50352cd32fd8" name="Changes" comment="User Data Fixed.">
+    <list default="true" id="61183686-9bd7-43f2-80b0-50352cd32fd8" name="Changes" comment="Character Info Working.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Constants/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Constants/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Core/Selection/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Core/Selection/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Core/Selection/character_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Core/Selection/character_info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Core/Selection/picker_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Core/Selection/picker_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Core/Selection/selection_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Core/Selection/selection_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/trigger.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/trigger.py" afterDir="false" />
     </list>
@@ -112,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697198143530</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Character Info Working.">
+      <option name="closed" value="true" />
+      <created>1697203262405</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1697203262405</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -133,6 +138,7 @@
     <MESSAGE value="dwpicker added." />
     <MESSAGE value="workspace" />
     <MESSAGE value="User Data Fixed." />
-    <option name="LAST_COMMIT_MESSAGE" value="User Data Fixed." />
+    <MESSAGE value="Character Info Working." />
+    <option name="LAST_COMMIT_MESSAGE" value="Character Info Working." />
   </component>
 </project>

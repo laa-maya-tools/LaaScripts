@@ -222,6 +222,9 @@ class Trigger(object):
     def switch_active_char(self):
         self._character_info.switch_active_char()
 
+    def next_upperbody_ctrl(self):
+        self._selection_manager.next_upperbody_ctrl()
+
     # =========================================================================
     # VIEWPORT
     # =========================================================================
