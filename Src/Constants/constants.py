@@ -198,12 +198,14 @@ class _Nodes:
     KEY_MARKERS_ATTR: str = 'key_markers'
     FRAME_MARKERS_ATTR: str = 'frame_markers'
     TIMELINE_SECTION_ATTR: str = 'timeline_section'
+    ACTIVE_CHAR_ATTR: str = 'active_char'
 
     # ----- NODES PATHS -----
     LAASCRIPTS_NODE: str = __APP_NAME__
     PREFS_NODE: str = '{0}|{1}'.format(LAASCRIPTS_NODE, 'Prefs')
     NAVIGATION_NODE: str = '{0}|{1}'.format(LAASCRIPTS_NODE, 'Navigation')
     SELECTION_NODE: str = '{0}|{1}'.format(LAASCRIPTS_NODE, 'Selection')
+    CHAR_INFO_NODE: str = '{0}|{1}'.format(SELECTION_NODE, 'CharInfo')
     CONTROLS_SELECTOR_NODE: str = '{0}|{1}'.format(SELECTION_NODE, 'ControlsSelector')
     TRANSFORM_NODE: str = '{0}|{1}'.format(LAASCRIPTS_NODE, 'Transform')
     VIEWPORT_NODE: str = '{0}|{1}'.format(LAASCRIPTS_NODE, 'Viewport')
@@ -213,6 +215,62 @@ class _Nodes:
 
 
 NODES = _Nodes()
+
+
+# =============================================================================
+# NAMESPACES CONSTANTS
+# =============================================================================
+@dataclass
+class _Namespaces:
+    # ----- BODY CTRLS -----
+    EXCLUDED: tuple = ('UI', 'shared')
+
+
+NAMESPACES = _Namespaces()
+
+
+# =============================================================================
+# CTRLS CONSTANTS
+# =============================================================================
+@dataclass
+class _Ctrls:
+    # ----- BODY CTRLS -----
+    ALL: str = 'all_ctrls'
+    BODY: str = 'body_ctrls'
+    ROOT: str = 'root_ctrls'
+    SPINE: str = 'spine_ctrls'
+    NECK: str = 'neck_ctrls'
+    HEAD: str = 'head_ctrls'
+
+    # ----- ARM CTRLS -----
+    RT_ARM: str = 'rt_arm_ctrls'
+    RT_FK_ARM: str = 'rt_fk_arm_ctrls'
+    RT_IK_ARM: str = 'rt_ik_arm_ctrls'
+    LF_ARM: str = 'lf_arm_ctrls'
+    LF_FK_ARM: str = 'lf_fk_arm_ctrls'
+    LF_IK_ARM: str = 'lf_ik_arm_ctrls'
+
+    # ----- LEG CTRLS -----
+    RT_LEG: str = 'rt_leg_ctrls'
+    RT_FK_LEG: str = 'rt_fk_leg_ctrls'
+    RT_IK_LEG: str = 'rt_ik_leg_ctrls'
+    LF_LEG: str = 'lf_leg_ctrls'
+    LF_FK_LEG: str = 'lf_fk_leg_ctrls'
+    LF_IK_LEG: str = 'lf_ik_leg_ctrls'
+
+    # ----- EXTRA CTRLS -----
+    ROOT_EXTRA: str = 'root_extra_ctrls'
+    RT_ELBOW_EXTRA: str = 'rt_elbow_extra_ctrls'
+    RT_HAND_EXTRA: str = 'rt_hand_extra_ctrls'
+    RT_KNEE_EXTRA: str = 'rt_knee_extra_ctrls'
+    RT_FOOT_EXTRA: str = 'rt_foot_extra_ctrls'
+    LF_ELBOW_EXTRA: str = 'lf_elbow_extra_ctrls'
+    LF_HAND_EXTRA: str = 'lf_hand_extra_ctrls'
+    LF_KNEE_EXTRA: str = 'lf_knee_extra_ctrls'
+    LF_FOOT_EXTRA: str = 'lf_foot_extra_ctrls'
+
+
+CTRLS = _Ctrls()
 
 
 # =============================================================================
@@ -272,6 +330,7 @@ class _Paths:
     LAASCRIPTS_DATA_FOLDER: str = r'{0}_{1}'.format(LAASCRIPTS_FOLDER, 'Data')
     # ----- MAYA DIRS -----
     SCRIPTS_FOLDER: str = 'scripts'
+    PICKERS_FOLDER: str = 'pickers'
     MODULES_FOLDER: str = 'modules'
     PREFS_FOLDER: str = 'prefs'
     ICONS_FOLDER: str = 'icons'
@@ -281,11 +340,11 @@ class _Paths:
     USER_DATA_FILE_NAME: str = 'user_data.json'
     # ----- OTHER DIRS -----
     MAYA_DIR: str = r'{0}\maya'.format(USER_DIR)
-
     SCRIPTS_DIR: str = r'{0}\{1}'.format(MAYA_DIR, SCRIPTS_FOLDER)
     MODULES_DIR: str = r'{0}\{1}'.format(MAYA_DIR, MODULES_FOLDER)
     LAASCRIPTS_DIR: str = r'{0}\{1}'.format(SCRIPTS_DIR, LAASCRIPTS_FOLDER)
     LAASCRIPTS_DATA_DIR: str = r'{0}\{1}'.format(SCRIPTS_DIR, LAASCRIPTS_DATA_FOLDER)
+    PICKERS_DIR: str = r'{0}\{1}'.format(LAASCRIPTS_DATA_DIR, PICKERS_FOLDER)
     CURRENT_DIR: str = r'{0}'.format(os.path.abspath(os.getcwd()))
     PREFS_DIRS: tuple = list_folders_from_version(PREFS_FOLDER)
     ICONS_DIRS: tuple = list_folders_from_version(ICONS_FOLDER)
@@ -496,12 +555,12 @@ class _Key:
 KEY = _Key()
 KeySequence = namedtuple('KeySequence', 'ctrl alt shift key full')
 
-
 # =============================================================================
 # COLORS CONSTANTS
 # =============================================================================
 COLOR_VARIATIONS = 9
 BRIGHTNESS_VARIATIONS = 3
+
 
 @dataclass
 class _Tone:

@@ -14,6 +14,7 @@ VERSION:  v1.0.0 | Maya 2022+ | Python 3
 from LaaScripts.Src.Constants import constants as c
 from LaaScripts.Src.Core import Keyframing
 from LaaScripts.Src.Core import Navigation
+from LaaScripts.Src.Core import Selection
 from LaaScripts.Src.Core import Playback
 from LaaScripts.Src.Core import Prefs
 from LaaScripts.Src.Core import Viewport
@@ -29,19 +30,32 @@ class Trigger(object):
     def __init__(self):
         super(Trigger, self).__init__()
 
+        # ----- PREFS -----
+        self._user_data = UserData()
         self._prefs_manager = Prefs.prefs_manager.PrefsManager()
         self._hotkey_manager = Prefs.hotkey_manager.HotkeyManager()
+
+        # ----- NAVIGATION -----
         self._channels_filter = Navigation.channels_filter.ChannelsFilter()
         self._smart_manipulator = Navigation.smart_manipulator.SmartManipulator()
+
+        # ----- KEYFRAMING -----
         self._retiming_tools = Keyframing.retiming_tools.RetimingTools()
         self._blending_tools = Keyframing.blending_tools.BlendingTools()
         self._baking_tools = Keyframing.baking_tools.BakingTools()
+
+        # ----- SELECTION -----
+        self._character_info = Selection.character_info.CharacterInfo()
+        self._picker_manager = Selection.picker_manager.PickerManager()
+        self._selection_manager = Selection.selection_manager.SelectionManager()
+
+        # ----- PLAYBACK -----
         self._playback_manager = Playback.playback_manager.PlaybackManager()
         self._frame_marker = Playback.frame_marker.FrameMarker()
         self._timeline_section = Playback.timeline_section.TimelineSection()
-        self._viewport_manager = Viewport.viewport_manager.ViewportManager()
 
-        self._user_data = UserData()
+        # ----- VIEWPORT -----
+        self._viewport_manager = Viewport.viewport_manager.ViewportManager()
 
     # =========================================================================
     # PREFS
@@ -202,6 +216,11 @@ class Trigger(object):
     def set_smart_key(self):
         self._retiming_tools.set_smart_key()
 
+    # =========================================================================
+    # SELECTION
+    # =========================================================================
+    def switch_active_char(self):
+        self._character_info.switch_active_char()
 
     # =========================================================================
     # VIEWPORT

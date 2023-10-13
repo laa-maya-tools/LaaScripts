@@ -11,7 +11,7 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 import maya.cmds as cmd
 
 import LaaScripts.Src.Utils.info_utils as info
-from LaaScripts.Core.Selection.character_info import CharacterInfo
+from LaaScripts.Src.Core.Selection.character_info import CharacterInfo
 
 
 class SelectionManager(object):

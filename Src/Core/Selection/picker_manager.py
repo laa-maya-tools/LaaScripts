@@ -21,10 +21,11 @@ from LaaScripts.Src.Constants import constants as c
 class PickerManager(object):
 
     def __init__(self):
-        self.picker = dwpicker._dwpicker
-        self.picker.show()
-
-        PickerManager.refresh_pickers()
+        print('nothing')
+        # self.picker = dwpicker._dwpicker
+        # self.picker.show()
+        #
+        # PickerManager.refresh_pickers()
 
     @staticmethod
     def refresh_pickers():
