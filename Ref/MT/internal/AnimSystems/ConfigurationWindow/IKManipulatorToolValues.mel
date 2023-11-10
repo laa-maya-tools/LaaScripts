@@ -1,0 +1,50 @@
+global proc IKManipulatorToolValues(string $toolName)
+{
+	string $location = `toolPropertyWindow -q -location`;
+	string $parent = ($location + "|ikManipLayout");
+	if ($location != "" && `layout -q -ex $parent`)
+	{
+		setParent $parent;
+
+		// SETTINGS
+
+		python( "import AnimSystems.IKManipulator" );
+		
+		string $transformMode = python( "AnimSystems.IKManipulator.IKManipulatorController.getTransformMode()" );
+		textField -e -tx $transformMode axisOrientField;
+		
+		int $isUpdateWhileMoving = python( "AnimSystems.IKManipulator.IKManipulatorController.isUpdateWhileMoving()" );
+		checkBoxGrp -e -value1 $isUpdateWhileMoving updateWhileManipulatingCheckBx;
+		
+		int $isAffectEndRotation = python( "AnimSystems.IKManipulator.IKManipulatorController.isAffectEndRotation()" );
+		checkBoxGrp -e -value1 $isAffectEndRotation affectEndRotationCheckBx;
+		
+		int $isAlternativeRotateMode = python( "AnimSystems.IKManipulator.IKManipulatorController.isAlternativeRotateMode()" );
+		radioButtonGrp -e -select ($isAlternativeRotateMode + 1) alternativeRotateModeRadioBt;
+		
+		float $alternativeRotateModeSensibility = python( "AnimSystems.IKManipulator.IKManipulatorController.getAlternativeRotateModeSensibility()" );
+		floatField -e -value $alternativeRotateModeSensibility -enable $isAlternativeRotateMode alternativeRotateModeSensibilityField;
+		
+		float $displayRadius = python( "AnimSystems.IKManipulator.IKManipulatorController.getRotateDisplayRadius()" );
+		floatField -e -value $displayRadius displayRadiusField;
+		
+		int $isDrawAxis = python( "AnimSystems.IKManipulator.IKManipulatorController.isDrawAxis()" );
+		checkBoxGrp -e -value1 $isDrawAxis drawAxisCheckBx;
+
+		// COMMON SETTINGS
+
+		softSelectValues( $parent );
+		commonSelectValues( $parent );
+		smartDupValues( $parent );
+
+		// FINAL CONFIGURATION
+
+		toolPropertySetCommon $toolName "move_M.png" "IKManipulatorTool";
+		toolPropertySelect "ikManipLayout";
+
+		string $reset = `toolPropertyWindow -query -resetButton`;
+		string $cmd = `button -q -command $reset`;
+		$cmd += ";smartDupReset;";
+		button -edit -command $cmd $reset;
+	}
+}

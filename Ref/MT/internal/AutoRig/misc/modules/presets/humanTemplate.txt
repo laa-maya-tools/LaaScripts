@@ -1,0 +1,34 @@
+cn_:spineIkFk3Bones
+     |    Spine:3BonesAndTranslate
+     |    SpineIk:3Ik2Bezier
+cn_:neckHeadFollow
+lf_:armClavicleFk
+     |    Hand:3Bones
+          |    FingerE:3Bones
+          |    FingerD:3Bones
+          |    FingerC:3Bones
+          |    FingerB:3Bones
+          |    FingerA:3Bones
+     |    Clavicle:1Bone
+     |    Arm:2BonesAdvanced
+     |    Hand:3Bones
+          |    FingerE:3Bones
+          |    FingerD:3Bones
+          |    FingerC:3Bones
+          |    FingerB:3Bones
+          |    FingerA:3Bones
+          |    FingerE:3Bones
+          |    FingerD:3Bones
+          |    FingerC:3Bones
+          |    FingerB:3Bones
+          |    FingerA:3Bones
+lf_:leg
+     |    Leg:2BonesAdvanced
+     |    Foot:footRoll
+rt_:armClavicleFk
+     |    Hand:3Bones
+     |    Clavicle:1Bone
+     |    Arm:2BonesAdvanced
+rt_:leg
+     |    Leg:2BonesAdvanced
+     |    Foot:footRoll

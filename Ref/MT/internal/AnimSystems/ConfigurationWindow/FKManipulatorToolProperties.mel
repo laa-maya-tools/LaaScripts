@@ -1,0 +1,91 @@
+
+global proc fkManipBuildAxisMenu(string $menu)
+{
+	string $transformModes[] = python("AnimSystems.IKManipulator.FKManipulatorController.TRANSFORM_MODES");
+
+	menu -e -dai $menu;
+	for ($transformMode in $transformModes) {
+		menuItem -label $transformMode -p $menu -c ("python(\"AnimSystems.IKManipulator.FKManipulatorController.setTransformMode(\\\"" + $transformMode + "\\\")\");");
+	}
+}
+
+global proc FKManipulatorToolProperties()
+{
+	python("import AnimSystems.IKManipulator; true=True; false=False;");
+
+	// Linux Motif2.1 shrinks the checkBox, if the string is ""
+	// NT would tab over the blank (" ") string label.
+	// So...
+	string $emptyLabel = "";
+	if (`about -linux`) {
+		$emptyLabel = " ";
+	}
+
+	string $parent = `toolPropertyWindow -q -location`;
+	setParent $parent;
+
+	setUITemplate -pushTemplate OptionsTemplate;
+
+	columnLayout fkManipLayout;
+		frameLayout -collapsable true -collapse false -label "FK Manipulator" fkManipFrame;
+
+			columnLayout fkManipOptions;
+				separator -style "none";
+
+				rowLayout -nc 3 -cw3 132 20 190;
+					text -l "Axis Orientation" -align right axisOrientationLabel;
+
+					string $axisButton = `iconTextButton -w 17 -h 26 -image ("popupMenuIcon.png") axisOrientMenuButton`;
+					string $axisMenu = `popupMenu -b 1 -p $axisButton`;
+					menu -e -pmc ("fkManipBuildAxisMenu " + $axisMenu) $axisMenu;
+						
+					textField -ed false -width 190 -height 25 -ann "Axis orientation used for the manipulation." axisOrientField;
+				setParent ..;
+
+				checkBoxGrp -label1 "Affect End Rotation" -ann "If enabled, the end node of the chain will rotate to follow it's parent (like it would work on FK)."
+					-cc "python(\"AnimSystems.IKManipulator.FKManipulatorController.setAffectEndRotation(#1)\");"
+					affectEndRotationCheckBx;
+
+				separator -style "none";
+
+				radioButtonGrp -label "Rotate Mode" -ann "Selects between the normal Rotation mode or one similar to 3DS Max, which uses the distance moved with the cursor as the input angle."
+					-numberOfRadioButtons 2 -label1 "Default" -label2 "Alternative"
+					-on1 "python(\"AnimSystems.IKManipulator.FKManipulatorController.setAlternativeRotateMode(False)\");"
+					-on2 "python(\"AnimSystems.IKManipulator.FKManipulatorController.setAlternativeRotateMode(True)\");"
+					alternativeRotateModeRadioBt;
+
+				rowLayout -nc 3 -cw3 132 20 190;
+					text -l "Sensibility" -align right alternativeRotateModeSensibilityLabel;
+
+					floatField -ann "Sensibility for the alternative rotate mode." -w 60 -minValue 0 -step 0.01
+						-cc "python(\"AnimSystems.IKManipulator.FKManipulatorController.setAlternativeRotateModeSensibility(#1)\");"
+						alternativeRotateModeSensibilityField;
+				setParent ..;
+			setParent ..;
+		setParent ..;
+
+		frameLayout -collapsable true -collapse false -label "Display" displayFrame;
+
+			columnLayout displayOptions;
+				separator -style "none";
+
+				rowLayout -nc 3 -cw3 132 20 190;
+					text -l "Rotate Control Radius" -align right displayRadiusLabel;
+
+					floatField -ann "Display radius for the rotate control." -w 60 -minValue 0 -step 0.1
+						-cc "python(\"AnimSystems.IKManipulator.FKManipulatorController.setRotateDisplayRadius(#1)\");"
+						displayRadiusField;
+				setParent ..;
+
+			setParent ..;
+		setParent ..;
+
+		commonSelectProperties(/*collapsed*/true, /*uvTool*/false);
+		softSelectProperties(/*collapsed*/true, /*uvTool*/false);
+		reflectionProperties(/*collapsed*/true, /*uvTool*/false);
+		smartDupProperties(true);
+
+	setParent ..;
+
+	setUITemplate -popTemplate;
+}

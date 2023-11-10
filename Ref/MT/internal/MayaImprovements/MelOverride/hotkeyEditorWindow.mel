@@ -1,0 +1,37 @@
+// ===========================================================================
+// Copyright 2021 Autodesk, Inc. All rights reserved.
+//
+// Use of this software is subject to the terms of the Autodesk license
+// agreement provided at the time of installation or download, or which
+// otherwise accompanies this software in either electronic or hard copy form.
+// ===========================================================================
+//	---------------------------------------------------------------
+global proc hotkeyEditorWindow()
+//
+//	Description:
+//		Create the Hotkey Editor.
+//
+{
+	//	If the window already exists then just show it and return.
+	//
+	if (`window -exists HotkeyEditor`) {
+		showWindow HotkeyEditor;
+		return;
+	}
+
+	//	Otherwise, build the window.
+	//
+	window -title (uiRes("m_hotkeyEditorWindow.kHotkeyEditor")) -height 700 -width 1180 HotkeyEditor;
+	string $form = `formLayout`;
+	string $hotkeyEdArea = `hotkeyEditorPanel`;
+	formLayout -edit
+		-attachForm    $hotkeyEdArea   "top"    0
+		-attachForm    $hotkeyEdArea   "left"   0
+		-attachForm    $hotkeyEdArea     "bottom" 0
+		-attachForm    $hotkeyEdArea     "right"  0
+		$form;
+
+	showWindow HotkeyEditor;
+
+    evalDeferred("python(\"import MayaImprovements.HotkeyManagerFix as HMF; HMF.HotkeyManagerFix.onHotkeyManagerShown()\")");
+}

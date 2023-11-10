@@ -1,0 +1,299 @@
+{
+    "menuName": "Animation",
+    "menuItems":
+    [
+        {
+            "type":     "action",
+            "label":    "Exporter",
+            "icon":     "ExporterWindow\\ExporterIcon.png",
+            "module":   "ExporterWindow",
+            "action":   "show"
+        },
+        
+        {
+            "type":     "action",
+            "label":    "Cinematic Editor",
+            "icon":     ":/movie.svg",
+            "module":   "CinematicEditor.Window",
+            "action":   "show"
+        },
+        
+        {
+            "type":     "action",
+            "label":    "Actor Browser",
+            "icon":     ":/character.svg",
+            "module":   "ActorBrowser",
+            "action":   "show"
+        },
+
+        {
+            "type":     "separator",
+            "label":    "Tools"
+        },
+
+        {
+            "type":     "action",
+            "label":    "AnimPicker",
+            "tooltip":  "Displays an schematic of the characters, making it much easier to select their controls. It also displays extra functionality for each character.",
+            "module":   "anim_picker",
+            "action":   "load",
+            "params":
+            [
+                "dockable=True"
+            ],
+            "optionBox":
+            {
+                "module":   "anim_picker",
+                "action":   "load",
+                "params":
+                [
+                    "edit=True"
+                ]
+            }
+        },
+
+        {
+            "type":     "action",
+            "label":    "StudioLibrary",
+            "tooltip":  "Tool to copy, paste, mirror and store selection sets, poses and animations.\nEach character has their own library of poses and animations wich are shared with all the team. You can also access a local library you can use at your will.",
+            "icon":     "Other\\Studio_Library.png",
+            "module":   "studiolibraryMSE",
+            "action":   "open",
+            "params":
+            [
+                "addSceneLibraries=True",
+                "addLocalLibrary=True"
+            ]
+        },
+
+        {
+            "type":     "separator",
+            "label":    "Anim Tools"
+        },
+
+        {
+            "type":     "action",
+            "label":    "Copy/Paste World",
+            "tooltip":  "Tool to copy and paste animations and poses in world space.",
+            "module":   "AnimTools.CopyPasteWorld",
+            "action":   "show"
+        },
+
+
+        {
+            "type":     "action",
+            "label":    "Aligner",
+            "tooltip":  "Tool to align nodes to others, either on one frame or over a range of animation.",
+            "module":   "AnimTools.Aligner",
+            "action":   "show"
+        },
+
+        {
+            "type":     "action",
+            "label":    "Desrootador",
+            "tooltip":  "Tool to reset the rotation of a control while keeping the translation and rotation of it's child controls. Usefull to reset the rotation of a character's root control.",
+            "module":   "AnimTools.Desrootador",
+            "action":   "show"
+        },
+
+        {
+            "type":     "separator",
+            "label":    "Anim Systems"
+        },
+        
+        {
+            "type":     "subMenu",
+            "menuName": "Noise",
+            "floatable": true,
+            "menuItems":
+            [
+                {
+                    "type":     "action",
+                    "label":    "Add Noise to Selected Transforms",
+                    "tooltip":  "Adds a noise system to the transformation components of the selected nodes. The noise is applied additively to the node's normal transformation. Use the option box to select wich componets to apply the noise to",
+                    "module":   "Utils.Maya.Noise",
+                    "action":   "addNoiseToSelectedTransforms",
+                    "optionBox":
+                    {
+                        "module":   "Utils.Maya.Noise",
+                        "action":   "AddNoiseToSelectedTransformsOptionBox.createAndShow"
+                    }
+                },
+                
+                {
+                    "type":     "action",
+                    "label":    "Remove Noise from Selected Transforms",
+                    "tooltip":  "Removes the noise system from the selected nodes' transformation components.",
+                    "module":   "Utils.Maya.Noise",
+                    "action":   "removeNoiseFromSelectedTransforms"
+                },
+
+                {
+                    "type":     "separator"
+                },
+
+                {
+                    "type":     "action",
+                    "label":    "Add Noise to Selected Attributes",
+                    "tooltip":  "Adds a noise system to the attributes selected on the channel box. The noise is applied directly to the attribute, removing any animation or connection it may have. Use the option box to have more control on wich attributes the noise should be applied to.",
+                    "module":   "Utils.Maya.Noise",
+                    "action":   "addNoiseToSelectedAttributes",
+                    "optionBox":
+                    {
+                        "module":   "Utils.Maya.Noise",
+                        "action":   "AddNoiseToAttributesOptionBox.createAndShow"
+                    }
+                },
+                
+                {
+                    "type":     "action",
+                    "label":    "Remove Noise from Selected Attributes",
+                    "tooltip":  "Removes the noise system from the attributes selected on the channel box. Use the option box to have more control on which attributes the noise should be removed from.",
+                    "module":   "Utils.Maya.Noise",
+                    "action":   "removeNoiseFromSelectedAttributes",
+                    "optionBox":
+                    {
+                        "module":   "Utils.Maya.Noise",
+                        "action":   "AddNoiseToAttributesOptionBox.createAndShow"
+                    }
+                }
+            ]
+        },
+        
+        {
+            "type":     "subMenu",
+            "menuName": "Keying Group",
+            "floatable": true,
+            "menuItems":
+            [
+                {
+                    "type":     "action",
+                    "label":    "Keying Group Manager",
+                    "tooltip":  "Tool to create, destroy and manage Keying Groups.",
+                    "module":   "AnimSystems.Window.KeyingGroupWindow",
+                    "action":   "show"
+                },
+
+                {
+                    "type":     "separator"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Enable Keying Groups",
+                    "tooltip":  "Globally enables Keying Groups. Controls belonging to a keying group will have their keys synchronized in time.",
+                    "module":   "AnimSystems.KeyingGroup",
+                    "state":    "KeyingGroupManager.isCallbacksEnabled()",
+                    "toggleFn": "KeyingGroupManager.setCallbacksEnabled"
+                },
+
+                {
+                    "type":     "separator"
+                },
+
+                {
+                    "type":     "action",
+                    "label":    "Resynchronize Selected Controls (Current Range)",
+                    "tooltip":  "Sets keys on all the controls on the selected Keying Group so they have their current range's keys syncrhonized.",
+                    "module":   "AnimSystems.KeyingGroup",
+                    "action":   "KeyingGroupManager.resynchronizeSelectedControlsOnCurrentRange"
+                },
+
+                {
+                    "type":     "action",
+                    "label":    "Resynchronize Selected Controls (All Time)",
+                    "tooltip":  "Sets keys on all the controls on the selected Keying Group so they have all their keys syncrhonized.",
+                    "module":   "AnimSystems.KeyingGroup",
+                    "action":   "KeyingGroupManager.resynchronizeSelectedControls"
+                }
+            ]
+        },
+        
+        {
+            "type":     "subMenu",
+            "menuName": "IK/FK Chain",
+            "floatable": true,
+            "menuItems":
+            [
+                {
+                    "type":     "toggle",
+                    "label":    "Enable Auto Snap",
+                    "tooltip":  "Globally enables Auto Snap. The system will attempt to make the IK and FK chain match each other at all times.",
+                    "module":   "AnimSystems.AutoSnap",
+                    "state":    "AutoSnapManager.isCallbacksEnabled()",
+                    "toggleFn": "AutoSnapManager.setCallbacksEnabled"
+                }
+            ]
+        },
+
+        {
+            "type":     "separator",
+            "label":    "Other"
+        },
+
+        {
+            "type":     "subMenu",
+            "menuName": "Batch Tools",
+            "menuItems":
+            [
+                {
+                    "type":     "action",
+                    "label":    "Batch Export (In-Game)",
+                    "tooltip":  "Batch tool to export the In-Game animations of several files.",
+                    "icon":     "ExporterWindow\\ExporterIcon.png",
+                    "module":   "Exporter.AnimBatchExporter",
+                    "action":   "showBatchWindow"
+                }
+            ]
+        },
+
+        {
+            "type":     "subMenu",
+            "menuName": "Transfer between Maya Files",
+            "menuItems":
+            [
+                {
+                    "type":     "action",
+                    "label":    "Import Anim Presets",
+                    "tooltip":  "Imports the AnimPresets from a Json file exported from another scene.",
+                    "module":   "ExporterWindow.AnimPresetTransfer",
+                    "action":   "importAnimPresets"
+                },
+
+                {
+                    "type":     "action",
+                    "label":    "Export Anim Presets",
+                    "tooltip":  "Export the scene AnimPresets into a Json file so they can be imported into another scene.",
+                    "module":   "ExporterWindow.AnimPresetTransfer",
+                    "action":   "exportAnimPresets"
+                }
+            ]
+        },
+
+        {
+            "type":     "separator"
+        },
+
+        {
+            "type":     "subMenu",
+            "menuName": "Max Tools",
+            "icon":     "Other\\3DSMaxIcon.png",
+            "menuItems":
+            [
+                {
+                    "type":     "action",
+                    "label":    "Import Character Animation (*.mxca)",
+                    "module":   "ImportAnimationFromMax.ImportAnimationFromMax",
+                    "action":   "importAnimationFromMax"
+                },
+
+                {
+                    "type":     "action",
+                    "label":    "Batch Animation Importer",
+                    "module":   "ImportAnimationFromMax.ImportAnimationFromMax",
+                    "action":   "showBatchWindow"
+                }
+            ]
+        }
+    ]
+}

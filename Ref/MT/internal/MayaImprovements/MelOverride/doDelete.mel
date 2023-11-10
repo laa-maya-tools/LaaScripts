@@ -1,0 +1,117 @@
+// ===========================================================================
+// Copyright 2019 Autodesk, Inc. All rights reserved.
+//
+// Use of this software is subject to the terms of the Autodesk license
+// agreement provided at the time of installation or download, or which
+// otherwise accompanies this software in either electronic or hard copy form.
+// ===========================================================================
+//
+//
+//	Procedure Name:
+//		doDelete
+//
+//	Description:
+//      First, perform any commands that want to prepare for the deletion.
+//      For example, if skin influence objects are deleted, remove them
+//      as influences so that the skin in that area will not pop to zero
+//      when the object is deleted.
+//      Then, perform the delete operation.
+//
+//	Return Value:
+//		none
+//
+
+proc skinClusterPreDelete(string $objs[])
+//      If skin influence objects are deleted, remove them
+//      as influences so that the skin in that area will not pop to zero
+//      when the object is deleted.
+{
+	// build list of skinClusters that can be ignored
+	//
+	string $skinNodesToSkip[];
+	
+	for ($obj in $objs) {
+		// check if the object is referenced.
+		// if so, we can simply ignore this object.
+		//
+		if (`referenceQuery -inr $obj` != 1) {
+
+			// check if the object is a skin influence
+			//
+			string $skins[] = `listConnections -s 0 -d 1 -type skinCluster ($obj+".worldMatrix")`;
+			for ($skinNode in $skins) {
+				if (0 == AWNumberOfOccurrencesInStringArray($skinNode,
+													   	$skinNodesToSkip)) {
+					int $removeIt = 1;
+				
+					// Check if the skin itself if also being deleted.
+					// If so, we don't need to remove the influence object.
+					//
+					string $skinGeom[] = `skinCluster -q -g $skinNode`;
+					if (size($skinGeom) > 0) {
+						if (AWNumberOfOccurrencesInStringArray($skinGeom[0],
+														  $objs)) {
+							$skinNodesToSkip[size($skinNodesToSkip)] = $skinNode;
+							$removeIt = 0;
+						}
+					}
+
+					if ($removeIt) {
+						// Check if all the influences will be deleted.
+						// If so, we don't need to remove the influence object.
+						//
+						int $allInfsDeleted = 1;
+						string $infs[] = `skinCluster -q -inf $skinNode`;
+						for ($inf in $infs) {
+							if (0 == AWNumberOfOccurrencesInStringArray($inf,
+																   $objs)) {
+								$allInfsDeleted = 0;
+								break;
+							}
+						}
+						if ($allInfsDeleted) {
+							$skinNodesToSkip[size($skinNodesToSkip)] = $skinNode;
+							$removeIt = 0;
+						}
+					}
+
+					if ($removeIt) {
+						skinCluster -e -removeInfluence $obj $skinNode;
+					}
+				}
+			}
+		}
+	}
+}
+
+global proc
+doDelete()
+{
+	global string $gPlayBackSlider;
+	string $sel[] = `ls -sl -dag`;
+	if (`optionVar -q deleteKeysFixEnabled` && `timeControl -q -rangeVisible $gPlayBackSlider`)
+	{
+		timeSliderClearKey;
+		return;
+	}
+	else if (0 < size($sel))
+	{
+		skinClusterPreDelete($sel);
+	}
+	else
+	{
+		$sel = `ls -sl`;
+		if (0 == size($sel) && python("import ufe; ufe.GlobalSelection.get().empty()"))
+		{
+			$sel = `ls -preSelectHilite`;
+			if (0 < size($sel))
+			{
+				delete $sel;
+			}
+
+			return;
+		}
+	}
+
+	delete;
+}

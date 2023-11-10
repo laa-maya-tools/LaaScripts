@@ -1,0 +1,44 @@
+global proc FKManipulatorToolValues(string $toolName)
+{
+	string $location = `toolPropertyWindow -q -location`;
+	string $parent = ($location + "|fkManipLayout");
+	if ($location != "" && `layout -q -ex $parent`)
+	{
+		setParent $parent;
+
+		// SETTINGS
+
+		python( "import AnimSystems.IKManipulator" );
+		
+		string $transformMode = python( "AnimSystems.IKManipulator.FKManipulatorController.getTransformMode()" );
+		textField -e -tx $transformMode axisOrientField;
+
+		int $isAffectEndRotation = python( "AnimSystems.IKManipulator.FKManipulatorController.isAffectEndRotation()" );
+		checkBoxGrp -e -value1 $isAffectEndRotation affectEndRotationCheckBx;
+		
+		int $isAlternativeRotateMode = python( "AnimSystems.IKManipulator.FKManipulatorController.isAlternativeRotateMode()" );
+		radioButtonGrp -e -select ($isAlternativeRotateMode + 1) alternativeRotateModeRadioBt;
+		
+		float $alternativeRotateModeSensibility = python( "AnimSystems.IKManipulator.FKManipulatorController.getAlternativeRotateModeSensibility()" );
+		floatField -e -value $alternativeRotateModeSensibility -enable $isAlternativeRotateMode alternativeRotateModeSensibilityField;
+		
+		float $displayRadius = python( "AnimSystems.IKManipulator.FKManipulatorController.getRotateDisplayRadius()" );
+		floatField -e -value $displayRadius displayRadiusField;
+
+		// COMMON SETTINGS
+
+		softSelectValues( $parent );
+		commonSelectValues( $parent );
+		smartDupValues( $parent );
+
+		// FINAL CONFIGURATION
+
+		toolPropertySetCommon $toolName "move_M.png" "FKManipulatorTool";
+		toolPropertySelect "fkManipLayout";
+
+		string $reset = `toolPropertyWindow -query -resetButton`;
+		string $cmd = `button -q -command $reset`;
+		$cmd += ";smartDupReset;";
+		button -edit -command $cmd $reset;
+	}
+}

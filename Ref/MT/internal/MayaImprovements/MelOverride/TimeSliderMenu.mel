@@ -1,0 +1,1354 @@
+// ===========================================================================
+// Copyright 2019 Autodesk, Inc. All rights reserved.
+//
+// Use of this software is subject to the terms of the Autodesk license
+// agreement provided at the time of installation or download, or which
+// otherwise accompanies this software in either electronic or hard copy form.
+// ===========================================================================
+//
+//
+// Creation Date:  28 June 1996
+//
+//
+//  Procedure Name:
+//      TimeSliderMenu
+//
+//  Description:
+//		This menu attaches a popup menu to the
+//		timeslider, to allow for RMB cut/copy/paste
+//		type operations without having to go to
+//		the main menu for them.
+//
+//  Input Arguments:
+//      Parent to attach the menu to.
+//
+//  Return Value:
+//      None.
+//
+
+global proc setPlaybackRangeToStartEnd() 
+//
+// Description:
+//	Start/End values come from the last read file.  If there
+//	isn't one (file->new) tell the user why.
+//	
+{
+	string $sceneConfig = "sceneConfigurationScriptNode";
+	string $oldSceneConfig = "animationScriptNode";
+
+	//	If a pre-4.0 file is read, use the animationScriptNode.
+	//
+	if (`objExists $oldSceneConfig`) {
+		$sceneConfig = $oldSceneConfig;
+	}
+
+	// 	Look for the node named "sceneConfigurationScriptNode"
+	//
+	if (`objExists $sceneConfig`) {
+		string $script = `scriptNode -query -beforeScript $sceneConfig`;
+		string $buff[];
+		tokenize $script ";" $buff;
+
+		string $line;
+		for ($line in $buff) {
+			if (size(`match "playbackOptions" $line`) > 0) {
+				evalEcho $line;
+				break;
+			}
+		}
+	} else {
+		error (uiRes("m_TimeSliderMenu.kStartEndError"));
+	}
+}
+
+global proc setPlaybackRangeToMinMax()
+//
+// Description:
+//	Sometimes it's useful to set the playback range to be the 
+//	min/max of all the animation in the system.  We define that
+//	to be the first and last keys from all the time-based 
+//	animation curves we can find.
+//	
+{
+	//	Get a list of animCurve in the system. 
+	//	Check only for types created through
+	//	keyframing: time to linear, time to
+	//	angular, and time to unitless (for scale,
+	//	or user created attributes).
+	//
+	string $animTL[] = `ls -type animCurveTL`;
+	string $animTA[] = `ls -type animCurveTA`;
+	string $animTU[] = `ls -type animCurveTU`;
+	string $animTT[] = `ls -type animCurveTT`;
+
+	float $keys[];
+	float $largestKey = -100000.0;
+	float $smallestKey = 100000.0;
+	int   $keyCount = 0;	
+
+	for( $curve in $animTL ) {
+		int $last = `keyframe -q -kc $curve`;
+		if( $last > 0 ) {
+			$last--;
+		}
+
+		$keys = `keyframe -index 0 -index $last -q -tc $curve`;
+		$keyCount += size( $keys );
+		for ( $key in $keys ) {
+			if( $key > $largestKey ) 
+				$largestKey = $key;
+			if( $key < $smallestKey )
+				$smallestKey = $key;
+		}
+	}
+			
+	for( $curve in $animTA ) {
+		int $last = `keyframe -q -kc $curve`;
+		if( $last > 0 ) {
+			$last--;
+		}
+
+		$keys = `keyframe -index 0 -index $last -q -tc $curve`;
+		$keyCount += size( $keys );
+		for ( $key in $keys ) {
+			if( $key > $largestKey ) 
+				$largestKey = $key;
+			if( $key < $smallestKey )
+				$smallestKey = $key;
+		}
+	}
+			
+	for( $curve in $animTU ) {
+		int $last = `keyframe -q -kc $curve`;
+		if( $last > 0 ) {
+			$last--;
+		}
+
+		$keys = `keyframe -index 0 -index $last -q -tc $curve`;
+		$keyCount += size( $keys );
+		for ( $key in $keys ) {
+			if( $key > $largestKey ) 
+				$largestKey = $key;
+			if( $key < $smallestKey )
+				$smallestKey = $key;
+		}
+	}
+
+	for( $curve in $animTT ) {
+		int $last = `keyframe -q -kc $curve`;
+		if( $last > 0 ) {
+			$last--;
+		}
+
+		$keys = `keyframe -index 0 -index $last -q -tc $curve`;
+		$keyCount += size( $keys );
+		for ( $key in $keys ) {
+			if( $key > $largestKey ) 
+				$largestKey = $key;
+			if( $key < $smallestKey )
+				$smallestKey = $key;
+		}
+	}
+
+	// Only adjust the playback range if we've found animation.
+	//
+	if( $keyCount > 0 ) {
+		playbackOptions -min (int( $smallestKey )) -max (int( $largestKey ));
+	} else {
+		error (uiRes("m_TimeSliderMenu.kNoKeysError"));
+	}
+}
+
+global proc setPlaybackRangeToHighlight() {
+	global string $gPlayBackSlider;
+
+	if( `timeControl -q -rangeVisible $gPlayBackSlider` ) {
+		float $highlight[] = `timeControl -q -rangeArray $gPlayBackSlider`;
+		playbackOptions -min $highlight[0] -max $highlight[1];
+	} else {
+		error (uiRes("m_TimeSliderMenu.kNoRangeError"));
+	}
+}
+
+global proc setPlaybackRangeToEnabledClips()
+//
+// Description:
+//	Sometimes it's useful to set the playback range to be the 
+//	min/max of all the enabled clips in the system. 
+//	
+{
+	//	Get a list of all of the clipScheduler nodes in the system.
+	//
+	string $clipSchedulers[] = `ls -type clipScheduler`;
+	string $audioClips[] = `ls -type audio`;
+	if (`size($clipSchedulers)` == 0 && `size($audioClips)` == 0) {
+		error (uiRes("m_TimeSliderMenu.kNoClipsError"));
+	}
+
+	float $lastTime = -100000.0;
+	float $firstTime = 100000.0;
+	int $nEnabledClips = 0;
+
+	string $sch;
+	for ($sch in $clipSchedulers) {
+		string $scheduleList[] = `clipSchedule -q $sch`;
+		string $s;
+		for ($s in $scheduleList) {
+			string $buff[7];
+			tokenize($s,",",$buff);
+			
+			string $clip = $buff[0];
+			int $index = $buff[1];
+
+			//	Check to see if this clip is enabled.
+			//
+			if (0 == `clipSchedule -ci $index -q -enable $sch`) {
+				continue;
+			}
+
+			float $startPos = `getAttr ($clip + ".startFrame")`;
+			float $srcStart = `getAttr ($clip + ".sourceStart")`;
+			float $srcEnd = `getAttr ($clip + ".sourceEnd")`;
+			float $duration = $srcEnd - $srcStart;
+			float $scale = `getAttr ($clip + ".scale")`;
+			float $preCycle = `getAttr ($clip + ".preCycle")`;
+			float $postCycle = `getAttr ($clip + ".postCycle")`;
+			float $holdDur = `getAttr ($clip + ".hold")`;
+
+			float $start = $startPos - ($duration * $preCycle * $scale);
+			float $end = $startPos + ($duration * ($postCycle + 1.0) * $scale) + $holdDur;
+
+			if ($firstTime > $start) {
+				$firstTime = $start;
+			}
+
+			if ($lastTime < $end) {
+				$lastTime = $end;
+			}
+
+			$nEnabledClips++;
+		}
+	}
+
+	for( $audio in $audioClips ) {
+		float $offset = `getAttr ($audio + ".offset")`;
+		float $length = `sound -query -length $audio`;
+		
+		float $end = $offset + $length;
+		
+		if( $firstTime > $offset ) {
+			$firstTime = $offset;
+		}
+		
+		if ($lastTime < $end) {
+			$lastTime = $end;
+		}
+	}
+	
+	$nEnabledClips += size( $audioClips );
+
+	if ($nEnabledClips == 0) {
+		error (uiRes("m_TimeSliderMenu.kNoEnabledClipsError"));
+	}
+
+	int $intLast = int($lastTime);
+	if ($intLast < $lastTime) {
+		$lastTime += 1.0;
+	}
+
+	playbackOptions -min (int( $firstTime )) -max (int( $lastTime ));
+}
+
+global proc setPlaybackRangeToSound() {
+	global string $gPlayBackSlider;
+
+	string $node = `timeControl -q -sound $gPlayBackSlider`;
+
+	if( size( $node ) > 0 ) {
+		
+		// Truncate any fractional bits.
+		//
+		int $min = `sound -query -offset $node`;
+		int $max = int( $min + `sound -query -length $node` );
+		
+		playbackOptions -min $min -max $max;
+	} else {
+		error (uiRes("m_TimeSliderMenu.kNoSound"));
+	}
+}
+
+global proc setPlaybackRangeToPrefs() 
+//
+// Description:
+//	Set the animation ranges to the prefs values.
+//	
+{
+	if( `optionVar -exists playbackMin`
+	&&  `optionVar -exists playbackMax`
+	&&  `optionVar -exists playbackMinRange`
+	&&  `optionVar -exists playbackMaxRange` )
+	{
+		float $min = `optionVar -q playbackMin`;
+		float $max = `optionVar -q playbackMax`;
+		float $minRange = `optionVar -q playbackMinRange`;
+		float $maxRange = `optionVar -q playbackMaxRange`;
+		
+		playbackOptions -min $min -max $max -ast $minRange -aet $maxRange;
+	}
+}
+
+global proc string[] filterAttributes(string $nodes[], string $timeRange)
+{
+	if (!`optionVar -q "improvedCopyPasteEnabled"`)
+		return $nodes;
+	
+	if ($timeRange != "")
+		$timeRange = "";//`substring $timeRange 2 (size($timeRange) - 1)`;
+	int $areThereLayers = `animLayer -q -root` != "";
+	string $filteredAttributes[];
+	for ($node in $nodes)
+	{
+		string $attrs[] = `listAttr -k $node`;
+		int $i;
+		for ($i = 0; $i < size($attrs); $i++)
+		{
+			$attrs[$i] = $node + "." + $attrs[$i];
+			while (`addAttr -q -ex $attrs[$i]` && `addAttr -q -uap $attrs[$i]`)
+			{
+				string $connections[] = `listConnections -s 1 -d 0 -p 1 $attrs[$i]`;
+				if (size($connections) != 1)
+					break;
+				$attrs[$i] = $connections[0];
+			}
+			if ((!$areThereLayers || size(`animLayer -at $attrs[$i] -q -bestAnimLayer`) > 0) &&
+				($timeRange == "" || size(`keyframe -t $timeRange -q $attrs[$i]`) > 0) &&
+				!`getAttr -l $attrs[$i]` &&
+				!stringArrayContains($attrs[$i], $filteredAttributes))
+				$filteredAttributes[size($filteredAttributes)] = $attrs[$i];
+		}
+	}
+	return $filteredAttributes;
+}
+
+global proc timeSliderCutKey()
+//
+// Description:
+//	Targets depend on whether we're showing ticks for
+// 	active or channel box attributes.
+//	
+{
+	global string $gPlayBackSlider;
+
+	string $whichKeys = `timeControl -q -showKeys $gPlayBackSlider`;
+	string $whichFrames = `timeControl -q -showGreaseFrames $gPlayBackSlider`;
+	if ($whichKeys == "none" && $whichFrames == "none") {
+		return;
+	}
+
+	string $range = `timeControl -q -range $gPlayBackSlider`;
+	string $cmd = ("cutKey -an keysOrObjects -iub false -t " + $range + " -o keys");
+
+	int $showActive = false;
+	if ($whichKeys == "active") {
+		$showActive = true;
+	} else {
+		// We only get here if the showKeys mode is "channel box"
+		//
+		if (`timeControl -query -showKeysCombined $gPlayBackSlider`) {
+			// showKeysCombined indicates that if nothing is selected
+			// in the channel box, we should act on keys for the
+			// active selection
+			//
+			string $cbSelection[] = `selectedChannelBoxAttributes`;
+			if (size($cbSelection) == 0) {
+				$showActive = true;
+			}
+		}
+	}
+
+	string $targets[];
+	string $members[];
+
+	// Only check for "active" since we know that this menu
+	// item is disabled for the "none" case.
+	//
+	if( !$showActive )
+		$members = `timeControl -q -animCurveNames $gPlayBackSlider`;
+	else
+		$members = expandSelectionConnectionAsArray  ("animationList");
+
+	if (size($members) > 0) {
+		for( $obj in $members ) {
+			// Do not include greasePencilSequence.  These are treated separately.
+			if ( !`objectType -isType greasePencilSequence $obj` )
+				$targets[size($targets)] = $obj;
+		}
+	}
+
+
+	int $warningWasSent = 0;
+
+	// Handle the grease frames if any are being displayed in the time line
+	if ( $whichFrames == "active" )
+	{
+		// There is only one or zero sequence when displaying active grease pencil frames
+		string $sequences[] = `timeControl -q -greasePencilSequenceNames $gPlayBackSlider`;
+		if( size( $sequences ) == 1 ) {
+			$targets[size($targets)] = $sequences[0];
+		}
+	}
+	else if ( $whichFrames == "all" ) {
+		// Copy is prohibited when multiple grease pencil sequences are shown.
+		// If at least one target is selected, then the user is cutting animation key(s)
+		// and the operation will be carried on and grease frames will be ignored.
+		if ( size($targets) < 1 ) {
+			warning (uiRes("m_TimeSliderMenu.kAllCamerasCutWarn"));
+			$warningWasSent = 1;
+		}
+	}
+
+	// Disables the callbacks for KeyingGroups
+	// This is necessary becouse cuting keys will remove them, thus triggering the callback and destroying all the ceys being cut, which will prevent Maya from copying them.
+	int $whereCallbacksEnabled = python("import AnimSystems.KeyingGroup as KG; KG.KeyingGroupManager._callbacksEnabled");
+	python("import AnimSystems.KeyingGroup as KG; KG.KeyingGroupManager._callbacksEnabled = False");
+	
+	if (size($targets) < 1) {
+		if ( !$warningWasSent ) {
+			warning (uiRes("m_TimeSliderMenu.kNoObjectsCutWarn"));
+		}
+	}
+	else {
+		// This is a fix to copy and paste related all the controls on a KeyingGroup.
+		// If this is not needed, these lines can be erased to restore the default behaviour.
+		if ($showActive && $whereCallbacksEnabled)
+		{
+			string $targetStr = "[";
+			for ($target in $targets)
+				$targetStr += "\"" + $target + "\",";
+			$targetStr += "]";
+			$targets = python("import AnimSystems.KeyingGroup as KG; KG.KeyingGroupManager.getPlugsToModify(" + $targetStr + ", skipAffected=False, includeNonAffected=True, filterByLayer=True)");
+		}
+
+		catch (eval ($cmd + " " + stringArrayToString(filterAttributes($targets, $range)," ")));
+	}
+
+	// Reenables the callbacks for the KeyingGroups.
+	// Some magic happens where the actual pasting is performed outside of this function, use evalDeferred to schedule the reenabling.
+	python("import AnimSystems.KeyingGroup as KG; cmds.evalDeferred('KG.KeyingGroupManager._callbacksEnabled = " + $whereCallbacksEnabled + "')");
+}
+
+global proc timeSliderCopyKey()
+//
+// Description:
+//	Targets depend on whether we're showing ticks for
+// 	active or channel box attributes.
+//	
+{
+	global string $gPlayBackSlider;
+
+	string $whichKeys = `timeControl -q -showKeys $gPlayBackSlider`;
+	string $whichFrames = `timeControl -q -showGreaseFrames $gPlayBackSlider`;
+	if ($whichKeys == "none" && $whichFrames == "none") {
+		return;
+	}
+
+	string $range = `timeControl -q -range $gPlayBackSlider`;
+	string $cmd = ("copyKey -an keysOrObjects -iub false -t " + $range + " -o keys");
+
+	int $showActive = false;
+	if ($whichKeys == "active") {
+		$showActive = true;
+	} else {
+		// We only get here if the showKeys mode is "channel box"
+		//
+		if (`timeControl -query -showKeysCombined $gPlayBackSlider`) {
+			// showKeysCombined indicates that if nothing is selected
+			// in the channel box, we should act on keys for the
+			// active selection
+			//
+			string $cbSelection[] = `selectedChannelBoxAttributes`;
+			if (size($cbSelection) == 0) {
+				$showActive = true;
+			}
+		}
+	}
+
+	string $targets[];
+	string $members[];
+	
+	// Only check for "active" since we know that this menu
+	// item is disabled for the "none" case.
+	//
+	if (!$showActive)
+		$members = `timeControl -q -animCurveNames $gPlayBackSlider`;
+	else
+		$members = expandSelectionConnectionAsArray  ("animationList");
+
+	if (size($members) > 0) {
+		for( $obj in $members ) {
+			// Do not include greasePencilSequence.  These are treated separately.
+			if ( !`objectType -isType greasePencilSequence $obj` )
+				$targets[size($targets)] = $obj;
+		}
+	}
+
+	int $warningWasSent = 0;
+
+	// Handle the grease frames if any are being displayed in the time line
+	if ( $whichFrames == "active" )
+	{
+		// There is only one or zero sequence when displaying active grease pencil frames
+		string $sequences[] = `timeControl -q -greasePencilSequenceNames $gPlayBackSlider`;
+		if( size( $sequences ) == 1 ) {
+			$targets[size($targets)] = $sequences[0];
+		}
+	}
+	else if ( $whichFrames == "all" ) {
+		// Copy is prohibited when multiple grease pencil sequences are shown.
+		// If at least one target is selected, then the user is copying animation key(s)
+		// and the operation will be carried on and grease frames will be ignored.
+		if ( size($targets) < 1 ) {
+			warning (uiRes("m_TimeSliderMenu.kAllCamerasCopyWarn"));
+			$warningWasSent = 1;
+		}
+	}
+
+
+	if ( size($targets) < 1 ) {
+		if ( !$warningWasSent ) {
+			warning (uiRes("m_TimeSliderMenu.kNoObjectsCopyWarn"));
+		}
+	}
+	else {
+		// This is a fix to copy and paste related all the controls on a KeyingGroup.
+		// If this is not needed, these lines can be erased to restore the default behaviour.
+		int $areCallbacksEnabled = python("import AnimSystems.KeyingGroup as KG; KG.KeyingGroupManager._callbacksEnabled");
+		if ($showActive && $areCallbacksEnabled)
+		{
+			string $targetStr = "[";
+			for ($target in $targets)
+				$targetStr += "\"" + $target + "\",";
+			$targetStr += "]";
+			$targets = python("import AnimSystems.KeyingGroup as KG; KG.KeyingGroupManager.getPlugsToModify(" + $targetStr + ", skipAffected=False, includeNonAffected=True, filterByLayer=True)");
+		}
+		
+		eval ($cmd + " " + stringArrayToString(filterAttributes($targets, $range)," "));
+	}
+}
+
+global proc timeSliderClearKey()
+//
+// Description:
+//	Targets depend on whether we're showing ticks for
+// 	active or channel box attributes.
+//	
+{
+	global string $gPlayBackSlider;
+
+	string $whichKeys = `timeControl -q -showKeys $gPlayBackSlider`;
+	string $whichFrames = `timeControl -q -showGreaseFrames $gPlayBackSlider`;
+	if ($whichKeys == "none" && $whichFrames == "none") {
+		return;
+	}
+
+	string $cmd = ("cutKey -clear -iub false -an objects -t " + 
+				   `timeControl -q -range $gPlayBackSlider` +
+				   " -o keys");
+
+	string $targets[];
+	string $members[];
+
+	// Only check for "active" since we know that this menu
+	// item is disabled for the "none" case.
+	//
+	if( $whichKeys != "active" ) {
+		$members = `timeControl -q -animCurveNames $gPlayBackSlider`;
+	} 
+	else {
+		$members = expandSelectionConnectionAsArray ("animationList");
+	}
+
+	if (size($members) > 0) {
+		for( $obj in $members ) {
+			// Do not include greasePencilSequence.  These are treated separately.
+			if ( !`objectType -isType greasePencilSequence $obj` )
+				$targets[size($targets)] = $obj;
+		}
+	}
+
+	// Handle the grease frames if any are being displayed in the time line
+	if ( $whichFrames != "none" )
+	{
+		string $sequences[] = `timeControl -q -greasePencilSequenceNames $gPlayBackSlider`;
+		if( size( $sequences ) > 0 ) {
+			for( $seq in $sequences ) {
+				// No duplicates are allowed
+				if ( stringArrayFind($seq, 0, $targets) < 0 )
+					$targets[size($targets)] = $seq;
+			}
+		}
+	}
+
+	if ( size($targets) < 1 )
+	{
+		warning (uiRes("m_TimeSliderMenu.kNoObjectsDeleteWarn"));
+	}
+	else
+	{
+		eval ($cmd + " " + stringArrayToString($targets," "));
+	}
+}
+
+global proc timeSliderSnapKey()
+//
+// Description:
+//  Targets depend on whether we're showing ticks for
+//  active or channel box attributes.
+//
+{
+	global string $gPlayBackSlider;
+
+	string $whichKeys = `timeControl -q -showKeys $gPlayBackSlider`;
+	if ($whichKeys == "none") {
+		return;
+	}
+
+	string $cmd = ("snapKey -iub false -an objects -t " + 
+				   `timeControl -q -range $gPlayBackSlider`);
+
+	// Only check for "active" since we know that this menu
+	// item is disabled for the "none" case.
+	//
+	if( $whichKeys != "active" ) {
+		string $curves[] = `timeControl -q -animCurveNames $gPlayBackSlider`;
+		if( size( $curves ) > 0 ) {
+			for( $curve in $curves ) {
+				$cmd = $cmd + " " + $curve;
+			}
+			eval $cmd;
+		}
+	} 
+	else {
+		string $members = expandSelectionConnection ("animationList");
+		if (($members == "") || ($members == "{}")) {
+			warning (uiRes("m_TimeSliderMenu.kNoObjectsSnapWarn"));
+		}
+		else {
+			eval ($cmd + " " + $members);
+		}
+	}
+}
+
+global proc timeSliderPasteKey(int $connect)
+//
+// Description:
+//	The "pasteKey" command issued depends on whether
+//	a highlighted range is visible on the time slider.  
+//	
+{
+	global string $gPlayBackSlider;
+
+	string $whichKeys = `timeControl -q -showKeys $gPlayBackSlider`;
+	string $whichFrames = `timeControl -q -showGreaseFrames $gPlayBackSlider`;
+	if ($whichKeys == "none" && $whichFrames == "none") {
+		return;
+	}
+
+	global string $gChannelBoxName;
+	string $cmd;
+
+	if( `timeControl -query -rv $gPlayBackSlider` ) {
+		string $timeRange = `timeControl -query -range $gPlayBackSlider`;
+		$cmd = ("pasteKey -animation keysOrObjects -connect " + $connect + " -time " + $timeRange + " -includeUpperBound false -option scaleReplace");
+	} 
+	else {
+		float $time = `currentTime -query`;
+		$cmd = ("pasteKey -animation keysOrObjects -option replace -connect " + $connect + " -time \"" + $time +":"+ ($time + 0.99)+"\"" );
+	}
+	
+	// Only check for "active" since we know that this menu
+	// item is disabled for the "none" case.
+	//
+	int $showActive = ($whichKeys == "active");
+	if( !$showActive ) {
+		string $main[]  = `channelBox -q -sma $gChannelBoxName`;
+		string $shape[] = `channelBox -q -ssa $gChannelBoxName`;
+		string $hist[]  = `channelBox -q -sha $gChannelBoxName`;
+
+		// Build up the list of attrs selected in the channel box 
+		//
+		if(( size( $main ) > 0 ) 
+		|| ( size( $shape ) > 0 )
+		|| ( size( $hist ) > 0 ))
+		{
+			for( $attr in $main ) {
+				$cmd = $cmd + " ." + $attr;
+			}
+			for( $attr in $shape ) {
+				$cmd = $cmd + " ." + $attr;
+			}
+			for( $attr in $hist ) {
+				$cmd = $cmd + " ." + $attr;
+			}
+
+			eval $cmd;
+			return;
+		} else {
+			if (`timeControl -query -showKeysCombined $gPlayBackSlider`) {
+				// showKeysCombined indicates that if nothing is selected
+				// in the channel box, we should default to show keys for
+				// the active selection
+				//
+				$showActive = 1;
+			}
+		}
+	}
+
+	string $targets[];
+	int $warningWasSent = 0;
+
+	if ($showActive) {
+		string $members[] = expandSelectionConnectionAsArray  ("animationList");
+		if (size($members) > 0) {
+			for( $obj in $members ) {
+				// Do not include greasePencilSequences in targets.  They are treated separately below.
+				if ( !`objectType -isType greasePencilSequence $obj` ) {
+					// Regular key frame
+					$targets[size($targets)] = $obj;
+				}
+			}
+		}
+	}
+
+	// Handle the grease frames if any are being displayed in the time line
+	//
+	if ( $whichFrames == "active" )
+	{
+		// Add destination sequence target.
+		string $activeSequences[] = `timeControl -q -greasePencilSequenceNames $gPlayBackSlider`;
+
+		// Make sure there is an existing destination sequence 
+		if( size( $activeSequences ) == 1 ) {
+			$targets[size($targets)] = $activeSequences[0];
+		}
+	}
+	else if ( $whichFrames == "all" ) {
+		// Paste is prohibited when multiple grease pencil sequences are shown.
+		// If at least one target is selected, then the user is copying animation key(s)
+		// and the operation will be carried on and grease frames will be ignored.
+		if ( size($targets) < 1 ) {
+			warning (uiRes("m_TimeSliderMenu.kAllCamerasPasteWarn"));
+			$warningWasSent = 1;
+		}
+	}
+
+	// Disables the callbacks for KeyingGroups
+	// This is necessary becouse pasting on top on another key will destroy the old key, thus triggering the callback and destroying the new key as well.
+	int $whereCallbacksEnabled = python("import AnimSystems.KeyingGroup as KG; KG.KeyingGroupManager._callbacksEnabled");
+	python("import AnimSystems.KeyingGroup as KG; KG.KeyingGroupManager._callbacksEnabled = False");
+	
+	if (size($targets) < 1) {
+		if ( ! $warningWasSent ) {
+			warning (uiRes("m_TimeSliderMenu.kNoObjectsPasteWarn"));
+		}
+	}
+	else {
+		// This is a fix to copy and paste related all the controls on a KeyingGroup.
+		// If this is not needed, these lines can be erased to restore the default behaviour.
+		if ($showActive && $whereCallbacksEnabled)
+		{
+			string $targetStr = "[";
+			for ($target in $targets)
+				$targetStr += "\"" + $target + "\",";
+			$targetStr += "]";
+			$targets = python("import AnimSystems.KeyingGroup as KG; KG.KeyingGroupManager.getPlugsToModify(" + $targetStr + ", skipAffected=False, includeNonAffected=True, filterByLayer=True)");
+		}
+		
+		catch (eval ($cmd + " " + stringArrayToString(filterAttributes($targets, "")," ")));
+	}
+
+	// Reenables the callbacks for the KeyingGroups.
+	// Some magic happens where the actual pasting is performed outside of this function, use evalDeferred to schedule the reenabling.
+	python("import AnimSystems.KeyingGroup as KG; cmds.evalDeferred('KG.KeyingGroupManager._callbacksEnabled = " + $whereCallbacksEnabled + "')");
+}
+
+
+global proc timeSliderEditKeys( string $type )
+//
+// Description:
+//	
+//	
+{
+	global string $gPlayBackSlider;
+
+	string $whichKeys = `timeControl -q -showKeys $gPlayBackSlider`;
+	if ($whichKeys == "none") {
+		return;
+	}
+
+	string $cmd = "keyframe ";
+	switch ($type) {
+	case "makeKey":
+		$cmd = $cmd + "-breakdown false ";
+		$cmd = $cmd + (" -an objects -iub false -t " + 
+				`timeControl -q -range $gPlayBackSlider`);
+		break;
+	case "makeBreakdown":
+		$cmd = $cmd + "-breakdown true ";
+		$cmd = $cmd + (" -an objects -iub false -t " + 
+				`timeControl -q -range $gPlayBackSlider`);
+		break;
+	case "addInbetween":
+		$cmd = $cmd + "-time \"" + `currentTime -query` + ":\" " +
+			"-relative -timeChange 1 -option over";
+		break;
+	case "removeInbetween":
+		$cmd = $cmd + "-time \"" + `currentTime -query` + ":\" " +
+			"-relative -timeChange -1 -option over";
+		break;
+	}
+
+	if( $whichKeys != "active" ) {
+		string $curves[] = `timeControl -q -animCurveNames $gPlayBackSlider`;
+		if( size( $curves ) > 0 ) {
+			for( $curve in $curves ) {
+				$cmd = $cmd + " " + $curve;
+			}
+			eval $cmd;
+		}
+	} 
+	else {
+		string $members = expandSelectionConnection ("animationList");
+		if (($members == "") || ($members == "{}")) {
+			warning (uiRes("m_TimeSliderMenu.kNoObjectsEditWarn"));
+		}
+		else {
+			eval ($cmd + " " + $members);
+		}
+	}
+}
+
+global proc timeSliderSetTangent( string $type )
+//
+// Description:
+//	
+//	
+{
+	global string $gPlayBackSlider;
+
+	string $whichKeys = `timeControl -q -showKeys $gPlayBackSlider`;
+	if ($whichKeys == "none") {
+		return;
+	}
+
+	string $cmd = "keyTangent";
+	if ($type != "step") {
+		$cmd = ($cmd + " -itt " + $type);
+	}
+	$cmd = ($cmd + " -ott " + $type + 
+				   " -an objects -iub false -t " + 
+				   `timeControl -q -range $gPlayBackSlider`);
+
+	if( $whichKeys != "active" ) {
+		string $curves[] = `timeControl -q -animCurveNames $gPlayBackSlider`;
+		if( size( $curves ) > 0 ) {
+			for( $curve in $curves ) {
+				$cmd = $cmd + " " + $curve;
+			}
+			eval $cmd;
+		}
+	} 
+	else {
+		string $members = expandSelectionConnection ("animationList");
+		if (($members == "") || ($members == "{}")) {
+			warning (uiRes("m_TimeSliderMenu.kNoObjectsTangentsWarn"));
+		}
+		else {
+			eval ($cmd + " " + $members);
+		}
+	}
+}
+
+
+global proc greasePencilDeleteFramesSubmenu( string $parent )
+{
+	string $greasePencilSequenceNameArray[] = `ls -type "greasePencilSequence"`;
+	int $haveGreasePencilSequences = size($greasePencilSequenceNameArray);
+
+	setParent -menu $parent;
+	popupMenu -edit -deleteAllItems $parent;
+
+	string $all = (uiRes("m_TimeSliderMenu.kGreasePencilDeleteFramesAll"));
+	if ( ! $haveGreasePencilSequences )
+	{
+		menuItem -label  $all
+			-command ( "" ) -enable false;
+		return;
+	}
+
+	string $sequenceList = stringArrayToString( $greasePencilSequenceNameArray, " " );
+	string $cameraList[]=`listCameras`;
+
+	menuItem -label $all
+		-command ( "delete " + $sequenceList );
+	menuItem -divider true;
+
+	// The menu info will be cached in this array so that we can
+	// sort it and build the menu entries in the following
+	// for loop. I am using a string that is made up of:
+	//		$cameraName $separator $deleteCmd
+	// so that a sort on camera name can be done. The string
+	// will be tokenized before creating the menu item
+	string $menuItemList[];
+	// Commas are not allowed in Maya names so we use it for a 
+	// separator
+	string $separator = ",";
+	for ( $seq in $greasePencilSequenceNameArray )
+	{
+		string $clist[] = `listConnections -type "greasePlane" $seq`;
+		int $foundCamera = 0;
+		if ( size($clist) > 0 )
+		{
+			// The grease plane $clist[0] is under the camera shape
+			string $parentName = firstParentOf($clist[0]);
+			if ( size($parentName) > 0 )
+			{
+				// Traverse the $cameraList and figure out which transform
+				// the camera shape is under.  firstParentOf() was not used
+				// here since it returns names such as "|persp" which is not
+				// consistent with the menu entries in the Panel
+				for ( $cam in $cameraList )
+				{	
+					if ( isParentOf( $cam, $parentName ) )
+					{
+						$menuItemList[size($menuItemList)] = 
+							( $cam + $separator + "delete " + $seq );
+						$foundCamera = 1;
+						break;
+					}
+				}
+			}
+		}
+		
+		if ( ! $foundCamera )
+		{
+			$menuItemList[size($menuItemList)] = 
+					( $seq + $separator + "delete " + $seq );
+		}
+	}
+
+	// Sort and then build the menu entries
+	$menuItemList = sort( $menuItemList );
+	for ( $item in $menuItemList )
+	{
+		string $tokens[];
+		int $t = tokenize( $item, $separator,  $tokens );
+		// There should only be 2 tokens: $label $deleteCommand
+		if ( $t == 2 )
+			menuItem -label $tokens[0] -command $tokens[1];
+		clear($tokens);		 
+	}
+}
+
+global proc createSoundPopupMenu(string $parent)
+{
+    python("from maya.ge.soundMenu import SoundPopupMenu");
+    python("SoundPopupMenu(\""+ $parent + "\").build()");
+}
+
+global proc updateTimeSliderMenu( string $parent )
+//
+// Description:
+//	Grey out menu entries based on the "Time slider show
+//	ticks" option
+//	
+{
+	global string $gPlayBackSlider;
+	global string $gChannelBoxName;
+
+	string $saveOptionVarsCommand = "prefsSyncAnim \"syncOptToCurrent\"";
+	
+	setParent -menu $parent;
+
+	if( `menu -q -ni $parent` == 0 ){
+		// Create menu items
+		//
+		menuItem  -label (uiRes("m_TimeSliderMenu.kCut")) 
+			-annotation (uiRes("m_TimeSliderMenu.kCutAnnot")) 
+			timeSliderCutKeyItem;
+		menuItem  -label (uiRes("m_TimeSliderMenu.kCopy")) 
+			-annotation (uiRes("m_TimeSliderMenu.kCopyAnnot")) 
+			timeSliderCopyKeyItem;
+		menuItem  -label (uiRes("m_TimeSliderMenu.kPasteMenu"))  -subMenu yes -tearOff yes timeSliderPasteKeyItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kPaste")) 
+				-annotation (uiRes("m_TimeSliderMenu.kPasteAnnot")) 
+				timeSliderPasteItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kPasteConnect")) 
+				-annotation (uiRes("m_TimeSliderMenu.kPasteConnectAnnot")) 
+				timeSliderPasteConnectItem;
+			setParent -menu ..;
+		menuItem  -label (uiRes("m_TimeSliderMenu.kDelete")) 
+			-annotation (uiRes("m_TimeSliderMenu.kDeleteAnnot")) 
+			timeSliderClearKeyItem;
+
+		menuItem  -label (uiRes("m_TimeSliderMenu.kSnap")) 
+			-annotation (uiRes("m_TimeSliderMenu.kSnapAnnot")) 
+			timeSliderSnapKeyItem;
+		menuItem -label (uiRes("m_TimeSliderMenu.kKeysMenu"))  -subMenu yes -tearOff yes timeSliderKeysItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kConvertToKey")) 
+				-annotation (uiRes("m_TimeSliderMenu.kConvertToKeyAnnot")) 
+				timeSliderMakeKeyItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kConvertToBreakdown")) 
+				-annotation (uiRes("m_TimeSliderMenu.kConvertToBreakdownAnnot")) 
+				timeSliderMakeBreakdownItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kAddInbetween")) 
+				-annotation (uiRes("m_TimeSliderMenu.kAddInbetweenAnnot")) 
+				timeSliderAddInbetweenItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kRemoveInbetween")) 
+				-annotation (uiRes("m_TimeSliderMenu.kRemoveInbetweenAnnot")) 
+				timeSliderRemoveInbetweenItem;
+			setParent -menu ..;
+		menuItem -label (uiRes("m_TimeSliderMenu.kTangentsMenu"))  -subMenu yes -tearOff yes timeSliderTangentsItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kSpline")) 
+				-annotation (uiRes("m_TimeSliderMenu.kSplineAnnot")) 
+				timeSliderSplineItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kLinear")) 
+				-annotation (uiRes("m_TimeSliderMenu.kLinearAnnot")) 
+				timeSliderLinearItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kClamped")) 
+				-annotation (uiRes("m_TimeSliderMenu.kClampedAnnot")) 
+				timeSliderClampedItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kStepped")) 
+				-annotation (uiRes("m_TimeSliderMenu.kSteppedAnnot")) 
+				timeSliderSteppedItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kFlat")) 
+				-annotation (uiRes("m_TimeSliderMenu.kFlatAnnot")) 
+				timeSliderFlatItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kPlateau")) 
+				-annotation (uiRes("m_TimeSliderMenu.kPlateauAnnot")) 
+				timeSliderPlateauItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kAuto")) 
+				-annotation (uiRes("m_TimeSliderMenu.kAutoAnnot")) 
+				timeSliderAutoItem;
+			setParent -menu ..;
+
+		string $displayFrames = `timeControl -query -showGreaseFrames $gPlayBackSlider`;
+		menuItem -label (uiRes("m_TimeSliderMenu.kGreasePencilMenu"))  -subMenu yes -tearOff yes greasePencilItems;
+			radioMenuItemCollection;
+			menuItem -label (uiRes("m_TimeSliderMenu.kGreasePencilActiveCamera")) 
+				-annotation (uiRes("m_TimeSliderMenu.kGreasePencilActiveCameraAnnot"))
+				-radioButton ($displayFrames == "active")
+				-command "timeControl -edit -showGreaseFrames \"active\" $gPlayBackSlider;"
+				timeSliderActiveCameraGreasePencilItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kGreasePencilAllCameras")) 
+				-annotation (uiRes("m_TimeSliderMenu.kGreasePencilAllCamerasAnnot")) 
+				-radioButton ($displayFrames == "all")
+				-command "timeControl -edit -showGreaseFrames \"all\" $gPlayBackSlider;"
+				timeSliderAllCameraGreasePencilItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kGreasePencilNone")) 
+				-annotation (uiRes("m_TimeSliderMenu.kGreasePencilNoneAnnot")) 
+				-radioButton ($displayFrames == "none")
+				-command "timeControl -edit -showGreaseFrames \"none\" $gPlayBackSlider;"
+				timeSliderNoneCameraGreasePencilItem;
+
+			menuItem -divider true;
+			string $mlabel = (uiRes("m_TimeSliderMenu.kGreasePencilDeleteFramesSubMenu"));
+			string $mparent = `menuItem -label $mlabel -subMenu yes greasePencilDeleteFrameItems`;
+			menuItem -edit -postMenuCommand ( "greasePencilDeleteFramesSubmenu " + $mparent ) $mparent;
+			setParent -menu ..;
+        setParent -menu ..;
+
+        python("from maya.plugin.timeSliderBookmark.bookmarkButton import createBookmarkMenus; createBookmarkMenus()");
+
+		menuItem -divider true;
+
+		python( "from maya.plugin.evaluator.cache_ui import cache_ui_menu_create" );
+		python( "cache_ui_menu_create( 'cache_timeslider_menu' )" );
+
+		float $speed = `playbackOptions -q -playbackSpeed`;
+		float $maxSpeed = `playbackOptions -q -maxPlaybackSpeed`;
+		
+		menuItem -label (uiRes("m_TimeSliderMenu.kPlaybackSpeed"))  
+			-subMenu true -tearOff yes 
+			playbackSpeedItem;
+			
+			radioMenuItemCollection;
+			menuItem -label (uiRes("m_TimeSliderMenu.kRealtime"))
+				-radioButton ($speed == 1 )
+				-command "evalEcho playbackOptions -e -playbackSpeed 1 -maxPlaybackSpeed 0; updatePlaybackSpeedHUD();"
+				-annotation (uiRes("m_TimeSliderMenu.kRealtimeAnnot")) 
+				playbackRealtimeItem;
+
+			menuItem -label (uiRes("m_TimeSliderMenu.kFree"))
+				-radioButton ($speed == 0 && $maxSpeed == 0)				
+				-command "evalEcho playbackOptions -e -playbackSpeed 0 -maxPlaybackSpeed 0; updatePlaybackSpeedHUD();"
+				-annotation (uiRes("m_TimeSliderMenu.kFreeAnnot")) 
+				playbackFreeItem;
+
+			menuItem -label (uiRes("m_TimeSliderMenu.kPlayEveryFrameRealtime"))
+				-radioButton ($speed == 0 && $maxSpeed == 1)
+				-command "evalEcho playbackOptions -e -playbackSpeed 0 -maxPlaybackSpeed 1; updatePlaybackSpeedHUD();"
+				-annotation (uiRes("m_TimeSliderMenu.kPlayEveryFrameRealtimeAnnot")) 
+				playbackPefRealtimeItem;
+		
+            setParent -m ..;
+
+		//how to display keys in the timeline
+		menuItem -label (uiRes("m_TimeSliderMenu.kDisplayTicks"))  
+			-subMenu true -tearOff yes 
+			keyDisplayItem;
+
+		string $displayTicks = `timeControl -q -sk $gPlayBackSlider`;
+		
+		    radioMenuItemCollection;
+            menuItem -label (uiRes("m_TimeSliderMenu.kActive"))
+				-radioButton ($displayTicks == "active")
+				-command ("timeControl -edit -sk \"active\" $gPlayBackSlider;\n" + $saveOptionVarsCommand + ";")
+				-annotation (uiRes("m_TimeSliderMenu.kActiveAnnot")) 
+				keyDisplayActiveItem;
+            menuItem -label (uiRes("m_TimeSliderMenu.kFromChannelBox"))
+				-radioButton ($displayTicks == $gChannelBoxName)
+				-command ("timeControl -edit -sk $gChannelBoxName $gPlayBackSlider;\n" + $saveOptionVarsCommand + ";")
+				-annotation (uiRes("m_TimeSliderMenu.kFromChannelBoxAnnot")) 
+				keyDisplayChannelBoxItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kNone"))
+				-radioButton ($displayTicks == "none")
+				-command ("timeControl -edit -sk \"none\" $gPlayBackSlider;\n" + $saveOptionVarsCommand + ";")
+				-annotation (uiRes("m_TimeSliderMenu.kNoneAnnot")) 
+				keyDisplayNoneItem;
+
+			menuItem -divider true;
+			radioMenuItemCollection;
+			string $animLayerFilterOptions = `timeControl -q -animLayerFilterOptions $gPlayBackSlider`;
+			int $showAnimLayerWeight = `timeControl -query -animLayerShowWeight $gPlayBackSlider`;
+
+			menuItem -ltVersion 2017 -label (uiRes("m_TimeSliderMenu.kTLAnimLayerFilterFromLayerEditor"))
+				-radioButton ($animLayerFilterOptions == "animLayerEditor")
+				-command ("timeControl -edit -animLayerFilterOptions animLayerEditor $gPlayBackSlider;\n" + $saveOptionVarsCommand + ";")
+				animLayerFilterAnimLayerEditorItem;
+			menuItem -ltVersion 2017 -label (uiRes("m_TimeSliderMenu.kTLAnimLayerFilterAllAffecting"))
+				-radioButton ($animLayerFilterOptions == "allAffecting")
+				-command ("timeControl -edit -animLayerFilterOptions allAffecting $gPlayBackSlider;\n" + $saveOptionVarsCommand + ";")
+				animLayerFilterAllAffectingItem;
+			menuItem -ltVersion 2017 -label (uiRes("m_TimeSliderMenu.kTLAnimLayerFilterActive"))
+				-radioButton ($animLayerFilterOptions == "active")
+				-command ("timeControl -edit -animLayerFilterOptions active $gPlayBackSlider;\n" + $saveOptionVarsCommand + ";")
+				animLayerFilterAllActiveItem;
+			menuItem -ltVersion 2017 -label (uiRes("m_TimeSliderMenu.kTLAnimLayerFilterSelected"))
+				-radioButton ($animLayerFilterOptions == "selected")
+				-command ("timeControl -edit -animLayerFilterOptions selected $gPlayBackSlider;\n" + $saveOptionVarsCommand + ";")
+				animLayerFilterSelectedItem;			    
+			menuItem -ltVersion 2017 -label (uiRes("m_TimeSliderMenu.kTLAnimLayerFilterActiveAndSelected"))
+				-radioButton ($animLayerFilterOptions == "activeAndSelected")
+				-command ("timeControl -edit -animLayerFilterOptions activeAndSelected $gPlayBackSlider;\n" + $saveOptionVarsCommand + ";")
+				animLayerFilterActiveAndSelectedItem;			    			    
+			
+			menuItem -divider true;
+			
+			menuItem -ltVersion 2017 -label (uiRes("m_TimeSliderMenu.kTLShowAnimLayerWeight")) 
+			-checkBox ($showAnimLayerWeight == 1)
+			-command ("timeControl -edit -animLayerShowWeight #1 " + $gPlayBackSlider)
+			tlShowAnimLayerWeightItem;			    		    
+
+            setParent -m ..;
+
+		menuItem -label (uiRes("m_TimeSliderMenu.kPlaybackLooping"))  
+			-subMenu true -tearOff yes 
+			playbackLoopItem;
+		string $looping = `playbackOptions -q -loop`;
+
+			menuItem -label (uiRes("m_TimeSliderMenu.kOnce"))
+				-cb ($looping == "once")
+				-command "evalEcho playbackOptions -loop \"once\""
+				-annotation (uiRes("m_TimeSliderMenu.kOnceAnnot")) 
+				playbackLoopOnceItem;
+            menuItem -label (uiRes("m_TimeSliderMenu.kOscillate"))
+				-cb ($looping == "oscillate")				
+				-command "evalEcho playbackOptions -loop \"oscillate\""
+				-annotation (uiRes("m_TimeSliderMenu.kOscillateAnnot")) 
+				playbackLoopOscillateItem;
+            menuItem -label (uiRes("m_TimeSliderMenu.kContinuous"))
+				-cb ($looping == "continuous")				
+				-command "evalEcho playbackOptions -loop  \"continuous\"" 
+				-annotation (uiRes("m_TimeSliderMenu.kContinuousAnnot")) 
+			playbackLoopContinuousItem;
+            
+            scriptJob -permanent -parent playbackLoopItem -event playbackModeChanged "updatePlaybackLoopingMenu";
+            
+            setParent -m ..;
+			  
+		menuItem -label (uiRes("m_TimeSliderMenu.kSetRange"))  -subMenu true -tearOff yes playbackRangeItem;
+
+			menuItem -label (uiRes("m_TimeSliderMenu.kStartEnd"))  -command "evalEcho setPlaybackRangeToStartEnd" 
+				-annotation (uiRes("m_TimeSliderMenu.kStartEndAnnot")) 
+				playbackRangeStartEndItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kMinMax"))  -command "evalEcho setPlaybackRangeToMinMax" 
+				-annotation (uiRes("m_TimeSliderMenu.kMinMaxAnnot")) 
+				playbackRangeMinMaxItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kSelected"))  -command "evalEcho setPlaybackRangeToHighlight" 
+				-annotation (uiRes("m_TimeSliderMenu.kSelectedAnnot")) 
+				playbackRangeHighlightItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kEnabledClips"))  -command "evalEcho setPlaybackRangeToEnabledClips"
+				-annotation (uiRes("m_TimeSliderMenu.kEnabledClipsAnnot")) 
+				playbackRangeEnabledClipsItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kSound"))  -command "evalEcho setPlaybackRangeToSound" 
+				-annotation (uiRes("m_TimeSliderMenu.kSoundAnnot")) 
+				playbackRangeSoundItem;
+			menuItem -label (uiRes("m_TimeSliderMenu.kPrefs"))  -command "evalEcho setPlaybackRangeToPrefs" 
+				-annotation (uiRes("m_TimeSliderMenu.kPrefsAnnot")) 
+				playbackRangePrefsItem;
+
+			setParent -m ..;
+            
+        //
+        // Create the time display mode menu
+        // and attach a scripJob to listen "timeUnitChanged" event
+        //
+        $timeDisplayMode = `animDisplay -q -timeCode`;
+        menuItem -label (uiRes("m_TimeSliderMenu.kTimeDisplay"))  -subMenu true -tearOff yes timeDisplayItem;    
+            radioMenuItemCollection;
+            menuItem -label (uiRes("m_TimeSliderMenu.kTimeDisplayFrame"))
+				-radioButton ($timeDisplayMode == "frame")
+				-command ("animDisplay -e -timeCode frame;")
+				timeDisplayFrameItem;
+
+            menuItem -label (uiRes("m_TimeSliderMenu.kTimeDisplayTimeCode"))
+				-radioButton ($timeDisplayMode == "fulltimecode")
+				-command ("animDisplay -e -timeCode fulltimecode;")
+				timeDisplayTimeCodeItem;
+
+            menuItem -label (uiRes("m_TimeSliderMenu.kTimeDisplayTimeCodeOnSliderAndPlayRange"))
+				-radioButton ($timeDisplayMode == "timecode")
+				-command ("animDisplay -e -timeCode timecode;")
+				timeDisplayTimeCodeOnSliderAndPlayRangeItem;         
+            
+            scriptJob -permanent -parent timeDisplayItem -event timeUnitChanged "timeSliderUpdateTimeDisplayMenu";
+                     
+			setParent -m ..;
+
+			menuItem -label (uiRes("m_TimeSliderMenu.kSteppedPreview"))
+				-checkBox `playbackOptions -q -blockingAnim`
+				-command "playbackOptions -edit -blockingAnim #1 "
+				-annotation (uiRes("m_TimeSliderMenu.kSteppedPreviewAnnot"))
+				steppedPreviewItem;
+
+            menuItem -label (uiRes("m_TimeSliderMenu.kAutoSnapOptionMenu"))
+                    -checkBox `optionVar -q scaleKeyAutoSnap`
+                    -command "optionVar -intValue scaleKeyAutoSnap #1"
+                    -annotation (uiRes("m_TimeSliderMenu.kAutoSnapKeysAnnotation"))
+                    -version "2020"
+                    autoSnapItem;
+
+		menuItem -edit -command "evalEcho timeSliderCutKey" timeSliderCutKeyItem;
+		menuItem -edit -command "evalEcho timeSliderCopyKey" timeSliderCopyKeyItem;
+		menuItem -edit -command "evalEcho \"timeSliderPasteKey false\"" timeSliderPasteItem;
+		menuItem -edit -command "evalEcho \"timeSliderPasteKey true\"" timeSliderPasteConnectItem;
+		menuItem -edit -command "evalEcho timeSliderClearKey" timeSliderClearKeyItem;
+
+		menuItem -edit -command "evalEcho timeSliderSnapKey" timeSliderSnapKeyItem;
+		menuItem -edit -command "evalEcho \"timeSliderEditKeys makeKey\"" timeSliderMakeKeyItem;
+		menuItem -edit -command "evalEcho \"timeSliderEditKeys makeBreakdown\"" timeSliderMakeBreakdownItem;
+		menuItem -edit -command "evalEcho \"timeSliderEditKeys addInbetween\"" timeSliderAddInbetweenItem;
+		menuItem -edit -command "evalEcho \"timeSliderEditKeys removeInbetween\"" timeSliderRemoveInbetweenItem;
+
+		menuItem -edit -command "evalEcho \"timeSliderSetTangent spline\"" timeSliderSplineItem;
+		menuItem -edit -command "evalEcho \"timeSliderSetTangent linear\"" timeSliderLinearItem;
+		menuItem -edit -command "evalEcho \"timeSliderSetTangent clamped\"" timeSliderClampedItem;
+		menuItem -edit -command "evalEcho \"timeSliderSetTangent step\"" timeSliderSteppedItem;
+		menuItem -edit -command "evalEcho \"timeSliderSetTangent flat\"" timeSliderFlatItem;
+		menuItem -edit -command "evalEcho \"timeSliderSetTangent plateau\"" timeSliderPlateauItem;		
+		menuItem -edit -command "evalEcho \"timeSliderSetTangent auto\"" timeSliderAutoItem;		
+
+		string $soundMenu = `menuItem -label (uiRes("m_TimeSliderMenu.kSoundMenu")) 
+			-subMenu true -allowOptionBoxes true -tearOff yes -version "2020"`;
+        createSoundPopupMenu $soundMenu;
+
+		setParent -m ..;
+
+		menuItem -label (uiRes("m_TimeSliderMenu.kPlayblast"))  
+			-command "performPlayblast 3" 
+			-annotation (uiRes("m_TimeSliderMenu.kPlayblastAnnot")) 
+			timeSliderPlayblastItem;
+			menuItem -optionBox true 
+				-annotation (uiRes("m_TimeSliderMenu.kPlayblastOptionsAnnot"))
+				-command "performPlayblast 4" 
+				timeSliderPlayblastOptionItem;
+	}
+
+	string $whichKeys = `timeControl -q -showKeys $gPlayBackSlider`;
+	string $whichFrames = `timeControl -q -showGreaseFrames $gPlayBackSlider`;
+
+	if( $whichKeys == "none" && $whichFrames == "none" ) {
+		menuItem -edit -enable false timeSliderCutKeyItem;
+		menuItem -edit -enable false timeSliderCopyKeyItem;
+		menuItem -edit -enable false timeSliderPasteKeyItem;
+		menuItem -edit -enable false timeSliderClearKeyItem;
+		menuItem -edit -enable false timeSliderSnapKeyItem;
+		menuItem -edit -enable false timeSliderKeysItem;
+		menuItem -edit -enable false timeSliderTangentsItem;
+	} else {
+		menuItem -edit -enable true timeSliderCutKeyItem;
+		menuItem -edit -enable true timeSliderCopyKeyItem;
+		menuItem -edit -enable true timeSliderPasteKeyItem;
+		menuItem -edit -enable true timeSliderClearKeyItem;
+		menuItem -edit -enable true timeSliderSnapKeyItem;
+		menuItem -edit -enable true timeSliderKeysItem;
+		menuItem -edit -enable true timeSliderTangentsItem;
+	}
+
+	menuItem -e -checkBox `playbackOptions -q -blockingAnim`
+				steppedPreviewItem;
+
+    menuItem -e -checkBox `optionVar -q scaleKeyAutoSnap` autoSnapItem;
+	
+	
+	float $speed = `playbackOptions -q -playbackSpeed`;
+	float $maxSpeed = `playbackOptions -q -maxPlaybackSpeed`;
+	string $displayTicks = `timeControl -q -sk $gPlayBackSlider`;
+	string $displayFrames = `timeControl -q -showGreaseFrames $gPlayBackSlider`;
+		
+	menuItem -e -radioButton ($speed == 1) playbackRealtimeItem;
+	menuItem -e -radioButton ($speed == 0 && $maxSpeed == 0)	playbackFreeItem;
+	menuItem -e -radioButton ($speed == 0 && $maxSpeed == 1) playbackPefRealtimeItem;
+	
+	menuItem -e -cb ($displayTicks == "active") keyDisplayActiveItem;
+	menuItem -e -cb ($displayTicks == $gChannelBoxName) keyDisplayChannelBoxItem;
+	menuItem -e -cb ($displayTicks == "none") keyDisplayNoneItem;
+
+	menuItem -e -cb ($displayFrames == "none") timeSliderNoneCameraGreasePencilItem;
+	menuItem -e -cb ($displayFrames == "active" ) timeSliderActiveCameraGreasePencilItem;
+	menuItem -e -cb ($displayFrames == "all") timeSliderAllCameraGreasePencilItem;
+}
+
+
+global proc TimeSliderMenu( string $parent )
+{
+	string $menu =`popupMenu -aob true -b 3 -mm 0 -p $parent TimeSliderMenu`;
+	popupMenu -e -pmc ("updateTimeSliderMenu " + $menu ) $menu;
+
+	setParent -m ..;
+}
+
+
+//
+// Update the time display mode menu
+//
+global proc timeSliderUpdateTimeDisplayMenu()
+{
+    $timeDisplayMode = `animDisplay -q -timeCode`;
+    menuItem -e -radioButton ($timeDisplayMode == "frame") timeDisplayFrameItem;
+    menuItem -e -radioButton ($timeDisplayMode == "fulltimecode") timeDisplayTimeCodeItem;
+    menuItem -e -radioButton ($timeDisplayMode == "timecode") timeDisplayTimeCodeOnSliderAndPlayRangeItem;
+}
+
+
+global proc updatePlaybackLoopingMenu()
+{
+    string $looping = `playbackOptions -q -loop`;
+    
+	menuItem -e -cb ($looping == "once") playbackLoopOnceItem;
+	menuItem -e -cb ($looping == "oscillate") playbackLoopOscillateItem;
+	menuItem -e -cb ($looping == "continuous") playbackLoopContinuousItem;    
+}
+
+

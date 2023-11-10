@@ -1,0 +1,214 @@
+{
+    "menuName": "Rigging",
+    "menuItems":
+    [
+        {
+            "type":     "action",
+            "label":    "Actor Manager",
+            "icon":     "ActorManagerTool\\ActorManager.png",
+            "module":   "ActorManagerTool",
+            "action":   "show"
+        },
+        
+        {
+            "type":     "action",
+            "label":    "Actor Exporter",
+            "icon":     "ExporterActor\\ExporterActor.png",
+            "module":   "ExporterActor",
+            "action":   "show"
+        },
+        
+        {
+            "type":     "separator"
+        },
+        
+        {
+            "type":     "action",
+            "label":    "Create First Actor",
+            "module":   "ActorManagerTool.lib.MayaUtils",
+            "action":   "CreateFirstActor"
+        },
+        
+        {
+            "type":     "separator",
+            "label":    "Skinning"
+        },
+
+        {
+            "type":     "action",
+            "label":    "Reset Skin",
+            "module":   "RigUtils",
+            "action":   "ResetBindTMs"
+        },
+        
+        {
+            "type":     "separator"
+        },
+        
+        {
+            "type":     "action",
+            "label":    "Skin Influences Checker",
+            "module":   "CheckSkinInfluences.Window",
+            "action":   "show"
+        },
+
+        {
+            "type":     "action",
+            "label":    "Skinning Tools",
+            "module":   "skinningToolMSE",
+            "action":   "open"
+        },
+        
+        {
+            "type":     "subMenu",
+            "menuName": "Skin",
+            "floatable": true,
+            "menuItems":
+            [
+                {
+                    "type":     "action",
+                    "label":    "Save",
+                    "tooltip":  "Add each selection's SkinCluster related to Maya var ALT_SKIN_CLUSTER_SAVED.",
+                    "module":   "RigUtils.Skinning",
+                    "action":   "SaveSkin"
+                },
+
+                {
+                    "type":     "action",
+                    "label":    "Save and Unbind",
+                    "tooltip":  "Save and unbind selection's SkinCluster.",
+                    "module":   "RigUtils.Skinning",
+                    "action":   "SaveAndUnbindSkin"
+                },
+                
+                {
+                    "type":     "action",
+                    "label":    "Load and Bind",
+                    "tooltip":  "Rebind selection's saved SkinCluster.",
+                    "module":   "RigUtils.Skinning",
+                    "action":   "BindSavedSkin"
+                },
+
+                {
+                    "type":     "separator"
+                },
+
+                {
+                    "type":     "action",
+                    "label":    "Export",
+                    "tooltip":  "Exports .json selection's SkinCluster related.",
+                    "module":   "RigUtils.Skinning",
+                    "action":   "ExportSkin"
+                },
+
+                {
+                    "type":     "action",
+                    "label":    "Import",
+                    "tooltip":  "Import .json SkinCluster. Creates if di not exists.",
+                    "module":   "RigUtils.Skinning",
+                    "action":   "ImportSkin"
+                }
+            ]
+        },
+
+        {
+            "type":     "separator",
+            "label":    "Skeleton"
+        },
+        
+        {
+            "type":     "action",
+            "label":    "Rebuild Unique Bind Pose",
+            "module":   "RigUtils",
+            "action":   "RebuildUniqueDagPose"
+        },
+
+        {
+            "type":     "separator",
+            "label":    "Shapes"
+        },
+
+        {
+            "type":     "action",
+            "label":    "Convert to Point Locator",
+            "icon":     "",
+            "module":   "RigUtils",
+            "action":   "ConvertSelectionToPointLocator"
+        },
+
+        {
+            "type":     "action",
+            "label":    "Color Item Editor",
+            "icon":     "",
+            "module":   "ColorItemEditor",
+            "action":   "show"
+        },
+
+        {
+            "type":     "action",
+            "label":    "Shape Control Editor",
+            "icon":     "",
+            "module":   "ShapeControlEditor",
+            "action":   "show"
+        },
+
+        {
+            "type":     "separator",
+            "label":    "Controller Tag Manager"
+        },
+
+        {
+            "type":     "action",
+            "label":    "Controller Tag Manager",
+            "icon":     "",
+            "module":   "ControllerTagManager.Window",
+            "action":   "show"
+        },
+
+        {
+            "type":     "separator",
+            "label":    "Rig Checker"
+        },
+
+        {
+            "type":     "action",
+            "label":    "Rig Checker",
+            "icon":     "",
+            "module":   "RigUtils.RigChecker.Window",
+            "action":   "show"
+        },
+
+        {
+            "type":     "separator",
+            "label":    "WIP / Deprecated"
+        },
+        
+        {
+            "type":     "subMenu",
+            "menuName": "WIP / Deprecated",
+            "floatable": true,
+            "menuItems":
+            [                
+                {
+                    "type":     "action",
+                    "label":    "Connection Manager",
+                    "icon":     "",
+                    "module":   "ConnectionManager",
+                    "action":   "show"
+                },
+                
+                {
+                    "type":     "separator"
+                },
+                
+                {
+                    "type":     "action",
+                    "label":    "Model Checker",
+                    "icon":     "",
+                    "module":   "ModelChecker",
+                    "action":   "show"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,219 @@
+{
+    "menuName": "Common",
+    "menuItems":
+    [
+        {
+            "type":     "subMenu",
+            "menuName": "Perforce",
+            "icon":     "Other\\PerforceIcon.png",
+            "menuItems":
+            [
+                {
+                    "type":     "action",
+                    "label":    "Checkout/MarkForAdd Current File",
+                    "module":   "P4.Extra",
+                    "action":   "checkoutCurrentFile"
+                },
+
+                {
+                    "type":     "separator"
+                },
+                
+                {
+                    "type":     "toggle",
+                    "label":    "Enable Checkout When Saving",
+                    "module":   "P4.Extra",
+                    "state":    "CheckOutWhenSaving.isEnabled()",
+                    "toggleFn": "CheckOutWhenSaving.setEnabled",
+                    "updateMenus": true
+                },
+                
+                {
+                    "type":     "toggle",
+                    "label":    "Automatic Checkout When Saving",
+                    "module":   "P4.Extra",
+                    "enabled":  "CheckOutWhenSaving.isEnabled()",
+                    "state":    "CheckOutWhenSaving.isAutomatic(checkParentOption=False)",
+                    "toggleFn": "CheckOutWhenSaving.setAutomatic",
+                    "updateMenus": false
+                },
+
+                {
+                    "type":     "separator"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Enable AutoUpdate",
+                    "tooltip":  "System to automatically update files from Perforce when necessary.",
+                    "module":   "AutoUpdate",
+                    "state":    "isAutoUpdateEnabled()",
+                    "toggleFn": "setAutoUpdateEnabled",
+                    "updateMenus": false
+                },
+
+                {
+                    "type":     "action",
+                    "label":    "Update Tools",
+                    "tooltip":  "Updates the Tools folder on Perforce. May require you to restart Maya.",
+                    "module":   "AutoUpdate.UpdateTools",
+                    "action":   "UpdateTools.updateTools",
+                    "params":
+                    [
+                        "skipIgnored=False"
+                    ]
+                },
+                
+                {
+                    "type":     "action",
+                    "label":    "Update File References",
+                    "tooltip":  "Updates the files referenced on the opened scene.",
+                    "module":   "AutoUpdate.UpdateFileReferences",
+                    "action":   "UpdateFileReferences.updateFileReferences",
+                    "params":
+                    [
+                        "skipIgnored=False"
+                    ]
+                },
+
+                {
+                    "type":     "action",
+                    "label":    "Clear Ignored File Versions",
+                    "tooltip":  "Clears the list of ignored files so the AutoUpdate function will ask you again about updating them.",
+                    "module":   "AutoUpdate.Utils",
+                    "action":   "clearIgnoredFileVersions"
+                }
+            ]
+        },
+
+        {
+            "type":     "separator"
+        },
+
+        {
+            "type":     "action",
+            "label":    "OrganiLayers",
+            "icon":     "OrganiLayers\\OrganiLayersIcon.png",
+            "tooltip":  "Tool for organizing nodes and managing their visibility options",
+            "module":   "OrganiLayers.Window",
+            "action":   "show"
+        },
+
+        {
+            "type":     "separator"
+        },
+
+        {
+            "type":     "subMenu",
+            "menuName": "Create",
+            "menuItems":
+            [
+                {
+                    "type":     "action",
+                    "label":    "Point Locator",
+                    "icon":     "Other\\CreateLocatorIcon.png",
+                    "module":   "maya.cmds",
+                    "action":   "createNode",
+                    "params":
+                    [
+                        "'PointLocator'"
+                    ]
+                },
+
+                {
+                    "type":     "separator"
+                },
+
+                {
+                    "type":     "action",
+                    "label":    "Cinematic Camera (Free)",
+                    "icon":     ":/Camera.png",
+                    "module":   "CinematicEditor.Window",
+                    "action":   "createCamera"
+                },
+
+                {
+                    "type":     "action",
+                    "label":    "Cinematic Camera (Target)",
+                    "icon":     ":/cameraAim.png",
+                    "module":   "CinematicEditor.Window",
+                    "action":   "createCamera",
+                    "params":
+                    [
+                        "targetCamera=True"
+                    ]
+                },
+
+                {
+                    "type":     "separator"
+                },
+
+                {
+                    "type":     "action",
+                    "label":    "Default Light Set",
+                    "icon":     ":/ambientLight.svg",
+                    "module":   "AdvancedMaterial",
+                    "action":   "createDefaultLights"
+                }
+            ]
+        },
+
+        {
+            "type":     "subMenu",
+            "menuName": "Configuration",
+            "icon":     ":/polyGear.png",
+            "menuItems":
+            [
+                {
+                    "type":     "action",
+                    "label":    "Edit Current Tool Snap Values",
+                    "icon":     ":/snapValue.png",
+                    "module":   "maya.cmds",
+                    "action":   "EditCurrentToolSnapValues"
+                }
+            ]
+        },
+
+        {
+            "type":     "separator"
+        },
+
+        {
+            "type":     "action",
+            "label":    "Script Batcher",
+            "tooltip":  "Batch tool to execute a series of scripts on several files.",
+            "module":   "Batcher.ScriptBatcher",
+            "action":   "showBatchWindow"
+        },
+
+        {
+            "type":     "separator"
+        },
+
+        {
+            "type":     "action",
+            "label":    "Project Relative References",
+            "module":   "RelativeReferences",
+            "action":   "show"
+        },
+
+        {
+            "type":     "action",
+            "label":    "Set Default Scene Prefs",
+            "module":   "Utils.Maya.DefaultScenePreferences",
+            "action":   "SetDefaultScenePreferences"
+        },
+
+        {
+            "type":     "separator"
+        },
+
+        {
+            "type":     "action",
+            "label":    "Reload Menus",
+            "module":   "CustomMenu",
+            "action":   "init"
+        }
+
+    ]
+}

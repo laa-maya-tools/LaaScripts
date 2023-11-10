@@ -1,0 +1,8 @@
+Arm:2BonesAdvanced
+Clavicle:1Bone
+Hand:3Bones
+     |    FingerE:3Bones
+     |    FingerD:3Bones
+     |    FingerC:3Bones
+     |    FingerB:3Bones
+     |    FingerA:3Bones

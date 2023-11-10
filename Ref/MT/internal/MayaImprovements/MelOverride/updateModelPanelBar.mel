@@ -1,0 +1,718 @@
+// ===========================================================================
+// Copyright 2021 Autodesk, Inc. All rights reserved.
+//
+// Use of this software is subject to the terms of the Autodesk license
+// agreement provided at the time of installation or download, or which
+// otherwise accompanies this software in either electronic or hard copy form.
+// ===========================================================================
+proc int normalView(string $modelEditor)
+{
+	return ("modelEditor" == `objectTypeUI $modelEditor`);
+}
+
+proc updateShadingGroup(string $modelEditor)
+{
+	string $dispApp = `modelEditor -query -displayAppearance $modelEditor`;
+	int $lights = ("all" == `modelEditor -query -displayLights $modelEditor`);
+	int $shadows = `modelEditor -query -shadows $modelEditor`;
+	int $wos = `modelEditor -query -wireframeOnShaded $modelEditor`;
+	int $text = `modelEditor -query -displayTextures $modelEditor`;
+	int $useDefaultMaterial = `modelEditor -query -useDefaultMaterial $modelEditor`;
+	int $dofPreview = `modelEditor -query -depthOfFieldPreview $modelEditor`;
+	
+	if ("wireframe" == $dispApp)
+	{
+		iconTextCheckBox -e -value 1 WireframeBtn;
+		iconTextCheckBox -e -value 0 ShadedBtn;
+		iconTextCheckBox -e -enable 0 ShadowsBtn;
+	}
+	else if ("smoothShaded" == $dispApp)
+	{
+		iconTextCheckBox -e -value 0 WireframeBtn;
+		iconTextCheckBox -e -value 1 ShadedBtn;
+	}
+
+	if ($lights)
+	{
+		iconTextCheckBox -e -value 1 LightBtn;
+		iconTextCheckBox -e -enable 1 ShadowsBtn;
+	}
+	else
+	{
+		iconTextCheckBox -e -value 0 LightBtn;
+	}
+
+	iconTextCheckBox -e -value $shadows ShadowsBtn;
+	iconTextCheckBox -e -value $wos WireframeOnShadedBtn;
+	iconTextCheckBox -e -value $text TexturedBtn;
+	iconTextCheckBox -e -value $useDefaultMaterial UseDefaultMaterialBtn;
+
+	iconTextCheckBox -e -value $dofPreview DOFBtn;
+}
+
+// ADSK_CLR_MGT_BEGIN
+proc updateColorManagementGroup(string $modelEditor)
+{
+	global string $gViewport2;
+    int $isVisible = (getViewportRenderer($modelEditor) == $gViewport2);
+    
+    iconTextButton -e -visible $isVisible modelEditorExposureIcon;
+    floatField     -e -visible $isVisible modelEditorExposureField;
+    iconTextButton -e -visible $isVisible modelEditorGammaIcon;
+    floatField     -e -visible $isVisible modelEditorGammaField;
+    symbolCheckBox -e -visible $isVisible modelEditorEnableButton;
+    optionMenu     -e -visible $isVisible modelEditorTransformSelOptionMenu;
+
+    // Synchronize the state of the controls with the modelEditor state.
+
+	float $exposure = `modelEditor -q -exposure $modelEditor`;
+	float $gamma    = `modelEditor -q -gamma $modelEditor`;
+    floatField -e -value $exposure modelEditorExposureField;
+    floatField -e -value $gamma    modelEditorGammaField;
+
+    int $cmEnabled = `modelEditor -query -cmEnabled $modelEditor`;
+    symbolCheckBox -e -value $cmEnabled modelEditorEnableButton;
+
+    // Re-build view transform menu, in case it changed.
+    setParent -menu modelEditorTransformSelOptionMenu;
+
+    string $existingMenuItems[] = `optionMenu -q -itemListLong modelEditorTransformSelOptionMenu`;
+    string $menuItem;
+    for ($menuItem in $existingMenuItems) {
+      deleteUI -menuItem $menuItem;
+    }
+
+    string $viewTransformNames[] = `colorManagementPrefs -q -viewTransformNames`;
+    string $viewTransformName;
+    for ($viewTransformName in $viewTransformNames) {
+      menuItem -label $viewTransformName;
+    }
+
+    if (size($viewTransformNames)!=0) {
+      string $vtn = `modelEditor -query -viewTransformName $modelEditor`;
+      optionMenu -e -v $vtn modelEditorTransformSelOptionMenu;
+    }
+
+    int $globalCmEnabled = `colorManagementPrefs -q -cmEnabled`;
+    symbolCheckBox -e -enable $globalCmEnabled modelEditorEnableButton;
+    optionMenu   -e -enable $globalCmEnabled modelEditorTransformSelOptionMenu;
+}
+
+// ADSK_CLR_MGT_END
+
+proc updateRendererQualityGroup(string $modelEditor)
+{
+	int $enableV2Options = false;
+
+	string $currentRenderer = getViewportRenderer($modelEditor);
+	global string $gViewport2;
+	if ($currentRenderer == $gViewport2)
+	{
+		$enableV2Options = true;
+	}
+
+	iconTextCheckBox -e -enable $enableV2Options SSAOBtn;
+	iconTextCheckBox -e -enable $enableV2Options MBBtn;
+	iconTextCheckBox -e -enable $enableV2Options MSAABtn;
+
+	// Enable/disable DOF button
+	int $enableDOF = false;
+	if ($enableV2Options)
+	{
+		string $dispApp = `modelEditor -query -displayAppearance $modelEditor`;
+		if ("smoothShaded" == $dispApp || "flatShaded" == $dispApp)
+		{
+			string $cam = `modelEditor -query -camera $modelEditor`;
+            if (`objExists $cam`) {
+                $enableDOF = `camera -q -depthOfField $cam`;
+            }
+		}
+	}
+
+	iconTextCheckBox -e -enable $enableDOF DOFBtn;
+}
+
+proc updateShadingOptionsGroup(string $modelEditor)
+{
+	iconTextCheckBox -e -value `getAttr hardwareRenderingGlobals.ssaoEnable` SSAOBtn;
+
+	iconTextCheckBox -e -value `getAttr hardwareRenderingGlobals.motionBlurEnable` MBBtn;
+
+	iconTextCheckBox -e -value `getAttr hardwareRenderingGlobals.multiSampleEnable` MSAABtn;
+}
+
+global proc modelPanelBarShadingOptionsCallback(string $btnName, string $modelEditor, string $parent)
+{
+	string $currentParent = `setParent -q`;
+	setParent $parent;
+
+	if ($btnName == "SSAOBtn")
+	{
+		setAttr hardwareRenderingGlobals.ssaoEnable `iconTextCheckBox -q -value $btnName`;
+	}
+	else if ($btnName == "MBBtn")
+	{
+		setAttr hardwareRenderingGlobals.motionBlurEnable `iconTextCheckBox -q -value $btnName`;
+	}
+	else if ($btnName == "MSAABtn")
+	{
+		setAttr hardwareRenderingGlobals.multiSampleEnable `iconTextCheckBox -q -value $btnName`;
+	}
+
+	setParent $currentParent;
+}
+
+global proc modelPanelBarShadingCallback(string $btnName, string $modelEditor, string $parent)
+{
+	if (`modelEditor -q -exists $modelEditor`)
+	{
+		string $currentParent = `setParent -q`;
+		setParent $parent;
+
+		// figure out which icon button is on
+		if ("WireframeBtn" == $btnName)
+		{
+			if (`iconTextCheckBox -q -value WireframeBtn`)
+				modelEditor -edit -displayAppearance "wireframe" -displayLights "default" $modelEditor;
+			else
+				modelEditor -edit -displayAppearance "smoothShaded" -displayLights "default" $modelEditor;
+		}
+		else if ("ShadedBtn" == $btnName)
+		{
+			if (`iconTextCheckBox -q -value ShadedBtn`)
+				modelEditor -edit -displayAppearance "smoothShaded" -displayLights "default" $modelEditor;
+			else
+				modelEditor -edit -displayAppearance "wireframe" -displayLights "default" $modelEditor;
+		}
+		else if ("UseDefaultMaterialBtn" == $btnName)
+		{
+			modelEditor -edit -useDefaultMaterial (`iconTextCheckBox -q -value UseDefaultMaterialBtn`) $modelEditor;
+		}
+		else if ("TexturedBtn" == $btnName)
+		{
+			modelEditor -edit -displayTextures (`iconTextCheckBox -q -value TexturedBtn`) $modelEditor;
+		}
+		else if ("LightBtn" == $btnName)
+		{
+			if (`iconTextCheckBox -q -value LightBtn`)
+				modelEditor -edit -displayLights "all" $modelEditor;
+			else
+				modelEditor -edit -displayLights "default" $modelEditor;
+		}
+		else if ("ShadowsBtn" == $btnName)
+		{
+			modelEditor -edit -shadows (`iconTextCheckBox -q -value ShadowsBtn`) $modelEditor;
+		}
+		else if ("WireframeOnShadedBtn" == $btnName)
+		{
+			modelEditor -edit -wireframeOnShaded (`iconTextCheckBox -q -value WireframeOnShadedBtn`) $modelEditor;
+		}
+		else if ("DOFBtn" == $btnName)
+		{
+			modelEditor -edit -depthOfFieldPreview (`iconTextCheckBox -q -value DOFBtn`) $modelEditor;
+		}
+
+		setParent $currentParent;
+	}
+}
+
+proc modelPanelBarCreateBookmarkPopup(string $parent, string $modelEditor, int $viewType)
+{
+	setParent -menu $parent;
+	popupMenu -edit -deleteAllItems $parent;
+
+    string $camera = `modelEditor -q -camera $modelEditor`;
+    string $bookmarks[] = `listConnections ($camera+".bookmarks")`;
+
+    for ( $item in $bookmarks)
+    {
+        if(`getAttr ($item + ".viewType")` == $viewType) {
+            string $label = $item;
+            if($viewType)
+                $label += (uiRes("m_updateModelPanelBar.kPanZoom"));
+            menuItem -label $label
+                -c ("cameraView -e -animate (`optionVar -q animateRollGotoBookmark`) -camera "+$camera+" -setCamera "+$item);
+        }
+    }
+
+    menuItem -divider true;
+    menuItem -label (uiRes("m_updateModelPanelBar.kCreate2DBookmarks"))
+        -c ("cameraView -addBookmark -bookmarkType 1 -camera " + $camera);
+    menuItem -label (uiRes("m_updateModelPanelBar.kEdit2DBookmarks"))
+        -c ("cameraBookmarkEditor " + $camera);
+
+    int $ipz = `modelEditor -q -ignorePanZoom $modelEditor`;
+    menuItem -label (uiRes("m_updateModelPanelBar.kIgnore2DPanZoom")) -checkBox $ipz
+        -c ("modelEditor -e -ignorePanZoom (" + !$ipz + ") " + $modelEditor);
+}
+
+global proc modelPanelBarCreate3DBookmarkPopup(string $parent, string $modelEditor)
+{
+    modelPanelBarCreateBookmarkPopup($parent, $modelEditor, 0);
+}
+
+global proc modelPanelBarCreateCameraPopup(string $parent, string $modelEditor)
+{
+	setParent -menu $parent;
+	popupMenu -edit -deleteAllItems $parent;
+
+    python("from maya.app.stereo import stereoCameraRig");
+
+	string $modelPanel = `modelEditor -q -panel $modelEditor`;
+
+	string $cameras[] = `listCameras`;
+
+    for ($camera in $cameras)
+	{
+		// Prune out any children of camera rigs.
+		//
+		int $isMono = python("stereoCameraRig.rigRoot('"+$camera+"') == ''");
+		if ($isMono)
+		{
+	        menuItem -l $camera -command ("lookThroughModelPanel "+$camera+" "+$modelPanel);
+		}
+    }
+
+    menuItem -divider true;
+
+    menuItem -label (uiRes("m_updateModelPanelBar.kNewPerspCamera"))
+        -c ("{ string $camera[] = `camera -n persp -homeCommand \"viewSet -p %camera\"`; "+
+            "viewSet -p $camera[0]; "+
+            "lookThroughModelPanel $camera[0] "+$modelPanel+"; }");
+
+    menuItem -label (uiRes("m_updateModelPanelBar.kNewOrthoCamera")) -subMenu true;
+        menuItem -label (uiRes("m_updateModelPanelBar.kFrontOrtho"))
+            -c ("{ string $camera[] = `camera -n front -homeCommand \"viewSet -f %camera\"`; "+
+                "viewSet -f $camera[0]; "+
+                "lookThroughModelPanel $camera[0] "+$modelPanel+"; }");
+        menuItem -label (uiRes("m_updateModelPanelBar.kSideOrtho"))
+            -c ("{ string $camera[] = `camera -n side -homeCommand \"viewSet -s %camera\"`; "+
+                "viewSet -s $camera[0]; "+
+                "lookThroughModelPanel $camera[0] "+$modelPanel+"; }");
+        menuItem -label (uiRes("m_updateModelPanelBar.kTopOrtho"))
+            -c ("{ string $camera[] = `camera -n top -homeCommand \"viewSet -t %camera\"`; "+
+                "viewSet -t $camera[0]; "+
+                "lookThroughModelPanel $camera[0] "+$modelPanel+"; }");
+
+	setParent -menu ..;
+	string $stereoMenu = `menuItem -label (uiRes("m_updateModelPanelBar.kStereoCameras")) -subMenu true`;
+	buildStereoLookthruMenu($stereoMenu, $modelPanel);
+}
+
+global proc modelPanelBarCreateImagePlanePopup(string $parent, string $modelEditor)
+{
+	setParent -menu $parent;
+	popupMenu -edit -deleteAllItems $parent;
+
+	string $modelPanel = `modelEditor -q -panel $modelEditor`;
+	string $cameras[] = `getPanelCamera $modelPanel`;
+	string $cameraShape = "";
+	if (size($cameras))
+		$cameraShape = $cameras[0];
+
+	menuItem -label (uiRes("m_updateModelPanelBar.kImportImage"))
+		 -c ("importImagePlane { \"" + $cameraShape + "\" }");
+
+	menuItem -divider true;
+
+    menuItem -label (uiRes("m_updateModelPanelBar.kImagePlaneDisplayMode")) -subMenu true;
+
+	string $firstImagePlane = "";
+	if ("" != $cameraShape)
+	{
+		string $result[] = `listConnections ($cameraShape + ".imagePlane")`;
+		if (0 != `size($result)`)
+		{
+			$firstImagePlane = $result[0];
+		}
+	}
+
+	if ("" != $firstImagePlane)
+	{
+        menuItem -label (uiRes("m_updateModelPanelBar.kDisplayModeNone"))
+				-c ("setAttr "+$firstImagePlane+".displayMode 0;");
+
+        menuItem -label (uiRes("m_updateModelPanelBar.kDisplayModeOutline"))
+				-c ("setAttr "+$firstImagePlane+".displayMode 1;");
+
+        menuItem -label (uiRes("m_updateModelPanelBar.kDisplayModeRGB"))
+				-c ("setAttr "+$firstImagePlane+".displayMode 2;");
+
+        menuItem -label (uiRes("m_updateModelPanelBar.kDisplayModeRGBA"))
+				-c ("setAttr "+$firstImagePlane+".displayMode 3;");
+
+        menuItem -label (uiRes("m_updateModelPanelBar.kDisplayModeLuminance"))
+				-c ("setAttr "+$firstImagePlane+".displayMode 4;");
+
+        menuItem -label (uiRes("m_updateModelPanelBar.kDisplayModeAlpha"))
+				-c ("setAttr "+$firstImagePlane+".displayMode 5;");
+	}
+	else
+	{
+        menuItem -label (uiRes("m_updateModelPanelBar.kDisplayModeNone")) -enable false;
+
+        menuItem -label (uiRes("m_updateModelPanelBar.kDisplayModeOutline")) -enable false;
+
+        menuItem -label (uiRes("m_updateModelPanelBar.kDisplayModeRGB")) -enable false;
+
+        menuItem -label (uiRes("m_updateModelPanelBar.kDisplayModeRGBA")) -enable false;
+
+        menuItem -label (uiRes("m_updateModelPanelBar.kDisplayModeLuminance")) -enable false;
+
+        menuItem -label (uiRes("m_updateModelPanelBar.kDisplayModeAlpha")) -enable false;
+	}
+
+	menuItem -divider true;
+
+	if ("" != $firstImagePlane)
+	{
+  		menuItem -label ((uiRes("m_updateModelPanelBar.kDeleteImagePlane")) + $firstImagePlane)
+  				-c ("delete " + $firstImagePlane);
+	}
+	else
+	{
+		menuItem -label (uiRes("m_updateModelPanelBar.kDeleteImagePlane")) -enable false;
+	}
+}
+
+global proc modelPanelBarCreate2DBookmarkPopup(string $parent, string $modelEditor)
+{
+    modelPanelBarCreateBookmarkPopup($parent, $modelEditor, 1);
+}
+
+global proc modelPanelBarIsolateSelectPopup(string $parent, string $modelEditor)
+{
+	string $modelPanel = `modelEditor -q -panel $modelEditor`;
+	updateIsolateMenu $parent $modelEditor $modelPanel;
+}
+
+global proc updateCameraGroup(string $modelEditor)
+{
+    int $normalView = normalView($modelEditor);
+	string $camera = `modelEditor -q -camera $modelEditor`;
+    int $camExists = `objExists $camera`;
+    int $panZoomEnabled = ($camExists && `camera -q -panZoomEnabled $camera`);
+
+    iconTextButton -e -enable $normalView ImageplaneBtn;
+    iconTextCheckBox -e -enable $normalView -value $panZoomEnabled PanZoomBtn;
+	string $panel = `modelEditor -q -panel $modelEditor`;
+	int $lock = isCameraLocked($panel);
+	int $enableLockIcon = islookingThroughCamera($panel);
+	iconTextCheckBox -e -enable $enableLockIcon -value $lock LockCameraBtn;
+}
+
+global proc modelPanelBarCameraCallback(string $btnName, string $modelEditor, string $parent)
+{
+	if (`modelEditor -q -exists $modelEditor`)
+	{
+		string $currentParent = `setParent -q`;
+		setParent $parent;
+
+		string $camera = `modelEditor -q -camera $modelEditor`;
+		string $modelPanel = `modelEditor -q -panel $modelEditor`;
+
+		if (`nodeType $camera` == "camera")
+		{
+			string $parents[] = `listRelatives -parent $camera`;
+			$camera = $parents[0];
+		}
+
+		if ("BookmarkBtn" == $btnName)
+		{
+			cameraView -addBookmark -camera $camera;
+		}
+		else if ("CameraBtn" == $btnName)
+		{
+            if ("Maya-DG" == `nodeType -ufeRuntimeName $camera`)
+                eval select `getCameraNode view $camera` `getCameraNode up $camera` $camera;
+            else {
+                string $cmd = "select";
+                $cmd += " \"" + $camera + "\"";
+                eval $cmd;
+            }
+		}
+		else if ("CameraAEBtn" == $btnName)
+		{
+			showPanelCameraEditor $modelPanel;
+		}
+		else if ("LockCameraBtn" == $btnName)
+		{	
+			changeCameraLockStatus $modelPanel;
+		}
+		else if ("ImageplaneBtn" == $btnName)
+		{
+			string $result[];
+			string $cameras[] = `getPanelCamera $modelPanel`;
+			string $cameraShape = "";
+			if (size($cameras))
+				$cameraShape = $cameras[0];
+
+			if ("" == $cameraShape)
+			{
+				string $warnMsg = (uiRes("m_updateModelPanelBar.kNoCameraForImgOp"));
+				warning (`format -s $modelPanel $warnMsg`);
+			}
+			else
+			{
+				$result = `listConnections ($cameraShape + ".imagePlane")`;
+				if (0 == `size($result)`)
+				{
+					string $camList[] = { $cameraShape };
+					importImagePlane $camList;
+				}
+				else if (0 == `getAttr ($result[0] + ".displayMode")`)
+				{
+					setAttr ($result[0] + ".displayMode") 3;
+				}
+				else
+				{
+					setAttr ($result[0] + ".displayMode") 0;
+				}
+			}
+		}
+        else if ("PanZoomBtn" == $btnName)
+        {
+            camera -e -panZoomEnabled (`iconTextCheckBox -q -value PanZoomBtn`) $camera;
+        }
+        else if ("GreasePencilBtn" == $btnName)
+        {
+			createGreasePencilWindow();
+        }
+
+		setParent $currentParent;
+	}
+}
+
+proc updateIsolateSelectGroup(string $modelEditor)
+{
+	int $iso = `modelEditor -q -viewSelected $modelEditor`;
+	iconTextCheckBox -e -value $iso IsolateSelectedBtn;
+}
+
+global proc modelPanelBarIsolateSelectCallback(string $btnName, string $modelEditor, string $parent)
+{
+	if (`modelEditor -q -exists $modelEditor`)
+	{
+		string $currentParent = `setParent -q`;
+		setParent $parent;
+
+		if ("IsolateSelectedBtn" == $btnName)
+		{
+			int $enable = `iconTextCheckBox -q -value IsolateSelectedBtn`;
+			enableIsolateSelect ($modelEditor, $enable);
+		}
+
+		setParent $currentParent;
+	}
+}
+
+global proc updateDecorationsGroup(string $modelEditor)
+{
+	int $normalView = normalView($modelEditor);
+	string $camera = `modelEditor -q -camera $modelEditor`;
+    int $camExists = `objExists $camera`;
+	int $displayRes = ($camExists && `camera -q -displayResolution $camera`);
+	int $displayFilmGate = ($camExists && `camera -q -displayFilmGate $camera`);
+	int $displayGateMask = ($camExists && `camera -q -displayGateMask $camera`);
+	int $aGateIsOn = ($displayRes || $displayFilmGate);
+
+	iconTextCheckBox -e -enable $normalView -value $displayRes ResolutionGateBtn;
+	iconTextCheckBox -e -enable $normalView -value $displayFilmGate FilmGateBtn;
+	iconTextCheckBox -e -enable ($aGateIsOn && $normalView) -value $displayGateMask GateMaskBtn;
+
+	iconTextCheckBox -e -enable $normalView -value ($camExists && `camera -q -displayFieldChart $camera`) FieldChartBtn;
+	iconTextCheckBox -e -enable $normalView -value ($camExists && `camera -q -displaySafeTitle $camera`) SafeTitleBtn;
+	iconTextCheckBox -e -enable $normalView -value ($camExists && `camera -q -displaySafeAction $camera`) SafeActionBtn;
+	iconTextCheckBox -e -value (`modelEditor -q -grid $modelEditor`) GridBtn;
+}
+
+global proc modelPanelBarDecorationsCallback(string $btnName, string $modelEditor, string $parent)
+{
+	if (`modelEditor -q -exists $modelEditor`)
+	{
+		string $camera = `modelEditor -q -camera $modelEditor`;
+
+		string $currentParent = `setParent -q`;
+		setParent $parent;
+
+		if ("GridBtn" == $btnName)
+		{
+			modelEditor -e -grid (`iconTextCheckBox -q -value GridBtn`) $modelEditor;
+		}
+		else if ("ResolutionGateBtn" == $btnName)
+		{
+			if (`iconTextCheckBox -q -value ResolutionGateBtn`)
+			{
+				camera -e -displayResolution on -displayFilmGate off -overscan 1.3 $camera;
+			}
+			else
+			{
+				camera -e -displayResolution off -overscan 1.0 $camera;
+			}
+		}
+		else if ("FilmGateBtn" == $btnName)
+		{
+			if (`iconTextCheckBox -q -value FilmGateBtn`)
+			{
+				camera -e -displayFilmGate on -displayResolution off -overscan 1.3 $camera;
+			}
+			else
+			{
+				camera -e -displayFilmGate off -overscan 1.0 $camera;
+			}
+		}
+		else if ("GateMaskBtn" == $btnName)
+		{
+			camera -e -displayGateMask (`iconTextCheckBox -q -value GateMaskBtn`) $camera;
+		}
+		else if ("FieldChartBtn" == $btnName)
+		{
+			camera -e -displayFieldChart (`iconTextCheckBox -q -value FieldChartBtn`) $camera;
+		}
+		else if ("SafeTitleBtn" == $btnName)
+		{
+			camera -e -displaySafeTitle (`iconTextCheckBox -q -value SafeTitleBtn`) $camera;
+		}
+		else if ("SafeActionBtn" == $btnName)
+		{
+			camera -e -displaySafeAction (`iconTextCheckBox -q -value SafeActionBtn`) $camera;
+		}
+
+		setParent $currentParent;
+	}
+}
+
+proc int hqRendering(string $modelEditor)
+{
+	global string $gHighQualityViewport;
+	return ($gHighQualityViewport == `modelEditor -query -rendererName $modelEditor`);
+}
+
+global proc modelPanelBarHighQualityOptionsPopup(string $parent, string $modelEditor)
+{
+	setParent -menu $parent;
+	popupMenu -edit -deleteAllItems $parent;
+
+	int $isHQ = hqRendering($modelEditor);
+
+    menuItem -label (uiRes("m_updateModelPanelBar.kHQOptions")) -c ("hwRendererOptions 1 " + $modelEditor) -enable $isHQ;
+
+}
+
+global proc modelPanelBarGridOptionsPopup(string $parent, string $modelEditor)
+{
+	setParent -menu $parent;
+	popupMenu -edit -deleteAllItems $parent;
+
+	menuItem -label (uiRes("m_updateModelPanelBar.kToggleMainGrid"))
+			-command ("ToggleGrid")
+			-checkBox (!`grid -q -toggle`);
+    menuItem -label (uiRes("m_updateModelPanelBar.kGridOptions")) -c ("GridOptions");
+}
+
+global proc modelPanelBarToggleButtonCallback(string $parent, int $index)
+{
+	string $currentParent = `setParent -q`;
+	setParent $parent;
+
+	string $children[] = `flowLayout -q -childArray $parent`;
+	int $isVisibleNow = `control -q -manage $children[$index+1]`;
+	int $needToReattach = ($index + 2 < size($children));
+
+	if ($isVisibleNow)
+	{
+		iconTextButton -edit -i1 ShortCloseBar.png $children[$index];
+		control -e -manage 0 $children[$index+1];
+	}
+	else
+	{
+		iconTextButton -edit -i1 ShortOpenBar.png $children[$index];
+		control -e -manage 1 $children[$index+1];
+	}
+
+	setParent $currentParent;
+}
+
+proc updateXRayGroup(string $modelEditor)
+{
+	iconTextCheckBox -e -value (`modelEditor -q -xray $modelEditor`) XRayBtn;
+	iconTextCheckBox -e -value (`modelEditor -q -activeComponentsXray $modelEditor`) XRayActiveComponentsBtn;
+	iconTextCheckBox -e -value (`modelEditor -q -jointXray $modelEditor`) XRayJointsBtn;
+}
+
+global proc modelPanelBarXRayCallback(string $btnName, string $modelEditor, string $parent)
+{
+	if (`modelEditor -q -exists $modelEditor`)
+	{
+		string $currentParent = `setParent -q`;
+		setParent $parent;
+
+		if ("XRayBtn" == $btnName)
+		{
+			modelEditor -edit -xray (`iconTextCheckBox -q -value XRayBtn`) $modelEditor;
+		}
+		else if ("XRayJointsBtn" == $btnName)
+		{
+			modelEditor -edit -jointXray (`iconTextCheckBox -q -value XRayJointsBtn`) $modelEditor;
+		}
+		else if ("XRayActiveComponentsBtn" == $btnName)
+		{
+			modelEditor -edit -activeComponentsXray (`iconTextCheckBox -q -value XRayActiveComponentsBtn`) $modelEditor;
+		}
+
+		setParent $currentParent;
+	}
+}
+
+global proc updateModelPanelBarV2Settings()
+{
+	// Most of the other options on the toolbar are driven by changes to the
+	// modelPanel/Editor, but these get updated by a scriptJob attached to the 
+	// render globals.  In this case we need to loop through and update all
+	// panels at the same time.
+	string $currentParent = `setParent -q`;
+
+	string $modelPanels[] = `getPanel -type "modelPanel"`;
+	for ($panel in $modelPanels)
+	{
+		string $bl = `modelPanel -q -barLayout $panel`;
+		if ("" != $bl)
+		{
+			setParent $bl;
+			updateShadingOptionsGroup($panel);
+		}
+	}
+
+	setParent $currentParent;
+}
+
+global proc updateModelPanelBar(string $modelEditor)
+{
+	if (!`modelEditor -q -exists $modelEditor`)
+		return;
+
+	string $parent = `modelEditor -q -panel $modelEditor`;
+	if (!`panel -q -exists $parent`)
+		return;
+
+	if ("" == `panel -q -control $parent`)
+		return;
+
+	string $currentParent = `setParent -q`;
+	setParent $parent;
+
+	updateShadingGroup($modelEditor);
+
+        // ADSK_CLR_MGT_BEGIN
+        updateColorManagementGroup($modelEditor);
+        // ADSK_CLR_MGT_END
+
+	updateIsolateSelectGroup($modelEditor);
+	updateXRayGroup($modelEditor);
+	updateRendererQualityGroup($modelEditor);
+	updateShadingOptionsGroup($modelEditor);
+	updateDecorationsGroup($modelEditor);
+	updateCameraGroup($modelEditor);
+
+	setParent $currentParent;
+}

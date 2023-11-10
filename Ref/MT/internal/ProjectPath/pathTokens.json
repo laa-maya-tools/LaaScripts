@@ -1,0 +1,18 @@
+{
+    "Tokens": {
+        "3D": "3D",
+        "FX": "FX",
+        "Actors": "Assets\\actors",
+        "Anims": "animations",
+        "Cutscenes": "Assets\\cutscenes",
+        "Game": "GAME",
+        "Models": "models",
+        "3DActors": "{Prj3D}\\{Actors}",
+        "3DCuts": "{Prj3D}\\{Cutscenes}",
+        "GameActors": "{PrjGame}\\{Actors}",
+        "GameCuts": "{PrjGame}\\{Cutscenes}",
+        "Prj3D": "{PrjRoot}\\{3D}",
+        "PrjGame": "{PrjRoot}\\{Game}",
+        "PrjBranch": "{PrjRoot}\\{Branch}"
+    }
+}

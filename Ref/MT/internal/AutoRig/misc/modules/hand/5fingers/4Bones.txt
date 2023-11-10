@@ -1,0 +1,5 @@
+FingerA:fkThreeBones
+FingerB:fkThreeBones
+FingerC:fkThreeBones
+FingerD:fkThreeBones
+FingerE:fkThreeBones

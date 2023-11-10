@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CinematicEditorMainWindow</class>
+ <widget class="QWidget" name="CinematicEditorMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>649</width>
+    <height>430</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="upperLayout">
+     <item>
+      <widget class="QGroupBox" name="pathGroupBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>Path</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLineEdit" name="cutscenePathText">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="browseCutscenePathButton">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Selects the &lt;span style=&quot; font-weight:600;&quot;&gt;Path&lt;/span&gt; for the cutscene.&lt;/p&gt;&lt;p&gt;The path identifies the cutscene and it's files will be exported under this path.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Browse</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="masterSlaveGroupBox">
+       <property name="title">
+        <string>Master-Slave</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QToolButton" name="masterSlaveButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="popupMode">
+           <enum>QToolButton::MenuButtonPopup</enum>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextOnly</enum>
+          </property>
+          <property name="autoRaise">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QSplitter" name="shotsActorsSplitter">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="childrenCollapsible">
+      <bool>false</bool>
+     </property>
+     <widget class="QGroupBox" name="shotsGroupBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>70</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Shots</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QWidget" name="shotTableContainer" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;List of the Cutscene Shots.&lt;/p&gt;&lt;p&gt;The list displays each Shot's color, name, camera and range. To change the shot's color, name and camera, use the&lt;span style=&quot; font-style:italic;&quot;&gt; Right-Click&lt;/span&gt; menu. You can change the shot's range using the two spinners next to it.&lt;/p&gt;&lt;p&gt;The &lt;span style=&quot; font-weight:600;&quot;&gt;checkmark&lt;/span&gt; left to each Shot indicates if you want to&lt;span style=&quot; font-weight:600;&quot;&gt; export it on this session&lt;/span&gt;. This is temporary and will be reset when you reopen the scene. Use it to quickly export just a subset of shots.&lt;/p&gt;&lt;p&gt;If you want to permanently&lt;span style=&quot; font-weight:600;&quot;&gt; disable a Shot&lt;/span&gt; so it is never exported, select the &lt;span style=&quot; font-style:italic;&quot;&gt;Disable Shot&lt;/span&gt; option on the&lt;span style=&quot; font-style:italic;&quot;&gt; Right-Click&lt;/span&gt; menu.&lt;/p&gt;&lt;p&gt;Use the &lt;span style=&quot; font-style:italic;&quot;&gt;Add Shot &lt;/span&gt;button to create a new Shot.&lt;/p&gt;&lt;p&gt;You can reorder the Shots by dragging them with the cursor. Their order on the list will be their order on the Cutscene.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="shotsLowerButtonsLayout">
+         <item>
+          <widget class="QPushButton" name="addShotButton">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Creates a &lt;span style=&quot; font-weight:600;&quot;&gt;new Shot&lt;/span&gt; and adds it to the Cutscene.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Add Shot</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="shotsLowerButtonsSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="renameShotsButton">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Rename each shot to&lt;span style=&quot; font-weight:600;&quot;&gt; match the shot number&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;The first shot will be named &lt;span style=&quot; font-style:italic;&quot;&gt;S001&lt;/span&gt;,the second one will be&lt;span style=&quot; font-style:italic;&quot;&gt; S002&lt;/span&gt;, and son on.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Rename Shots</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="renameCamerasButton">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Rename each shot Camera to&lt;span style=&quot; font-weight:600;&quot;&gt; match the shot number&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Shot 1's camera will be named &lt;span style=&quot; font-style:italic;&quot;&gt;DC_Cam001&lt;/span&gt;, shot 2's will be&lt;span style=&quot; font-style:italic;&quot;&gt; DC_Cam002&lt;/span&gt;, and son on.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Rename Cameras</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="actorsGroupBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>30</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Actors</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <layout class="QHBoxLayout" name="actorsUpperButtonsLayout">
+         <item>
+          <widget class="QPushButton" name="mergeActorButton">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Merges a new Actor reference and registers it into the Cutscene.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Merge Actor</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="addActorButton">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers an Actor into the Cutscene. The actor must have been previously referenced.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;WARNING&lt;/span&gt;: Unloaded Actor references will not be displayed on the list!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Register Actor</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="actorsUpperButtonsLayoutSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="actorListContainer" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;List of the Cutscene Actors.&lt;/p&gt;&lt;p&gt;Double click an Actor to change their export state on the selected shots. The Actor color indicates their export state:&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 8px; margin-right: 0px; -qt-list-indent: 0;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#00c800;&quot;&gt;Green&lt;/span&gt;: The actor &lt;span style=&quot; font-weight:600;&quot;&gt;will be exported&lt;/span&gt; on the selected shots.&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#c80000;&quot;&gt;Red&lt;/span&gt;: The actor &lt;span style=&quot; font-weight:600;&quot;&gt;will not be exported&lt;/span&gt; on the selected shots.&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#d4d400;&quot;&gt;Yellow&lt;/span&gt;: The actor &lt;span style=&quot; font-weight:600;&quot;&gt;will be exported on some of the selected shots&lt;/span&gt;, but not all of them.&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff6400;&quot;&gt;Orange&lt;/span&gt;: There is a &lt;span style=&quot; font-weight:600;&quot;&gt;remapping conflict&lt;/span&gt; on one of the selected shots. Two or more actors are marked &lt;span style=&quot; color:#00c800;&quot;&gt;Green&lt;/span&gt; but are remapped to the same Actor.&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#c8c8c8;&quot;&gt;White&lt;/span&gt;: There are&lt;span style=&quot; font-weight:600;&quot;&gt; no shots selected&lt;/span&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;The &lt;span style=&quot; font-weight:600;&quot;&gt;checkmark&lt;/span&gt; left to an Actor indicates if you want to&lt;span style=&quot; font-weight:600;&quot;&gt; export it on this session&lt;/span&gt;. This is temporary and will be reset when you reopen the scene. Use it to quickly export just a subset of actors.&lt;/p&gt;&lt;p&gt;Use the &lt;span style=&quot; font-style:italic;&quot;&gt;Register Actor &lt;/span&gt;button to register an Actor.&lt;/p&gt;&lt;p&gt;You can reorder the actors by dragging them with the cursor. You can also reorder them alfabetically using the &lt;span style=&quot; font-style:italic;&quot;&gt;Reorder A-Z&lt;/span&gt; button. Their order is only esthetical and will not affect the exported Cutscene.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="actorsLowerButtonsLayout">
+         <item>
+          <widget class="QPushButton" name="ignoreLayersButton">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Shows a window where you can select which Animation Layers will be exported.&lt;/p&gt;&lt;p&gt;When exporting an animation, all Animation Layers will be enabled by default. Use this tool if you don't want a layer to be enabled when exporting.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Layers to Export</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="actorsLowerButtonsSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="reorderActorsButton">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reorder the cutscene actors alfabetically.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Reorder A-Z</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="lowerLayout">
+     <item>
+      <widget class="QGroupBox" name="exportGroupBox">
+       <property name="title">
+        <string>Export</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QCheckBox" name="exportActorsCheck">
+          <property name="text">
+           <string>Actors</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="exportCamerasCheck">
+          <property name="text">
+           <string>Cameras</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="exportShotInfoCheck">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="text">
+           <string>Shot Info</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="exportButton">
+          <property name="text">
+           <string>Export</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="playblastGroupBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>Playblast</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="playblastButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>128</width>
+            <height>28</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Playblast</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

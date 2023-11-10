@@ -1,0 +1,86 @@
+{
+ "axisShape1": {
+  "overrideColor": 13, 
+  "overrideRGBColors": false, 
+  "periodic": false, 
+  "overrideEnabled": true, 
+  "knot": [
+   0.0, 
+   1.0
+  ], 
+  "degree": 1, 
+  "point": [
+   [
+    0.0, 
+    0.0, 
+    0.0
+   ], 
+   [
+    10.0, 
+    0.0, 
+    0.0
+   ]
+  ], 
+  "overrideColorRGB": [
+   0.0, 
+   0.0, 
+   0.0
+  ]
+ }, 
+ "axisShape2": {
+  "overrideColor": 6, 
+  "overrideRGBColors": false, 
+  "periodic": false, 
+  "overrideEnabled": true, 
+  "knot": [
+   0.0, 
+   1.0
+  ], 
+  "degree": 1, 
+  "point": [
+   [
+    0.0, 
+    0.0, 
+    0.0
+   ], 
+   [
+    0.0, 
+    0.0, 
+    10.0
+   ]
+  ], 
+  "overrideColorRGB": [
+   0.0, 
+   0.0, 
+   0.0
+  ]
+ }, 
+ "axisShape": {
+  "overrideColor": 14, 
+  "overrideRGBColors": false, 
+  "periodic": false, 
+  "overrideEnabled": true, 
+  "knot": [
+   0.0, 
+   1.0
+  ], 
+  "degree": 1, 
+  "point": [
+   [
+    0.0, 
+    0.0, 
+    0.0
+   ], 
+   [
+    0.0, 
+    10.0, 
+    0.0
+   ]
+  ], 
+  "overrideColorRGB": [
+   0.0, 
+   0.0, 
+   0.0
+  ]
+ }
+}

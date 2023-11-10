@@ -1,0 +1,490 @@
+{
+    "menuName": "MayaImprovements",
+    "menuItems":
+    [
+        {
+            "type":     "subMenu",
+            "menuName": "Time Slider Overlay",
+            "tooltip":  "Overlays extra information on the Time Slider. Allows other tools to draw different things to display additional information.",
+            "floatable": true,
+            "menuItems":
+            [
+                {
+                    "type":     "toggle",
+                    "label":    "Enable Overlay",
+                    "tooltip":  "[WARNING: Other tools that attempt to draw on the Time Slider might not work properly if this option is disabled] Enables the general overlay so other tools can use it.",
+                    "module":   "MayaImprovements.CustomTimeSlider",
+                    "state":    "CustomTimeSliderManager.isTimeSliderOverlayEnabled()",
+                    "toggleFn": "CustomTimeSliderManager.setTimeSliderOverlayEnabled",
+                    "updateMenus": true
+                },
+
+                {
+                    "type":     "separator",
+                    "label":    "Keyframe Colors"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Enable Keyframe Colors",
+                    "tooltip":  "Enables colorizing the keyframes based on their animation channel.",
+                    "module":   "MayaImprovements.CustomTimeSlider",
+                    "enabled":  "CustomTimeSliderManager.isTimeSliderOverlayEnabled()",
+                    "state":    "CustomTimeSliderManager.isDisplayKeyframeColorsEnabled(checkParentOption=False)",
+                    "toggleFn": "CustomTimeSliderManager.setDisplayKeyframeColorsEnabled",
+                    "updateMenus": true
+                },
+
+                {
+                    "type":     "separator"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Other Keyframes",
+                    "tooltip":  "Draws any other keyframe with a common color. Usefull to know if there are keys overlapped with, for instance, transform keys.",
+                    "module":   "MayaImprovements.CustomTimeSlider",
+                    "enabled":  "CustomTimeSliderManager.isDisplayKeyframeColorsEnabled()",
+                    "state":    "CustomTimeSliderManager.isDisplayOtherKeysEnabled(checkParentOption=False)",
+                    "toggleFn": "CustomTimeSliderManager.setDisplayOtherKeysEnabled",
+                    "updateMenus": false
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Blend Keyframes",
+                    "tooltip":  "Draws the IK/FK blend keyframes with their own color. The color will depend on wether the blend is 0, 1 or a value in between.",
+                    "module":   "MayaImprovements.CustomTimeSlider",
+                    "enabled":  "CustomTimeSliderManager.isDisplayKeyframeColorsEnabled()",
+                    "state":    "CustomTimeSliderManager.isDisplayBlendKeysEnabled(checkParentOption=False)",
+                    "toggleFn": "CustomTimeSliderManager.setDisplayBlendKeysEnabled",
+                    "updateMenus": false
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Transformation Keyframes",
+                    "tooltip":  "Draws the different transform keyframes with their own color (position, rotation and scale).",
+                    "module":   "MayaImprovements.CustomTimeSlider",
+                    "enabled":  "CustomTimeSliderManager.isDisplayKeyframeColorsEnabled()",
+                    "state":    "CustomTimeSliderManager.isDisplayTransformKeysEnabled(checkParentOption=False)",
+                    "toggleFn": "CustomTimeSliderManager.setDisplayTransformKeysEnabled",
+                    "updateMenus": true
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Selected Transform Coordinates",
+                    "tooltip":  "When only Translate channels are selected, draws the color of each coordinate (same if only Rotate or only Scale channels are selected).",
+                    "module":   "MayaImprovements.CustomTimeSlider",
+                    "enabled":  "CustomTimeSliderManager.isDisplayTransformKeysEnabled()",
+                    "state":    "CustomTimeSliderManager.isDisplayTransformCoordinatesEnabled(checkParentOption=False)",
+                    "toggleFn": "CustomTimeSliderManager.setDisplayTransformCoordinatesEnabled",
+                    "updateMenus": false
+                },
+
+                {
+                    "type":     "separator",
+                    "label":    "Keying Groups Colors"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Enable Keying Group Colors",
+                    "tooltip":  "When Keying Groups are enabled, colorizes the keyframes based on wether they are correctly synced or not.",
+                    "module":   "AnimSystems.KeyingGroup",
+                    "enabled":  "KeyingGroupTimeSliderPainter.isTimeSliderOverlayEnabled()",
+                    "state":    "KeyingGroupTimeSliderPainter.isKeyingGroupsOverlayEnabled(checkParentOption=False)",
+                    "toggleFn": "KeyingGroupTimeSliderPainter.setKeyingGroupsOverlayEnabled",
+                    "updateMenus": true
+                },
+
+                {
+                    "type":     "separator"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Color Synced Keys Blue",
+                    "tooltip":  "Changes the color for correctly synced keyframes to distinguish them from normal keyframes (that don't need syncing).",
+                    "module":   "AnimSystems.KeyingGroup",
+                    "enabled":  "KeyingGroupTimeSliderPainter.isKeyingGroupsOverlayEnabled()",
+                    "state":    "KeyingGroupTimeSliderPainter.isColorSyncKeysEnabled(checkParentOption=False)",
+                    "toggleFn": "KeyingGroupTimeSliderPainter.setColorSyncKeysEnabled",
+                    "updateMenus": false
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Display Missing Keys",
+                    "tooltip":  "Displays a black keyframe where other nodes of the syncing chain have a keyframe but the selected node hasn't.",
+                    "module":   "AnimSystems.KeyingGroup",
+                    "enabled":  "KeyingGroupTimeSliderPainter.isKeyingGroupsOverlayEnabled()",
+                    "state":    "KeyingGroupTimeSliderPainter.isDisplayMissingKeysEnabled(checkParentOption=False)",
+                    "toggleFn": "KeyingGroupTimeSliderPainter.setDisplayMissingKeysEnabled",
+                    "updateMenus": false
+                }
+            ]
+        },
+
+        {
+            "type":     "subMenu",
+            "menuName": "Keyframe Filter",
+            "tooltip":  "Filters the keyframes displayed on the timeline. Allows other tools to filter the keyframes based on different criteria.",
+            "floatable": true,
+            "menuItems":
+            [
+                {
+                    "type":     "toggle",
+                    "label":    "Enable Filters",
+                    "tooltip":  "[WARNING: Other tools won't be able to apply keyrame filters if this option is disabled] Enables the general keyframe filtering system so other tools can use it.",
+                    "module":   "MayaImprovements.CustomTimeSlider",
+                    "state":    "CustomTimeSliderManager.isTimeSliderFiltersEnabled()",
+                    "toggleFn": "CustomTimeSliderManager.setTimeSliderFiltersEnabled",
+                    "updateMenus": true
+                },
+
+                {
+                    "type":     "separator",
+                    "label":    "Filters"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Hide Unlayered Attributes",
+                    "tooltip":  "Hides the keyframes of unlayered attributes when working on an Animation Layer.",
+                    "module":   "MayaImprovements.CustomTimeSlider",
+                    "enabled":  "CustomTimeSliderManager.isTimeSliderFiltersEnabled()",
+                    "state":    "CustomTimeSliderManager.isHideUnlayeredAttributesEnabled(checkParentOption=False)",
+                    "toggleFn": "CustomTimeSliderManager.setHideUnlayeredAttributesEnabled",
+                    "updateMenus": false
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Filter by Current Transform Tool",
+                    "tooltip":  "Filter the displayed keyframes based on which transformation tool is currently selected (translate, rotate or scale).",
+                    "module":   "MayaImprovements.CustomTimeSlider",
+                    "enabled":  "CustomTimeSliderManager.isTimeSliderFiltersEnabled()",
+                    "state":    "CustomTimeSliderManager.isFilterByTransformToolEnabled(checkParentOption=False)",
+                    "toggleFn": "CustomTimeSliderManager.setFilterByTransformToolEnabled",
+                    "updateMenus": false
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Show Only Transform Keys",
+                    "tooltip":  "Only display transformation keyframes.",
+                    "module":   "MayaImprovements.CustomTimeSlider",
+                    "enabled":  "CustomTimeSliderManager.isTimeSliderFiltersEnabled()",
+                    "state":    "CustomTimeSliderManager.isShowOnlyTransformEnabled(checkParentOption=False)",
+                    "toggleFn": "CustomTimeSliderManager.setShowOnlyTransformEnabled",
+                    "updateMenus": false
+                }
+            ]
+        },
+
+        {
+            "type":     "subMenu",
+            "menuName": "Custom UI",
+            "tooltip":  "Adds controls to Maya's UI to operate with our custom tools.",
+            "floatable": true,
+            "menuItems":
+            [
+                {
+                    "type":     "separator",
+                    "label":    "New Elements"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Show Frame or Key Toggle Button",
+                    "tooltip":  "Shows a button to swap the functionality of the NextFrame and NextKey repeat commands.",
+                    "module":   "MayaImprovements.CustomUI",
+                    "state":    "FrameOrKeyButtonManager.isShowFrameOrKeyToggleButtonEnabled()",
+                    "toggleFn": "FrameOrKeyButtonManager.setShowFrameOrKeyToggleButtonEnabled"
+                },
+
+                {
+                    "type":     "separator",
+                    "label":    "Custom Elements"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Improved Hotkey Manager",
+                    "tooltip":  "Improves Maya's Hotkey Manager, addint tooltips and icons. It also allows to create Shelf buttons form a command by clicking it with Control+Shift pressed.",
+                    "module":   "MayaImprovements.HotkeyManagerFix",
+                    "state":    "HotkeyManagerFix.isHotkeyManagerFixEnabled()",
+                    "toggleFn": "HotkeyManagerFix.setHotkeyManagerFixEnabled"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Custom Playback Range",
+                    "tooltip":  "Replaces the Playback Range bar with a custom one with added functionality. Mainly, allows to modify the animation range holding down the Shift key.",
+                    "module":   "MayaImprovements.CustomPlaybackRange",
+                    "state":    "CustomPlaybackRangeManager.isCustomPlaybackRangeEnabled()",
+                    "toggleFn": "CustomPlaybackRangeManager.setCustomPlaybackRangeEnabled"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Move Recent Files option Up",
+                    "tooltip":  "Moves the \"Recent Files\" option on the File menu up, so it is more easily accesible.",
+                    "module":   "MayaImprovements.CustomUI",
+                    "state":    "OpenRecentMenuOptionManager.isMoveMenuOptionUpEnabled()",
+                    "toggleFn": "OpenRecentMenuOptionManager.setMoveMenuOptionUpEnabled"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Show Open Last File option",
+                    "tooltip":  "Displays a new option on the File menu that allows to directly open the last opened file.",
+                    "module":   "MayaImprovements.CustomUI",
+                    "state":    "OpenRecentMenuOptionManager.isShowOpenLastMenuOptionEnabled()",
+                    "toggleFn": "OpenRecentMenuOptionManager.setShowOpenLastMenuOptionEnabled"
+                },
+
+                {
+                    "type":     "separator",
+                    "label":    "Hide Elements"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Hide Home Button",
+                    "tooltip":  "Hides Maya's Home Button located on the main menu bar.",
+                    "module":   "MayaImprovements.CustomUI",
+                    "state":    "HideUI.isHideHomeButtonEnabled()",
+                    "toggleFn": "HideUI.setHideHomeButtonEnabled"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Hide Cycle Warnings",
+                    "tooltip":  "Hides Cycle Warnings on the Script Editor.",
+                    "module":   "MayaImprovements.CustomUI",
+                    "state":    "HideUI.isHideCycleWarningsEnabled()",
+                    "toggleFn": "HideUI.setHideCycleWarningsEnabled"
+                },
+
+                {
+                    "type":     "separator",
+                    "label":    "Extra"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Restore Menu Set",
+                    "tooltip":  "Restores the previously selected Menu Set (Modeling, Animation, Fx, etc) when Maya is opened.",
+                    "module":   "MayaImprovements.CustomUI",
+                    "state":    "CustomFixes.isRestoreMenuSetOptionEnabled()",
+                    "toggleFn": "CustomFixes.setRestoreMenuSetOptionEnabled"
+                }
+            ]
+        },
+
+        {
+            "type":     "subMenu",
+            "menuName": "Anim Layers",
+            "tooltip":  "Different options for improving the usability of the Anim Layers.",
+            "floatable": true,
+            "menuItems":
+            [
+                {
+                    "type":     "toggle",
+                    "label":    "Enable Quick Layer Merge",
+                    "tooltip":  "Enables a Quick Merge option on the contextual menu for the animation layers, next to the normal Merge Layers option. The quick merge is faster than Maya's, but it might not be as reliable.",
+                    "module":   "MayaImprovements.AnimLayerFix",
+                    "state":    "AnimLayerFix.isQuickLayerMergeEnabled()",
+                    "toggleFn": "AnimLayerFix.setQuickLayerMergeEnabled"
+                },
+
+                {
+                    "type":     "toggle",
+                    "label":    "Enable Anim Layer Options for Actors",
+                    "tooltip":  "Adds several options to the UI for managing Actor layers.",
+                    "module":   "MayaImprovements.AnimLayerFix",
+                    "state":    "AnimLayerFix.isLayerOptionsForActorsEnabled()",
+                    "toggleFn": "AnimLayerFix.setLayerOptionsForActorsEnabled"
+                },
+        
+                {
+                    "type":     "toggle",
+                    "label":    "Skip Enum Attributes on AnimLayers by Default",
+                    "tooltip":  "When Maya starts, configures the AnimLayer options so Enum and Boolean attributes are ignored when adding nodes to an animation layer.",
+                    "module":   "MayaImprovements.AnimLayerFix",
+                    "state":    "AnimLayerFix.isSkipEnumAttributesEnabled()",
+                    "toggleFn": "AnimLayerFix.setSkipEnumAttributesEnabled"
+                },
+        
+                {
+                    "type":     "toggle",
+                    "label":    "Switch to AnimLayer panel by Default",
+                    "tooltip":  "When Maya starts, the AnimLayer panel will be shown by default.",
+                    "module":   "MayaImprovements.AnimLayerFix",
+                    "state":    "AnimLayerFix.isShowAnimLayerPanelByDefaultEnabled()",
+                    "toggleFn": "AnimLayerFix.setShowAnimLayerPanelByDefaultEnabled"
+                }
+            ]
+        },
+
+        {
+            "type":     "subMenu",
+            "menuName": "Time Slider Fix",
+            "tooltip":  "Different options for improving the usability of the Time Slider.\n\nNOTE: Most of this options will require the Time Slider Overlay enabled in order to work.",
+            "floatable": true,
+            "menuItems":
+            [
+                {
+                    "type":     "toggle",
+                    "label":    "Disable Double Click Select",
+                    "tooltip":  "Double clicking the timeline without Shift pressed will no longer select the full range.",
+                    "module":   "MayaImprovements.TimeSliderFix",
+                    "state":    "TimeSliderFix.isDisableDoubleClickSelectEnabled()",
+                    "toggleFn": "TimeSliderFix.setDisableDoubleClickSelectEnabled"
+                },
+                
+                {
+                    "type":     "toggle",
+                    "label":    "Disable Double Click Select With Shift",
+                    "tooltip":  "Double clicking the timeline with Shift pressed will no longer select the full range.",
+                    "module":   "MayaImprovements.TimeSliderFix",
+                    "state":    "TimeSliderFix.isDisableDoubleClickSelectWithShiftEnabled()",
+                    "toggleFn": "TimeSliderFix.setDisableDoubleClickSelectWithShiftEnabled"
+                },
+                
+                {
+                    "type":     "toggle",
+                    "label":    "Fix Select Near Current Selection",
+                    "tooltip":  "Fixes a problem when selecting a range on the timeline too close to the currently selected range.",
+                    "module":   "MayaImprovements.TimeSliderFix",
+                    "state":    "TimeSliderFix.isFixSelectNearCurrentSelectionEnabled()",
+                    "toggleFn": "TimeSliderFix.setFixSelectNearCurrentSelectionEnabled"
+                },
+                
+                {
+                    "type":     "toggle",
+                    "label":    "Keep Selecting If Shift Is Released",
+                    "tooltip":  "If selecting a range, releasing the Shift key will no longer stop you from selecting.",
+                    "module":   "MayaImprovements.TimeSliderFix",
+                    "state":    "TimeSliderFix.isKeepSelectingIfShiftIsReleasedEnabled()",
+                    "toggleFn": "TimeSliderFix.setKeepSelectingIfShiftIsReleasedEnabled"
+                },
+                
+                {
+                    "type":     "toggle",
+                    "label":    "Start Selecting If Shift Is Pressed",
+                    "tooltip":  "When dragging on the timeline, pressing Shift will start selecting a range.",
+                    "module":   "MayaImprovements.TimeSliderFix",
+                    "state":    "TimeSliderFix.isStartSelectingIfShiftIsPressedEnabled()",
+                    "toggleFn": "TimeSliderFix.setStartSelectingIfShiftIsPressedEnabled"
+                },
+                
+                {
+                    "type":     "toggle",
+                    "label":    "Move Selected Keys Clicking Anywhere",
+                    "tooltip":  "When a range is selected, click anywhere on it to start moving it (instead of having to select the middle point).",
+                    "module":   "MayaImprovements.TimeSliderFix",
+                    "state":    "TimeSliderFix.isMoveSelectedKeysClickingAnywhereEnabled()",
+                    "toggleFn": "TimeSliderFix.setMoveSelectedKeysClickingAnywhereEnabled"
+                }
+            ]
+        },
+
+        {
+            "type":     "subMenu",
+            "menuName": "Channel Box Fix",
+            "tooltip":  "Different options for improving the usability of the Channel Box.",
+            "floatable": true,
+            "menuItems":
+            [
+                {
+                    "type":     "toggle",
+                    "label":    "Color Attributes not in Current Layer",
+                    "tooltip":  "If an attribute with layers is not on the current layer, color it dark blue. This option is only relevant while on Hybrid mode.",
+                    "module":   "MayaImprovements.ChannelBoxFix",
+                    "state":    "ChannelBoxFix.isMarkNonOnSelectedLayerEnabled()",
+                    "toggleFn": "ChannelBoxFix.setMarkNonOnSelectedLayerEnabled"
+                },
+                
+                {
+                    "type":     "toggle",
+                    "label":    "Color Inactive Attributes",
+                    "tooltip":  "If an attribute is not gonna get keyed due to it not being on the current layer, color it black.",
+                    "module":   "MayaImprovements.ChannelBoxFix",
+                    "state":    "ChannelBoxFix.isMarkNonAnimatableEnabled()",
+                    "toggleFn": "ChannelBoxFix.setMarkNonAnimatableEnabled"
+                },
+                
+                {
+                    "type":     "toggle",
+                    "label":    "Color Keyed Attributes on Layer",
+                    "tooltip":  "Similar to how Maya works when there are no layers, paints attributes red or pink when they are animated on layers.",
+                    "module":   "MayaImprovements.ChannelBoxFix",
+                    "state":    "ChannelBoxFix.isPaintAnimatedOnLayerEnabled()",
+                    "toggleFn": "ChannelBoxFix.setPaintAnimatedOnLayerEnabled"
+                }
+            ]
+        },
+
+        {
+            "type":     "separator"
+        },
+
+        {
+            "type":     "toggle",
+            "label":    "Delete Keyframes with \"Supr\" key",
+            "tooltip":  "Allows the \"Supr\" key to delete the selected keyframes. If no keyframe is selected, the key will delete the selected object as usual.",
+            "module":   "MayaImprovements.DeleteKeysFix",
+            "state":    "DeleteKeysFix.isDeleteKeysFixEnabled()",
+            "toggleFn": "DeleteKeysFix.setDeleteKeysFixEnabled"
+        },
+    
+        {
+            "type":     "toggle",
+            "label":    "Overwrite Moved Keys",
+            "tooltip":  "[DEPRECATED: AnimBot already provides this functionality and this option may conflict with it] When moving a key into another key's position, overwrites the old key with the new one.",
+            "module":   "MayaImprovements.OverwriteMovedKeys",
+            "state":    "OverwriteMovedKeys.isOverwriteMovedKeysEnabled()",
+            "toggleFn": "OverwriteMovedKeys.setOverwriteMovedKeysEnabled"
+        },
+
+        {
+            "type":     "toggle",
+            "label":    "Convert Playblast to MP4",
+            "tooltip":  "Automatically converts the created playblasts to MP4 so the can be easily shared.",
+            "module":   "MayaImprovements.ConvertPlayblastToMP4",
+            "state":    "ConvertPlayblastToMP4.isConvertPlayblastToMP4Enabled()",
+            "toggleFn": "ConvertPlayblastToMP4.setConvertPlayblastToMP4Enabled"
+        },
+
+        {
+            "type":     "toggle",
+            "label":    "Stop Animation when changing Time",
+            "tooltip":  "Stops playing the animation when changing time using the timeline.",
+            "module":   "MayaImprovements.TimeSliderFix",
+            "state":    "TimeSliderFix.isStopAnimWithTimeSliderEnabled()",
+            "toggleFn": "TimeSliderFix.setStopAnimWithTimeSliderEnabled"
+        },
+
+        {
+            "type":     "toggle",
+            "label":    "Disable Undo when changing Time",
+            "tooltip":  "Prevents time changes from adding themselves to the Undo stack.",
+            "module":   "MayaImprovements.TimeSliderFix",
+            "state":    "TimeSliderFix.isDisableTimeSliderUndoEnabled()",
+            "toggleFn": "TimeSliderFix.setDisableTimeSliderUndoEnabled"
+        },
+
+        {
+            "type":     "toggle",
+            "label":    "Clear Focus On Enter Value",
+            "tooltip":  "Clears the focus from any input field when entering a value.",
+            "module":   "MayaImprovements.ClearFocusOnEnter",
+            "state":    "ClearFocusOnEnter.isClearFocusWithEnterEnabled()",
+            "toggleFn": "ClearFocusOnEnter.setClearFocusWithEnterEnabled"
+        }
+    ]
+}

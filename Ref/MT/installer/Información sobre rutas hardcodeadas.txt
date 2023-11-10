@@ -1,0 +1,30 @@
+---------------------------------------------
+|	INFORMACIÓN SOBRE RUTAS HARDCODEADAS	|
+---------------------------------------------
+
+Las rutas del proyecto que necesita Maya para funcionar están registradas en "../startup/ConfiguraEnv", el módulo encargado de iniciar las variables de entorno.
+El módulo "../internal/ProjectPath" contiene funciones que devuelven las distintas rutas (tanto las rutas que necesita Maya como otras para uso interno, como 3D, Game, iconos...).
+De necesitar acceder a nuevas rutas, se pueden añadir nuevas funciones a "ProjectPath".
+
+"ProjectPath" devuelve la ruta componiendo unas con otras, pero hay 3 sitios donde hay rutas hardcodeadas relevantes al proyecto y a la ubicación de las carpetas de código de Maya.
+De necesitar cambiar el proyecto o reubicar las carpetas de código de Maya, habría que cambiar estas rutas:
+
+- ./install.py **
+Es el archivo de instalación. Solicitará la ruta del proyecto en perforce, así que en realidad no debería requerir cambios.
+No obstante, el programa sugiere una ruta y esta tiene hardcodeada el proyecto (por ejemplo "PRJ_04").
+Para que la sugerencia siga siendo correcta, habría que cambiar el proyecto que sugiere.
+
+- ./mseLoad/scripts/userSetup.py **
+Este archivo se coloca en el local de cada usuario cuando se ejecuta el instalador.
+Es el responsable de inicializar el resto del código de Maya, pero para ello necesita saber dónde está ubicado ese código en perforce.
+De querer cambiar la ubicación del código de Maya, habría que modificarlo en este archivo.
+
+- ../startup/ConfiguraEnv/__init__.py
+Este archivo se encarga de configurar las variables de entorno de Maya.
+Entre estas variables se encuentra la ubicación del código de Maya, así que si se mueve, tendría que cambiarse también esta variable.
+Si se desea cambiar la ruta de cualquier otra cosa, también estará definida en este archivo.
+NOTA: Notese que la ubicación del código está repetida, se usaba también en "userSetup.py". Esto es porque "userSetup.py" necesita la ruta pero no es su responsabilidad crear la variable de entorno.
+
+** Si se cambian estos archivos será necesario también re-ejecutar el instalador. No hace falta desinstalar nada previamente, el instalador sobrescribirá lo que haga falta.
+
+Las rutas están marcadas con la palabra "TODO", así que buscando esa palabra se puede encontrar facilmente.

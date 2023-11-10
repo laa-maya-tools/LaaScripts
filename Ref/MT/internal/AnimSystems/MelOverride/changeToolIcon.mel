@@ -1,0 +1,115 @@
+// ===========================================================================
+// Copyright 2019 Autodesk, Inc. All rights reserved.
+//
+// Use of this software is subject to the terms of the Autodesk license
+// agreement provided at the time of installation or download, or which
+// otherwise accompanies this software in either electronic or hard copy form.
+// ===========================================================================
+//
+//
+// Creation Date:  Jun, 1997
+//
+//  Description:
+//		This file is called to update the 6th icon
+//		to the left of the shelf.
+//
+//  Input Arguments:
+//      None
+//
+//  Return Value:
+//      None.
+//
+
+global string $gCustomSacredTools[] = {};
+
+global proc int isCustomSacredTool(string $tool) {
+	global string $gCustomSacredTools[];
+	int $size = size($gCustomSacredTools);
+	for($i = 0; $i < $size; ++$i) {
+		if ($gCustomSacredTools[$i] == $tool) {
+			return true;
+		}
+	}
+	return false;
+}
+
+global proc registerCustomSacredTool(string $tool) {
+	global string $gCustomSacredTools[];
+	int $isSacred = `isCustomSacredTool($tool)`;
+	if ($isSacred == false) {
+		$gCustomSacredTools[size($gCustomSacredTools)] = $tool;
+	}
+}
+
+global proc unregisterCustomSacredTool(string $tool) {
+	global string $gCustomSacredTools[];
+	int $isSacred = `isCustomSacredTool($tool)`;
+	if ($isSacred == true) {
+		$gCustomSacredTools = stringArrayRemove({$tool}, $gCustomSacredTools);
+	}
+}
+
+global proc changeToolIcon() {
+	
+	string $currentTool = `currentCtx`;
+	global string $gSelect;
+	global string $gLasso;
+	global string $gPaintSelect;
+	global string $gMove;
+	global string $gRotate;
+	global string $gScale;
+	global string $gCurrentSacredTool;
+	global string $gNonSacredToolWidget;
+	global string $gNonSacredTool;
+	global string $gToolBox;
+
+	if ($currentTool == $gCurrentSacredTool) {
+	}
+	else if ($currentTool == $gSelect) {
+		$gCurrentSacredTool = $gSelect;
+	}
+	else if ($currentTool == $gLasso) {
+		$gCurrentSacredTool = $gLasso;
+	} 
+	else if ($currentTool == $gPaintSelect) {
+		$gCurrentSacredTool = $gPaintSelect;
+	} 
+	else if ($currentTool == $gMove) {
+		$gCurrentSacredTool = $gMove;
+	} 
+	else if ($currentTool == $gScale) {
+		$gCurrentSacredTool = $gScale;
+	} 
+	else if ($currentTool == $gRotate) {
+		$gCurrentSacredTool = $gRotate;
+	}
+	else if (`isCustomSacredTool($currentTool)`) {
+		$gCurrentSacredTool = $currentTool;
+	}
+	else if (`contextInfo -exists $currentTool`) {
+		string $newIcon = `contextInfo -image1 $currentTool`;
+				
+		if ($newIcon != "") {
+			if (`flowLayout -q -exists $gToolBox`) {
+				if ($newIcon == "Clone")
+					$newIcon = "CloneTarget";
+				setParent $gToolBox;		
+				toolButton -edit -enable true
+					-t $currentTool
+					-i1 $newIcon
+					$gNonSacredToolWidget;
+				
+				string $selected = `toolCollection -q -sl toolCluster`;
+				if ( $selected == "" || $selected == "NONE" || $currentTool != `toolButton -q -t $selected` ) {
+					toolButton -e -sl $gNonSacredToolWidget;
+				}
+			}
+		} else {
+			if (`toolButton -q -exists $gNonSacredToolWidget`) {
+				 toolButton -edit -enable false 
+					-i1 "vacantCell.png" $gNonSacredToolWidget;
+			}
+		}
+		$gNonSacredTool = $currentTool;
+	}
+}

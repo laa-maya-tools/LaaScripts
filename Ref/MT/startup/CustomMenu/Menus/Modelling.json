@@ -1,0 +1,41 @@
+{
+    "menuName": "Modelling",
+    "menuItems":
+    [
+        {
+            "type":     "action",
+            "label":    "Get from Max",
+            "module":   "MaxMeshToMaya.Window",
+            "action":   "show"
+        },
+
+        {
+            "type":     "separator"
+        },
+        
+        {
+            "type":     "action",
+            "label":    "Reset Shape/s Form",
+            "module":   "ModellingUtils",
+            "action":   "ResetShapesForm"
+        },
+        
+        {
+            "type":     "action",
+            "label":    "Recalculate Hard/Soft Edges",
+            "module":   "MaxMeshToMaya",
+            "action":   "ConvertLockedNormalsToHardSoftEdges"
+        },
+
+        {
+            "type":     "separator"
+        },
+        
+        {
+            "type":     "action",
+            "label":    "Upgrade Selected Meshes' Materials",
+            "module":   "AdvancedMaterial",
+            "action":   "upgradeSelectedMeshesMaterials"
+        }
+    ]
+}
