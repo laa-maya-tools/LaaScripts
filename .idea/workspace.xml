@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61183686-9bd7-43f2-80b0-50352cd32fd8" name="Changes" comment="Character Info Working.">
+    <list default="true" id="66643dea-18a5-497c-830f-540084f4ca86" name="Changes" comment="test">
+      <change afterPath="$PROJECT_DIR$/Ref/MT/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ref/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Constants/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Constants/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Core/Selection/selection_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Core/Selection/selection_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/trigger.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/trigger.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,116 +28,53 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2WWztClRr0B5Ok2T6DGsdwfnQL0" />
+  <component name="ProjectId" id="2Xcuz95Tb1mweg1VMgIKZJ3bps8" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "settings.editor.selected.configurable": "editor.preferences.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="61183686-9bd7-43f2-80b0-50352cd32fd8" name="Changes" comment="" />
-      <created>1696863336527</created>
+      <changelist id="66643dea-18a5-497c-830f-540084f4ca86" name="Changes" comment="" />
+      <created>1698940949053</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1696863336527</updated>
+      <updated>1698940949053</updated>
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
-      <created>1696863426351</created>
+      <created>1698941250434</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1696863426351</updated>
+      <updated>1698941250434</updated>
     </task>
-    <task id="LOCAL-00002" summary="before fixing scripts">
+    <task id="LOCAL-00002" summary="test">
       <option name="closed" value="true" />
-      <created>1696918892845</created>
+      <created>1699601949969</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1696918892845</updated>
+      <updated>1699601949969</updated>
     </task>
-    <task id="LOCAL-00003" summary="dwpicker deleted.">
-      <option name="closed" value="true" />
-      <created>1696919577282</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1696919577282</updated>
-    </task>
-    <task id="LOCAL-00004" summary="dwpicker deleted.">
-      <option name="closed" value="true" />
-      <created>1696919586703</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1696919586703</updated>
-    </task>
-    <task id="LOCAL-00005" summary="dwpicker added.">
-      <option name="closed" value="true" />
-      <created>1696919642472</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1696919642472</updated>
-    </task>
-    <task id="LOCAL-00006" summary="workspace">
-      <option name="closed" value="true" />
-      <created>1697178077054</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1697178077054</updated>
-    </task>
-    <task id="LOCAL-00007" summary="User Data Fixed.">
-      <option name="closed" value="true" />
-      <created>1697198143530</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1697198143530</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Character Info Working.">
-      <option name="closed" value="true" />
-      <created>1697203262405</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1697203262405</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="3" />
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
-    <MESSAGE value="before fixing scripts" />
-    <MESSAGE value="dwpicker deleted." />
-    <MESSAGE value="dwpicker added." />
-    <MESSAGE value="workspace" />
-    <MESSAGE value="User Data Fixed." />
-    <MESSAGE value="Character Info Working." />
-    <option name="LAST_COMMIT_MESSAGE" value="Character Info Working." />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
 </project>
