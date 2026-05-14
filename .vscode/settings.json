@@ -1,5 +1,6 @@
 {
+    "python.defaultInterpreterPath": "",
     "python.analysis.extraPaths": [
-        "C:\Program Files\Autodesk\Maya2026\Python\Lib\site-packages"
+        "C:/Program Files/Autodesk/Maya2026/Python/Lib/site-packages"
     ]
 }

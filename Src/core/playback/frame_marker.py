@@ -8,7 +8,8 @@ AUTHOR:   Leandro Adeodato
 VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 =============================================================================
 """
-import maya.cmds as cmd
+import maya.cmds as cmd  # type: ignore[import]
+
 from LaaScripts.Src.constants import constants as c
 from LaaScripts.Src.data.scene_data import SceneData
 from LaaScripts.Src.utils.scene import info_utils as info
@@ -17,7 +18,7 @@ from LaaScripts.Src.utils.ui.widget_utils import WidgetUtils
 from LaaScripts.Src.utils.qt_compat import QtGui as gui, QtWidgets as wdg
 from LaaScripts.Src.data.user_data import UserData
 
-global LAA_FRAME_MARKER
+global LAA_FRAME_MARKER # type: ignore[import]
 
 
 class FrameMarker(wdg.QWidget):

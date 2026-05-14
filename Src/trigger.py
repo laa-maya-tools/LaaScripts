@@ -30,8 +30,8 @@ from LaaScripts.Src.core.playback.marker_color_dialog import MarkerColorDialog
 from LaaScripts.Src.core.playback.timeline_section import TimelineSection
 from LaaScripts.Src.core.viewport.viewport_manager import ViewportManager
 
-global LAA_FRAME_MARKER
-global LAA_TIMELINE_SECTION
+LAA_FRAME_MARKER = None
+LAA_TIMELINE_SECTION = None
 
 
 class Trigger(object):
