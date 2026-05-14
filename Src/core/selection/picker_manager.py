@@ -12,10 +12,10 @@ import os
 import maya.cmds as cmd
 import shutil
 
-import LaaScripts.Src.Utils.info_utils as info
-from LaaScripts.Src.Data.scene_data import SceneData
-from LaaScripts.Src.Core.Selection.character_info import CharacterInfo
-from LaaScripts.Src.Constants import constants as c
+import LaaScripts.Src.utils.scene.info_utils as info
+from LaaScripts.Src.data.scene_data import SceneData
+from LaaScripts.Src.core.selection.character_info import CharacterInfo
+from LaaScripts.Src.constants import constants as c
 
 
 class PickerManager(object):

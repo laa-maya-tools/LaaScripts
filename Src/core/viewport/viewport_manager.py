@@ -12,9 +12,9 @@ VERSION:  v1.0.0 | Maya 2020 | Python 2
 import maya.cmds as cmd
 import maya.mel as mel
 
-from LaaScripts.Src.Constants import constants as c
-from LaaScripts.Src.Utils import info_utils as info
-from LaaScripts.Src.Utils import panel_utils
+from LaaScripts.Src.constants import constants as c
+from LaaScripts.Src.utils.scene import info_utils as info
+from LaaScripts.Src.utils.ui import panel_utils
 
 
 class ViewportManager(object):

@@ -1,3 +1,0 @@
-ScriptEditorSelectedTabIndex: 3
-ScriptEditorTabTypes: mel, python, python
-ScriptEditorTabLabels: MEL, Python, Python

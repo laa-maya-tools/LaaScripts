@@ -1,9 +1,9 @@
 import maya.mel as mel
 
-from LaaScripts.Src.Constants import constants as c
-from LaaScripts.Src.Utils import info_utils as info
-from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
-from LaaScripts.Src.Utils.selection_utils import SelectionUtils
+from LaaScripts.Src.constants import constants as c
+from LaaScripts.Src.utils.scene import info_utils as info
+from LaaScripts.Src.utils.animation.timeline_utils import TimelineUtils
+from LaaScripts.Src.utils.scene.selection_utils import SelectionUtils
 
 
 class RetimingTools(object):

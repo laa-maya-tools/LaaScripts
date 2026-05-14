@@ -12,7 +12,7 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2/3
 import json
 import os
 
-from LaaScripts.Src.Constants import constants as c
+from LaaScripts.Src.constants import constants as c
 
 
 class UserData(object):
@@ -47,7 +47,12 @@ class UserData(object):
             c.USER_DATA.INFO_ENABLED: True,
             c.USER_DATA.WARNINGS_ENABLED: True,
             c.USER_DATA.PLAYBACK_MODE: "loop",
-            c.USER_DATA.TIME_INCREMENT: 1
+            c.USER_DATA.TIME_INCREMENT: 1,
+            c.USER_DATA.MARKER_COLOR_KEY: c.PLAYBACK.COLOR_KEY,
+            c.USER_DATA.MARKER_COLOR_BREAKDOWN: c.PLAYBACK.COLOR_BREAKDOWN,
+            c.USER_DATA.MARKER_COLOR_INBETWEEN: c.PLAYBACK.COLOR_INBETWEEN,
+            c.USER_DATA.MARKER_COLOR_CUSTOM: c.PLAYBACK.COLOR_CUSTOM,
+            c.USER_DATA.HOTKEY_ASSIGNMENTS: {},
         }
         return user_data
 

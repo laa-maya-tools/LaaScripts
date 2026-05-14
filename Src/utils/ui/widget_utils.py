@@ -12,8 +12,7 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 import maya.mel as mel
 import maya.OpenMayaUI as mui
 
-from shiboken2 import wrapInstance
-from PySide2 import QtWidgets as wdg
+from LaaScripts.Src.utils.qt_compat import wrapInstance, QtWidgets as wdg
 
 
 class WidgetUtils(object):

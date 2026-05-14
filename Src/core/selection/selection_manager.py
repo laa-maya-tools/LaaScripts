@@ -10,11 +10,11 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 """
 import maya.cmds as cmd
 
-import LaaScripts.Src.Utils.info_utils as info
-from LaaScripts.Src.Core.Selection.character_info import CharacterInfo
+import LaaScripts.Src.utils.scene.info_utils as info
+from LaaScripts.Src.core.selection.character_info import CharacterInfo
 
-from LaaScripts.Src.Data.scene_data import SceneData
-from LaaScripts.Src.Constants import constants as c
+from LaaScripts.Src.data.scene_data import SceneData
+from LaaScripts.Src.constants import constants as c
 
 
 class SelectionManager(object):

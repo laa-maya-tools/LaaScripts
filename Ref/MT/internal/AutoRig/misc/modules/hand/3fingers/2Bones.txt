@@ -1,3 +1,0 @@
-FingerA:fkTwoBones
-FingerB:fkTwoBones
-FingerC:fkTwoBones

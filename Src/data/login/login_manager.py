@@ -2,7 +2,7 @@ import maya.cmds as cmd
 from firebase import firebase
 import re
 
-from LaaScripts.Src.Constants import constants as c
+from LaaScripts.Src.constants import constants as c
 
 
 class LoginManager(object):

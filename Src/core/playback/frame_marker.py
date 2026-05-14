@@ -9,14 +9,13 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 =============================================================================
 """
 import maya.cmds as cmd
-from LaaScripts.Src.Constants import constants as c
-from LaaScripts.Src.Data.scene_data import SceneData
-from LaaScripts.Src.Utils import info_utils as info
-from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
-from LaaScripts.Src.Utils.widget_utils import WidgetUtils
-from PySide2 import QtCore as cor
-from PySide2 import QtGui as gui
-from PySide2 import QtWidgets as wdg
+from LaaScripts.Src.constants import constants as c
+from LaaScripts.Src.data.scene_data import SceneData
+from LaaScripts.Src.utils.scene import info_utils as info
+from LaaScripts.Src.utils.animation.timeline_utils import TimelineUtils
+from LaaScripts.Src.utils.ui.widget_utils import WidgetUtils
+from LaaScripts.Src.utils.qt_compat import QtGui as gui, QtWidgets as wdg
+from LaaScripts.Src.data.user_data import UserData
 
 global LAA_FRAME_MARKER
 
@@ -29,10 +28,12 @@ class FrameMarker(wdg.QWidget):
 
         super(FrameMarker, self).__init__(self.time_control_widget)
 
+        ud = UserData().user_data
         self.markers_colors = {
-            c.PLAYBACK.KEY: gui.QColor(cor.Qt.red),
-            c.PLAYBACK.BREAKDOWN: gui.QColor(cor.Qt.green),
-            c.PLAYBACK.INBETWEEN: gui.QColor(cor.Qt.yellow)
+            c.PLAYBACK.KEY:       gui.QColor(ud.get(c.USER_DATA.MARKER_COLOR_KEY,       c.PLAYBACK.COLOR_KEY)),
+            c.PLAYBACK.BREAKDOWN: gui.QColor(ud.get(c.USER_DATA.MARKER_COLOR_BREAKDOWN, c.PLAYBACK.COLOR_BREAKDOWN)),
+            c.PLAYBACK.INBETWEEN: gui.QColor(ud.get(c.USER_DATA.MARKER_COLOR_INBETWEEN, c.PLAYBACK.COLOR_INBETWEEN)),
+            c.PLAYBACK.CUSTOM:    gui.QColor(ud.get(c.USER_DATA.MARKER_COLOR_CUSTOM,    c.PLAYBACK.COLOR_CUSTOM)),
         }
 
         self.markers = {
@@ -139,6 +140,10 @@ class FrameMarker(wdg.QWidget):
             return index, frame, type
         return -1, frame, None
 
+    def set_marker_color(self, marker_type, color):
+        self.markers_colors[marker_type] = gui.QColor(color)
+        self.update()
+
     def paintEvent(self, event):
         if not self.markers[c.PLAYBACK.FRAMES] or not self.markers[c.PLAYBACK.TYPES]:
             return
@@ -146,6 +151,7 @@ class FrameMarker(wdg.QWidget):
         self.draw_frame_markers(c.PLAYBACK.KEY)
         self.draw_frame_markers(c.PLAYBACK.BREAKDOWN)
         self.draw_frame_markers(c.PLAYBACK.INBETWEEN)
+        self.draw_frame_markers(c.PLAYBACK.CUSTOM)
 
     def draw_frame_markers(self, marker_type):
         parent = self.parentWidget()
@@ -167,7 +173,7 @@ class FrameMarker(wdg.QWidget):
             pen.setColor(self.markers_colors[marker_type])
             painter.setPen(pen)
 
-            fill_color = self.markers_colors[marker_type]
+            fill_color = gui.QColor(self.markers_colors[marker_type])
             fill_color.setAlpha(75)
 
             for frame_time in self.markers[c.PLAYBACK.FRAMES]:

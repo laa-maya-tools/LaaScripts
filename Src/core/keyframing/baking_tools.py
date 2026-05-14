@@ -1,9 +1,9 @@
 import maya.cmds as cmd
 
-from LaaScripts.Src.Constants import constants as c
-from LaaScripts.Src.Utils import info_utils as info
-from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
-from LaaScripts.Src.Utils.selection_utils import SelectionUtils
+from LaaScripts.Src.constants import constants as c
+from LaaScripts.Src.utils.scene import info_utils as info
+from LaaScripts.Src.utils.animation.timeline_utils import TimelineUtils
+from LaaScripts.Src.utils.scene.selection_utils import SelectionUtils
 
 
 class BakingTools(object):
@@ -13,7 +13,7 @@ class BakingTools(object):
 
     def bake_on_ones(self):
         selection = SelectionUtils.list_selected_objects()
-        if selection == c.EMPTY_LIST:
+        if not selection:
             info.show_info('No Object is Selected', c.warning_msg.color, c.warning_msg.background, c.warning_msg.border)
             return
 
@@ -30,7 +30,7 @@ class BakingTools(object):
     def rebuild(self, step):
         selection = SelectionUtils.list_selected_objects()
         rebuild_frames = []
-        if selection == c.EMPTY_LIST:
+        if not selection:
             info.show_info('No Object is Selected', c.warning_msg.color, c.warning_msg.background, c.warning_msg.border)
             return
 

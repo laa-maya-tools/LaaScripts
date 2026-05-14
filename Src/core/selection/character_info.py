@@ -9,25 +9,17 @@ AUTHOR:   Leandro Adeodato
 VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 =============================================================================
 """
-import os
 import maya.cmds as cmd
-import shutil
-import dwpicker
 
-import LaaScripts.Src.Utils.info_utils as info
-from LaaScripts.Src.Data.scene_data import SceneData
-from LaaScripts.Src.Constants import constants as c
+import LaaScripts.Src.utils.scene.info_utils as info
+from LaaScripts.Src.data.scene_data import SceneData
+from LaaScripts.Src.constants import constants as c
 
 
 class CharacterInfo(object):
 
     def __init__(self):
-        """
-        Initialization method.
-        """
-        self.picker = dwpicker._dwpicker
-        self.picker.show()
-        info.show_info('DwPicker Loaded')
+        pass
 
     def switch_active_char(self):
         """
@@ -83,19 +75,6 @@ class CharacterInfo(object):
     def update_active_char_info(self, active_char):
         SceneData.save_scene_data(c.NODES.CHAR_INFO_NODE, c.NODES.ACTIVE_CHAR_ATTR, active_char)
         info.show_info('ACTIVE CHAR: {0}'.format(active_char.upper()))
-        self.load_picker(active_char)
-
-    def load_picker(self, char_nsp, add_picker=False):
-        """
-        Load a DwPicker file.
-        :param str char_nsp: Pop Namespace
-        :param add_picker: Add Picker if True
-        """
-        if not add_picker:
-            self.picker.clear()
-
-        picker_file = r'{0}/{1}.json'.format(c.PATH.PICKERS_DIR, char_nsp)
-        self.picker.add_picker_from_file(picker_file)
 
     @staticmethod
     def get_active_char_info():

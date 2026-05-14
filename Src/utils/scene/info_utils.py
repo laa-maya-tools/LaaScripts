@@ -8,12 +8,11 @@ AUTHOR:   Leandro Adeodato
 VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 =============================================================================
 """
-from PySide2 import QtWidgets as wdg
-from PySide2 import QtGui as gui
-from PySide2 import QtCore as cor
+from LaaScripts.Src.utils.qt_compat import QtWidgets as wdg, QtGui as gui, QtCore as cor
+from LaaScripts.Src.utils.qt_compat import Qt_FramelessWindowHint, Qt_AlignCenter
 
-from LaaScripts.Src.Constants import constants as c
-from LaaScripts.Src.Utils.widget_utils import WidgetUtils
+from LaaScripts.Src.constants import constants as c
+from LaaScripts.Src.utils.ui.widget_utils import WidgetUtils
 
 msg_ui = None
 
@@ -21,7 +20,7 @@ msg_ui = None
 class InfoUtils(wdg.QDialog):
 
     def __init__(self, text, warning, timeout,
-                 parent=WidgetUtils().get_maya_control_widget(c.MAYA_CONTROLS.SHELF)):
+                 parent=WidgetUtils.get_maya_control_widget(c.MAYA_CONTROLS.SHELF)):
         super(InfoUtils, self).__init__(parent)
 
         # width = parent.size().width()
@@ -34,7 +33,7 @@ class InfoUtils(wdg.QDialog):
         y_pos = 26
 
         # DIALOG PREFERENCES
-        self.setWindowFlags(cor.Qt.FramelessWindowHint)
+        self.setWindowFlags(Qt_FramelessWindowHint)
         self.setFixedSize(width, height)
         self.setGeometry(cor.QRect(x_pos, y_pos, width, height))
         self.setStyleSheet('background-color: #333333;')
@@ -53,7 +52,7 @@ class InfoUtils(wdg.QDialog):
         # SHOW INFO
         msg = wdg.QLabel(text)
         msg.setFont(msg_font)
-        msg.setAlignment(cor.Qt.AlignCenter | cor.Qt.AlignCenter)
+        msg.setAlignment(Qt_AlignCenter)
         msg.setContentsMargins(0, 0, 0, 0)
         if warning:
             msg.setStyleSheet('background-color: #FF7258; color: #333333;')

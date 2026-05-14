@@ -1,10 +1,14 @@
 import os
 from dataclasses import dataclass
 from collections import namedtuple
+from enum import IntEnum
 
-from PySide2 import QtCore as cor
-from PySide2 import QtGui as gui
-from PySide2 import QtWidgets as wdg
+from LaaScripts.Src.utils.qt_compat import (
+    Qt_Unchecked, Qt_PartiallyChecked, Qt_Checked,
+    Qt_ArrowCursor, Qt_PointingHandCursor, Qt_IBeamCursor,
+    QSP_Fixed, QSP_Minimum, QSP_Expanding,
+    QMB_Ok, QMB_Yes, QMB_No,
+)
 
 __APP_NAME__ = 'LaaScripts'
 __APP_VERSION__ = '1.0.0'
@@ -13,27 +17,23 @@ __APP_VERSION__ = '1.0.0'
 # =============================================================================
 # PAGES
 # =============================================================================
-@dataclass
-class _Pages:
-    # ----- STRINGS -----
-    DEFAULT: int = 0
-    CTRL: int = 1
-    ALT: int = 2
-    SHIFT: int = 3
+class Page(IntEnum):
+    DEFAULT = 0
+    CTRL = 1
+    ALT = 2
+    SHIFT = 3
 
 
-PAGE = _Pages()
+PAGE = Page
 
 
 # =============================================================================
 # STRINGS CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _String:
-    # ----- STRINGS -----
     EMPTY: str = ''
     SPACE: str = ' '
-    NO_SPACE: str = ''
     SEPARATOR: str = '#'
 
 
@@ -43,25 +43,19 @@ STRING = _String()
 # =============================================================================
 # STRINGS CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _Separator:
-    # ----- STRINGS -----
     MAIN: str = '#'
     SECOND: str = ';'
 
 
 SEPARATOR = _Separator()
 
-# =============================================================================
-# LISTS CONSTANTS
-# =============================================================================
-EMPTY_LIST = []
-
 
 # =============================================================================
 # NAVIGATION CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _Navigation:
     # ----- IDS -----
     NAME: int = 0
@@ -100,7 +94,7 @@ NAVIGATION = _Navigation()
 # =============================================================================
 # SECTIONS IDS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _SectionInfo:
     # ----- MAIN SECTIONS -----
     MAIN: int = 0
@@ -130,7 +124,7 @@ SECTION_INFO = _SectionInfo()
 # =============================================================================
 # TIMELINE CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _Timeline:
     # ----- IDS -----
     ANIMATION: int = 0
@@ -155,22 +149,20 @@ TIMELINE = _Timeline()
 # =============================================================================
 # BLENDING CONSTANTS
 # =============================================================================
-@dataclass
-class _TweenerMode:
-    # ----- MODES -----
-    TWEEN_MACHINE: int = 0
-    BLEND_TO_NEIGHBORS: int = 1
-    BLEND_TO_EASE: int = 2
-    TWEEN_TO_RESET: int = 3
+class TweenerMode(IntEnum):
+    TWEEN_MACHINE = 0
+    BLEND_TO_NEIGHBORS = 1
+    BLEND_TO_EASE = 2
+    TWEEN_TO_RESET = 3
 
 
-TWEENER_MODE = _TweenerMode()
+TWEENER_MODE = TweenerMode
 
 
 # =============================================================================
 # PLAYBACK CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _Playback:
     # ----- MARKER IDS -----
     RANGE: int = 0
@@ -182,11 +174,17 @@ class _Playback:
     KEY: int = 0
     BREAKDOWN: int = 1
     INBETWEEN: int = 2
-    ALL: int = 3
+    CUSTOM: int = 3
+    ALL: int = 4
     # ----- MARKER NAMES -----
     FRAMES: str = 'frames'
     TYPES: str = 'types'
-    MARKER_TYPE_NAMES: tuple = ('KEY', 'BREAKDOWN', 'INBETWEEN')
+    MARKER_TYPE_NAMES: tuple = ('KEY', 'BREAKDOWN', 'INBETWEEN', 'CUSTOM')
+    # ----- DEFAULT COLORS -----
+    COLOR_KEY: str = '#ff0000'
+    COLOR_BREAKDOWN: str = '#00ff00'
+    COLOR_INBETWEEN: str = '#ffff00'
+    COLOR_CUSTOM: str = '#0000ff'
 
     # ----- SECTION NAMES -----
     SECTION_RANGES: str = 'ranges'
@@ -199,7 +197,7 @@ PLAYBACK = _Playback()
 # =============================================================================
 # NODES CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _Nodes:
     # ----- NODES DESCRIPTIONS -----
     VERSION: str = '{0} v{1}'.format(__APP_NAME__, __APP_VERSION__)
@@ -236,7 +234,7 @@ NODES = _Nodes()
 # =============================================================================
 # NAMESPACES CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _Namespaces:
     # ----- BODY CTRLS -----
     EXCLUDED: tuple = ('UI', 'shared')
@@ -248,7 +246,7 @@ NAMESPACES = _Namespaces()
 # =============================================================================
 # CTRLS CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _Ctrls:
     # ----- BODY CTRLS -----
     ALL: str = 'all_ctrls'
@@ -292,7 +290,7 @@ CTRLS = _Ctrls()
 # =============================================================================
 # VIEWPORT CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _Viewport:
     # ----- VIEWPORT ELEMENTS -----
     XRAY: str = 'xr'
@@ -330,7 +328,7 @@ def list_folders_from_version(folder):
     return tuple(folders_from_version)
 
 
-@dataclass
+@dataclass(frozen=True)
 class _Paths:
     # ----- DIRS -----
     USER_DIR: str = _user_dir
@@ -374,7 +372,7 @@ PATH = _Paths()
 # =============================================================================
 # USER DATA CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _UserData:
     # ----- DIRS -----
     USER_DIR: str = _user_dir
@@ -388,6 +386,11 @@ class _UserData:
     EXPAND: str = 'expand'
     TIME_INCREMENT: str = 'time_increment'
     SMART_MANIPULATOR: str = 'smart_manipulator'
+    MARKER_COLOR_KEY: str = 'marker_color_key'
+    MARKER_COLOR_BREAKDOWN: str = 'marker_color_breakdown'
+    MARKER_COLOR_INBETWEEN: str = 'marker_color_inbetween'
+    MARKER_COLOR_CUSTOM: str = 'marker_color_custom'
+    HOTKEY_ASSIGNMENTS: str = 'hotkey_assignments'
 
 
 USER_DATA = _UserData()
@@ -396,7 +399,7 @@ USER_DATA = _UserData()
 # =============================================================================
 # MAYA DOCK POSITIONS CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _DockPosition:
     # ----- IDS -----
     MAYA_TOP: int = 0
@@ -422,7 +425,7 @@ DOCK_POSITION = _DockPosition()
 # =============================================================================
 # SWITCH BUTTONS STATES
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _SwitchButtonStates:
     # ----- INDEXES -----
     UNCHECKED_INDEX: int = 0
@@ -430,9 +433,9 @@ class _SwitchButtonStates:
     CHECKED_INDEX: int = 2
 
     # ----- OBJECTS -----
-    UNCHECKED: object = cor.Qt.Unchecked
-    SELECTED: object = cor.Qt.PartiallyChecked
-    CHECKED: object = cor.Qt.Checked
+    UNCHECKED: object = Qt_Unchecked
+    SELECTED: object = Qt_PartiallyChecked
+    CHECKED: object = Qt_Checked
 
 
 SWITCH_BUTTON_STATES = _SwitchButtonStates()
@@ -441,7 +444,7 @@ SWITCH_BUTTON_STATES = _SwitchButtonStates()
 # =============================================================================
 # OBJECT NAMES CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _ObjectName:
     # ----- Sections -----
     LOGO_SECTION: str = 'LogoSection'
@@ -502,7 +505,7 @@ OBJECT_NAME = _ObjectName()
 # =============================================================================
 # WIDGET CREATION CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _WidgetCommand:
     # ----- Commands -----
     BUTTON: str = 'wdg.QPushButton()'
@@ -525,12 +528,12 @@ WIDGET_COMMAND = _WidgetCommand()
 # =============================================================================
 # WIDGET CREATION CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _CursorType:
     # ----- Cursors -----
-    SELECT: object = cor.Qt.ArrowCursor
-    HAND: object = cor.Qt.PointingHandCursor
-    EDIT: object = cor.Qt.IBeamCursor
+    SELECT: object = Qt_ArrowCursor
+    HAND: object = Qt_PointingHandCursor
+    EDIT: object = Qt_IBeamCursor
 
 
 CURSOR_TYPE = _CursorType()
@@ -539,7 +542,7 @@ CURSOR_TYPE = _CursorType()
 # =============================================================================
 # MAYA CONTROLS CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _MayaControls:
     # ----- Cursors -----
     TIME_CONTROL: str = '$gPlayBackSlider'
@@ -559,16 +562,15 @@ MAYA_CONTROLS = _MayaControls()
 # =============================================================================
 # KEY SEQUENCER CONSTANTS
 # =============================================================================
-@dataclass
-class _Key:
-    CTRL: int = 0
-    ALT: int = 1
-    SHIFT: int = 2
-    MAIN_KEY: int = 3
-    FULL_SEQUENCE: int = 4
+class Key(IntEnum):
+    CTRL = 0
+    ALT = 1
+    SHIFT = 2
+    MAIN_KEY = 3
+    FULL_SEQUENCE = 4
 
 
-KEY = _Key()
+KEY = Key
 KeySequence = namedtuple('KeySequence', 'ctrl alt shift key full')
 
 # =============================================================================
@@ -578,14 +580,16 @@ COLOR_VARIATIONS = 9
 BRIGHTNESS_VARIATIONS = 3
 
 
-@dataclass
-class _Tone:
-    DARK: int = 0
-    MEDIUM: int = 1
-    LIGHT: int = 2
+class Tone(IntEnum):
+    DARK = 0
+    MEDIUM = 1
+    LIGHT = 2
 
 
-@dataclass
+TONE = Tone
+
+
+@dataclass(frozen=True)
 class _Color:
     RED: tuple = ('#FF3B3B', '#FF5C5C', '#FF8080')
     ORANGE: tuple = ('#F18779', '#FFC4A3', '#FCCC76')
@@ -598,41 +602,38 @@ class _Color:
     LIGHT_GREY: tuple = ('#777777', '#999999', '#CCCCCC')
 
 
-TONE = _Tone()
 COLOR = _Color()
 
 
 # =============================================================================
 # MESSAGE BOX IDS
 # =============================================================================
-@dataclass
-class _Dialog:
-    ERROR_DIALOG: int = 0
-    WARNING_DIALOG: int = 1
-    INFO_DIALOG: int = 2
-    QUESTION_DIALOG: int = 3
+class Dialog(IntEnum):
+    ERROR_DIALOG = 0
+    WARNING_DIALOG = 1
+    INFO_DIALOG = 2
+    QUESTION_DIALOG = 3
 
 
-DIALOG = _Dialog()
+DIALOG = Dialog
 
 
 # =============================================================================
 # TIMEOUT CONSTANTS
 # =============================================================================
-@dataclass
-class _Timeout:
-    FAST: int = 1000
-    MEDIUM: int = 3000
-    SLOW: int = 5000
+class Timeout(IntEnum):
+    FAST = 1000
+    MEDIUM = 3000
+    SLOW = 5000
 
 
-TIMEOUT = _Timeout
+TIMEOUT = Timeout
 
 
 # =============================================================================
 # MESSAGES CONSTANTS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class _Message:
     color: str = COLOR.LIGHT_GREY[TONE.MEDIUM]
     background: str = COLOR.DARK_GREY[TONE.MEDIUM]
@@ -649,7 +650,7 @@ info_msg = _Message(COLOR.LIGHT_GREY[TONE.MEDIUM], COLOR.DARK_GREY[TONE.MEDIUM],
 # =============================================================================
 # SIZE DATACLASS
 # =============================================================================
-@dataclass
+@dataclass(frozen=True)
 class Size:
     width: tuple
     height: tuple
@@ -657,17 +658,17 @@ class Size:
     height_policy: object
 
 
-section_size = Size((40, 360), (40, 40), wdg.QSizePolicy.Expanding, wdg.QSizePolicy.Expanding)
-logo_size = Size((84, 84), (40, 40), wdg.QSizePolicy.Fixed, wdg.QSizePolicy.Fixed)
-button_size = Size((24, 24), (24, 24), wdg.QSizePolicy.Fixed, wdg.QSizePolicy.Fixed)
-switch_button_size = Size((36, 36), (24, 24), wdg.QSizePolicy.Fixed, wdg.QSizePolicy.Fixed)
-toggle_button_size = Size((36, 36), (24, 24), wdg.QSizePolicy.Fixed, wdg.QSizePolicy.Fixed)
-text_button_size = Size((100, 100), (24, 24), wdg.QSizePolicy.Minimum, wdg.QSizePolicy.Minimum)
-slider_size = Size((200, 200), (24, 24), wdg.QSizePolicy.Minimum, wdg.QSizePolicy.Minimum)
-combobox_size = Size((60, 60), (24, 24), wdg.QSizePolicy.Fixed, wdg.QSizePolicy.Fixed)
-lineedit_size = Size((40, 40), (20, 20), wdg.QSizePolicy.Fixed, wdg.QSizePolicy.Fixed)
-separator_size = Size((2, 2), (32, 32), wdg.QSizePolicy.Fixed, wdg.QSizePolicy.Fixed)
-space_size = Size((10, 10), (32, 32), wdg.QSizePolicy.Fixed, wdg.QSizePolicy.Fixed)
+section_size = Size((40, 360), (40, 40), QSP_Expanding, QSP_Expanding)
+logo_size = Size((84, 84), (40, 40), QSP_Fixed, QSP_Fixed)
+button_size = Size((24, 24), (24, 24), QSP_Fixed, QSP_Fixed)
+switch_button_size = Size((36, 36), (24, 24), QSP_Fixed, QSP_Fixed)
+toggle_button_size = Size((36, 36), (24, 24), QSP_Fixed, QSP_Fixed)
+text_button_size = Size((100, 100), (24, 24), QSP_Minimum, QSP_Minimum)
+slider_size = Size((200, 200), (24, 24), QSP_Minimum, QSP_Minimum)
+combobox_size = Size((60, 60), (24, 24), QSP_Fixed, QSP_Fixed)
+lineedit_size = Size((40, 40), (20, 20), QSP_Fixed, QSP_Fixed)
+separator_size = Size((2, 2), (32, 32), QSP_Fixed, QSP_Fixed)
+space_size = Size((10, 10), (32, 32), QSP_Fixed, QSP_Fixed)
 
 
 @dataclass
@@ -678,11 +679,11 @@ class MessageBox:
 
 
 message_boxes = {
-    DIALOG.ERROR_DIALOG: MessageBox('Error', ':/_Controls/error_message', wdg.QMessageBox.Ok),
-    DIALOG.WARNING_DIALOG: MessageBox('Warning', ':/_Controls/warning_message', wdg.QMessageBox.Ok),
-    DIALOG.INFO_DIALOG: MessageBox('Info', ':/_Controls/info_message', wdg.QMessageBox.Ok),
+    DIALOG.ERROR_DIALOG: MessageBox('Error', ':/_Controls/error_message', QMB_Ok),
+    DIALOG.WARNING_DIALOG: MessageBox('Warning', ':/_Controls/warning_message', QMB_Ok),
+    DIALOG.INFO_DIALOG: MessageBox('Info', ':/_Controls/info_message', QMB_Ok),
     DIALOG.QUESTION_DIALOG: MessageBox('Question', ':/_Controls/question_message',
-                                       wdg.QMessageBox.Yes | wdg.QMessageBox.No)
+                                       QMB_Yes | QMB_No)
 }
 
 

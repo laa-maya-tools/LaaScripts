@@ -11,8 +11,8 @@ VERSION:  v1.0.0 | Maya 2017+ | Python 2.7
 """
 import maya.cmds as cmd
 import maya.mel as mel
-from LaaScripts.Src.Constants import constants as c
-from LaaScripts.Src.Data.scene_data import SceneData
+from LaaScripts.Src.constants import constants as c
+from LaaScripts.Src.data.scene_data import SceneData
 
 
 class SelectionUtils(object):

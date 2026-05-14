@@ -7,13 +7,13 @@
 from collections import namedtuple
 from functools import wraps
 
-from PySide2 import QtWidgets as wdg
+from LaaScripts.Src.utils.qt_compat import QSP_Minimum
 
 import maya.cmds as cmd
-from LaaScripts.Src.Constants import constants_bck as c
-from LaaScripts.Src.Utils import info_utils as info
-from LaaScripts.Src.Utils.widget_utils import WidgetUtils
-from LaaScripts.Src.Utils.graph_utils import GraphUtils
+from LaaScripts.Src.constants import constants as c
+from LaaScripts.Src.utils.scene import info_utils as info
+from LaaScripts.Src.utils.ui.widget_utils import WidgetUtils
+from LaaScripts.Src.utils.animation.graph_utils import GraphUtils
 
 
 class PrefsManager(object):
@@ -36,5 +36,5 @@ class PrefsManager(object):
     def set_timeline_height(timeline_height):
         timeline_widget = WidgetUtils.get_maya_control_widget(c.TIME_CONTROL)
         timeline_widget.setFixedHeight(timeline_height)
-        timeline_widget.setSizePolicy(wdg.QSizePolicy.Minimum, wdg.QSizePolicy.Minimum)
+        timeline_widget.setSizePolicy(QSP_Minimum, QSP_Minimum)
         info.show_info('Timeline Height: {0}'.format(str(timeline_height)))

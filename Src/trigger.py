@@ -11,15 +11,24 @@ AUTHOR:   Leandro Adeodato
 VERSION:  v1.0.0 | Maya 2022+ | Python 3
 =============================================================================
 """
-from LaaScripts.Src.Constants import constants as c
-from LaaScripts.Src.Core import Keyframing
-from LaaScripts.Src.Core import Navigation
-from LaaScripts.Src.Core import Selection
-from LaaScripts.Src.Core import Playback
-from LaaScripts.Src.Core import Prefs
-from LaaScripts.Src.Core import Viewport
-from LaaScripts.Src.Utils.panel_utils import PanelUtils
-from LaaScripts.Src.Data.user_data import UserData
+from LaaScripts.Src.constants import constants as c
+from LaaScripts.Src.data.user_data import UserData
+from LaaScripts.Src.core.prefs.prefs_manager import PrefsManager
+from LaaScripts.Src.core.prefs.hotkey_manager import HotkeyManager
+from LaaScripts.Src.core.prefs.hotkey_manager_dialog import HotkeyManagerDialog
+from LaaScripts.Src.core.navigation.channels_filter import ChannelsFilter
+from LaaScripts.Src.core.navigation.smart_manipulator import SmartManipulator
+from LaaScripts.Src.core.keyframing.retiming_tools import RetimingTools
+from LaaScripts.Src.core.keyframing.blending_tools import BlendingTools
+from LaaScripts.Src.core.keyframing.baking_tools import BakingTools
+from LaaScripts.Src.core.selection.character_info import CharacterInfo
+from LaaScripts.Src.core.selection.picker_manager import PickerManager
+from LaaScripts.Src.core.selection.selection_manager import SelectionManager
+from LaaScripts.Src.core.playback.playback_manager import PlaybackManager
+from LaaScripts.Src.core.playback.frame_marker import FrameMarker
+from LaaScripts.Src.core.playback.marker_color_dialog import MarkerColorDialog
+from LaaScripts.Src.core.playback.timeline_section import TimelineSection
+from LaaScripts.Src.core.viewport.viewport_manager import ViewportManager
 
 global LAA_FRAME_MARKER
 global LAA_TIMELINE_SECTION
@@ -32,30 +41,30 @@ class Trigger(object):
 
         # ----- PREFS -----
         self._user_data = UserData()
-        self._prefs_manager = Prefs.prefs_manager.PrefsManager()
-        self._hotkey_manager = Prefs.hotkey_manager.HotkeyManager()
+        self._prefs_manager = PrefsManager()
+        self._hotkey_manager = HotkeyManager()
 
         # ----- NAVIGATION -----
-        self._channels_filter = Navigation.channels_filter.ChannelsFilter()
-        self._smart_manipulator = Navigation.smart_manipulator.SmartManipulator()
+        self._channels_filter = ChannelsFilter()
+        self._smart_manipulator = SmartManipulator()
 
         # ----- KEYFRAMING -----
-        self._retiming_tools = Keyframing.retiming_tools.RetimingTools()
-        self._blending_tools = Keyframing.blending_tools.BlendingTools()
-        self._baking_tools = Keyframing.baking_tools.BakingTools()
+        self._retiming_tools = RetimingTools()
+        self._blending_tools = BlendingTools()
+        self._baking_tools = BakingTools()
 
         # ----- SELECTION -----
-        self._character_info = Selection.character_info.CharacterInfo()
-        self._picker_manager = Selection.picker_manager.PickerManager()
-        self._selection_manager = Selection.selection_manager.SelectionManager()
+        self._character_info = CharacterInfo()
+        self._picker_manager = PickerManager()
+        self._selection_manager = SelectionManager()
 
         # ----- PLAYBACK -----
-        self._playback_manager = Playback.playback_manager.PlaybackManager()
-        self._frame_marker = Playback.frame_marker.FrameMarker()
-        self._timeline_section = Playback.timeline_section.TimelineSection()
+        self._playback_manager = PlaybackManager()
+        self._frame_marker = FrameMarker()
+        self._timeline_section = TimelineSection()
 
         # ----- VIEWPORT -----
-        self._viewport_manager = Viewport.viewport_manager.ViewportManager()
+        self._viewport_manager = ViewportManager()
 
     # =========================================================================
     # PREFS
@@ -83,6 +92,9 @@ class Trigger(object):
 
     def toggle_hotkey_sets(self):
         self._hotkey_manager.toggle_hotkey_sets()
+
+    def open_hotkey_manager_dialog(self):
+        HotkeyManagerDialog().exec_()
 
     def clear_hotkey(self, hotkey):
         self._hotkey_manager.clear_hotkey(hotkey)
@@ -339,6 +351,21 @@ class Trigger(object):
         except NameError:
             Trigger.load_frame_markers(self)
             LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.INBETWEEN)
+
+    def add_custom_markers(self):
+        try:
+            LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.CUSTOM)
+        except NameError:
+            Trigger.load_frame_markers(self)
+            LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.CUSTOM)
+
+    def open_marker_color_dialog(self):
+        global LAA_FRAME_MARKER
+        try:
+            LAA_FRAME_MARKER.markers_colors
+        except NameError:
+            Trigger.load_frame_markers(self)
+        MarkerColorDialog(LAA_FRAME_MARKER).exec_()
 
     def remove_frame_markers(self):
         try:

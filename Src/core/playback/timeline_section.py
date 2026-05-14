@@ -12,15 +12,13 @@ import maya.cmds as cmd
 import itertools
 import random
 
-from PySide2 import QtWidgets as wdg
-from PySide2 import QtGui as gui
-from PySide2 import QtCore as cor
+from LaaScripts.Src.utils.qt_compat import QtWidgets as wdg, QtGui as gui
 
-from LaaScripts.Src.Constants import constants as c
-from LaaScripts.Src.Utils.timeline_utils import TimelineUtils
-from LaaScripts.Src.Utils.widget_utils import WidgetUtils
-from LaaScripts.Src.Utils import info_utils as info
-from LaaScripts.Src.Data.scene_data import SceneData
+from LaaScripts.Src.constants import constants as c
+from LaaScripts.Src.utils.animation.timeline_utils import TimelineUtils
+from LaaScripts.Src.utils.ui.widget_utils import WidgetUtils
+from LaaScripts.Src.utils.scene import info_utils as info
+from LaaScripts.Src.data.scene_data import SceneData
 
 
 global LAA_TIMELINE_SECTION

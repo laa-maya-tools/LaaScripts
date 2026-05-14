@@ -1,8 +1,0 @@
-global proc uvShelf_Custom () {
-    global string $gBuffStr;
-    global string $gBuffStr0;
-    global string $gBuffStr1;
-
-
-
-} 

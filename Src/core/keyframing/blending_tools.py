@@ -5,7 +5,7 @@
 # Loops through all hotkey sets.
 # =============================================================================
 import maya.cmds as cmd
-from LaaScripts.Src.Utils import info_utils as info
+from LaaScripts.Src.utils.scene import info_utils as info
 
 
 class BlendingTools(object):
