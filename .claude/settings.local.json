@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(git config *)",
-      "Bash(git mv *)"
+      "Bash(git mv *)",
+      "Bash(uncompyle6 -o \"D:/PRODUCTION/Coding/Maya/_CodeReference/AnimBot/animBot/bakingTools/__hybrid__/\" \"D:/PRODUCTION/Coding/Maya/_CodeReference/AnimBot/animBot/bakingTools/__hybrid__/bakingTools27.pyc\" \"D:/PRODUCTION/Coding/Maya/_CodeReference/AnimBot/animBot/bakingTools/__hybrid__/bakingTools37.pyc\" \"D:/PRODUCTION/Coding/Maya/_CodeReference/AnimBot/animBot/bakingTools/__hybrid__/bakingTools39.pyc\" \"D:/PRODUCTION/Coding/Maya/_CodeReference/AnimBot/animBot/bakingTools/__hybrid__/__init__.pyc\")",
+      "PowerShell(py -3.11 --version 2>&1)",
+      "PowerShell(py --version 2>&1)",
+      "Read(//d/PRODUCTION/DESIGN/Remotion/**)",
+      "Bash(npm install *)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('Src/core/playback/frame_marker.py'\\).read\\(\\)\\); print\\('frame_marker.py: syntax OK'\\)\")"
     ]
   }
 }

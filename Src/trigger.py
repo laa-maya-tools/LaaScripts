@@ -325,7 +325,7 @@ class Trigger(object):
             LAA_FRAME_MARKER.setParent(None)
             LAA_FRAME_MARKER.deleteLater()
             LAA_FRAME_MARKER = None
-        except NameError:
+        except (NameError, AttributeError):
             pass
 
         LAA_FRAME_MARKER = self._frame_marker
@@ -334,28 +334,28 @@ class Trigger(object):
     def add_key_markers(self):
         try:
             LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.KEY)
-        except NameError:
+        except (NameError, AttributeError):
             Trigger.load_frame_markers(self)
             LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.KEY)
 
     def add_breakdown_markers(self):
         try:
             LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.BREAKDOWN)
-        except NameError:
+        except (NameError, AttributeError):
             Trigger.load_frame_markers(self)
             LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.BREAKDOWN)
 
     def add_inbetween_markers(self):
         try:
             LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.INBETWEEN)
-        except NameError:
+        except (NameError, AttributeError):
             Trigger.load_frame_markers(self)
             LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.INBETWEEN)
 
     def add_custom_markers(self):
         try:
             LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.CUSTOM)
-        except NameError:
+        except (NameError, AttributeError):
             Trigger.load_frame_markers(self)
             LAA_FRAME_MARKER.add_frame_markers(c.PLAYBACK.CUSTOM)
 
@@ -363,14 +363,14 @@ class Trigger(object):
         global LAA_FRAME_MARKER
         try:
             LAA_FRAME_MARKER.markers_colors
-        except NameError:
+        except (NameError, AttributeError):
             Trigger.load_frame_markers(self)
         MarkerColorDialog(LAA_FRAME_MARKER).exec_()
 
     def remove_frame_markers(self):
         try:
             LAA_FRAME_MARKER.remove_frame_markers()
-        except NameError:
+        except (NameError, AttributeError):
             Trigger.load_frame_markers(self)
             LAA_FRAME_MARKER.remove_frame_markers()
 
@@ -381,7 +381,7 @@ class Trigger(object):
             LAA_TIMELINE_SECTION.setParent(None)
             LAA_TIMELINE_SECTION.deleteLater()
             LAA_TIMELINE_SECTION = None
-        except NameError:
+        except (NameError, AttributeError):
             pass
 
         LAA_TIMELINE_SECTION = self._timeline_section
@@ -390,13 +390,13 @@ class Trigger(object):
     def add_timeline_section(self, random_color=False):
         try:
             LAA_TIMELINE_SECTION.add_timeline_section(random_color)
-        except NameError:
+        except (NameError, AttributeError):
             Trigger.load_timeline_sections(self)
             LAA_TIMELINE_SECTION.add_timeline_section(random_color)
 
     def remove_timeline_section(self):
         try:
             LAA_TIMELINE_SECTION.remove_timeline_section()
-        except NameError:
+        except (NameError, AttributeError):
             Trigger.load_timeline_sections(self)
             LAA_TIMELINE_SECTION.remove_timeline_section()
